@@ -158,3 +158,12 @@ ELEMENT_TOKEN_PATTERN = re.compile(r"[A-Z][A-Z0-9-]*", flags=re.IGNORECASE)
 
 # A pure name list: names plus list separators only. Prose fails this.
 NAME_LIST_ONLY_PATTERN = re.compile(r"^[A-Z0-9 ,\.\-]*$", flags=re.IGNORECASE)
+# Fetch inventory: quoted members and embedded SQL includes are source references.
+FETCH_COPY_PATTERN = re.compile(
+    r"^\s*COPY\s+(?!IDMS\b)[\"']?(?P<member>[A-Z0-9$#@][A-Z0-9$#@-]*)[\"']?(?=\s|\.|$)",
+    flags=re.IGNORECASE | re.MULTILINE,
+)
+FETCH_SQL_INCLUDE_PATTERN = re.compile(
+    r"\bEXEC\s+SQL\s+INCLUDE\s+[\"']?(?P<member>[A-Z0-9$#@][A-Z0-9$#@-]*)[\"']?\s+END-EXEC\b",
+    flags=re.IGNORECASE,
+)

@@ -1,6 +1,6 @@
 # `mainframe` module map
 
-27 Python files. [All packages](../MODULE_INDEX.md).
+29 Python files. [All packages](../MODULE_INDEX.md).
 
 | Python source | Logic note | Owning guide |
 |---|---|---|
@@ -17,6 +17,7 @@
 | `mainframe/zowe_pipeline.py` | [Module](../modules/mainframe/zowe_pipeline.md) | [02_MAINFRAME_PIPELINE](../02_MAINFRAME_PIPELINE.md) |
 | `mainframe/zowe_pipeline_steps.py` | [Module](../modules/mainframe/zowe_pipeline_steps.md) | [02_MAINFRAME_PIPELINE](../02_MAINFRAME_PIPELINE.md) |
 | `mainframe/zowe_programs.py` | [Module](../modules/mainframe/zowe_programs.md) | [02_MAINFRAME_PIPELINE](../02_MAINFRAME_PIPELINE.md) |
+| `mainframe/zowe_report_io.py` | [Module](../modules/mainframe/zowe_report_io.md) | [02_MAINFRAME_PIPELINE](../02_MAINFRAME_PIPELINE.md) |
 | `mainframe/zowe_resolver.py` | [Module](../modules/mainframe/zowe_resolver.md) | [02_MAINFRAME_PIPELINE](../02_MAINFRAME_PIPELINE.md) |
 | `mainframe/zowe_rules.py` | [Module](../modules/mainframe/zowe_rules.md) | [02_MAINFRAME_PIPELINE](../02_MAINFRAME_PIPELINE.md) |
 | `mainframe/zowe_rules_artifacts.py` | [Module](../modules/mainframe/zowe_rules_artifacts.md) | [02_MAINFRAME_PIPELINE](../02_MAINFRAME_PIPELINE.md) |
@@ -24,6 +25,7 @@
 | `mainframe/zowe_rules_connection.py` | [Module](../modules/mainframe/zowe_rules_connection.md) | [02_MAINFRAME_PIPELINE](../02_MAINFRAME_PIPELINE.md) |
 | `mainframe/zowe_rules_messages.py` | [Module](../modules/mainframe/zowe_rules_messages.md) | [02_MAINFRAME_PIPELINE](../02_MAINFRAME_PIPELINE.md) |
 | `mainframe/zowe_rules_pipeline.py` | [Module](../modules/mainframe/zowe_rules_pipeline.md) | [02_MAINFRAME_PIPELINE](../02_MAINFRAME_PIPELINE.md) |
+| `mainframe/zowe_search_history.py` | [Module](../modules/mainframe/zowe_search_history.md) | [02_MAINFRAME_PIPELINE](../02_MAINFRAME_PIPELINE.md) |
 | `mainframe/zowe_semantic_release_gate.py` | [Module](../modules/mainframe/zowe_semantic_release_gate.md) | [09_REVIEW_AND_RELEASE_GATES](../09_REVIEW_AND_RELEASE_GATES.md) |
 | `mainframe/zowe_settings.py` | [Module](../modules/mainframe/zowe_settings.md) | [02_MAINFRAME_PIPELINE](../02_MAINFRAME_PIPELINE.md) |
 | `mainframe/zowe_step_output.py` | [Module](../modules/mainframe/zowe_step_output.md) | [02_MAINFRAME_PIPELINE](../02_MAINFRAME_PIPELINE.md) |

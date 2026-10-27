@@ -13,6 +13,8 @@ from pathlib import Path
 
 from mainframe.zowe_env import raw_setting
 from mainframe.zowe_rules import (
+    FETCH_INVENTORY_FILENAME,
+    FETCH_SEARCH_HISTORY_FILENAME,
     WORKSPACE_DIR_NAME,
     WORKSPACE_ROOT_KEY,
     WORKSPACE_SUBFOLDERS,
@@ -59,6 +61,19 @@ def review_dir() -> Path:
     return workspace_root() / "Review"
 
 
+def reports_dir() -> Path:
+    """Durable fetch reports, separate from regenerated code review results."""
+    return workspace_root() / "reports"
+
+
+def inventory_path() -> Path:
+    return reports_dir() / FETCH_INVENTORY_FILENAME
+
+
+def search_history_path() -> Path:
+    return reports_dir() / FETCH_SEARCH_HISTORY_FILENAME
+
+
 def logs_dir() -> Path:
     return workspace_root() / "Logs"
 
@@ -79,10 +94,20 @@ def ensure_workspace() -> list[Path]:
 
 
 def clean_generated() -> list[Path]:
-    """Remove Output and Review. Never touches inputs."""
+    """Migrate the legacy inventory, then clear only Output and Review.
+
+    Durable reports/ workbooks are never cleaned. A failed migration aborts
+    cleanup, so an old inventory is not lost when Excel is locked/corrupt.
+    """
+    from mainframe.zowe_manifest import migrate_legacy_inventory
+
+    migrate_legacy_inventory()
     removed: list[Path] = []
     for folder in (output_dir(), review_dir()):
-        if folder.exists():
+        if folder.is_symlink():
+            folder.unlink()
+            removed.append(folder)
+        elif folder.exists():
             shutil.rmtree(folder)
             removed.append(folder)
         folder.mkdir(parents=True, exist_ok=True)

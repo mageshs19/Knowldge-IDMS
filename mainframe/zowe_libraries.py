@@ -18,6 +18,7 @@ import requests
 
 from mainframe.zowe_client import ZoweClient
 from mainframe.zowe_rules import ARTIFACT_LABELS
+from mainframe.zowe_search_history import SearchAttempt, http_attempt, exception_attempt
 from mainframe.zowe_settings import (
     ZoweConnection,
     application_code,
@@ -48,8 +49,9 @@ class LibrarySearch:
     label: str = ""
     libraries: list[str] = field(default_factory=list)
     _client: ZoweClient | None = None
-    # member -> {dataset: http status} for the last failed search
+    # member -> ordered HTTP statuses for the most recent search, including success
     attempts: dict[str, dict[str, int]] = field(default_factory=dict)
+    search_history: dict[str, list[SearchAttempt]] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         self.label = self.label or ARTIFACT_LABELS[self.artifact]
@@ -63,52 +65,50 @@ class LibrarySearch:
             self._client = ZoweClient(connection, self.artifact, self.label)
         return self._client
 
-    def locate(self, member: str) -> str:
-        """First library holding the member, or an empty string."""
-        wanted = str(member or "").strip().upper()
-        if not wanted:
-            return ""
+    def _lookup(self, member: str, *, probe: bool = False) -> tuple[str, bytes]:
+        """Keep every tried library, even when a later library succeeds.
 
-        statuses: dict[str, int] = {}
-        for dataset in self.libraries:
-            try:
-                found, status = self.client.member_exists(dataset, wanted)
-            except (requests.RequestException, ValueError) as exc:
-                logger.warning("%s probe failed on %s: %s", self.label, dataset, exc)
-                statuses[dataset] = -1
-                continue
-
-            statuses[dataset] = status
-            if found:
-                return dataset
-
-        self.attempts[wanted] = statuses
-        return ""
-
-    def download(self, member: str) -> tuple[str, bytes]:
-        """(dataset, content). Dataset is empty when not found anywhere."""
+        Do not serialize exception strings: request errors can contain endpoints,
+        credentials or response bodies. Typed diagnostics are sufficient here.
+        """
         wanted = str(member or "").strip().upper()
         if not wanted:
             return "", b""
-
         statuses: dict[str, int] = {}
+        trace: list[SearchAttempt] = []
+        self.attempts[wanted] = statuses
+        self.search_history[wanted] = trace
         for dataset in self.libraries:
             try:
-                content, status = self.client.fetch_member(dataset, wanted)
-            except (requests.RequestException, ValueError) as exc:
-                logger.warning("%s fetch failed on %s: %s", self.label, dataset, exc)
+                if probe:
+                    found, status = self.client.member_exists(dataset, wanted)
+                    content = b""
+                else:
+                    content, status = self.client.fetch_member(dataset, wanted)
+                    found = status == 200
+            except Exception as exc:
                 statuses[dataset] = -1
-                continue
-
+                trace.append(exception_attempt(dataset, wanted, exc))
+                logger.warning("%s lookup failed on %s (%s)", self.label, dataset, type(exc).__name__)
+                if isinstance(exc, (requests.RequestException, ValueError)):
+                    continue
+                raise
             statuses[dataset] = status
-            if status == 200:
+            trace.append(http_attempt(dataset, wanted, status, probe=probe))
+            if found:
                 return dataset, content
-
-        self.attempts[wanted] = statuses
         return "", b""
 
+    def locate(self, member: str) -> str:
+        """First library holding the member, or an empty string."""
+        return self._lookup(member, probe=True)[0]
+
+    def download(self, member: str) -> tuple[str, bytes]:
+        """(dataset, content); complete attempt evidence is in search_history."""
+        return self._lookup(member)
+
     def why_not_found(self, member: str) -> str:
-        """Per-library HTTP status for the last failed lookup."""
+        """Per-library HTTP status for the most recent lookup."""
         statuses = self.attempts.get(str(member or "").strip().upper(), {})
         if not statuses:
             return ", ".join(self.libraries)

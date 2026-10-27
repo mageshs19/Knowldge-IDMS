@@ -31,7 +31,7 @@ from mainframe.zowe_rules_messages import *
 - [mainframe/zowe_rules_messages.py](zowe_rules_messages.md)
 - [mainframe/zowe_rules_pipeline.py](zowe_rules_pipeline.md)
 
-## Importers (16)
+## Importers (17)
 
 Static imports only; dependency injection, string imports and runtime dispatch can add edges.
 
@@ -47,6 +47,7 @@ Static imports only; dependency injection, string imports and runtime dispatch c
 - [mainframe/zowe_programs.py](zowe_programs.md)
 - [mainframe/zowe_resolver.py](zowe_resolver.md)
 - [mainframe/zowe_settings.py](zowe_settings.md)
+- [tests/test_zowe_fetch_inventory.py](../tests/test_zowe_fetch_inventory.md)
 - 4 further importers are recorded in [the source manifest](../../source_manifest.json).
 
 ## Change responsibility

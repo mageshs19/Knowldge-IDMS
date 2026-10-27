@@ -1,10 +1,9 @@
 {
   "basis": "Static AST inspection; no engine imports or runtime proof.",
-  "explicitly_reviewed_guides": [
-    "prompt/12_CHANGE_WORKFLOW.md"
-  ],
+  "explicitly_reviewed_guides": [],
   "generated_docs": {
-    "prompt/MODULE_INDEX.md": "5588862f40f6fe0e6b3a7576035ab2bccad2d923ff892aed3091a2ed838a8d3f",
+    "prompt/MODULE_INDEX.md": "fb945a1ddb18282c222ce2d48fd40fbb753b7c6a45e4d3f383f4eac7e255cba0",
+    "prompt/index/Knowldge-Graph/prompt/tools.md": "91575f6ee960b2ebdd5a6ad9c4d9ec3da0e6ef1b6048628b7e780cfb04cd8146",
     "prompt/index/_root.md": "ba07733136340bd23eeefcd9f7ce703fd26180c2095c018812fa5bc8ddaa6515",
     "prompt/index/catalogs.md": "20befb222399d0a27e21ed59e60c73c25fbe03bb5cdb395910c3cf1d715414bf",
     "prompt/index/config.md": "927bc998a5958a2b2ff7cba3943034f0a25ac12274956a23d85694b3aaeb6ac7",
@@ -60,7 +59,7 @@
     "prompt/index/converter/transformers/idms_statement.md": "990b99d0ea35c4ff973ec132087058af5ad8cb0842e283b5ae05fd81805a82a7",
     "prompt/index/converter/ui.md": "1b9e5234dfdc69b43014cfc0bbcb0c357ee1e430fb1cf9d7ea57c3f1bd871269",
     "prompt/index/converter/validators.md": "14517a72fba3ef2abcd52b6946744b32743e34b572d3e211932ffb58e91dbd5d",
-    "prompt/index/mainframe.md": "99c28e487fb0370c2d6d75fc38d3d547ff2a2eca95c08c47596161f25cdd5f9f",
+    "prompt/index/mainframe.md": "528bbbe0e0335a87234588c6d1b07630bdf466d0e8509690e226e127dc231982",
     "prompt/index/mainframe/verification.md": "1be2ea30fbca29b389954190b7b6e8d960a52ae64ca0cd0fc2b9ac08963f2b62",
     "prompt/index/patterns.md": "c8efd62578693377f567b0e13fc39aef7c2cf905f6eb7f7d3dcd97042d6424b8",
     "prompt/index/patterns/cursor_spec.md": "ea1373f75615e93ea49370752ad905f1df6e133da6f95db2d8ec31b94a7772d1",
@@ -77,7 +76,7 @@
     "prompt/index/runners/batch.md": "666b4c8fe9e9073f76a35dc321d15b5d91a06f2cdc07400f1cc01be6b6654ed6",
     "prompt/index/runners/retrieval.md": "bf7f923236e82fae2910ccb790d8765048c0be0bbfda2b552a268b4aadf0be36",
     "prompt/index/runners/update.md": "9e7a261df89d5ce888c9f2427811215435fcd15343eea994517b71580a4c9d8f",
-    "prompt/index/tests.md": "ec677281c84eb7189aa19dea410f20a5a40a7922b0c42c8316bbf9921d992760",
+    "prompt/index/tests.md": "72a0ecb462295166eea232d198adb158387164ae617166be5d3cdd08ae46f3ee",
     "prompt/index/tests/cursor_close_guarantee.md": "4c8b004db7ebde1dbb0102cc9dbc58f37d4079fcc50e47350ca8fcce28c8707c",
     "prompt/index/tests/cursor_contract.md": "1f64eccc57419b00ff422d7c06d09feafc0b8dc4e107d8ddba750047289454fa",
     "prompt/index/tests/cursor_where.md": "1a45f2f743e563d76f92c7a54bbb2a694429db3e66fa25ef23b983a23112dcaf",
@@ -95,6 +94,16 @@
     "prompt/index/tests/update_business_sql.md": "8499f3beba86fc997cff74e62cb905343fdac257dc13171e055ebf0c98f300fd",
     "prompt/index/tests/update_sql_cleanup.md": "fe36eeddc8a78c2308900c2b3b2d8164c6f085fa3a70d6ac35723acfc2a27cac",
     "prompt/index/tool.md": "7c640e9fe8b971099a8cd3fcc34cd0366d57f49c8caa10e01f67b5f7beddeaee",
+    "prompt/modules/Knowldge-Graph/prompt/tools/knowledge_core.md": "be8e2c3dea11952e10ca54d90693f19301545a9a307ba9f1f783b88dafa77118",
+    "prompt/modules/Knowldge-Graph/prompt/tools/knowledge_docs.md": "bf7a743cc481af5dfff904abb485bc04ad44b6a8ec212523b7c414a54c215830",
+    "prompt/modules/Knowldge-Graph/prompt/tools/knowledge_engine.md": "58781084f5cb46fa79903e7bfb1b4fefd0c9ab2eed64db6a893ed8f235543c06",
+    "prompt/modules/Knowldge-Graph/prompt/tools/knowledge_extract.md": "44b53e890f4b05e1e65d8699df899a5d2f59a40688b815cfa9cc48369e8f9f08",
+    "prompt/modules/Knowldge-Graph/prompt/tools/knowledge_pipeline.md": "fc1ebbbae3f7fd1d5a0f3e62710cfa80ee96386b493fc2988050451b9042fec2",
+    "prompt/modules/Knowldge-Graph/prompt/tools/knowledge_reports.md": "eb6ce83d051bf556e82afef1c580b43d3cf8197ddc889528f5fdc292f418f0de",
+    "prompt/modules/Knowldge-Graph/prompt/tools/knowledge_review.md": "d2850607085307438c6d2f3f602d87e717a178ea2442f5d14b9bdc7435c89460",
+    "prompt/modules/Knowldge-Graph/prompt/tools/maintain_docs.md": "e61315e5ac5d2717478ad44681fd3b3998d77da8fcd06155d12f0c1e2af1ccb0",
+    "prompt/modules/Knowldge-Graph/prompt/tools/test_maintain_docs.md": "5d3c5f579a4b7ac631dbdfc69c8504cba600c13d54a440f8576e2fc5fc1a79e2",
+    "prompt/modules/Knowldge-Graph/prompt/tools/test_program_knowledge.md": "1acdde952f29184b49670701e42d95ef179bceee8e8e8c02f544e59bc7acc9cc",
     "prompt/modules/catalogs/__init__.md": "248229fde39e31cec78a5f30b19942a3c16f9bc49d7af05e03d30a34b67ce125",
     "prompt/modules/catalogs/db2_naming_catalog.md": "677b7134fef69cbf1b3954d0d2d935b471e7592bfec945cf9119bcdc9af7aca1",
     "prompt/modules/catalogs/db2_sql_types.md": "d6706b7f3cba17229ef99265954ac6ede01195e8c6015bda9a239895d4f11fdb",
@@ -410,7 +419,7 @@
     "prompt/modules/converter/logging_utils/__init__.md": "97fc33e24cf120d4a35508300e5885c7d586f84eac594542e1610bf249985195",
     "prompt/modules/converter/parsers/__init__.md": "6ecdcedaacd0c3af91664155acd2e9edf2d7ded55b66644df696ae5501e1f30f",
     "prompt/modules/converter/parsers/base_text_parser.md": "ae896dc9be8abd5cd84cafc8aff96cea24f7e37ceb96a2c6b8ab21830c199936",
-    "prompt/modules/converter/parsers/cobol_parser.md": "db35ca757d243c709d79d00b8cb88c9cca136b807ef5ec9c261e3b50e6dbaf84",
+    "prompt/modules/converter/parsers/cobol_parser.md": "78477ec4d0f0847570865d0067d414c401b4af55d75768a872c0e26bcb62584f",
     "prompt/modules/converter/parsers/copybook_parser.md": "285da9030bc7a33366d1b14ade2fc019e1ab33200583b09e90b5d5d6ae0874fb",
     "prompt/modules/converter/parsers/dclgen/__init__.md": "8f64292ed7b2f0b9f937ca0b2b1f83c1266d6052d447db2a935cb420fb1cadd5",
     "prompt/modules/converter/parsers/dclgen/cobol_host_field_parser.md": "4b20685e6a64d73a6eb2502197e0a91cea9d8e8d84ea94e29d92695e1d060279",
@@ -542,7 +551,7 @@
     "prompt/modules/converter/services/generated_field_anchor.md": "a003b23e4cbd1871bacc9171a8324f4e1434c8253ad61aea926126316081b6e8",
     "prompt/modules/converter/services/host_reference_normalizer.md": "9321f212d804c2d06e14e3411f0738a1ccbe29e2ffacbc934f28eb693b106987",
     "prompt/modules/converter/services/logical_statement_joiner.md": "97d92ad65535d634b5ffa125f1cf802cfc3afb25c1367aaa708b3e9b441bccf3",
-    "prompt/modules/converter/services/name_derivation_resolver.md": "7e42d56fc26e8516243a161c07fc99942bf89bac5e9701145bbbbe6de480f966",
+    "prompt/modules/converter/services/name_derivation_resolver.md": "5d95e11e2217cdb7e3a4884e401d41a91b5d0a796af8a8dd54440b7821c76bde",
     "prompt/modules/converter/services/name_normalizer.md": "961334e22fdf858889809566efe85d793bffac8cefffcf421bd8357572a5b87c",
     "prompt/modules/converter/services/perform_thru_scope.md": "8ca3945a7a64de26f1f2e070666ef5626fbd72723135fd8956da36bd19f349ff",
     "prompt/modules/converter/services/procedure_block_indent_service.md": "d466df352e80f859078208452639b61e0305acbc57abdf864bdf0372915305d2",
@@ -627,26 +636,28 @@
     "prompt/modules/mainframe/zowe_console.md": "ce6b9589c5fcf5a056397c98408ba2af628a4a35f9ce8a72563c5af423d1697b",
     "prompt/modules/mainframe/zowe_copybook_upload.md": "62d52a6ca430c4197b73871113bd05208a6c26bb87fa1e03d1f322e3c5feb5be",
     "prompt/modules/mainframe/zowe_env.md": "9921f1da4463470e5ee2ff09c4662cd0b6a76b193f9e90c633c3921484f6e174",
-    "prompt/modules/mainframe/zowe_fetcher.md": "19515732596bca541598b2aa53f0d9ef2d5722222f9018440ae534b80783bb71",
-    "prompt/modules/mainframe/zowe_libraries.md": "d077b0a3add8add722ecde7ab5123acc88ebef238a99eb2e3eb7ee80dfe176ab",
-    "prompt/modules/mainframe/zowe_manifest.md": "8e1eb3089a97ac2817f7f81baca4e10045e7d48183bae484bf56c58c35e6c047",
-    "prompt/modules/mainframe/zowe_patterns.md": "0b00a02554682c8f197aa26fbea59e9c65da2018b35b350201bc494616bcc0c1",
+    "prompt/modules/mainframe/zowe_fetcher.md": "4a5315aef6bf29a13fb30b9be3c4956834c5fb20c48ffca114693cd837bc5168",
+    "prompt/modules/mainframe/zowe_libraries.md": "1bcf4bdc774457783f85a7262088cb67f069c3e98a6a0be877f4781762e9a04f",
+    "prompt/modules/mainframe/zowe_manifest.md": "96048fc773c36e1310538cf91159c6fe5a5b04547008a922430788b720f881b7",
+    "prompt/modules/mainframe/zowe_patterns.md": "82e8e723b4eeb3dc363d55926006cf42c49a0756ecf5b1dedb83eb12c743266d",
     "prompt/modules/mainframe/zowe_pipeline.md": "c0452e887f0fad12697e674be26ef4a1e24de5ab7438f831c115144f7a92f3e7",
-    "prompt/modules/mainframe/zowe_pipeline_steps.md": "bca22a22b6ea154ba67e5fe0f68ec83a88ea065b02f6e181e2870e63dc5f62a2",
+    "prompt/modules/mainframe/zowe_pipeline_steps.md": "6184ff81957cbb2680ba8d7fde6d3f3bc0d2d0d77758a477a8e3ad11ef235eb2",
     "prompt/modules/mainframe/zowe_programs.md": "8d031dfa33a53350f81c7a547801f2cfd43d6990806edcbbd3bb7fcf672c8355",
-    "prompt/modules/mainframe/zowe_resolver.md": "4e3d1216b14d295f96f300c5f64f2e42c19b124d551c25042513ca1d69d248d0",
-    "prompt/modules/mainframe/zowe_rules.md": "43c59b82c37d75909d429e54acdf0e5ebfcd05335b352923bcb64d15596a8925",
+    "prompt/modules/mainframe/zowe_report_io.md": "60b8c0475aef78d25fc1edea4063b774fed73babae38dcc8bf6ea1bcddb798e7",
+    "prompt/modules/mainframe/zowe_resolver.md": "423cd30f6dfaaf032b67493a6c078bbd67b4855273f7b86b3b5c7e040bea55ff",
+    "prompt/modules/mainframe/zowe_rules.md": "6103cc25d5c80ca4a3e5e81dba7c93a1cc61f956149aae11e73d52fa870f1337",
     "prompt/modules/mainframe/zowe_rules_artifacts.md": "4ce527b85c59355cf36651bea2f66ec81807d3a82a6b48e96b5be08340823e1f",
     "prompt/modules/mainframe/zowe_rules_config.md": "2a80c0df7203b40675e5d3fed2ea58c35353577da7ef79ce3a39c8f370eda246",
     "prompt/modules/mainframe/zowe_rules_connection.md": "513f0789b93fda9b289f40bc9db2e360226a5ead3ac640ce6e537b84d25dd02c",
     "prompt/modules/mainframe/zowe_rules_messages.md": "5732fb9a8c1dd1c5f18c2410e661e0e9e59a00fbbdcdab5e2b354605dd63ec9e",
-    "prompt/modules/mainframe/zowe_rules_pipeline.md": "676d5c42d65cfaca31b8b2aa58048d94bf13024d09aecdfa2cc4bf109fc4a395",
+    "prompt/modules/mainframe/zowe_rules_pipeline.md": "4251c44b3fdc8b1370e9ffe4fab97aafe3ec07699faa52cf3895ad0ecc87efb1",
+    "prompt/modules/mainframe/zowe_search_history.md": "aeaeec6f21b93b85f6f29583e70b588012199f6c916c78e96ba5d2a0af52d5d0",
     "prompt/modules/mainframe/zowe_semantic_release_gate.md": "c7a7d272537600fb162f00da6e3652d603bbe1a8ede692391230806e8f60c6e7",
     "prompt/modules/mainframe/zowe_settings.md": "76a1d9b53fc552efcd08124bf782dc0610850538efcc479b298b0bf7d5ff3e9f",
     "prompt/modules/mainframe/zowe_step_output.md": "bee28042117ac83af3ab24ec3f6a879ea6e6feaa31186b80586636cef33f8649",
     "prompt/modules/mainframe/zowe_steps.md": "d5d9c24b5f82e7d4d2fcef85a88b1176f3a03bb74fcd827cc3281df181f48686",
-    "prompt/modules/mainframe/zowe_subschema.md": "9456580653fa374f4d0dd43168eff953e5f55a198f60498f36e0e035a0a4fa0e",
-    "prompt/modules/mainframe/zowe_workspace.md": "e91953146b167ffbb9772b5468e48c03801cf1053adfa923710ab7ce6ef241c6",
+    "prompt/modules/mainframe/zowe_subschema.md": "21a89dd14c4b64bd1d26931d20baa073b5e8b041d8241ffdee2ad673a2052c16",
+    "prompt/modules/mainframe/zowe_workspace.md": "310192891c280101513e16cd625551e7291b1eedb6b2c72505342b8bc93a5aa9",
     "prompt/modules/mainframe/zowe_writer.md": "62ce6b7ceef9e540b776a22131b2334a3ba81b67d9d4c16317d9ffdc513065d7",
     "prompt/modules/patterns/__init__.md": "2d69a53fa0544ca557d228bc4ef755f7c5f11a73c551581c79f96434cdee6468",
     "prompt/modules/patterns/batch_runner_patterns.md": "a7eaa0fab9570a21c2c2946819b18fea2166ba16cce7c9b32f772dbb7bbbb5a4",
@@ -843,7 +854,7 @@
     "prompt/modules/rules/output_write_paragraph_rules.md": "53b33bf240cd5c89b826f5eb7dc6e012b0cbd402517096d07ec1f9cd66a3db4c",
     "prompt/modules/rules/procedure_indent_rules.md": "db7d8c9a52b3861e963959b6810d0c36b378743a9037c3d03537019a4e74d4ad",
     "prompt/modules/rules/program_flow_rules.md": "48080e4de6c0ffe40e7ac8c7794cbd067f9465de3151de5e8684ee1c1d066482",
-    "prompt/modules/rules/program_kind_rules.md": "01f2c1dbc2de4437c9ab3785dc735771e426c71b54d566869ae72053136d5148",
+    "prompt/modules/rules/program_kind_rules.md": "ae462185aa2e0c3a731bb0f19c21c91e377fa2b9eeb8a3f4406fdf83f6edcc88",
     "prompt/modules/rules/program_metadata_loader.md": "5883ca7a2dd6423d493fbfaca54f4de1ac840c6b964e5e959842809e35a7c8f4",
     "prompt/modules/rules/record_materialisation_rules.md": "2217297c4c3e5c42fa9903a456ce45855d4865a4dcfe63b4477d9210c2daacff",
     "prompt/modules/rules/restart_cleanup_rules.md": "e6c05aa13ddc1c96600394732aa977361fe5725a8feb661f863f85380ebebafc",
@@ -1113,6 +1124,8 @@
     "prompt/modules/tests/test_validators.md": "f9abc9ab42415d1d93ef0ccfaa0008363af9969630d9dced76005a098508c513",
     "prompt/modules/tests/test_vmdz1526_lrf_update_integration.md": "34848299ed13e45908eb71290fecce00cf3f4849c7105ddc3be3c26443208def",
     "prompt/modules/tests/test_vmdz4310_manual_reference_parity.md": "47dc039bf1f166f8a575ab1359fe52e0d8241c9a62aa5c68252dff4aa7bafaf0",
+    "prompt/modules/tests/test_zowe_fetch_inventory.md": "fba24ec1da16d9792f279a642519fb976b6f82104b96d6359acd2c76866fef24",
+    "prompt/modules/tests/test_zowe_reports_history.md": "e9116b29840eb43d34d418d1b10015bb0a84944f7904ea59b608ff9b4a47a230",
     "prompt/modules/tests/test_zowe_semantic_release_gate.md": "034cad76d05039192a666849613ead8feadcd1efba8e5b45a53b78809360486a",
     "prompt/modules/tests/update_business_sql/test_structural_update_detection.md": "4b6f10825cfc69335dd87294b292a5e0a0bddfb0bbef9846f3e4f5ccc8bd4f7f",
     "prompt/modules/tests/update_sql_cleanup/conftest.md": "8c69c75446cc1dc3aa2d50bd9ad2a40ac23871a83ce7a896b13796c17b57fe1c",
@@ -1122,7 +1135,7 @@
     "prompt/modules/tool/trace_obtain_calc.md": "17ca0bf768ac5e1e0fd0d13d6c05cbf2da19a6296499c1e670d265993c1ee875"
   },
   "guides": {
-    "prompt/02_MAINFRAME_PIPELINE.md": "1909ccc98354a14f92ac1529c692e308b2061998e20a10a4f2bde37ab7dcb9c5",
+    "prompt/02_MAINFRAME_PIPELINE.md": "3f4267549c84825edd54311d5d10f2d1593fcfc15969790e1c24d6a38f947797",
     "prompt/03_INPUT_METADATA_AND_RESOLUTION.md": "e055036d4646082f751b755ec4c8cf825b4fdae48adb2d85f444ec24e673a5ed",
     "prompt/04_LR_IDMS_DB2_CONVERSION.md": "66b200ddb3dd0a744121d5fccd487afffc46482c664ff474a9eff48bf77b6df0",
     "prompt/05_SQL_CURSOR_AND_BUSINESS_FLOW.md": "45ccea48ab230cd4e69f0f233a9ed7aff3083f33d7ee7273e6e1c0ab1cef360a",
@@ -1130,17 +1143,108 @@
     "prompt/07_UPDATE_RESTART_AND_TRANSACTIONS.md": "f6859cb05de1d348cbb6778ae1813e20edd73b0948a5049a7c39f3c96a8a00e9",
     "prompt/08_POSTPROCESS_FORMATTING_NUMBERING.md": "f197e11f3d05e0d3adbeff2ca5991f667df3a9f9f03b7d17b56073397750f54b",
     "prompt/09_REVIEW_AND_RELEASE_GATES.md": "bad7e1cb13f0cd1bbcc6006276410d57a2a980359238b51603470798b1b3a023",
-    "prompt/10_TESTING_AND_VALIDATION.md": "32f2b6b04713ff22f5ec512452a6014072842b687e525af921a1ea7992cd922d",
+    "prompt/10_TESTING_AND_VALIDATION.md": "7092a2896a50d8a05ba5fdade8f00894984c7e6b0d0abd417dd2c366f19c6fde",
     "prompt/11_CONFIGURATION_AND_ENTRYPOINTS.md": "b708485429f5da58b2b36226e1acbd5a4b9583ba4ba14ad5f792f32885e256c3",
     "prompt/12_CHANGE_WORKFLOW.md": "3e216cb34c186ecb03f692dd8e51482302312e681d8c6a800d82486631a5a2e0",
     "prompt/14_RULES_PATTERNS_AND_CATALOGS.md": "63e119572b11f24bfac20426f2820f42cef8a2e1d616dd86bc07eda1ed48de9e",
     "prompt/15_UI_AND_LOGGING.md": "c5e95ffc734843bfbfe3eb8f86d0a22adbc6bc7810c23bc0d43c7470f5090a91"
   },
-  "last_source_changes": [],
-  "python_count": 1025,
+  "last_source_changes": [
+    "mainframe/zowe_fetcher.py",
+    "mainframe/zowe_libraries.py",
+    "mainframe/zowe_manifest.py",
+    "mainframe/zowe_pipeline_steps.py",
+    "mainframe/zowe_report_io.py",
+    "mainframe/zowe_rules_pipeline.py",
+    "mainframe/zowe_search_history.py",
+    "mainframe/zowe_workspace.py",
+    "tests/test_zowe_fetch_inventory.py",
+    "tests/test_zowe_reports_history.py"
+  ],
+  "python_count": 1039,
   "schema_version": 1,
   "source_scope": "All repository Python except prompt/ documentation tooling and cache/environment directories.",
   "sources": {
+    "Knowldge-Graph/prompt/tools/knowledge_core.py": {
+      "doc": "prompt/modules/Knowldge-Graph/prompt/tools/knowledge_core.md",
+      "guide": "prompt/04_LR_IDMS_DB2_CONVERSION.md",
+      "imported_by": [],
+      "imports": [],
+      "lines": 307,
+      "sha256": "fc76022ac8f8fa43b43920fa931ebd00f3638fe4a5cc551dee73c6d5e3df486c"
+    },
+    "Knowldge-Graph/prompt/tools/knowledge_docs.py": {
+      "doc": "prompt/modules/Knowldge-Graph/prompt/tools/knowledge_docs.md",
+      "guide": "prompt/04_LR_IDMS_DB2_CONVERSION.md",
+      "imported_by": [],
+      "imports": [],
+      "lines": 96,
+      "sha256": "9e11b642d26068645714592e54a81ca7474fbc04708ebe199bf80aa080b5b738"
+    },
+    "Knowldge-Graph/prompt/tools/knowledge_engine.py": {
+      "doc": "prompt/modules/Knowldge-Graph/prompt/tools/knowledge_engine.md",
+      "guide": "prompt/04_LR_IDMS_DB2_CONVERSION.md",
+      "imported_by": [],
+      "imports": [],
+      "lines": 199,
+      "sha256": "7f042c981d86275fde43f9b505ac67230f573f0e53ed3712834dfb920d5d4448"
+    },
+    "Knowldge-Graph/prompt/tools/knowledge_extract.py": {
+      "doc": "prompt/modules/Knowldge-Graph/prompt/tools/knowledge_extract.md",
+      "guide": "prompt/04_LR_IDMS_DB2_CONVERSION.md",
+      "imported_by": [],
+      "imports": [],
+      "lines": 194,
+      "sha256": "600b131745b519111d5e9932ea3f9444976a8aefb170b5b07e83e3651bd1f03e"
+    },
+    "Knowldge-Graph/prompt/tools/knowledge_pipeline.py": {
+      "doc": "prompt/modules/Knowldge-Graph/prompt/tools/knowledge_pipeline.md",
+      "guide": "prompt/04_LR_IDMS_DB2_CONVERSION.md",
+      "imported_by": [],
+      "imports": [],
+      "lines": 214,
+      "sha256": "94c0d04c729434f48e50a2e900097365d1c3e96717298447a5923dba027c89c5"
+    },
+    "Knowldge-Graph/prompt/tools/knowledge_reports.py": {
+      "doc": "prompt/modules/Knowldge-Graph/prompt/tools/knowledge_reports.md",
+      "guide": "prompt/04_LR_IDMS_DB2_CONVERSION.md",
+      "imported_by": [],
+      "imports": [],
+      "lines": 167,
+      "sha256": "724baaa470bc6c33b7ebccf17378c609f5cee8882f351646c7afc8b4e75e6fc0"
+    },
+    "Knowldge-Graph/prompt/tools/knowledge_review.py": {
+      "doc": "prompt/modules/Knowldge-Graph/prompt/tools/knowledge_review.md",
+      "guide": "prompt/04_LR_IDMS_DB2_CONVERSION.md",
+      "imported_by": [],
+      "imports": [],
+      "lines": 313,
+      "sha256": "66c142d8ebf935fe78cb24b072f52e327a97177ec649a339301127188768371c"
+    },
+    "Knowldge-Graph/prompt/tools/maintain_docs.py": {
+      "doc": "prompt/modules/Knowldge-Graph/prompt/tools/maintain_docs.md",
+      "guide": "prompt/04_LR_IDMS_DB2_CONVERSION.md",
+      "imported_by": [],
+      "imports": [],
+      "lines": 469,
+      "sha256": "e2d6f1e9024449d6ef47e852f669241c10160536b821fe78c034e6425809c651"
+    },
+    "Knowldge-Graph/prompt/tools/test_maintain_docs.py": {
+      "doc": "prompt/modules/Knowldge-Graph/prompt/tools/test_maintain_docs.md",
+      "guide": "prompt/04_LR_IDMS_DB2_CONVERSION.md",
+      "imported_by": [],
+      "imports": [],
+      "lines": 161,
+      "sha256": "d560b30f842c81311f8c0f5855c4c4208357f4ff6d0d37ace5393eca6f9a19b8"
+    },
+    "Knowldge-Graph/prompt/tools/test_program_knowledge.py": {
+      "doc": "prompt/modules/Knowldge-Graph/prompt/tools/test_program_knowledge.md",
+      "guide": "prompt/04_LR_IDMS_DB2_CONVERSION.md",
+      "imported_by": [],
+      "imports": [],
+      "lines": 453,
+      "sha256": "47b67085ff5fb4ddbe3662d9f77726cd8c73b2d158f51ac2ca88bc0cc39c80bc"
+    },
     "catalogs/__init__.py": {
       "doc": "prompt/modules/catalogs/__init__.md",
       "guide": "prompt/14_RULES_PATTERNS_AND_CATALOGS.md",
@@ -5859,7 +5963,6 @@
         "converter/transformers/cobol_transformer.py",
         "converter/ui/conversion_actions.py",
         "mainframe/verification/manual_direct_update_parity.py",
-        "mainframe/zowe_manifest.py",
         "mainframe/zowe_semantic_release_gate.py",
         "review/runner/workspace_inputs.py",
         "runners/batch_program_runner.py",
@@ -8005,7 +8108,6 @@
         "converter/services/program_name_sync_service.py",
         "converter/ui/conversion_actions.py",
         "mainframe/verification/copybook_provenance.py",
-        "mainframe/zowe_manifest.py",
         "mainframe/zowe_semantic_release_gate.py",
         "review/runner/workspace_inputs.py",
         "runners/batch/update_postprocess_pipeline.py",
@@ -9323,18 +9425,22 @@
       "guide": "prompt/02_MAINFRAME_PIPELINE.md",
       "imported_by": [
         "mainframe/__init__.py",
-        "mainframe/zowe_pipeline_steps.py"
+        "mainframe/zowe_pipeline_steps.py",
+        "tests/test_zowe_fetch_inventory.py",
+        "tests/test_zowe_reports_history.py"
       ],
       "imports": [
         "mainframe/zowe_libraries.py",
+        "mainframe/zowe_manifest.py",
         "mainframe/zowe_programs.py",
         "mainframe/zowe_resolver.py",
         "mainframe/zowe_rules.py",
+        "mainframe/zowe_search_history.py",
         "mainframe/zowe_subschema.py",
         "mainframe/zowe_workspace.py"
       ],
-      "lines": 243,
-      "sha256": "47f465bb278281a0c93647037ae5b9c0ff398775303d5d7833778123021dbe15"
+      "lines": 380,
+      "sha256": "4b1ad20210cb93d080093499d4708646e39c61c080fcca207715fd11b97a8c16"
     },
     "mainframe/zowe_libraries.py": {
       "doc": "prompt/modules/mainframe/zowe_libraries.md",
@@ -9342,29 +9448,36 @@
       "imported_by": [
         "mainframe/__init__.py",
         "mainframe/zowe_commands.py",
-        "mainframe/zowe_fetcher.py"
+        "mainframe/zowe_fetcher.py",
+        "tests/test_zowe_reports_history.py"
       ],
       "imports": [
         "mainframe/zowe_client.py",
         "mainframe/zowe_rules.py",
+        "mainframe/zowe_search_history.py",
         "mainframe/zowe_settings.py"
       ],
       "lines": 121,
-      "sha256": "ca724ff50737d49664f4253cd605269f5dc05b0228a9f7325eaedfb3093154e7"
+      "sha256": "26601f4b86a1d7cef1aa0d0e75eb5264510afbe09b6bcf1b44431577d3af44f5"
     },
     "mainframe/zowe_manifest.py": {
       "doc": "prompt/modules/mainframe/zowe_manifest.md",
       "guide": "prompt/02_MAINFRAME_PIPELINE.md",
-      "imported_by": [],
+      "imported_by": [
+        "mainframe/zowe_fetcher.py",
+        "mainframe/zowe_workspace.py",
+        "tests/test_zowe_fetch_inventory.py",
+        "tests/test_zowe_reports_history.py"
+      ],
       "imports": [
-        "converter/parsers/cobol_parser.py",
-        "converter/services/name_derivation_resolver.py",
+        "mainframe/zowe_report_io.py",
         "mainframe/zowe_resolver.py",
         "mainframe/zowe_rules.py",
-        "mainframe/zowe_workspace.py"
+        "mainframe/zowe_workspace.py",
+        "rules/program_kind_rules.py"
       ],
-      "lines": 120,
-      "sha256": "f3706fad00da1a4597e91de256fff347528e9e7c0f9f9e81506ea4ba9b70835a"
+      "lines": 388,
+      "sha256": "c7f0555c9c197ae111ec12a8e85a2b13e34ca44cedc67a7b635e7d4e1ed60b75"
     },
     "mainframe/zowe_patterns.py": {
       "doc": "prompt/modules/mainframe/zowe_patterns.md",
@@ -9377,8 +9490,8 @@
         "mainframe/zowe_writer.py"
       ],
       "imports": [],
-      "lines": 160,
-      "sha256": "8b3bd2cc57ff548c970ade82a1363c90b4e9a60564cdff91fa92f464eacd9df0"
+      "lines": 169,
+      "sha256": "bb08e0ffd8850085b99238522d58f0590f2b706fe93bcc697dad72d753ed6c49"
     },
     "mainframe/zowe_pipeline.py": {
       "doc": "prompt/modules/mainframe/zowe_pipeline.md",
@@ -9398,7 +9511,8 @@
       "doc": "prompt/modules/mainframe/zowe_pipeline_steps.md",
       "guide": "prompt/02_MAINFRAME_PIPELINE.md",
       "imported_by": [
-        "mainframe/zowe_pipeline.py"
+        "mainframe/zowe_pipeline.py",
+        "tests/test_zowe_fetch_inventory.py"
       ],
       "imports": [
         "mainframe/zowe_console.py",
@@ -9410,8 +9524,8 @@
         "mainframe/zowe_workspace.py",
         "mainframe/zowe_writer.py"
       ],
-      "lines": 157,
-      "sha256": "cea37c3afc883c8f4dc8e3efe82bad9bef9bec6d99bd1547bff1045b1db605d6"
+      "lines": 161,
+      "sha256": "b6052697873100d9918a5890be31222a802c4f194988dd7a67078c6c4da5eaa7"
     },
     "mainframe/zowe_programs.py": {
       "doc": "prompt/modules/mainframe/zowe_programs.md",
@@ -9428,6 +9542,17 @@
       "lines": 54,
       "sha256": "6ff22458d28740da6cc5d91587340a3f9c0ce7df8649f6be8852f7e7bd824c5b"
     },
+    "mainframe/zowe_report_io.py": {
+      "doc": "prompt/modules/mainframe/zowe_report_io.md",
+      "guide": "prompt/02_MAINFRAME_PIPELINE.md",
+      "imported_by": [
+        "mainframe/zowe_manifest.py",
+        "mainframe/zowe_search_history.py"
+      ],
+      "imports": [],
+      "lines": 44,
+      "sha256": "bfb4fc4de340a1e2ed5e7b03732befbc1e75186c866abe24d71472a0b5fab8e5"
+    },
     "mainframe/zowe_resolver.py": {
       "doc": "prompt/modules/mainframe/zowe_resolver.md",
       "guide": "prompt/02_MAINFRAME_PIPELINE.md",
@@ -9436,14 +9561,17 @@
         "mainframe/zowe_commands.py",
         "mainframe/zowe_fetcher.py",
         "mainframe/zowe_manifest.py",
-        "tests/test_dzecabtv_fix.py"
+        "tests/test_dzecabtv_fix.py",
+        "tests/test_zowe_fetch_inventory.py",
+        "tests/test_zowe_reports_history.py"
       ],
       "imports": [
         "mainframe/zowe_patterns.py",
-        "mainframe/zowe_rules.py"
+        "mainframe/zowe_rules.py",
+        "mainframe/zowe_subschema.py"
       ],
-      "lines": 145,
-      "sha256": "d1b6738fd1c2a2831e19caa9dd8fd9dab296c839561948701562a0458853a44f"
+      "lines": 266,
+      "sha256": "f0b0a5f6dba8fbdcee36467e5b4cdb35200360fd84ea0f572df048ec137d3132"
     },
     "mainframe/zowe_rules.py": {
       "doc": "prompt/modules/mainframe/zowe_rules.md",
@@ -9464,7 +9592,8 @@
         "mainframe/zowe_steps.py",
         "mainframe/zowe_subschema.py",
         "mainframe/zowe_workspace.py",
-        "mainframe/zowe_writer.py"
+        "mainframe/zowe_writer.py",
+        "tests/test_zowe_fetch_inventory.py"
       ],
       "imports": [
         "mainframe/zowe_rules_artifacts.py",
@@ -9523,8 +9652,24 @@
         "mainframe/zowe_rules.py"
       ],
       "imports": [],
-      "lines": 81,
-      "sha256": "7fd39ac01e4442296a02d27394df94cf6d9e67b500ccd842b6479c9c17f486d8"
+      "lines": 87,
+      "sha256": "8c0fcdf3819027996cf1e0ad57101a8f741ac6680493a92577f3fe386429c61f"
+    },
+    "mainframe/zowe_search_history.py": {
+      "doc": "prompt/modules/mainframe/zowe_search_history.md",
+      "guide": "prompt/02_MAINFRAME_PIPELINE.md",
+      "imported_by": [
+        "mainframe/zowe_fetcher.py",
+        "mainframe/zowe_libraries.py",
+        "tests/test_zowe_fetch_inventory.py",
+        "tests/test_zowe_reports_history.py"
+      ],
+      "imports": [
+        "mainframe/zowe_report_io.py",
+        "mainframe/zowe_workspace.py"
+      ],
+      "lines": 259,
+      "sha256": "dabcb890b9b2dcc9915bada6e5d0f037d9e83c3e563d6acc4662f7f61c06a271"
     },
     "mainframe/zowe_semantic_release_gate.py": {
       "doc": "prompt/modules/mainframe/zowe_semantic_release_gate.md",
@@ -9597,7 +9742,8 @@
       "doc": "prompt/modules/mainframe/zowe_subschema.md",
       "guide": "prompt/02_MAINFRAME_PIPELINE.md",
       "imported_by": [
-        "mainframe/zowe_fetcher.py"
+        "mainframe/zowe_fetcher.py",
+        "mainframe/zowe_resolver.py"
       ],
       "imports": [
         "mainframe/zowe_env.py",
@@ -9617,16 +9763,20 @@
         "mainframe/zowe_manifest.py",
         "mainframe/zowe_pipeline.py",
         "mainframe/zowe_pipeline_steps.py",
+        "mainframe/zowe_search_history.py",
         "mainframe/zowe_semantic_release_gate.py",
         "mainframe/zowe_settings.py",
-        "mainframe/zowe_steps.py"
+        "mainframe/zowe_steps.py",
+        "tests/test_zowe_fetch_inventory.py",
+        "tests/test_zowe_reports_history.py"
       ],
       "imports": [
         "mainframe/zowe_env.py",
+        "mainframe/zowe_manifest.py",
         "mainframe/zowe_rules.py"
       ],
-      "lines": 95,
-      "sha256": "a5d7e3f5228848952a9fa16875cc3f4b409f4c89657c56dd02bb4247b20285a6"
+      "lines": 120,
+      "sha256": "a113696e5f7760a0ff1aac4be8ca687fed16d26d334c5c0eb78c9fe17736d46b"
     },
     "mainframe/zowe_writer.py": {
       "doc": "prompt/modules/mainframe/zowe_writer.md",
@@ -12325,7 +12475,8 @@
       "imported_by": [
         "converter/composers/update_sql_cleanup/obtain_calc_remover.py",
         "converter/pipeline/conversion/conversion_pipeline_steps.py",
-        "converter/resolvers/program_kind_resolver.py"
+        "converter/resolvers/program_kind_resolver.py",
+        "mainframe/zowe_manifest.py"
       ],
       "imports": [],
       "lines": 103,
@@ -15528,6 +15679,37 @@
       "imports": [],
       "lines": 59,
       "sha256": "d5627f4534ef818b6be1d4813baba1b77ff1f2e5a0c2297f07d2631ebabbfba1"
+    },
+    "tests/test_zowe_fetch_inventory.py": {
+      "doc": "prompt/modules/tests/test_zowe_fetch_inventory.md",
+      "guide": "prompt/10_TESTING_AND_VALIDATION.md",
+      "imported_by": [],
+      "imports": [
+        "mainframe/zowe_fetcher.py",
+        "mainframe/zowe_manifest.py",
+        "mainframe/zowe_pipeline_steps.py",
+        "mainframe/zowe_resolver.py",
+        "mainframe/zowe_rules.py",
+        "mainframe/zowe_search_history.py",
+        "mainframe/zowe_workspace.py"
+      ],
+      "lines": 315,
+      "sha256": "0063b0714c90da71629920f962b7a6b7448edd64136e9ef4a75188704552f84c"
+    },
+    "tests/test_zowe_reports_history.py": {
+      "doc": "prompt/modules/tests/test_zowe_reports_history.md",
+      "guide": "prompt/10_TESTING_AND_VALIDATION.md",
+      "imported_by": [],
+      "imports": [
+        "mainframe/zowe_fetcher.py",
+        "mainframe/zowe_libraries.py",
+        "mainframe/zowe_manifest.py",
+        "mainframe/zowe_resolver.py",
+        "mainframe/zowe_search_history.py",
+        "mainframe/zowe_workspace.py"
+      ],
+      "lines": 351,
+      "sha256": "bec5cbec98b9102e76d323bb517e3e5ffc1a7b656c5cda2c12729788ce472457"
     },
     "tests/test_zowe_semantic_release_gate.py": {
       "doc": "prompt/modules/tests/test_zowe_semantic_release_gate.md",

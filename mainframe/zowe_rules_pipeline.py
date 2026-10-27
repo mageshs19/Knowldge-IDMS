@@ -17,6 +17,7 @@ WORKSPACE_SUBFOLDERS = (
     "Output",
     "Review",
     "Logs",
+    "reports",
 )
 
 # ---- Steps and commands ----
@@ -79,3 +80,8 @@ MAPPING_MISSING_TEMPLATE = (
     "before running convert."
 )
 RUNNER_MISSING_TEMPLATE = "Runner not found: {path}"
+
+# Fetch inventory is an input register, not a generated conversion review.
+FETCH_INVENTORY_FILENAME = "IDMS_Program_Inventory.xlsx"
+
+FETCH_SEARCH_HISTORY_FILENAME = "IDMS_Dependency_Search_History.xlsx"

@@ -1,0 +1,31 @@
+{
+  "modified": [
+    "mainframe/zowe_fetcher.py",
+    "mainframe/zowe_libraries.py",
+    "mainframe/zowe_manifest.py",
+    "mainframe/zowe_pipeline_steps.py",
+    "mainframe/zowe_rules_pipeline.py",
+    "mainframe/zowe_workspace.py",
+    "prompt/00_START_HERE.md",
+    "prompt/02_MAINFRAME_PIPELINE.md",
+    "prompt/10_TESTING_AND_VALIDATION.md",
+    "prompt/16_FETCH_INVENTORY.md",
+    "prompt/MODULE_INDEX.md",
+    "prompt/index/mainframe.md",
+    "prompt/index/tests.md",
+    "prompt/modules/mainframe/zowe_fetcher.md",
+    "prompt/modules/mainframe/zowe_libraries.md",
+    "prompt/modules/mainframe/zowe_manifest.md",
+    "prompt/modules/mainframe/zowe_pipeline_steps.md",
+    "prompt/modules/mainframe/zowe_resolver.md",
+    "prompt/modules/mainframe/zowe_rules_pipeline.md",
+    "prompt/modules/mainframe/zowe_workspace.md",
+    "prompt/modules/tests/test_zowe_fetch_inventory.md",
+    "prompt/source_manifest.json",
+    "readme.md",
+    "tests/test_zowe_fetch_inventory.py"
+  ],
+  "deleted": [
+    "mainframe/workspace/Review/IDMS_Program_Inventory.xlsx"
+  ]
+}

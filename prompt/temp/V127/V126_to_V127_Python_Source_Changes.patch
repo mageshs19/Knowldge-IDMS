@@ -1,0 +1,1215 @@
+--- a/mainframe/zowe_fetcher.py
++++ b/mainframe/zowe_fetcher.py
+@@ -15,8 +15,11 @@
+ 
+ import logging
+ from pathlib import Path
++from collections.abc import Iterable
++from typing import TYPE_CHECKING
+ 
+ from mainframe.zowe_libraries import LibrarySearch, application_code
++from mainframe.zowe_search_history import SearchAttempt, SearchHistoryRecorder, write_search_history
+ from mainframe.zowe_resolver import (
+     ProgramDependencies, resolve_dependencies, expand_copy_dependencies,
+     dclgen_members_for_record,
+@@ -53,6 +56,9 @@
+ )
+ from mainframe.zowe_rules import DIAG_ELEMENTS_TEMPLATE, DIAG_NO_ELEMENTS_TEMPLATE
+ 
++if TYPE_CHECKING:
++    from mainframe.zowe_manifest import InventoryRow
++
+ logger = logging.getLogger("idms_db2_zowe")
+ 
+ _LANDING = {
+@@ -79,6 +85,9 @@
+         self._observations: dict[tuple[str, str], str] = {}
+         self._source_texts: dict[str, str] = {}
+         self._copy_sources: dict[str, list[tuple[str, str]]] = {}
++        self._active_program = ""
++        self._member_attempts: dict[tuple[str, str], tuple[SearchAttempt, ...]] = {}
++        self.search_history = SearchHistoryRecorder()
+ 
+     # ---- helpers ----
+     def _search(self, artifact: str) -> LibrarySearch:
+@@ -116,12 +125,26 @@
+         # a failed current download.
+         key = (artifact, member)
+         if key in self._observations:
++            self.search_history.record(self._active_program, artifact, member,
++                                       self._member_attempts.get(key, ()), cached=True)
+             found = key in self._member_paths
+             if mandatory and not found:
+                 raise ValueError(f"Required member unavailable: {member}")
+             return found
+-        search = self._search(artifact)
+-        dataset, content = search.download(member)
++        try:
++            search = self._search(artifact)
++        except Exception as exc:
++            self.search_history.record(self._active_program, artifact, member, (
++                SearchAttempt("", "Not Searched", f"{type(exc).__name__}: no usable library configuration; lookup not started."),
++            ))
++            raise
++        try:
++            dataset, content = search.download(member)
++        finally:
++            # Even an interrupted/failed download retains attempts already made.
++            trace = tuple(getattr(search, "search_history", {}).get(member, ()))
++            self._member_attempts[key] = trace
++            self.search_history.record(self._active_program, artifact, member, trace)
+ 
+         if not dataset:
+             libraries = ", ".join(search.libraries)
+@@ -144,7 +167,14 @@
+             self.warnings.append(formatted)
+             return False
+ 
+-        self._save(artifact, member, dataset, content)
++        try:
++            self._save(artifact, member, dataset, content)
++        except Exception as exc:
++            self.search_history.issue(
++                self._active_program, artifact, member, f"{dataset}({member})",
++                f"{type(exc).__name__}: content retrieved but local save failed; member is not usable.",
++            )
++            raise
+         return True
+ 
+     # ---- one program ----
+@@ -180,7 +210,13 @@
+             path = self._member_paths[(ARTIFACT_COPYBOOK, member)]
+             try:
+                 return path.read_text(encoding=TEXT_ENCODING)
+-            except (OSError, UnicodeError):
++            except (OSError, UnicodeError) as exc:
++                trace = self._member_attempts.get((ARTIFACT_COPYBOOK, member), ())
++                self.search_history.issue(
++                    deps.program, ARTIFACT_COPYBOOK, member,
++                    trace[-1].library_path if trace else "",
++                    f"{type(exc).__name__}: downloaded copybook cannot be read for dependency/mode analysis.",
++                )
+                 self._observations[(ARTIFACT_COPYBOOK, member)] += (
+                     "; WARNING: downloaded content cannot be analysed"
+                 )
+@@ -197,10 +233,8 @@
+             )
+             if self._fetch_member(ARTIFACT_SUBSCHEMA, deps.subschema, False):
+                 subschema_path = self._member_paths[(ARTIFACT_SUBSCHEMA, deps.subschema)]
+-        else:
+-            self.warnings.append(
+-                ZOWE_WARNING_MESSAGES["subschema_not_detected"].format(program=deps.program)
+-            )
++        # No declared subschema means a blank inventory cell and no schema
++        # lookup/history row. Incomplete COPY discovery is noted by the inventory.
+ 
+         # Replace raw LR-name guesses with the actual subschema element members.
+         members = list(deps.explicit_dclgens)
+@@ -236,7 +270,7 @@
+ 
+     # ---- all programs ----
+     def fetch_all(self) -> dict:
+-        from mainframe.zowe_manifest import HEADERS, InventoryRow, make_inventory_row, write_inventory
++        from mainframe.zowe_manifest import HEADERS, InventoryRow, make_inventory_row
+ 
+         self.diagnostics.clear()
+         self.warnings.clear()
+@@ -257,6 +291,9 @@
+         self._observations.clear()
+         self._source_texts.clear()
+         self._copy_sources.clear()
++        self._member_attempts.clear()
++        self._searches.clear()
++        self.search_history = SearchHistoryRecorder()
+         self.saved.clear()
+         inventory = {name: InventoryRow(name, notes={
+             HEADERS[0]: "WARNING: selected but not attempted in this fetch run.",
+@@ -264,6 +301,7 @@
+         }) for name in self.programs}
+         try:
+             for program in self.programs:
++                self._active_program = program
+                 deps = None
+                 try:
+                     deps = self._fetch_program(program)
+@@ -288,11 +326,14 @@
+         except Exception:
+             # A report failure must not hide the original fetch exception.
+             try:
+-                write_inventory(inventory.values())
++                self._publish_reports(inventory.values())
+             except Exception as report_error:
+-                logger.error("Could not save partial inventory (%s)", type(report_error).__name__)
++                logger.error("Could not save one or more partial fetch reports (%s)", type(report_error).__name__)
+             raise
+-        inventory_path, inventory_count = write_inventory(inventory.values())
++        inventory_result, history_result = self._publish_reports(inventory.values())
++        inventory_path, inventory_count = inventory_result
++        history_path, history_count = history_result
++        self.diagnostics.append(f"Dependency search history: {history_path} ({history_count} observations)")
+         self.diagnostics.append(f"Program inventory: {inventory_path} ({inventory_count} programs)")
+ 
+         total = sum(len(v) for v in self.saved.values())
+@@ -308,7 +349,31 @@
+             "warnings": self.warnings,
+             "inventory_path": inventory_path,
+             "inventory_programs": inventory_count,
++            "search_history_path": history_path,
++            "search_history_rows": history_count,
++            "search_run_id": self.search_history.run_id,
+         }
++
++    def _publish_reports(
++        self, inventory: Iterable[InventoryRow],
++    ) -> tuple[tuple[Path, int], tuple[Path, int]]:
++        """Try both durable reports independently; never hide a report failure."""
++        from mainframe.zowe_manifest import write_inventory
++
++        results: list[tuple[Path, int]] = []
++        failures: list[Exception] = []
++        for kind, writer in (
++            ("inventory", lambda: write_inventory(inventory)),
++            ("search history", lambda: write_search_history(self.search_history.rows)),
++        ):
++            try:
++                results.append(writer())
++            except Exception as exc:
++                failures.append(exc)
++                logger.error("Could not publish %s (%s)", kind, type(exc).__name__)
++        if failures:
++            raise RuntimeError("Fetch report publication failed; inspect the chained error and report diagnostics. Failed workbooks were not replaced.") from failures[0]
++        return results[0], results[1]
+ 
+ 
+ def fetch_zowe_inputs(source_text: str = "") -> dict:  # noqa: ARG001
+--- a/mainframe/zowe_libraries.py
++++ b/mainframe/zowe_libraries.py
+@@ -18,6 +18,7 @@
+ 
+ from mainframe.zowe_client import ZoweClient
+ from mainframe.zowe_rules import ARTIFACT_LABELS
++from mainframe.zowe_search_history import SearchAttempt, http_attempt, exception_attempt
+ from mainframe.zowe_settings import (
+     ZoweConnection,
+     application_code,
+@@ -48,8 +49,9 @@
+     label: str = ""
+     libraries: list[str] = field(default_factory=list)
+     _client: ZoweClient | None = None
+-    # member -> {dataset: http status} for the last failed search
++    # member -> ordered HTTP statuses for the most recent search, including success
+     attempts: dict[str, dict[str, int]] = field(default_factory=dict)
++    search_history: dict[str, list[SearchAttempt]] = field(default_factory=dict)
+ 
+     def __post_init__(self) -> None:
+         self.label = self.label or ARTIFACT_LABELS[self.artifact]
+@@ -63,52 +65,50 @@
+             self._client = ZoweClient(connection, self.artifact, self.label)
+         return self._client
+ 
+-    def locate(self, member: str) -> str:
+-        """First library holding the member, or an empty string."""
+-        wanted = str(member or "").strip().upper()
+-        if not wanted:
+-            return ""
++    def _lookup(self, member: str, *, probe: bool = False) -> tuple[str, bytes]:
++        """Keep every tried library, even when a later library succeeds.
+ 
+-        statuses: dict[str, int] = {}
+-        for dataset in self.libraries:
+-            try:
+-                found, status = self.client.member_exists(dataset, wanted)
+-            except (requests.RequestException, ValueError) as exc:
+-                logger.warning("%s probe failed on %s: %s", self.label, dataset, exc)
+-                statuses[dataset] = -1
+-                continue
+-
+-            statuses[dataset] = status
+-            if found:
+-                return dataset
+-
+-        self.attempts[wanted] = statuses
+-        return ""
+-
+-    def download(self, member: str) -> tuple[str, bytes]:
+-        """(dataset, content). Dataset is empty when not found anywhere."""
++        Do not serialize exception strings: request errors can contain endpoints,
++        credentials or response bodies. Typed diagnostics are sufficient here.
++        """
+         wanted = str(member or "").strip().upper()
+         if not wanted:
+             return "", b""
+-
+         statuses: dict[str, int] = {}
++        trace: list[SearchAttempt] = []
++        self.attempts[wanted] = statuses
++        self.search_history[wanted] = trace
+         for dataset in self.libraries:
+             try:
+-                content, status = self.client.fetch_member(dataset, wanted)
+-            except (requests.RequestException, ValueError) as exc:
+-                logger.warning("%s fetch failed on %s: %s", self.label, dataset, exc)
++                if probe:
++                    found, status = self.client.member_exists(dataset, wanted)
++                    content = b""
++                else:
++                    content, status = self.client.fetch_member(dataset, wanted)
++                    found = status == 200
++            except Exception as exc:
+                 statuses[dataset] = -1
+-                continue
+-
++                trace.append(exception_attempt(dataset, wanted, exc))
++                logger.warning("%s lookup failed on %s (%s)", self.label, dataset, type(exc).__name__)
++                if isinstance(exc, (requests.RequestException, ValueError)):
++                    continue
++                raise
+             statuses[dataset] = status
+-            if status == 200:
++            trace.append(http_attempt(dataset, wanted, status, probe=probe))
++            if found:
+                 return dataset, content
+-
+-        self.attempts[wanted] = statuses
+         return "", b""
+ 
++    def locate(self, member: str) -> str:
++        """First library holding the member, or an empty string."""
++        return self._lookup(member, probe=True)[0]
++
++    def download(self, member: str) -> tuple[str, bytes]:
++        """(dataset, content); complete attempt evidence is in search_history."""
++        return self._lookup(member)
++
+     def why_not_found(self, member: str) -> str:
+-        """Per-library HTTP status for the last failed lookup."""
++        """Per-library HTTP status for the most recent lookup."""
+         statuses = self.attempts.get(str(member or "").strip().upper(), {})
+         if not statuses:
+             return ", ".join(self.libraries)
+--- a/mainframe/zowe_manifest.py
++++ b/mainframe/zowe_manifest.py
+@@ -10,11 +10,10 @@
+ from dataclasses import dataclass, field
+ from datetime import datetime, timezone
+ import hashlib
+-import os
+ from pathlib import Path
+ import re
+-import tempfile
+ from collections.abc import Iterable
++from contextlib import ExitStack
+ 
+ from openpyxl import Workbook, load_workbook
+ from openpyxl.comments import Comment
+@@ -26,7 +25,8 @@
+     logical_text, mask_literals, resolve_dependencies,
+ )
+ from mainframe.zowe_rules import FETCH_INVENTORY_FILENAME
+-from mainframe.zowe_workspace import workspace_root
++from mainframe.zowe_workspace import workspace_root, inventory_path
++from mainframe.zowe_report_io import report_lock, atomic_save_workbook
+ from rules.program_kind_rules import IDMS_WRITE_VERBS
+ 
+ HEADERS = ("IDMS Program Name", "Copybook", "DCLGENs", "Sub Schema", "Mode")
+@@ -143,7 +143,12 @@
+         "This is not the minimal SQL include list of the converted program."
+     )
+     if not deps.subschema:
+-        notes[HEADERS[3]] = "WARNING: no DB ... WITHIN subschema declaration found."
++        notes[HEADERS[3]] = (
++            "No subschema reference detected in the program/resolved COPY source; "
++            "left blank, no subschema lookup requested. This is not proof of runtime requirements."
++        )
++        if not all(member in loaded for member in deps.copybooks):
++            notes[HEADERS[3]] = "WARNING: unresolved COPY source; subschema requirements are not established."
+     return InventoryRow(deps.program, list(deps.copybooks), list(deps.dclgens),
+                         deps.subschema, mode, notes)
+ 
+@@ -242,25 +247,24 @@
+ 
+ 
+ def write_inventory(rows: Iterable[InventoryRow], path: Path | None = None) -> tuple[Path, int]:
+-    """Upsert members into one workbook using an exclusive lock + atomic replace.
+-
+-    Existing unselected members and their comments remain. A corrupt/locked file
+-    is an explicit error, not silently overwritten. A failed save retains the
+-    previous workbook. Network fetching itself must use one writer per workspace.
++    """Upsert programs into reports/, migrating legacy Review inventory safely.
++
++    Both files are locked during migration. Conflicting pre-existing snapshots
++    are refused rather than guessed; a failed save never removes the old file.
+     """
+-    path = Path(path) if path is not None else workspace_root() / "Review" / FETCH_INVENTORY_FILENAME
+-    path.parent.mkdir(parents=True, exist_ok=True)
+-    if path.is_symlink():
+-        raise ValueError("Refusing an inventory symlink")
+-    lock = path.with_suffix(path.suffix + ".lock")
+-    try:
+-        descriptor = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+-    except FileExistsError as exc:
+-        raise RuntimeError(f"Inventory is being written: {lock}. Do not run parallel fetches.") from exc
+-    temporary: Path | None = None
+-    try:
+-        os.close(descriptor)
++    path = Path(path) if path is not None else inventory_path()
++    legacy = path.parent.parent / "Review" / FETCH_INVENTORY_FILENAME
++    migrate = (path.name == FETCH_INVENTORY_FILENAME and path.parent.name == "reports"
++               and legacy.is_file() and not legacy.is_symlink() and not legacy.parent.is_symlink())
++    with ExitStack() as stack:
++        for candidate in sorted({path, legacy} if migrate else {path}, key=str):
++            stack.enter_context(report_lock(candidate))
+         records = _existing_rows(path)
++        if migrate:
++            for key, row in _existing_rows(legacy).items():
++                if key in records and records[key] != row:
++                    raise ValueError(f"Conflicting legacy/current inventory row {key}; both originals retained")
++                records.setdefault(key, row)
+         incoming: set[str] = set()
+         for row in rows:
+             key = row.program.strip().upper()
+@@ -271,17 +275,21 @@
+             records[key] = row
+         book = _workbook([records[key] for key in sorted(records)])
+         try:
+-            with tempfile.NamedTemporaryFile(dir=path.parent, prefix=".inventory_", suffix=".xlsx", delete=False) as stream:
+-                temporary = Path(stream.name)
+-            book.save(temporary)
+-            os.replace(temporary, path)
++            atomic_save_workbook(book, path)
+         finally:
+             book.close()
++        if migrate:
++            legacy.unlink()
+         return path, len(records)
+-    finally:
+-        if temporary is not None:
+-            temporary.unlink(missing_ok=True)
+-        lock.unlink(missing_ok=True)
++
++
++def migrate_legacy_inventory(root: Path | None = None) -> Path | None:
++    """Local-only migration, including before conversion cleanup; no fetch call."""
++    root = Path(root) if root is not None else workspace_root()
++    old = root / "Review" / FETCH_INVENTORY_FILENAME
++    if old.is_file() and not old.is_symlink() and not old.parent.is_symlink():
++        return write_inventory((), root / "reports" / FETCH_INVENTORY_FILENAME)[0]
++    return None
+ 
+ 
+ def _local_members(folder: Path) -> dict[str, Path]:
+@@ -372,7 +380,7 @@
+     if not rows:
+         print("No local program sources; existing inventory unchanged.")
+         return
+-    path, count = write_inventory(rows, root / "Review" / FETCH_INVENTORY_FILENAME)
++    path, count = write_inventory(rows, root / "reports" / FETCH_INVENTORY_FILENAME)
+     print(f"Inventory: {path} ({count} programs; local availability, not live fetch verification)")
+ 
+ 
+--- a/mainframe/zowe_pipeline_steps.py
++++ b/mainframe/zowe_pipeline_steps.py
+@@ -73,6 +73,8 @@
+             row("Fetch result", fetched.replace("Zowe fetched", "Files fetched"))
+         if result.get("inventory_path"):
+             row("Program inventory", str(result["inventory_path"]))
++        if result.get("search_history_path"):
++            row("Dependency search history", str(result["search_history_path"]))
+ 
+     warnings(result["warnings"])
+ 
+--- a/mainframe/zowe_report_io.py
++++ b/mainframe/zowe_report_io.py
+@@ -0,0 +1,44 @@
++"""Shared, local-only locking and atomic publication for fetch workbooks."""
++from __future__ import annotations
++
++from contextlib import contextmanager
++import os
++from pathlib import Path
++import tempfile
++from collections.abc import Iterator
++from typing import Any
++
++
++@contextmanager
++def report_lock(path: Path) -> Iterator[None]:
++    """Refuse concurrent writers/symlink destinations; never replace on failure."""
++    path = Path(path)
++    if path.is_symlink() or path.parent.is_symlink():
++        raise ValueError(f"Refusing a report symlink: {path}")
++    path.parent.mkdir(parents=True, exist_ok=True)
++    lock = path.with_suffix(path.suffix + ".lock")
++    try:
++        descriptor = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
++    except FileExistsError as exc:
++        raise RuntimeError(f"Report is being written: {lock}. Do not run parallel fetches.") from exc
++    try:
++        os.close(descriptor)
++        yield
++    finally:
++        lock.unlink(missing_ok=True)
++
++
++def atomic_save_workbook(book: Any, path: Path) -> None:
++    """Publish a completed workbook on the same filesystem, retaining old bytes."""
++    temporary: Path | None = None
++    try:
++        with tempfile.NamedTemporaryFile(dir=path.parent, prefix=".report_",
++                                         suffix=".xlsx", delete=False) as stream:
++            temporary = Path(stream.name)
++        book.save(temporary)
++        with temporary.open("rb") as stream:
++            os.fsync(stream.fileno())
++        os.replace(temporary, path)
++    finally:
++        if temporary is not None:
++            temporary.unlink(missing_ok=True)
+--- a/mainframe/zowe_rules_pipeline.py
++++ b/mainframe/zowe_rules_pipeline.py
+@@ -17,6 +17,7 @@
+     "Output",
+     "Review",
+     "Logs",
++    "reports",
+ )
+ 
+ # ---- Steps and commands ----
+@@ -82,3 +83,5 @@
+ 
+ # Fetch inventory is an input register, not a generated conversion review.
+ FETCH_INVENTORY_FILENAME = "IDMS_Program_Inventory.xlsx"
++
++FETCH_SEARCH_HISTORY_FILENAME = "IDMS_Dependency_Search_History.xlsx"
+--- a/mainframe/zowe_search_history.py
++++ b/mainframe/zowe_search_history.py
+@@ -0,0 +1,259 @@
++"""Per-program dependency search evidence and an append-only Excel history.
++
++No mainframe I/O occurs here. LibrarySearch supplies actual observed attempts;
++shared dependencies replay their original evidence with an explicit cache note.
++An offline inventory rebuild must never manufacture remote search outcomes.
++"""
++from __future__ import annotations
++
++from collections.abc import Iterable
++from dataclasses import dataclass, field
++from datetime import datetime, timezone
++from pathlib import Path
++from uuid import uuid4
++
++from openpyxl import Workbook, load_workbook
++from openpyxl.styles import Alignment, Font, PatternFill
++from openpyxl.worksheet.table import Table, TableStyleInfo
++
++from mainframe.zowe_report_io import atomic_save_workbook, report_lock
++from mainframe.zowe_workspace import search_history_path
++
++HEADERS = (
++    "IDMS Program Name", "Type", "Name of searching", "Python Search Library Path",
++    "Result", "Remarks", "Run ID", "Observed At (UTC)",
++)
++SHEET_NAME = "Dependency Search History"
++HEADER_ROW = 4
++TYPE_LABELS = {"COPYBOOK": "Copybook", "DCLGEN": "DCLGENs", "SUBSCHEMA": "Sub Schema"}
++RESULTS = {"Found", "Not Found", "Error", "Not Searched"}
++MAX_ROWS = 1_048_576
++
++
++def utc_now() -> str:
++    return datetime.now(timezone.utc).isoformat(timespec="microseconds")
++
++
++@dataclass(frozen=True)
++class SearchAttempt:
++    library_path: str
++    result: str
++    remarks: str
++    observed_at: str = field(default_factory=utc_now)
++
++
++def http_attempt(dataset: str, member: str, status: int, *, probe: bool = False) -> SearchAttempt:
++    """Classify observed status without mistaking access/transport errors for absence."""
++    location = f"{dataset}({member})"
++    if status == 200:
++        message = "Member probe succeeded; content not downloaded." if probe else "Member content retrieved."
++        return SearchAttempt(location, "Found", f"HTTP 200. {message}")
++    if status == 404:
++        return SearchAttempt(location, "Not Found", "HTTP 404. Requested dataset/member was not found.")
++    descriptions = {
++        400: "Invalid request; verify dataset/member and service configuration.",
++        401: "Authentication failed; member existence is not established.",
++        403: "Access denied; member existence is not established.",
++        408: "Request timeout; member existence is not established.",
++        429: "Service rate limit; member existence is not established.",
++    }
++    message = descriptions.get(status, "Service/request failure; member existence is not established.")
++    return SearchAttempt(location, "Error", f"HTTP {status}. {message}")
++
++
++def exception_attempt(dataset: str, member: str, exc: Exception) -> SearchAttempt:
++    """Record safe diagnostic categories, never raw response bodies or credentials."""
++    import requests
++    if isinstance(exc, requests.Timeout):
++        detail = "Request timed out."
++    elif isinstance(exc, requests.exceptions.SSLError):
++        detail = "TLS/certificate verification failed."
++    elif isinstance(exc, requests.ConnectionError):
++        detail = "Connection failed."
++    elif isinstance(exc, ValueError):
++        detail = "Invalid or missing connection/library configuration."
++    else:
++        detail = "Lookup failed; consult the secured operational log."
++    return SearchAttempt(f"{dataset}({member})", "Error",
++                         f"{type(exc).__name__}: {detail} Member existence is not established.")
++
++
++@dataclass(frozen=True)
++class HistoryRow:
++    program: str
++    artifact_type: str
++    member: str
++    library_path: str
++    result: str
++    remarks: str
++    run_id: str
++    observed_at: str
++
++    def values(self) -> tuple[str, ...]:
++        return (self.program, self.artifact_type, self.member, self.library_path,
++                self.result, self.remarks, self.run_id, self.observed_at)
++
++
++@dataclass
++class SearchHistoryRecorder:
++    """Run-scoped association: one trace per program/type/member, even on cache reuse."""
++    run_id: str = field(default_factory=lambda: str(uuid4()))
++    rows: list[HistoryRow] = field(default_factory=list)
++    _recorded: set[tuple[str, str, str]] = field(default_factory=set)
++
++    def record(self, program: str, artifact: str, member: str,
++               attempts: Iterable[SearchAttempt], *, cached: bool = False) -> None:
++        program, member, artifact = program.strip().upper(), member.strip().upper(), artifact.upper()
++        if artifact not in TYPE_LABELS or not member or not program:
++            raise ValueError("History needs a program, member and supported dependency type")
++        key = (program, artifact, member)
++        if key in self._recorded:
++            return
++        trace = tuple(attempts)
++        if not trace:
++            trace = (SearchAttempt("", "Not Searched", "No library attempt evidence was supplied."),)
++        for attempt in trace:
++            note = attempt.remarks
++            observed = attempt.observed_at
++            if cached:
++                note += (f" Reused this run's earlier search evidence ({observed}); "
++                         "no additional mainframe request for this program.")
++                observed = utc_now()
++            self.rows.append(HistoryRow(program, TYPE_LABELS[artifact], member,
++                                        attempt.library_path, attempt.result, note,
++                                        self.run_id, observed))
++        self._recorded.add(key)
++
++    def issue(self, program: str, artifact: str, member: str,
++              library_path: str, remarks: str) -> None:
++        """A download can succeed yet fail local saving/analysis: retain both facts."""
++        self.rows.append(HistoryRow(program.upper(), TYPE_LABELS[artifact], member.upper(),
++                                    library_path, "Error", remarks, self.run_id, utc_now()))
++
++
++def _validate(values: tuple[str, ...]) -> None:
++    if len(values) != len(HEADERS) or any(not isinstance(v, str) for v in values):
++        raise ValueError("Search history rows must contain eight text fields")
++    if any(len(v) > 32767 for v in values):
++        raise ValueError("Excel cell limit exceeded; history will not be truncated")
++    if not values[0].strip() or not values[2].strip() or not values[6].strip():
++        raise ValueError("History requires program, member and Run ID")
++    if values[1] not in TYPE_LABELS.values() or values[4] not in RESULTS:
++        raise ValueError("Unsupported dependency type or result in search history")
++    observed = datetime.fromisoformat(values[7])
++    if observed.utcoffset() is None or observed.utcoffset().total_seconds() != 0:
++        raise ValueError("History timestamp must include UTC timezone")
++    if values[4] in {"Found", "Not Found"} and not values[3]:
++        raise ValueError("Found/Not Found needs the actual observed library/member path")
++
++
++def _new_workbook() -> Workbook:
++    book = Workbook()
++    sheet = book.active
++    sheet.title = SHEET_NAME
++    sheet.sheet_view.showGridLines = False
++    sheet.merge_cells("A1:H1")
++    sheet["A1"] = "IDMS | Dependency library search history"
++    sheet["A1"].font = Font(name="Calibri", size=18, bold=True, color="FFFFFF")
++    sheet["A1"].fill = PatternFill("solid", fgColor="17324D")
++    sheet.row_dimensions[1].height = 36
++    sheet.merge_cells("A2:H2")
++    sheet["A2"] = ("Append-only observations per program and attempted library. Run ID + UTC time identify history. "
++                   "Cached evidence is labelled; Found is not a conversion approval.")
++    sheet["A2"].font = Font(name="Calibri", size=10, color="626C76")
++    sheet["A2"].alignment = Alignment(wrap_text=True, vertical="center")
++    sheet.row_dimensions[2].height = 32
++    sheet.merge_cells("A3:H3")
++    sheet["A3"] = "No subschema reference = no schema search row. Untried libraries are never reported as Not Found."
++    sheet["A3"].font = Font(name="Calibri", size=10, color="626C76")
++    sheet.row_dimensions[3].height = 22
++    for c, title in enumerate(HEADERS, 1):
++        cell = sheet.cell(HEADER_ROW, c, title)
++        cell.font = Font(name="Calibri", size=11, bold=True, color="FFFFFF")
++        cell.fill = PatternFill("solid", fgColor="17324D")
++        cell.alignment = Alignment(wrap_text=True, vertical="center")
++    sheet.row_dimensions[HEADER_ROW].height = 32
++    for c, width in zip("ABCDEFGH", (24, 18, 24, 49, 19, 82, 39, 36)):
++        sheet.column_dimensions[c].width = width
++    sheet.freeze_panes = "D5"
++    sheet.page_setup.orientation = "landscape"
++    sheet.page_setup.paperSize = sheet.PAPERSIZE_A3
++    sheet.page_setup.fitToWidth = 1
++    sheet.page_setup.fitToHeight = 0
++    sheet.sheet_properties.pageSetUpPr.fitToPage = True
++    sheet.print_title_rows = "1:4"
++    return book
++
++
++def write_search_history(rows: Iterable[HistoryRow], path: Path | None = None) -> tuple[Path, int]:
++    """Append observations atomically; exact replay is idempotent, new runs append.
++
++    Refuse corrupt schemas, formulas and Excel limits rather than losing history.
++    A caller may publish an empty workbook without claiming any mainframe search.
++    """
++    path = Path(path) if path is not None else search_history_path()
++    incoming = list(rows)
++    for row in incoming:
++        _validate(row.values())
++    with report_lock(path):
++        book = load_workbook(path) if path.exists() else _new_workbook()
++        try:
++            if book.sheetnames != [SHEET_NAME]:
++                raise ValueError("Unexpected search history sheet; original retained")
++            sheet = book[SHEET_NAME]
++            if sheet.max_column != len(HEADERS) or tuple(
++                sheet.cell(HEADER_ROW, c).value for c in range(1, 9)
++            ) != HEADERS:
++                raise ValueError("Unexpected search history columns; original retained")
++            seen: set[tuple[str, ...]] = set()
++            for cells in sheet.iter_rows(min_row=HEADER_ROW + 1, max_col=8):
++                if not any(c.value is not None for c in cells):
++                    raise ValueError("Unexpected blank row in search history; original retained")
++                if any(c.data_type == "f" for c in cells):
++                    raise ValueError("Formula in search history; original retained")
++                values = tuple(str(c.value or "") for c in cells)
++                _validate(values)
++                if values in seen:
++                    raise ValueError("Duplicate historical observation; original retained")
++                seen.add(values)
++            for row in incoming:
++                values = row.values()
++                if values in seen:
++                    continue
++                if sheet.max_row >= MAX_ROWS:
++                    raise ValueError("Excel row limit reached; archive history before continuing")
++                sheet.append(values)
++                number = sheet.max_row
++                for c in sheet[number]:
++                    c.data_type = "s"  # Source names/errors are text, never Excel formulas.
++                    c.font = Font(name="Calibri", size=11,
++                                  color="177245" if c.column < 5 else "626C76")
++                    c.alignment = Alignment(vertical="top", wrap_text=True)
++                state = sheet.cell(number, 5)
++                state.font = Font(name="Calibri", size=11, bold=True, color="17324D")
++                state.fill = PatternFill("solid", fgColor={
++                    "Found": "E2F0D9", "Not Found": "FFF2CC",
++                    "Error": "FCE4D6", "Not Searched": "E7E6E6",
++                }[row.result])
++                estimated_lines = max(len(row.remarks) // 82 + 1,
++                                      len(row.library_path) // 49 + 1, 2)
++                sheet.row_dimensions[number].height = min(240, 15 * estimated_lines + 10)
++                seen.add(values)
++            if sheet.max_row > HEADER_ROW:
++                table_ref = f"A4:H{sheet.max_row}"
++                if "DependencySearches" in sheet.tables:
++                    sheet.tables["DependencySearches"].ref = table_ref
++                    if sheet.tables["DependencySearches"].autoFilter is not None:
++                        sheet.tables["DependencySearches"].autoFilter.ref = table_ref
++                else:
++                    table = Table(displayName="DependencySearches", ref=table_ref)
++                    table.tableStyleInfo = TableStyleInfo(name="TableStyleMedium2", showRowStripes=False)
++                    sheet.add_table(table)
++                sheet.auto_filter.ref = None
++            else:
++                sheet.auto_filter.ref = "A4:H4"
++            sheet.print_area = f"A1:H{sheet.max_row}"
++            atomic_save_workbook(book, path)
++            return path, len(seen)
++        finally:
++            book.close()
+--- a/mainframe/zowe_workspace.py
++++ b/mainframe/zowe_workspace.py
+@@ -14,6 +14,7 @@
+ from mainframe.zowe_env import raw_setting
+ from mainframe.zowe_rules import (
+     FETCH_INVENTORY_FILENAME,
++    FETCH_SEARCH_HISTORY_FILENAME,
+     WORKSPACE_DIR_NAME,
+     WORKSPACE_ROOT_KEY,
+     WORKSPACE_SUBFOLDERS,
+@@ -60,9 +61,17 @@
+     return workspace_root() / "Review"
+ 
+ 
++def reports_dir() -> Path:
++    """Durable fetch reports, separate from regenerated code review results."""
++    return workspace_root() / "reports"
++
++
+ def inventory_path() -> Path:
+-    """Stable program/dependency inventory, retained across conversion cleanup."""
+-    return review_dir() / FETCH_INVENTORY_FILENAME
++    return reports_dir() / FETCH_INVENTORY_FILENAME
++
++
++def search_history_path() -> Path:
++    return reports_dir() / FETCH_SEARCH_HISTORY_FILENAME
+ 
+ 
+ def logs_dir() -> Path:
+@@ -85,29 +94,21 @@
+ 
+ 
+ def clean_generated() -> list[Path]:
+-    """Remove generated outputs/reviews, retaining only the fetch inventory.
++    """Migrate the legacy inventory, then clear only Output and Review.
+ 
+-    The inventory describes input dependencies and must survive fetch -> convert.
+-    Everything else in Review is removed, including stale release approvals.
+-    Symlinks are unlinked, never followed or retained as the inventory.
++    Durable reports/ workbooks are never cleaned. A failed migration aborts
++    cleanup, so an old inventory is not lost when Excel is locked/corrupt.
+     """
++    from mainframe.zowe_manifest import migrate_legacy_inventory
++
++    migrate_legacy_inventory()
+     removed: list[Path] = []
+     for folder in (output_dir(), review_dir()):
+         if folder.is_symlink():
+             folder.unlink()
+             removed.append(folder)
+         elif folder.exists():
+-            if folder == review_dir():
+-                for child in folder.iterdir():
+-                    if (child.name == FETCH_INVENTORY_FILENAME
+-                            and child.is_file() and not child.is_symlink()):
+-                        continue
+-                    if child.is_dir() and not child.is_symlink():
+-                        shutil.rmtree(child)
+-                    else:
+-                        child.unlink()
+-            else:
+-                shutil.rmtree(folder)
++            shutil.rmtree(folder)
+             removed.append(folder)
+         folder.mkdir(parents=True, exist_ok=True)
+     return removed
+--- a/tests/test_zowe_fetch_inventory.py
++++ b/tests/test_zowe_fetch_inventory.py
+@@ -45,10 +45,13 @@
+             self.artifact = artifact
+             self.label = artifact
+             self.libraries = [f"TEST.{artifact}"]
++            self.search_history = {}
+ 
+         def download(self, member):
+             calls.append((self.artifact, member))
+             content = registry.get((self.artifact, member))
++            from mainframe.zowe_search_history import http_attempt
++            self.search_history[member] = [http_attempt(self.libraries[0], member, 200 if content is not None else 404)]
+             return (self.libraries[0], content.encode()) if content is not None else ("", b"")
+ 
+     monkeypatch.setattr("mainframe.zowe_fetcher.LibrarySearch", Library)
+@@ -133,11 +136,11 @@
+ def test_failure_does_not_overwrite_previous_file(workspace, monkeypatch):
+     path, _ = write_inventory([InventoryRow("P1")])
+     before = path.read_bytes()
+-    monkeypatch.setattr("mainframe.zowe_manifest.os.replace", Mock(side_effect=PermissionError("locked")))
++    monkeypatch.setattr("mainframe.zowe_report_io.os.replace", Mock(side_effect=PermissionError("locked")))
+     with pytest.raises(PermissionError):
+         write_inventory([InventoryRow("P2")])
+     assert path.read_bytes() == before
+-    assert not list(path.parent.glob(".inventory_*.xlsx"))
++    assert not list(path.parent.glob(".report_*.xlsx"))
+     assert not path.with_suffix(".xlsx.lock").exists()
+ 
+ 
+@@ -178,7 +181,8 @@
+     clean_generated()
+     assert path.read_bytes() == before
+     assert list((workspace / "Output").iterdir()) == []
+-    assert list((workspace / "Review").iterdir()) == [path]
++    assert list((workspace / "Review").iterdir()) == []
++    assert path.parent == workspace / "reports"
+     assert (workspace / "Program/original.cbl").read_text() == "unchanged"
+ 
+ 
+@@ -257,7 +261,7 @@
+     assert len(read_rows(inventory_path())) == 75
+     assert calls.count(("COPYBOOK", "COMMON")) == 1
+     assert calls.count(("DCLGEN", "DZABCDTV")) == 1
+-    assert len(list((workspace / "Review").glob("*.xlsx"))) == 1
++    assert len(list((workspace / "reports").glob("*.xlsx"))) == 2
+ 
+ 
+ def test_six_source_assets_offline_match_fetch_resolution(workspace, fake_libraries):
+--- a/tests/test_zowe_reports_history.py
++++ b/tests/test_zowe_reports_history.py
+@@ -0,0 +1,351 @@
++"""Offline report/recording logic tests. Fetch, transport and network are forbidden."""
++from __future__ import annotations
++
++import ast
++from dataclasses import replace
++from pathlib import Path
++from unittest.mock import Mock
++
++import pytest
++import requests
++from openpyxl import load_workbook
++
++from mainframe.zowe_manifest import (
++    HEADERS as INVENTORY_HEADERS, InventoryRow, make_inventory_row,
++    migrate_legacy_inventory, write_inventory,
++)
++from mainframe.zowe_resolver import resolve_dependencies
++from mainframe.zowe_search_history import (
++    HEADERS, HistoryRow, SearchAttempt, SearchHistoryRecorder,
++    exception_attempt, http_attempt, write_search_history,
++)
++from mainframe.zowe_workspace import (
++    clean_generated, ensure_workspace, inventory_path, reports_dir, search_history_path,
++)
++
++
++@pytest.fixture(autouse=True)
++def offline_only(monkeypatch):
++    def forbidden(*args, **kwargs):
++        raise AssertionError("Fetch/network prohibited: report logic tests only")
++    monkeypatch.setattr(requests.sessions.Session, "request", forbidden)
++    from mainframe.zowe_libraries import LibrarySearch
++    from mainframe.zowe_fetcher import ZoweFetcher
++    for method in ("_lookup", "download", "locate", "list_members"):
++        monkeypatch.setattr(LibrarySearch, method, forbidden)
++    for method in ("fetch_all", "_fetch_program", "_fetch_dependencies", "_fetch_member"):
++        monkeypatch.setattr(ZoweFetcher, method, forbidden)
++
++
++@pytest.fixture
++def workspace(tmp_path, monkeypatch):
++    monkeypatch.setenv("ZOWE_WORKSPACE_ROOT", str(tmp_path))
++    ensure_workspace()
++    return tmp_path
++
++
++def observation(program="P1", member="COMMON", run_id="run-1", result="Found", library="TEST.CPY(COMMON)"):
++    return HistoryRow(program, "Copybook", member, library, result,
++                      "Offline unit-test fixture, not a mainframe observation.", run_id,
++                      "2026-10-28T00:00:00.000001+00:00")
++
++
++def read_history(path):
++    book = load_workbook(path)
++    try:
++        return [tuple(c.value or "" for c in row) for row in
++                book.active.iter_rows(min_row=5, max_col=8) if row[0].value]
++    finally:
++        book.close()
++
++
++def test_report_paths_and_workspace_override(workspace):
++    assert reports_dir() == workspace / "reports"
++    assert inventory_path().parent == reports_dir()
++    assert search_history_path().parent == reports_dir()
++    assert reports_dir().is_dir()
++
++
++def test_no_subschema_keeps_empty_cell_and_no_false_missing_warning(workspace):
++    source = "PROGRAM-ID. P1.\nCOPY COMMON.\nEXEC SQL SELECT X INTO :Y FROM T END-EXEC."
++    row = make_inventory_row(resolve_dependencies("P1", source), source,
++                             source_path=Path("Program/P1.cbl"),
++                             copy_sources=[("COMMON", "01 X PIC X.")])
++    assert row.subschema == ""
++    assert "WARNING:" not in row.notes[INVENTORY_HEADERS[3]]
++    path, _ = write_inventory([row])
++    book = load_workbook(path)
++    assert book.active["D5"].value is None
++    book.close()
++
++
++def test_unresolved_copy_does_not_claim_subschema_not_required():
++    source = "COPY MISSING.\nOBTAIN NEXT REC1."
++    row = make_inventory_row(resolve_dependencies("P1", source), source, source_path=Path("P1.cbl"))
++    assert row.subschema == ""
++    assert "WARNING:" in row.notes[INVENTORY_HEADERS[3]]
++    assert row.mode == "Unknown"
++
++
++def test_missing_referenced_schema_retains_its_name():
++    source = "DB SUB1 WITHIN SCHEMA1.\nOBTAIN NEXT REC1."
++    row = make_inventory_row(resolve_dependencies("P1", source), source, source_path=Path("P1.cbl"),
++                             observations={("SUBSCHEMA", "SUB1"): "WARNING: not fetched"})
++    assert row.subschema == "SUB1"
++    assert "WARNING:" in row.notes[INVENTORY_HEADERS[3]]
++
++
++@pytest.mark.parametrize("status,result", [(200, "Found"), (404, "Not Found"), (400, "Error"),
++    (401, "Error"), (403, "Error"), (408, "Error"), (429, "Error"), (500, "Error"), (503, "Error"), (302, "Error")])
++def test_status_classification(status, result):
++    attempt = http_attempt("TEST.CPY", "MEM1", status)
++    assert attempt.result == result
++    assert attempt.library_path == "TEST.CPY(MEM1)"
++    assert f"HTTP {status}" in attempt.remarks
++
++
++@pytest.mark.parametrize("exc", [requests.Timeout("password=SECRET"),
++    requests.ConnectionError("https://user:SECRET@example.org"),
++    requests.exceptions.SSLError("token SECRET"), ValueError("SECRET"), RuntimeError("SECRET")])
++def test_error_details_never_persist_raw_credentials(exc):
++    attempt = exception_attempt("TEST.CPY", "MEM1", exc)
++    assert attempt.result == "Error"
++    assert type(exc).__name__ in attempt.remarks
++    assert "SECRET" not in attempt.remarks
++
++
++def test_failed_first_library_then_found_preserves_both():
++    recorder = SearchHistoryRecorder(run_id="run-1")
++    recorder.record("p1", "COPYBOOK", "common", [http_attempt("FIRST.CPY", "COMMON", 404),
++                                                 http_attempt("SECOND.CPY", "COMMON", 200)])
++    assert [(r.program, r.library_path, r.result) for r in recorder.rows] == [
++        ("P1", "FIRST.CPY(COMMON)", "Not Found"), ("P1", "SECOND.CPY(COMMON)", "Found")]
++
++
++def test_shared_dependency_repeated_for_each_program_with_cache_provenance():
++    recorder = SearchHistoryRecorder(run_id="run-1")
++    trace = [http_attempt("FIRST.CPY", "COMMON", 404), http_attempt("SECOND.CPY", "COMMON", 200)]
++    recorder.record("P1", "COPYBOOK", "COMMON", trace)
++    recorder.record("P2", "COPYBOOK", "COMMON", trace, cached=True)
++    recorder.record("P2", "COPYBOOK", "COMMON", trace, cached=True)
++    assert len(recorder.rows) == 4
++    assert recorder.rows[2].program == "P2"
++    assert "no additional mainframe request" in recorder.rows[2].remarks
++    assert "Reused" not in recorder.rows[0].remarks
++
++
++def test_shared_negative_result_is_not_hidden_for_second_program():
++    recorder = SearchHistoryRecorder(run_id="run-1")
++    trace = [http_attempt("ONLY.DCL", "MISSING", 404)]
++    recorder.record("P1", "DCLGEN", "MISSING", trace)
++    recorder.record("P2", "DCLGEN", "MISSING", trace, cached=True)
++    assert [r.result for r in recorder.rows] == ["Not Found", "Not Found"]
++
++
++def test_all_three_dependency_types_and_separate_members():
++    recorder = SearchHistoryRecorder(run_id="run-1")
++    for artifact, member in (("COPYBOOK", "CP1"), ("COPYBOOK", "CP2"),
++                              ("DCLGEN", "DCL1"), ("SUBSCHEMA", "SUB1")):
++        recorder.record("P1", artifact, member, [http_attempt("TEST.LIB", member, 200)])
++    assert [r.artifact_type for r in recorder.rows] == ["Copybook", "Copybook", "DCLGENs", "Sub Schema"]
++    assert [r.member for r in recorder.rows] == ["CP1", "CP2", "DCL1", "SUB1"]
++
++
++def test_no_schema_no_invented_history_row(workspace):
++    path, count = write_search_history([])
++    assert count == 0
++    assert read_history(path) == []
++    book = load_workbook(path)
++    assert tuple(c.value for c in book.active[4]) == HEADERS
++    assert book.active.max_row == 4
++    book.close()
++
++
++def test_absent_trace_is_not_fabricated_as_found():
++    recorder = SearchHistoryRecorder()
++    recorder.record("P1", "COPYBOOK", "CP1", [])
++    assert recorder.rows[0].result == "Not Searched"
++    assert recorder.rows[0].library_path == ""
++
++
++def test_local_save_error_keeps_remote_success():
++    recorder = SearchHistoryRecorder()
++    recorder.record("P1", "COPYBOOK", "CP1", [http_attempt("TEST.CPY", "CP1", 200)])
++    recorder.issue("P1", "COPYBOOK", "CP1", "TEST.CPY(CP1)", "PermissionError: local save failed.")
++    assert [r.result for r in recorder.rows] == ["Found", "Error"]
++
++
++def test_history_append_new_runs_and_idempotent_republish(workspace):
++    first = observation()
++    path, count = write_search_history([first])
++    assert count == 1
++    assert write_search_history([first])[1] == 1
++    second = replace(first, run_id="run-2", result="Not Found")
++    assert write_search_history([second])[1] == 2
++    assert [r[6] for r in read_history(path)] == ["run-1", "run-2"]
++    book = load_workbook(path)
++    assert book.active.tables["DependencySearches"].ref == "A4:H6"
++    assert book.active.tables["DependencySearches"].autoFilter.ref == "A4:H6"
++    assert book.active.auto_filter.ref is None
++    book.close()
++
++
++def test_history_text_not_excel_formulas(workspace):
++    row = replace(observation(), remarks="=HYPERLINK(\"bad\")")
++    path, _ = write_search_history([row])
++    book = load_workbook(path)
++    assert book.active["F5"].data_type == "s"
++    book.close()
++
++
++def test_history_append_failure_retains_previous_file(workspace, monkeypatch):
++    path, _ = write_search_history([observation()])
++    before = path.read_bytes()
++    monkeypatch.setattr("mainframe.zowe_report_io.os.replace", Mock(side_effect=PermissionError()))
++    with pytest.raises(PermissionError):
++        write_search_history([observation(run_id="run-2")])
++    assert path.read_bytes() == before
++    assert not path.with_suffix(".xlsx.lock").exists()
++    assert not list(path.parent.glob(".report_*.xlsx"))
++
++
++def test_history_lock_refuses_parallel_writer(workspace):
++    path = search_history_path()
++    lock = path.with_suffix(".xlsx.lock")
++    lock.touch()
++    with pytest.raises(RuntimeError, match="parallel"):
++        write_search_history([observation()])
++    assert lock.exists()
++
++
++def test_corrupt_history_is_not_replaced(workspace):
++    path = search_history_path()
++    path.write_bytes(b"not an xlsx")
++    with pytest.raises(Exception):
++        write_search_history([observation()])
++    assert path.read_bytes() == b"not an xlsx"
++
++
++def test_modified_history_header_is_not_overwritten(workspace):
++    path, _ = write_search_history([observation()])
++    book = load_workbook(path)
++    book.active["A4"] = "WRONG"
++    book.save(path)
++    book.close()
++    before = path.read_bytes()
++    with pytest.raises(ValueError, match="columns"):
++        write_search_history([observation(run_id="run-2")])
++    assert path.read_bytes() == before
++
++
++@pytest.mark.parametrize("change", [{"remarks": "x" * 32768}, {"result": "Success"},
++    {"member": ""}, {"run_id": ""}, {"observed_at": "2026-10-28T00:00:00"},
++    {"library_path": ""}])
++def test_invalid_new_history_rows_rejected(workspace, change):
++    with pytest.raises(ValueError):
++        write_search_history([replace(observation(), **change)])
++    assert not search_history_path().exists()
++
++
++def test_history_symlink_is_never_written(workspace):
++    target = workspace / "outside.xlsx"
++    target.write_bytes(b"original")
++    search_history_path().symlink_to(target)
++    with pytest.raises(ValueError, match="symlink"):
++        write_search_history([observation()])
++    assert target.read_bytes() == b"original"
++
++
++def test_excel_row_limit_preserves_existing(workspace, monkeypatch):
++    path, _ = write_search_history([observation()])
++    before = path.read_bytes()
++    monkeypatch.setattr("mainframe.zowe_search_history.MAX_ROWS", 5)
++    with pytest.raises(ValueError, match="row limit"):
++        write_search_history([observation(run_id="run-2")])
++    assert path.read_bytes() == before
++
++
++def test_legacy_inventory_migrates_and_retains_unselected_rows(workspace):
++    legacy = workspace / "Review/IDMS_Program_Inventory.xlsx"
++    write_inventory([InventoryRow("OLD1"), InventoryRow("P1", mode="Retrieval")], legacy)
++    path, count = write_inventory([InventoryRow("P1", mode="Update")])
++    assert count == 2
++    assert not legacy.exists()
++    book = load_workbook(path)
++    assert book.active["A5"].value == "OLD1"
++    assert book.active["E6"].value == "Update"
++    book.close()
++
++
++def test_conflicting_legacy_reports_refused_without_deletion(workspace):
++    write_inventory([InventoryRow("P1", mode="Update")])
++    legacy = workspace / "Review/IDMS_Program_Inventory.xlsx"
++    write_inventory([InventoryRow("P1", mode="Retrieval")], legacy)
++    before = inventory_path().read_bytes()
++    with pytest.raises(ValueError, match="Conflicting"):
++        migrate_legacy_inventory()
++    assert legacy.exists()
++    assert inventory_path().read_bytes() == before
++
++
++def test_migration_save_failure_leaves_legacy_intact(workspace, monkeypatch):
++    legacy = workspace / "Review/IDMS_Program_Inventory.xlsx"
++    write_inventory([InventoryRow("P1")], legacy)
++    before = legacy.read_bytes()
++    monkeypatch.setattr("mainframe.zowe_report_io.os.replace", Mock(side_effect=PermissionError()))
++    with pytest.raises(PermissionError):
++        migrate_legacy_inventory()
++    assert legacy.read_bytes() == before
++    assert not inventory_path().exists()
++
++
++def test_cleanup_migrates_legacy_and_keeps_both_reports(workspace):
++    legacy = workspace / "Review/IDMS_Program_Inventory.xlsx"
++    write_inventory([InventoryRow("P1")], legacy)
++    path, _ = write_search_history([observation()])
++    history_before = path.read_bytes()
++    (workspace / "Review/old_approval.txt").write_text("stale")
++    (workspace / "Output/old.cbl").write_text("stale")
++    clean_generated()
++    assert inventory_path().exists()
++    assert path.read_bytes() == history_before
++    assert list((workspace / "Review").iterdir()) == []
++    assert list((workspace / "Output").iterdir()) == []
++
++
++def test_75_program_associations_append_new_run(workspace):
++    recorder = SearchHistoryRecorder(run_id="fixture-run-1")
++    trace = [http_attempt("FIRST.CPY", "COMMON", 404), http_attempt("SECOND.CPY", "COMMON", 200)]
++    for i in range(75):
++        recorder.record(f"P{i:07d}", "COPYBOOK", "COMMON", trace, cached=i > 0)
++    path, count = write_search_history(recorder.rows)
++    assert count == 150
++    assert len({row[0] for row in read_history(path)}) == 75
++    assert write_search_history([replace(r, run_id="fixture-run-2") for r in recorder.rows])[1] == 300
++
++
++def test_publish_reports_keeps_history_if_inventory_fails(workspace, monkeypatch):
++    from mainframe.zowe_fetcher import ZoweFetcher
++    obj = object.__new__(ZoweFetcher)
++    obj.search_history = SearchHistoryRecorder(run_id="run-1", rows=[observation()])
++    monkeypatch.setattr("mainframe.zowe_manifest.write_inventory", Mock(side_effect=PermissionError()))
++    with pytest.raises(RuntimeError, match="publication failed"):
++        obj._publish_reports([InventoryRow("P1")])
++    assert read_history(search_history_path())[0][0] == "P1"
++
++
++def test_static_integration_records_attempts_before_success_return():
++    """Inspect adapter integration without executing ANY lookup/fetch function."""
++    root = Path(__file__).resolve().parents[1]
++    tree = ast.parse((root / "mainframe/zowe_libraries.py").read_text())
++    method = next(n for n in ast.walk(tree) if isinstance(n, ast.FunctionDef) and n.name == "_lookup")
++    loop = next(n for n in method.body if isinstance(n, ast.For))
++    append_at = next(i for i, n in enumerate(loop.body) if isinstance(n, ast.Expr)
++                     and isinstance(n.value, ast.Call) and ast.unparse(n.value.func) == "trace.append")
++    success_at = next(i for i, n in enumerate(loop.body) if isinstance(n, ast.If)
++                      and ast.unparse(n.test) == "found")
++    assert append_at < success_at
++    fetch_source = (root / "mainframe/zowe_fetcher.py").read_text()
++    assert "self.search_history.record(self._active_program, artifact, member" in fetch_source
++    assert "cached=True" in fetch_source
++    assert "self._publish_reports(inventory.values())" in fetch_source

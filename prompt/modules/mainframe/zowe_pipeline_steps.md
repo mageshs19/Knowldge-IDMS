@@ -1,8 +1,8 @@
 # `mainframe/zowe_pipeline_steps.py`
 
-Source: [mainframe/zowe_pipeline_steps.py](../../../mainframe/zowe_pipeline_steps.py) | 157 lines.
+Source: [mainframe/zowe_pipeline_steps.py](../../../mainframe/zowe_pipeline_steps.py) | 161 lines.
 Owning logic guide: [prompt/02_MAINFRAME_PIPELINE.md](../../02_MAINFRAME_PIPELINE.md).
-Source SHA-256: `cea37c3afc883c8f4dc8e3efe82bad9bef9bec6d99bd1547bff1045b1db605d6`.
+Source SHA-256: `b6052697873100d9918a5890be31222a802c4f194988dd7a67078c6c4da5eaa7`.
 
 Generated source map. Read this file to locate the relevant symbols, then inspect the touched source before changing behavior. Lexical calls/branches are not a proof of runtime wiring or semantic equivalence.
 
@@ -14,7 +14,7 @@ Source-declared description (not an independently verified runtime claim):
 
 ## Module-level bindings
 
-`COBOL_GLOB` (L40), `STEP_FUNCTIONS` (L152)
+`COBOL_GLOB` (L40), `STEP_FUNCTIONS` (L156)
 
 ## Import declarations
 
@@ -43,11 +43,12 @@ from mainframe.zowe_semantic_release_gate import audit_generated_batch
 - [mainframe/zowe_workspace.py](zowe_workspace.md)
 - [mainframe/zowe_writer.py](zowe_writer.md)
 
-## Importers (1)
+## Importers (2)
 
 Static imports only; dependency injection, string imports and runtime dispatch can add edges.
 
 - [mainframe/zowe_pipeline.py](zowe_pipeline.md)
+- [tests/test_zowe_fetch_inventory.py](../tests/test_zowe_fetch_inventory.md)
 
 ## Symbol contracts and control points
 
@@ -72,21 +73,23 @@ code: int = 0
 failed(self) -> bool
 ```
 
-### `step_fetch` - L55-L79
+### `step_fetch` - L55-L83
 
 ```python
 step_fetch(quiet: bool) -> StepResult
 ```
 
-Observed calls (lexical order): `time.perf_counter`, `ZoweFetcher`, `ZoweFetcher().fetch_all`, `result.get`, `next`, `line.startswith`, `programs.replace`, `row`, `fetched.replace`, `warnings`, `StepResult`.
+Observed calls (lexical order): `time.perf_counter`, `ZoweFetcher`, `ZoweFetcher().fetch_all`, `result.get`, `next`, `line.startswith`, `programs.replace`, `row`, `fetched.replace`, `str`, `warnings`, `StepResult`.
 
 Control points:
 
 - L59: `if not quiet`
 - L70: `if programs`
 - L72: `if fetched`
+- L74: `if result.get('inventory_path')`
+- L76: `if result.get('search_history_path')`
 
-### `step_convert` - L82-L97
+### `step_convert` - L86-L101
 
 ```python
 step_convert(quiet: bool) -> StepResult
@@ -96,10 +99,10 @@ Observed calls (lexical order): `count_files`, `mapping_dir`, `MAPPING_MISSING_T
 
 Control points:
 
-- L83: `if count_files(mapping_dir()) == 0`
-- L87: `if count_files(program_dir()) == 0`
+- L87: `if count_files(mapping_dir()) == 0`
+- L91: `if count_files(program_dir()) == 0`
 
-### `step_review` - L100-L115
+### `step_review` - L104-L119
 
 ```python
 step_review(quiet: bool) -> StepResult
@@ -109,12 +112,12 @@ Observed calls (lexical order): `count_files`, `output_dir`, `StepResult`, `run_
 
 Control points:
 
-- L101: `if count_files(output_dir(), COBOL_GLOB) == 0`
-- L106: `if not semantic_passed`
-- L108: `if not quiet`
-- L112: `if code == 0 and (not semantic_passed)`
+- L105: `if count_files(output_dir(), COBOL_GLOB) == 0`
+- L110: `if not semantic_passed`
+- L112: `if not quiet`
+- L116: `if code == 0 and (not semantic_passed)`
 
-### `step_upload` - L118-L149
+### `step_upload` - L122-L153
 
 ```python
 step_upload(quiet: bool) -> StepResult
@@ -124,8 +127,8 @@ Observed calls (lexical order): `time.perf_counter`, `count_files`, `output_dir`
 
 Control points:
 
-- L121: `if count_files(output_dir(), COBOL_GLOB) == 0`
-- L129: `if code != 0 or not semantic_passed`
+- L125: `if count_files(output_dir(), COBOL_GLOB) == 0`
+- L133: `if code != 0 or not semantic_passed`
 
 ## Change responsibility
 

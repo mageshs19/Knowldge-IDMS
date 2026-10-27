@@ -1,0 +1,42 @@
+{
+  "modified_existing_python": [
+    "mainframe/zowe_fetcher.py",
+    "mainframe/zowe_manifest.py",
+    "mainframe/zowe_patterns.py",
+    "mainframe/zowe_pipeline_steps.py",
+    "mainframe/zowe_resolver.py",
+    "mainframe/zowe_rules_pipeline.py",
+    "mainframe/zowe_workspace.py"
+  ],
+  "new_python": [
+    "tests/test_zowe_fetch_inventory.py"
+  ],
+  "all_modified_files": [
+    "mainframe/zowe_fetcher.py",
+    "mainframe/zowe_manifest.py",
+    "mainframe/zowe_patterns.py",
+    "mainframe/zowe_pipeline_steps.py",
+    "mainframe/zowe_resolver.py",
+    "mainframe/zowe_rules_pipeline.py",
+    "mainframe/zowe_workspace.py",
+    "prompt/00_START_HERE.md",
+    "prompt/02_MAINFRAME_PIPELINE.md",
+    "prompt/10_TESTING_AND_VALIDATION.md",
+    "prompt/index/tests.md",
+    "prompt/modules/converter/parsers/cobol_parser.md",
+    "prompt/modules/converter/services/name_derivation_resolver.md",
+    "prompt/modules/mainframe/zowe_fetcher.md",
+    "prompt/modules/mainframe/zowe_manifest.md",
+    "prompt/modules/mainframe/zowe_patterns.md",
+    "prompt/modules/mainframe/zowe_pipeline_steps.md",
+    "prompt/modules/mainframe/zowe_resolver.md",
+    "prompt/modules/mainframe/zowe_rules.md",
+    "prompt/modules/mainframe/zowe_rules_pipeline.md",
+    "prompt/modules/mainframe/zowe_subschema.md",
+    "prompt/modules/mainframe/zowe_workspace.md",
+    "prompt/modules/rules/program_kind_rules.md",
+    "prompt/MODULE_INDEX.md",
+    "prompt/source_manifest.json",
+    "readme.md"
+  ]
+}

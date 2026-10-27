@@ -78,8 +78,8 @@ python -m mainframe.zowe_pipeline all --from convert --to review
 
 The default workspace is `mainframe/workspace/`. Inputs are `Program/`,
 `Mapping Sheet/`, `Copybook/`, `DCLGen/`, and `Subschema/`. Manual DB2 comparisons
-are in `Manual Output/`. `convert` clears managed `Output/` and `Review/`, not the
-originals or manual references. New generated copybooks are staged below
+are in `Manual Output/`. `convert` clears managed `Output/` and generated reviews, but retains the
+fetch inventory and dependency history in `reports/`. It never deletes originals or manual references. New generated copybooks are staged below
 `Output/Generated Copybooks/`.
 
 Do not run unbounded `all` as a documentation or offline test: its step range
@@ -132,3 +132,44 @@ prompt/
 The original V123 ZIP remains the rollback source for deleted historical Markdown.
 Existing non-Markdown historical evidence is retained but is not a current release
 approval. Do not store credentials or private connection details in documentation.
+
+
+## Fetch inventory and library-search history (V127)
+
+Both durable Excel reports are stored in `mainframe/workspace/reports/`, or
+`reports/` under `ZOWE_WORKSPACE_ROOT`:
+
+- `IDMS_Program_Inventory.xlsx`: one current row per IDMS source member,
+  with Copybook, DCLGENs, Sub Schema and source-based Mode.
+- `IDMS_Dependency_Search_History.xlsx`: append-only rows per program,
+  dependency member and attempted library, with outcome, safe diagnostics,
+  Run ID and UTC observation time. Shared/cached dependencies still appear for
+  every dependent program and are labelled as reused evidence.
+
+A program with no subschema reference has a blank Sub Schema cell and no
+subschema search row. A referenced but missing subschema keeps its name and
+its actual failed search outcomes. Incomplete COPY analysis is not proof that
+no subschema is required. Found/Not Found represent observed member lookup;
+authentication, permission, connection and service failures are recorded as
+Error, not falsely as Not Found.
+
+When a user runs fetch in their connected environment, both reports are
+published automatically. Do **not** run fetch/upload to validate this feature
+or documentation. Offline development uses only local analysis, report writers,
+static integration inspection and tests with fetch/network functions prohibited.
+
+The old `Review/IDMS_Program_Inventory.xlsx` is migrated on the next inventory
+write or conversion cleanup. Existing rows and comments are preserved. Conflicts
+between two pre-existing inventories cause an explicit error, not silent loss.
+`clean_generated()` never deletes reports/; it still removes stale conversion
+review and approval files from Review/.
+
+For a local inventory rebuild only (no library-search outcomes are invented):
+
+```bash
+python -m mainframe.zowe_manifest
+```
+
+See [fetch reporting contract](prompt/16_FETCH_INVENTORY.md). Neither report
+certifies conversion or compilation. Keep temporary Markdown in `prompt/temp/`
+and update matching permanent prompt guides/module notes with Python changes.

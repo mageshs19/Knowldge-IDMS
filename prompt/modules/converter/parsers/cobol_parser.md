@@ -30,14 +30,13 @@ from patterns.idms_patterns import ERASE_PATTERN, FIND_FIRST_PATTERN, MODIFY_PAT
 - [patterns/cobol_patterns.py](../../patterns/cobol_patterns.md)
 - [patterns/idms_patterns.py](../../patterns/idms_patterns.md)
 
-## Importers (11)
+## Importers (10)
 
 Static imports only; dependency injection, string imports and runtime dispatch can add edges.
 
 - [converter/transformers/cobol_transformer.py](../transformers/cobol_transformer.md)
 - [converter/ui/conversion_actions.py](../ui/conversion_actions.md)
 - [mainframe/verification/manual_direct_update_parity.py](../../mainframe/verification/manual_direct_update_parity.md)
-- [mainframe/zowe_manifest.py](../../mainframe/zowe_manifest.md)
 - [mainframe/zowe_semantic_release_gate.py](../../mainframe/zowe_semantic_release_gate.md)
 - [review/runner/workspace_inputs.py](../../review/runner/workspace_inputs.md)
 - [runners/batch_program_runner.py](../../runners/batch_program_runner.md)

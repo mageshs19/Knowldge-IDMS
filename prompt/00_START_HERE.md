@@ -25,6 +25,7 @@ comprehensive notes or passing Python tests.
 |---|---|
 | Understand the whole system | [Architecture](01_SYSTEM_ARCHITECTURE.md) |
 | Batch command, clean, fetch, review, upload | [Mainframe pipeline](02_MAINFRAME_PIPELINE.md) |
+| Excel dependency register and per-program library-search history | [Fetch inventory](16_FETCH_INVENTORY.md) |
 | Mapping, DCLGEN, copybook parsing, names and keys | [Metadata](03_INPUT_METADATA_AND_RESOLUTION.md) |
 | Logical record to IDMS to DB2 conversion/order | [Conversion](04_LR_IDMS_DB2_CONVERSION.md) |
 | SQL, cursor loops, status, FETCH/business wiring | [Cursor and flow](05_SQL_CURSOR_AND_BUSINESS_FLOW.md) |

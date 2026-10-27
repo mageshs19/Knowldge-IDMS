@@ -71,6 +71,10 @@ def step_fetch(quiet: bool) -> StepResult:
             row("Fetch progress", programs.replace("Programs selected:", "Programs"))
         if fetched:
             row("Fetch result", fetched.replace("Zowe fetched", "Files fetched"))
+        if result.get("inventory_path"):
+            row("Program inventory", str(result["inventory_path"]))
+        if result.get("search_history_path"):
+            row("Dependency search history", str(result["search_history_path"]))
 
     warnings(result["warnings"])
 

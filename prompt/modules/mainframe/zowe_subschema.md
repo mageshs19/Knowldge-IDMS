@@ -28,11 +28,12 @@ from mainframe.zowe_rules import ELEMENT_NAME_MIN_LENGTH, NAME_RECORD_PREFIX, SU
 - [mainframe/zowe_patterns.py](zowe_patterns.md)
 - [mainframe/zowe_rules.py](zowe_rules.md)
 
-## Importers (1)
+## Importers (2)
 
 Static imports only; dependency injection, string imports and runtime dispatch can add edges.
 
 - [mainframe/zowe_fetcher.py](zowe_fetcher.md)
+- [mainframe/zowe_resolver.py](zowe_resolver.md)
 
 ## Symbol contracts and control points
 

@@ -1,12 +1,13 @@
 # Python module index
 
-Coverage: **1025 Python files** (including tests and empty package markers). Documentation tooling in `prompt/tools/` is maintained separately in the change workflow guide.
+Coverage: **1039 Python files** (including tests and empty package markers). Documentation tooling in `prompt/tools/` is maintained separately in the change workflow guide.
 
 Start with the architecture/task router. Open the relevant package below; do not load every module note at once.
 
 | Source directory | Files | Package index |
 |---|---:|---|
 | `.` | 1 | [Open](index/_root.md) |
+| `Knowldge-Graph/prompt/tools` | 10 | [Open](index/Knowldge-Graph/prompt/tools.md) |
 | `catalogs` | 11 | [Open](index/catalogs.md) |
 | `config` | 3 | [Open](index/config.md) |
 | `config/config` | 5 | [Open](index/config/config.md) |
@@ -61,7 +62,7 @@ Start with the architecture/task router. Open the relevant package below; do not
 | `converter/transformers/idms_statement` | 4 | [Open](index/converter/transformers/idms_statement.md) |
 | `converter/ui` | 11 | [Open](index/converter/ui.md) |
 | `converter/validators` | 8 | [Open](index/converter/validators.md) |
-| `mainframe` | 27 | [Open](index/mainframe.md) |
+| `mainframe` | 29 | [Open](index/mainframe.md) |
 | `mainframe/verification` | 9 | [Open](index/mainframe/verification.md) |
 | `patterns` | 60 | [Open](index/patterns.md) |
 | `patterns/cursor_spec` | 2 | [Open](index/patterns/cursor_spec.md) |
@@ -78,7 +79,7 @@ Start with the architecture/task router. Open the relevant package below; do not
 | `runners/batch` | 8 | [Open](index/runners/batch.md) |
 | `runners/retrieval` | 5 | [Open](index/runners/retrieval.md) |
 | `runners/update` | 6 | [Open](index/runners/update.md) |
-| `tests` | 122 | [Open](index/tests.md) |
+| `tests` | 124 | [Open](index/tests.md) |
 | `tests/cursor_close_guarantee` | 1 | [Open](index/tests/cursor_close_guarantee.md) |
 | `tests/cursor_contract` | 9 | [Open](index/tests/cursor_contract.md) |
 | `tests/cursor_where` | 10 | [Open](index/tests/cursor_where.md) |

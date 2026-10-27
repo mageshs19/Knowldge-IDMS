@@ -1,0 +1,1353 @@
+--- a/mainframe/zowe_fetcher.py
++++ b/mainframe/zowe_fetcher.py
+@@ -16,8 +16,11 @@
+ import logging
+ from pathlib import Path
+ 
+-from mainframe.zowe_libraries import LibrarySearch, application_code, libraries_for
+-from mainframe.zowe_resolver import ProgramDependencies, resolve_dependencies
++from mainframe.zowe_libraries import LibrarySearch, application_code
++from mainframe.zowe_resolver import (
++    ProgramDependencies, resolve_dependencies, expand_copy_dependencies,
++    dclgen_members_for_record,
++)
+ from mainframe.zowe_rules import (
+     ARTIFACT_COPYBOOK,
+     ARTIFACT_DCLGEN,
+@@ -48,7 +51,6 @@
+     program_dir,
+     subschema_dir,
+ )
+-from mainframe.zowe_resolver import dclgen_member_for
+ from mainframe.zowe_rules import DIAG_ELEMENTS_TEMPLATE, DIAG_NO_ELEMENTS_TEMPLATE
+ 
+ logger = logging.getLogger("idms_db2_zowe")
+@@ -65,11 +67,18 @@
+     def __init__(self, programs: list[str] | None = None) -> None:
+         from mainframe.zowe_programs import selected_programs
+ 
+-        self.programs = programs or selected_programs()
++        selected = selected_programs() if programs is None else programs
++        self.programs = list(dict.fromkeys(str(name).strip().upper() for name in selected if str(name).strip()))
++        if not self.programs:
++            raise ValueError("No programs selected for fetch")
+         self.diagnostics: list[str] = []
+         self.warnings: list[str] = []
+         self.saved: dict[str, list[Path]] = {}
+         self._searches: dict[str, LibrarySearch] = {}
++        self._member_paths: dict[tuple[str, str], Path] = {}
++        self._observations: dict[tuple[str, str], str] = {}
++        self._source_texts: dict[str, str] = {}
++        self._copy_sources: dict[str, list[tuple[str, str]]] = {}
+ 
+     # ---- helpers ----
+     def _search(self, artifact: str) -> LibrarySearch:
+@@ -88,6 +97,8 @@
+         folder.mkdir(parents=True, exist_ok=True)
+         target = folder / f"{member}{ARTIFACT_EXTENSIONS[artifact]}"
+         target.write_bytes(content)
++        self._member_paths[(artifact, member)] = target
++        self._observations[(artifact, member)] = f"Fetched from {dataset}({member})"
+         self.saved.setdefault(ARTIFACT_LABELS[artifact], []).append(target)
+         self.diagnostics.append(
+             DIAG_FOUND_TEMPLATE.format(
+@@ -100,11 +111,21 @@
+         return target
+ 
+     def _fetch_member(self, artifact: str, member: str, mandatory: bool) -> bool:
++        # Shared dependencies are downloaded once per batch, but recorded for
++        # every program that needs them. Never trust a stale local file after
++        # a failed current download.
++        key = (artifact, member)
++        if key in self._observations:
++            found = key in self._member_paths
++            if mandatory and not found:
++                raise ValueError(f"Required member unavailable: {member}")
++            return found
+         search = self._search(artifact)
+         dataset, content = search.download(member)
+ 
+         if not dataset:
+             libraries = ", ".join(search.libraries)
++            self._observations[key] = f"WARNING: not fetched from {libraries}"
+             self.diagnostics.append(
+                 DIAG_NOT_FOUND_TEMPLATE.format(
+                     label=search.label, member=member, libraries=libraries
+@@ -138,7 +159,8 @@
+             )
+ 
+         path = self._save(ARTIFACT_PROGRAM, program, dataset, content)
+-        source_text = path.read_text(encoding=TEXT_ENCODING, errors="replace")
++        source_text = path.read_text(encoding=TEXT_ENCODING)
++        self._source_texts[program] = source_text
+ 
+         deps = resolve_dependencies(program, source_text)
+         self.diagnostics.append(
+@@ -152,9 +174,20 @@
+         return deps
+ 
+     def _fetch_dependencies(self, deps: ProgramDependencies) -> None:
+-        for member in deps.copybooks:
+-            self._fetch_member(ARTIFACT_COPYBOOK, member, mandatory=False)
+-
++        def load_copy(member: str) -> str | None:
++            if not self._fetch_member(ARTIFACT_COPYBOOK, member, mandatory=False):
++                return None
++            path = self._member_paths[(ARTIFACT_COPYBOOK, member)]
++            try:
++                return path.read_text(encoding=TEXT_ENCODING)
++            except (OSError, UnicodeError):
++                self._observations[(ARTIFACT_COPYBOOK, member)] += (
++                    "; WARNING: downloaded content cannot be analysed"
++                )
++                self.warnings.append(f"Copybook {member} cannot be analysed for dependencies/mode")
++                return None
++
++        self._copy_sources[deps.program] = expand_copy_dependencies(deps, load_copy)
+         subschema_path = None
+         if deps.subschema:
+             self.diagnostics.append(
+@@ -163,23 +196,22 @@
+                 )
+             )
+             if self._fetch_member(ARTIFACT_SUBSCHEMA, deps.subschema, False):
+-                saved = self.saved.get(ARTIFACT_LABELS[ARTIFACT_SUBSCHEMA], [])
+-                subschema_path = saved[-1] if saved else None
++                subschema_path = self._member_paths[(ARTIFACT_SUBSCHEMA, deps.subschema)]
+         else:
+             self.warnings.append(
+-                ZOWE_WARNING_MESSAGES["subschema_not_detected"].format(
+-                    program=deps.program
+-                )
+-            )
+-
++                ZOWE_WARNING_MESSAGES["subschema_not_detected"].format(program=deps.program)
++            )
++
++        # Replace raw LR-name guesses with the actual subschema element members.
++        members = list(deps.explicit_dclgens)
+         for record in deps.records:
+             for member in self._dclgen_members(record, subschema_path):
+-                self.diagnostics.append(
+-                    DIAG_DERIVED_DCLGEN_TEMPLATE.format(
+-                        record=record, member=member
+-                    )
+-                )
+-                self._fetch_member(ARTIFACT_DCLGEN, member, mandatory=False)
++                self.diagnostics.append(DIAG_DERIVED_DCLGEN_TEMPLATE.format(record=record, member=member))
++                if member not in members:
++                    members.append(member)
++        deps.dclgens = members
++        for member in deps.dclgens:
++            self._fetch_member(ARTIFACT_DCLGEN, member, mandatory=False)
+ 
+     def _dclgen_members(self, record: str, subschema_path) -> list[str]:
+         from mainframe.zowe_subschema import element_records_for
+@@ -200,15 +232,14 @@
+             )
+             elements = [record]
+ 
+-        members: list[str] = []
+-        for element in elements:
+-            member = dclgen_member_for(element)
+-            if member and member not in members:
+-                members.append(member)
+-        return members
+-    
++        return dclgen_members_for_record(record, subschema_path)
++
+     # ---- all programs ----
+     def fetch_all(self) -> dict:
++        from mainframe.zowe_manifest import HEADERS, InventoryRow, make_inventory_row, write_inventory
++
++        self.diagnostics.clear()
++        self.warnings.clear()
+         ensure_workspace()
+         self.diagnostics.append(DIAG_START_FETCH)
+         self.diagnostics.append(DIAG_MAPPING_LOCAL)
+@@ -221,9 +252,48 @@
+             )
+         )
+ 
+-        for program in self.programs:
+-            deps = self._fetch_program(program)
+-            self._fetch_dependencies(deps)
++        # Reset run-local caches when one fetcher object is reused.
++        self._member_paths.clear()
++        self._observations.clear()
++        self._source_texts.clear()
++        self._copy_sources.clear()
++        self.saved.clear()
++        inventory = {name: InventoryRow(name, notes={
++            HEADERS[0]: "WARNING: selected but not attempted in this fetch run.",
++            HEADERS[4]: "WARNING: current source not analysed.",
++        }) for name in self.programs}
++        try:
++            for program in self.programs:
++                deps = None
++                try:
++                    deps = self._fetch_program(program)
++                    self._fetch_dependencies(deps)
++                    inventory[program] = make_inventory_row(
++                        deps, self._source_texts[program],
++                        source_path=Path("Program") / f"{program}{ARTIFACT_EXTENSIONS[ARTIFACT_PROGRAM]}",
++                        copy_sources=self._copy_sources.get(program, ()),
++                        observations=self._observations,
++                        origin=self._observations.get((ARTIFACT_PROGRAM, program), "Zowe fetch"),
++                    )
++                except Exception as exc:
++                    # Do not retain a misleading successful row from an older run.
++                    # Store the exception class, not raw transport text/credentials.
++                    inventory[program] = InventoryRow(
++                        program, list(deps.copybooks) if deps else [],
++                        list(deps.dclgens) if deps else [], deps.subschema if deps else "",
++                        notes={HEADERS[0]: f"WARNING: fetch incomplete ({type(exc).__name__}). See fetch diagnostics.",
++                               HEADERS[4]: "WARNING: current fetch failed; mode not certified."},
++                    )
++                    raise
++        except Exception:
++            # A report failure must not hide the original fetch exception.
++            try:
++                write_inventory(inventory.values())
++            except Exception as report_error:
++                logger.error("Could not save partial inventory (%s)", type(report_error).__name__)
++            raise
++        inventory_path, inventory_count = write_inventory(inventory.values())
++        self.diagnostics.append(f"Program inventory: {inventory_path} ({inventory_count} programs)")
+ 
+         total = sum(len(v) for v in self.saved.values())
+         self.diagnostics.append(
+@@ -236,6 +306,8 @@
+             "total_files": total,
+             "diagnostics": self.diagnostics,
+             "warnings": self.warnings,
++            "inventory_path": inventory_path,
++            "inventory_programs": inventory_count,
+         }
+ 
+ 
+--- a/mainframe/zowe_manifest.py
++++ b/mainframe/zowe_manifest.py
+@@ -1,120 +1,380 @@
+-# LOCATION: zowe/zowe_manifest.py
+-# ACTION: CREATE NEW FILE
+-"""Per-execution program manifest for monitoring.
+-
+-For every IDMS program in the workspace Program folder this writes ONE
+-timestamped monitoring file into the Review folder, mapping the program
+-to the copybooks, DCLGENs and subschema it references, plus the derived
+-DB2 PROGRAM-ID:
+-
+-    IDMS Program - Copybook - DCLGen - Sub Schema - DB2 Program
+-    VM4BD420 - ESDATMAS - DZBEFFTV, DZEVEFTV - VMBTS07 - VMDZ4420
+-
+-Dependencies are resolved from each program's own source (the same
+-resolver the fetch step uses), so the file reflects exactly what was
+-fetched for that particular program. It never raises for a business
+-condition - a program that cannot be read is simply skipped.
++"""One maintained fetch inventory, with an offline workspace rebuild command.
++
++Rows describe source dependencies, not conversion acceptance. Live fetch passes
++its actual resolved dependency lists and per-member download observations. The
++local rebuild never contacts Zowe and labels files only as locally available.
+ """
+-
+ from __future__ import annotations
+ 
+-from datetime import datetime
++import argparse
++from dataclasses import dataclass, field
++from datetime import datetime, timezone
++import hashlib
++import os
+ from pathlib import Path
+-
+-from converter.parsers.cobol_parser import CobolParser
+-from converter.services.name_derivation_resolver import (
+-    NameDerivationResolver,
++import re
++import tempfile
++from collections.abc import Iterable
++
++from openpyxl import Workbook, load_workbook
++from openpyxl.comments import Comment
++from openpyxl.styles import Alignment, Font, PatternFill
++from openpyxl.worksheet.table import Table, TableStyleInfo
++
++from mainframe.zowe_resolver import (
++    ProgramDependencies, dclgen_members_for_record, expand_copy_dependencies,
++    logical_text, mask_literals, resolve_dependencies,
+ )
+-from mainframe.zowe_resolver import resolve_dependencies
+-from mainframe.zowe_rules import (
+-    MANIFEST_CELL_SEPARATOR,
+-    MANIFEST_EMPTY_CELL,
+-    MANIFEST_FILE_NAME_TEMPLATE,
+-    MANIFEST_HEADER,
+-    MANIFEST_ROW_TEMPLATE,
+-    MANIFEST_TIMESTAMP_FORMAT,
++from mainframe.zowe_rules import FETCH_INVENTORY_FILENAME
++from mainframe.zowe_workspace import workspace_root
++from rules.program_kind_rules import IDMS_WRITE_VERBS
++
++HEADERS = ("IDMS Program Name", "Copybook", "DCLGENs", "Sub Schema", "Mode")
++SHEET_NAME = "Program Inventory"
++HEADER_ROW = 4
++SOURCE_EXTENSIONS = {"", ".cbl", ".cob", ".cobol", ".txt"}
++_READY_MODE = re.compile(
++    r"\bUSAGE[- ]MODE\s+(?:IS\s+)?(?:(?:EXCLUSIVE|PROTECTED|SHARED)\s+)?"
++    r"(UPDATE|RETRIEVAL)\b", re.I,
+ )
+-from mainframe.zowe_workspace import program_dir, review_dir
+-
+-PROGRAM_GLOB = "*"
+-TEXT_ENCODING = "utf-8"
+-
+-
+-def _cell(values) -> str:
+-    """Render a list (or scalar) cell, using [] for anything empty."""
+-    if isinstance(values, str):
+-        names = [values] if values.strip() else []
+-    else:
+-        names = [str(v).strip() for v in (values or []) if str(v).strip()]
+-
+-    if not names:
+-        return MANIFEST_EMPTY_CELL
+-    return MANIFEST_CELL_SEPARATOR.join(names)
+-
+-
+-def _derive_db2_program_id(source_text: str) -> str:
+-    source_id = CobolParser().program_id(source_text)
+-    if not source_id:
+-        return MANIFEST_EMPTY_CELL
+-    return NameDerivationResolver().derive(source_id) or MANIFEST_EMPTY_CELL
+-
+-
+-def _program_sources() -> list[Path]:
+-    folder = program_dir()
++_WRITE = re.compile(
++    r"(?<![\w-])(" + "|".join((*IDMS_WRITE_VERBS, "CONNECT", "DISCONNECT"))
++    + r")\s+([A-Z0-9][A-Z0-9-]*)(?![\w-])", re.I,
++)
++_READ = re.compile(r"(?<![\w-])(?:OBTAIN|FIND)\s+[A-Z0-9][A-Z0-9-]*", re.I)
++_SQL_WRITE = re.compile(r"\bEXEC\s+SQL\s+(?:INSERT|UPDATE|DELETE|MERGE)\b", re.I)
++_SQL_READ = re.compile(r"\bEXEC\s+SQL\s+(?:SELECT|DECLARE\s+\S+\s+CURSOR)\b", re.I)
++_COPY_STMT = re.compile(r"\bCOPY\s+[^.]*\.", re.I)
++_PREFIX_REPLACING = re.compile(
++    r"REPLACING\s+(?:==:[A-Z0-9_-]+:==\s+BY\s+==[A-Z0-9_-]+==\s*)+\.$", re.I,
++)
++
++
++@dataclass
++class InventoryRow:
++    program: str
++    copybooks: list[str] = field(default_factory=list)
++    dclgens: list[str] = field(default_factory=list)
++    subschema: str = ""
++    mode: str = "Unknown"
++    notes: dict[str, str] = field(default_factory=dict)
++
++    def values(self) -> tuple[str, ...]:
++        return (self.program, "\n".join(sorted(set(self.copybooks))),
++                "\n".join(sorted(set(self.dclgens))), self.subschema, self.mode)
++
++
++def classify_mode(
++    sources: Iterable[tuple[str, str]], *, complete: bool = True,
++) -> tuple[str, str]:
++    """Inventory access mode from live source, never from program naming.
++
++    Update evidence takes precedence over Retrieval. File WRITE does not imply
++    database Update. Unknown is retained for absent evidence/incomplete COPY
++    closure. This is static access classification, not call-graph certification.
++    """
++    update: list[str] = []
++    retrieval: list[str] = []
++    uncertain = not complete
++    for name, source in sources:
++        text = mask_literals(logical_text(source))
++        if "\ufffd" in text or re.search(r">>\s*IF\b", text, re.I):
++            uncertain = True
++        for copy in _COPY_STMT.finditer(text):
++            clause = re.search(r"\bREPLACING\b.*", copy.group(0), re.I | re.S)
++            # Colon-delimited identifier-prefix substitution cannot create a
++            # standalone database verb. General pseudo-text needs preprocessing.
++            if clause and not _PREFIX_REPLACING.fullmatch(clause.group(0)):
++                uncertain = True
++        text = _COPY_STMT.sub(" ", text)
++        for match in _READY_MODE.finditer(text):
++            evidence = f"{name}: {match.group(0).strip()}"
++            (update if match.group(1).upper() == "UPDATE" else retrieval).append(evidence)
++        for match in _WRITE.finditer(text):
++            update.append(f"{name}: {match.group(0).strip()}")
++        if _SQL_WRITE.search(text):
++            update.append(f"{name}: embedded SQL write")
++        if _READ.search(text) or _SQL_READ.search(text):
++            retrieval.append(f"{name}: database retrieval statement")
++    if update:
++        return "Update", "\n".join(dict.fromkeys(update)) + (
++            "\nWARNING: incomplete source; Update is already proven." if uncertain else ""
++        )
++    if uncertain:
++        return "Unknown", "WARNING: source/COPY closure is incomplete or requires preprocessing."
++    if retrieval:
++        return "Retrieval", "\n".join(dict.fromkeys(retrieval))
++    return "Unknown", "WARNING: no database access-mode evidence in the available source."
++
++
++def make_inventory_row(
++    deps: ProgramDependencies, source: str, *, source_path: Path,
++    copy_sources: Iterable[tuple[str, str]] = (),
++    observations: dict[tuple[str, str], str] | None = None,
++    origin: str = "Local workspace scan (not a mainframe fetch)",
++) -> InventoryRow:
++    """Build the five columns and per-cell evidence from the same fetch closure."""
++    observations = observations or {}
++    fragments = list(copy_sources)
++    loaded = {name.upper() for name, _ in fragments}
++    mode, evidence = classify_mode(
++        [(deps.program, source), *fragments],
++        complete=all(member in loaded for member in deps.copybooks),
++    )
++    notes = {
++        HEADERS[0]: f"{origin}\nSource: {source_path}\n"
++                    f"Source SHA-256 (UTF-8 text): {hashlib.sha256(source.encode()).hexdigest()}\n"
++                    f"Observed at: {datetime.now(timezone.utc).isoformat(timespec='seconds')}",
++        HEADERS[4]: evidence + "\nScope: this member and resolved ordinary COPY members; "
++                    "external CALL targets are not analysed.",
++    }
++    for column, artifact, members in (
++        (HEADERS[1], "COPYBOOK", deps.copybooks),
++        (HEADERS[2], "DCLGEN", deps.dclgens),
++        (HEADERS[3], "SUBSCHEMA", [deps.subschema] if deps.subschema else []),
++    ):
++        notes[column] = "\n".join(
++            f"{member}: {observations.get((artifact, member), 'WARNING: availability not verified')}"
++            for member in sorted(set(members))
++        ) or "No dependency found in the scanned source."
++    notes[HEADERS[2]] += (
++        "\nDCLGENs are fetch dependencies: LR elements come from the subschema; "
++        "otherwise the existing record-to-member naming rule is used. "
++        "This is not the minimal SQL include list of the converted program."
++    )
++    if not deps.subschema:
++        notes[HEADERS[3]] = "WARNING: no DB ... WITHIN subschema declaration found."
++    return InventoryRow(deps.program, list(deps.copybooks), list(deps.dclgens),
++                        deps.subschema, mode, notes)
++
++
++def _existing_rows(path: Path) -> dict[str, InventoryRow]:
++    if not path.exists():
++        return {}
++    try:
++        book = load_workbook(path)
++        try:
++            if book.sheetnames != [SHEET_NAME]:
++                raise ValueError("expected a single Program Inventory sheet")
++            sheet = book[SHEET_NAME]
++            if tuple(sheet.cell(HEADER_ROW, c).value for c in range(1, 6)) != HEADERS:
++                raise ValueError("inventory column schema does not match")
++            result: dict[str, InventoryRow] = {}
++            for cells in sheet.iter_rows(min_row=HEADER_ROW + 1, max_col=5):
++                if not any(c.value is not None for c in cells):
++                    continue
++                values = [str(c.value or "") for c in cells]
++                name = values[0].strip().upper()
++                if not name or name in result or any(c.data_type == "f" for c in cells):
++                    raise ValueError("duplicate/empty member or formula in inventory")
++                result[name] = InventoryRow(
++                    name, values[1].splitlines(), values[2].splitlines(), values[3],
++                    values[4], {HEADERS[i]: c.comment.text for i, c in enumerate(cells)
++                                if c.comment},
++                )
++            return result
++        finally:
++            book.close()
++    except Exception as exc:
++        raise ValueError(f"Cannot read inventory {path}; original file retained: {exc}") from exc
++
++
++def _workbook(rows: list[InventoryRow]) -> Workbook:
++    book = Workbook()
++    sheet = book.active
++    sheet.title = SHEET_NAME
++    sheet.sheet_view.showGridLines = False
++    sheet.merge_cells("A1:E1")
++    sheet["A1"] = "IDMS | Program dependency inventory"
++    sheet["A1"].font = Font(name="Calibri", size=18, bold=True, color="FFFFFF")
++    sheet["A1"].fill = PatternFill("solid", fgColor="17324D")
++    sheet.row_dimensions[1].height = 36
++    sheet.merge_cells("A2:E2")
++    sheet["A2"] = (f"{len(rows)} program(s) | Maintained by fetch; partial fetches update selected rows. "
++                   "Red/orange cells: unresolved evidence (see cell comments). "
++                   "Mode is source access classification, not conversion approval.")
++    sheet["A2"].font = Font(name="Calibri", size=10, color="626C76")
++    sheet["A2"].alignment = Alignment(wrap_text=True, vertical="center")
++    sheet.row_dimensions[2].height = 34
++    for col, title in enumerate(HEADERS, 1):
++        cell = sheet.cell(HEADER_ROW, col, title)
++        cell.font = Font(name="Calibri", size=11, bold=True, color="FFFFFF")
++        cell.fill = PatternFill("solid", fgColor="17324D")
++        cell.alignment = Alignment(vertical="center")
++    sheet.row_dimensions[HEADER_ROW].height = 28
++    for number, row in enumerate(rows, HEADER_ROW + 1):
++        for column, value in enumerate(row.values(), 1):
++            if len(value) > 32767:
++                raise ValueError(f"Excel cell limit exceeded for {row.program}; no truncated report written")
++            cell = sheet.cell(number, column, value)
++            cell.data_type = "s"  # Member names/source text must never become Excel formulas.
++            cell.font = Font(name="Calibri", size=11,
++                             color="7030A0" if column == 5 else "177245")
++            cell.alignment = Alignment(vertical="top", wrap_text=True)
++            note = row.notes.get(HEADERS[column - 1], "")
++            if note:
++                if len(note) > 32767:
++                    raise ValueError(f"Excel evidence limit exceeded for {row.program}")
++                cell.comment = Comment(note, "IDMS fetch inventory")
++            if "WARNING:" in note:
++                cell.fill = PatternFill("solid", fgColor="FCE4D6")
++                cell.font = Font(name="Calibri", size=11, color="9C0006")
++            elif number % 2 == 0:
++                cell.fill = PatternFill("solid", fgColor="F1F5F8")
++        height = max(len(v.splitlines()) for v in row.values())
++        sheet.row_dimensions[number].height = min(240, max(32, 16 * height + 10))
++    for column, width in zip("ABCDE", (25, 31, 34, 22, 20)):
++        sheet.column_dimensions[column].width = width
++    sheet.freeze_panes = "B5"
++    if rows:
++        table = Table(displayName="IDMSPrograms", ref=f"A4:E{4 + len(rows)}")
++        table.tableStyleInfo = TableStyleInfo(name="TableStyleMedium2", showRowStripes=False)
++        sheet.add_table(table)
++    sheet.sheet_properties.pageSetUpPr.fitToPage = True
++    sheet.page_setup.orientation = "landscape"
++    sheet.page_setup.paperSize = sheet.PAPERSIZE_A4
++    sheet.page_setup.fitToWidth = 1
++    sheet.page_setup.fitToHeight = 0
++    sheet.print_title_rows = "1:4"
++    sheet.print_options.horizontalCentered = True
++    sheet.print_area = f"A1:E{max(4, 4 + len(rows))}"
++    return book
++
++
++def write_inventory(rows: Iterable[InventoryRow], path: Path | None = None) -> tuple[Path, int]:
++    """Upsert members into one workbook using an exclusive lock + atomic replace.
++
++    Existing unselected members and their comments remain. A corrupt/locked file
++    is an explicit error, not silently overwritten. A failed save retains the
++    previous workbook. Network fetching itself must use one writer per workspace.
++    """
++    path = Path(path) if path is not None else workspace_root() / "Review" / FETCH_INVENTORY_FILENAME
++    path.parent.mkdir(parents=True, exist_ok=True)
++    if path.is_symlink():
++        raise ValueError("Refusing an inventory symlink")
++    lock = path.with_suffix(path.suffix + ".lock")
++    try:
++        descriptor = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
++    except FileExistsError as exc:
++        raise RuntimeError(f"Inventory is being written: {lock}. Do not run parallel fetches.") from exc
++    temporary: Path | None = None
++    try:
++        os.close(descriptor)
++        records = _existing_rows(path)
++        incoming: set[str] = set()
++        for row in rows:
++            key = row.program.strip().upper()
++            if not key or key in incoming:
++                raise ValueError("Each incoming inventory member must have one unique nonempty name")
++            incoming.add(key)
++            row.program = key
++            records[key] = row
++        book = _workbook([records[key] for key in sorted(records)])
++        try:
++            with tempfile.NamedTemporaryFile(dir=path.parent, prefix=".inventory_", suffix=".xlsx", delete=False) as stream:
++                temporary = Path(stream.name)
++            book.save(temporary)
++            os.replace(temporary, path)
++        finally:
++            book.close()
++        return path, len(records)
++    finally:
++        if temporary is not None:
++            temporary.unlink(missing_ok=True)
++        lock.unlink(missing_ok=True)
++
++
++def _local_members(folder: Path) -> dict[str, Path]:
++    result: dict[str, Path] = {}
+     if not folder.is_dir():
+-        return []
+-    return sorted(p for p in folder.glob(PROGRAM_GLOB) if p.is_file())
++        return result
++    for path in sorted(folder.iterdir()):
++        if path.is_file() and path.suffix.lower() in SOURCE_EXTENSIONS | {".cpy"}:
++            key = path.stem.upper()
++            if key in result:
++                raise ValueError(f"Ambiguous local member {key} in {folder}")
++            result[key] = path
++    return result
++
++
++def build_inventory_rows(root: Path | None = None) -> list[InventoryRow]:
++    """Rebuild current local inputs without credentials or network access."""
++    root = Path(root) if root is not None else workspace_root()
++    programs = _local_members(root / "Program")
++    copies = _local_members(root / "Copybook")
++    schemas = _local_members(root / "Subschema")
++    dclgens = _local_members(root / "DCLGen")
++    rows: list[InventoryRow] = []
++    for program, path in sorted(programs.items()):
++        observations: dict[tuple[str, str], str] = {}
++
++        def read_copy(member: str) -> str | None:
++            target = copies.get(member)
++            if target is None:
++                observations[("COPYBOOK", member)] = "WARNING: not present in local Copybook folder"
++                return None
++            try:
++                text = target.read_text(encoding="utf-8")
++            except (OSError, UnicodeError):
++                observations[("COPYBOOK", member)] = "WARNING: local member is unreadable"
++                return None
++            observations[("COPYBOOK", member)] = f"Local file: {target.relative_to(root)}"
++            return text
++
++        try:
++            source = path.read_text(encoding="utf-8")
++            deps = resolve_dependencies(program, source)
++            fragments = expand_copy_dependencies(deps, read_copy)
++            schema_path = schemas.get(deps.subschema)
++            if deps.subschema:
++                observations[("SUBSCHEMA", deps.subschema)] = (
++                    f"Local file: {schema_path.relative_to(root)}" if schema_path
++                    else "WARNING: not present; LR element resolution may be incomplete"
++                )
++            members = list(deps.explicit_dclgens)
++            for record in deps.records:
++                members.extend(dclgen_members_for_record(record, schema_path))
++            deps.dclgens = sorted(set(members))
++            for member in deps.dclgens:
++                target = dclgens.get(member)
++                observations[("DCLGEN", member)] = (
++                    f"Local file: {target.relative_to(root)}" if target
++                    else "WARNING: not present in local DCLGen folder"
++                )
++            rows.append(make_inventory_row(deps, source, source_path=path.relative_to(root),
++                                           copy_sources=fragments, observations=observations))
++        except (OSError, UnicodeError, ValueError) as exc:
++            rows.append(InventoryRow(program, notes={
++                HEADERS[0]: f"WARNING: local source/dependency scan failed ({type(exc).__name__}).",
++                HEADERS[4]: "WARNING: mode not established; inspect source/dependencies.",
++            }))
++    return rows
+ 
+ 
+ def build_manifest_rows() -> list[str]:
+-    """Return one formatted manifest row per readable program source."""
+-    rows: list[str] = []
+-    for source_path in _program_sources():
+-        try:
+-            source_text = source_path.read_text(
+-                encoding=TEXT_ENCODING, errors="replace"
+-            )
+-        except OSError:
+-            continue
+-
+-        deps = resolve_dependencies(source_path.stem, source_text)
+-        rows.append(
+-            MANIFEST_ROW_TEMPLATE.format(
+-                idms=deps.program or source_path.stem.upper(),
+-                copybook=_cell(deps.copybooks),
+-                dclgen=_cell(deps.dclgens),
+-                subschema=_cell(deps.subschema),
+-                db2=_derive_db2_program_id(source_text),
+-            )
+-        )
+-    return rows
++    """Compatibility view of the inventory; no broken legacy constant imports."""
++    return [" - ".join(value.replace("\n", ", ") or "[]" for value in row.values())
++            for row in build_inventory_rows()]
+ 
+ 
+ def write_execution_manifest() -> tuple[Path | None, int]:
+-    """Write the per-execution manifest to the Review folder.
+-
+-    Returns (path, row_count). When there are no program sources nothing
+-    is written and (None, 0) is returned.
+-    """
+-    rows = build_manifest_rows()
++    """Compatibility entrypoint now maintains the same Excel inventory."""
++    rows = build_inventory_rows()
++    return write_inventory(rows) if rows else (None, 0)
++
++
++def main() -> None:
++    parser = argparse.ArgumentParser(description="Rebuild the dependency Excel inventory from local inputs; no Zowe calls.")
++    parser.add_argument("--workspace", type=Path, default=None)
++    args = parser.parse_args()
++    root = args.workspace if args.workspace is not None else workspace_root()
++    rows = build_inventory_rows(root)
+     if not rows:
+-        return None, 0
+-
+-    review_folder = review_dir()
+-    review_folder.mkdir(parents=True, exist_ok=True)
+-
+-    timestamp = datetime.now().strftime(MANIFEST_TIMESTAMP_FORMAT)
+-    manifest_path = review_folder / MANIFEST_FILE_NAME_TEMPLATE.format(
+-        timestamp=timestamp
+-    )
+-
+-    body = "\n".join([MANIFEST_HEADER, *rows])
+-    manifest_path.write_text(body + "\n", encoding=TEXT_ENCODING)
+-
+-    return manifest_path, len(rows)
+-
+-
+-__all__ = [
+-    "build_manifest_rows",
+-    "write_execution_manifest",
+-]
++        print("No local program sources; existing inventory unchanged.")
++        return
++    path, count = write_inventory(rows, root / "Review" / FETCH_INVENTORY_FILENAME)
++    print(f"Inventory: {path} ({count} programs; local availability, not live fetch verification)")
++
++
++if __name__ == "__main__":
++    main()
+--- a/mainframe/zowe_patterns.py
++++ b/mainframe/zowe_patterns.py
+@@ -157,4 +157,13 @@
+ ELEMENT_TOKEN_PATTERN = re.compile(r"[A-Z][A-Z0-9-]*", flags=re.IGNORECASE)
+ 
+ # A pure name list: names plus list separators only. Prose fails this.
+-NAME_LIST_ONLY_PATTERN = re.compile(r"^[A-Z0-9 ,\.\-]*$", flags=re.IGNORECASE)+NAME_LIST_ONLY_PATTERN = re.compile(r"^[A-Z0-9 ,\.\-]*$", flags=re.IGNORECASE)
++# Fetch inventory: quoted members and embedded SQL includes are source references.
++FETCH_COPY_PATTERN = re.compile(
++    r"^\s*COPY\s+(?!IDMS\b)[\"']?(?P<member>[A-Z0-9$#@][A-Z0-9$#@-]*)[\"']?(?=\s|\.|$)",
++    flags=re.IGNORECASE | re.MULTILINE,
++)
++FETCH_SQL_INCLUDE_PATTERN = re.compile(
++    r"\bEXEC\s+SQL\s+INCLUDE\s+[\"']?(?P<member>[A-Z0-9$#@][A-Z0-9$#@-]*)[\"']?\s+END-EXEC\b",
++    flags=re.IGNORECASE,
++)
+--- a/mainframe/zowe_pipeline_steps.py
++++ b/mainframe/zowe_pipeline_steps.py
+@@ -71,6 +71,8 @@
+             row("Fetch progress", programs.replace("Programs selected:", "Programs"))
+         if fetched:
+             row("Fetch result", fetched.replace("Zowe fetched", "Files fetched"))
++        if result.get("inventory_path"):
++            row("Program inventory", str(result["inventory_path"]))
+ 
+     warnings(result["warnings"])
+ 
+--- a/mainframe/zowe_resolver.py
++++ b/mainframe/zowe_resolver.py
+@@ -20,13 +20,18 @@
+ from __future__ import annotations
+ 
+ from dataclasses import dataclass, field
++from collections.abc import Callable
++from pathlib import Path
++import re
+ 
+ from mainframe.zowe_patterns import (
+     COPY_IDMS_RECORD_PATTERN,
++    COPY_IDMS_LR_PATTERN,
++    FETCH_COPY_PATTERN,
++    FETCH_SQL_INCLUDE_PATTERN,
+     DB_WITHIN_PATTERN,
+     FIXED_SEQUENCE_PATTERN,
+     IDMS_VERB_RECORD_PATTERN,
+-    PLAIN_COPY_PATTERN,
+     RECORD_VERSION_SUFFIX_PATTERN,
+ )
+ from mainframe.zowe_rules import (
+@@ -50,32 +55,92 @@
+ 
+ 
+ def logical_body(line: str) -> str:
+-    """The COBOL body of one physical line, or '' for a comment.
+-
+-    Tolerates free-format source: a line with no 6-digit sequence area
+-    is returned as-is.
++    """Remove fixed sequence/indicator areas and non-executable comments.
++
++    Numeric or blank sequence areas are supported. Unframed free-format lines
++    retain all columns. Debug indicator D is not active source for this report.
+     """
+-    text = str(line or "").rstrip("\n").rstrip()
+-    if not text:
++    text = str(line or "").rstrip("\r\n")
++    if not text.strip():
+         return ""
+-
+-    if not FIXED_SEQUENCE_PATTERN.match(text):
+-        stripped = text.lstrip()
+-        if stripped[:1] in COMMENT_INDICATORS:
++    fixed = bool(FIXED_SEQUENCE_PATTERN.match(text))
++    blank_sequence = (len(text) >= 7 and text[:6] == " " * 6
++                      and text[6] in " */-Dd"
++                      and (len(text) <= 72 or text[72:80].isdigit()
++                           or not text[72:].strip()))
++    if fixed or blank_sequence:
++        indicator = text[INDICATOR_COLUMN] if len(text) > INDICATOR_COLUMN else " "
++        if indicator in (*COMMENT_INDICATORS, "D", "d"):
+             return ""
+-        return text
+-
+-    indicator = text[INDICATOR_COLUMN] if len(text) > INDICATOR_COLUMN else " "
+-    if indicator in COMMENT_INDICATORS:
++        return text[BODY_START_COLUMN:BODY_END_COLUMN].rstrip()
++    if text.lstrip().startswith(("*", "/")):
+         return ""
+-
+-    return text[BODY_START_COLUMN:BODY_END_COLUMN].rstrip()
++    return text.rstrip()
+ 
+ 
+ def logical_text(source_text: str) -> str:
+-    """Whole member reduced to executable COBOL bodies."""
+-    bodies = [logical_body(line) for line in str(source_text or "").splitlines()]
+-    return "\n".join(body for body in bodies if body)
++    """Executable source bodies with inline comments removed, literals intact."""
++    out: list[str] = []
++    quote = ""
++    identification = False
++    for raw in str(source_text or "").splitlines():
++        body = logical_body(raw)
++        # AUTHOR and other Identification Division comment-entries may contain
++        # unmatched apostrophes (for example a surname). They are not literals.
++        if re.match(r"\s*(?:IDENTIFICATION|ID)\s+DIVISION\b", body, re.I):
++            identification = True
++        elif re.match(r"\s*(?:ENVIRONMENT|DATA|PROCEDURE)\s+DIVISION\b", body, re.I):
++            identification = False
++            quote = ""
++        if identification:
++            out.append("")
++            continue
++        if quote and len(raw) > 6 and raw[6] == "-":
++            # The leading quote on a fixed-format literal continuation resumes
++            # the existing literal; it does not terminate it.
++            leading = len(body) - len(body.lstrip())
++            if body[leading:leading + 1] == quote:
++                body = body[:leading] + " " + body[leading + 1:]
++        i = 0
++        while i < len(body):
++            char = body[i]
++            if quote:
++                if char == quote:
++                    if i + 1 < len(body) and body[i + 1] == quote:
++                        i += 2
++                        continue
++                    quote = ""
++            elif char in "\"'":
++                quote = char
++            elif body[i:i + 2] == "*>":
++                body = body[:i]
++                break
++            i += 1
++        out.append(body)
++    return "\n".join(out)
++
++
++def mask_literals(text: str) -> str:
++    """Mask quoted contents without moving line/character offsets."""
++    chars = list(text)
++    quote = ""
++    i = 0
++    while i < len(chars):
++        char = text[i]
++        if quote:
++            if char != "\n":
++                chars[i] = " "
++            if char == quote:
++                if i + 1 < len(chars) and text[i + 1] == quote:
++                    chars[i + 1] = " "
++                    i += 2
++                    continue
++                quote = ""
++        elif char in "\"'":
++            quote = char
++            chars[i] = " "
++        i += 1
++    return "".join(chars)
+ 
+ 
+ def base_record_name(record: str) -> str:
+@@ -103,6 +168,7 @@
+     records: list[str] = field(default_factory=list)
+     dclgens: list[str] = field(default_factory=list)
+     subschema: str = ""
++    explicit_dclgens: list[str] = field(default_factory=list)
+ 
+ 
+ def _unique(values) -> list[str]:
+@@ -115,15 +181,27 @@
+ 
+ 
+ def resolve_dependencies(program: str, source_text: str) -> ProgramDependencies:
+-    text = logical_text(source_text)
+-
++    original = logical_text(source_text)
++    text = mask_literals(original)
++
++    # Quoted member names are allowed, but COPY text inside a literal is not.
+     copybooks = _unique(
+-        match.group("member") for match in PLAIN_COPY_PATTERN.finditer(text)
++        match.group("member") for match in FETCH_COPY_PATTERN.finditer(original)
++        if text[match.start():match.end()].lstrip().upper().startswith("COPY")
++    )
++    explicit = _unique(
++        match.group("member") for match in FETCH_SQL_INCLUDE_PATTERN.finditer(original)
++        if text[match.start():match.end()].lstrip().upper().startswith("EXEC")
++        and match.group("member").upper() not in {"SQLCA", "SQLDA", "SQLERRWS", "SQLERROR"}
+     )
+ 
+     records = _unique(
+         match.group("record") for match in COPY_IDMS_RECORD_PATTERN.finditer(text)
+     )
++    for match in COPY_IDMS_LR_PATTERN.finditer(text):
++        name = match.group("lr").strip().upper()
++        if name not in records:
++            records.append(name)
+     for match in IDMS_VERB_RECORD_PATTERN.finditer(text):
+         name = match.group("record").strip().upper()
+         if name and name not in _NOT_A_RECORD and name not in records:
+@@ -134,7 +212,7 @@
+     if match:
+         subschema = match.group("subschema").strip().upper()
+ 
+-    dclgens = _unique(dclgen_member_for(record) for record in records)
++    dclgens = _unique([*(dclgen_member_for(record) for record in records), *explicit])
+ 
+     return ProgramDependencies(
+         program=str(program or "").strip().upper(),
+@@ -142,4 +220,47 @@
+         records=records,
+         dclgens=dclgens,
+         subschema=subschema,
+-    )+        explicit_dclgens=explicit,
++    )
++
++
++def expand_copy_dependencies(
++    deps: ProgramDependencies, load: Callable[[str], str | None],
++) -> list[tuple[str, str]]:
++    """Expand ordinary COPY references once per member, including cycles.
++
++    The loader owns transport and diagnostics. None means unavailable; the
++    dependency stays in the inventory. COPY REPLACING does not remove a
++    member dependency, but this scan does not claim full preprocessor expansion.
++    """
++    fragments: list[tuple[str, str]] = []
++    visited: set[str] = set()
++    index = 0
++    while index < len(deps.copybooks):
++        member = deps.copybooks[index]
++        index += 1
++        if member in visited:
++            continue
++        visited.add(member)
++        if len(visited) > 10000:
++            raise ValueError("COPY dependency closure exceeds 10000 members")
++        source = load(member)
++        if source is None:
++            continue
++        fragments.append((member, source))
++        child = resolve_dependencies(member, source)
++        deps.copybooks = _unique([*deps.copybooks, *child.copybooks])
++        deps.records = _unique([*deps.records, *child.records])
++        deps.explicit_dclgens = _unique([*deps.explicit_dclgens, *child.explicit_dclgens])
++        if child.subschema:
++            if deps.subschema and deps.subschema != child.subschema:
++                raise ValueError("Conflicting subschemas in program/COPY dependency closure")
++            deps.subschema = child.subschema
++    return fragments
++
++
++def dclgen_members_for_record(record: str, subschema_path: Path | None) -> list[str]:
++    """Same LR element resolution for live fetch and offline inventories."""
++    from mainframe.zowe_subschema import element_records_for
++    elements = element_records_for(subschema_path, record) if subschema_path else []
++    return _unique(dclgen_member_for(element) for element in (elements or [record]))
+--- a/mainframe/zowe_rules_pipeline.py
++++ b/mainframe/zowe_rules_pipeline.py
+@@ -78,4 +78,7 @@
+     "No mapping sheet found in {folder}. Place the Excel or CSV file there "
+     "before running convert."
+ )
+-RUNNER_MISSING_TEMPLATE = "Runner not found: {path}"+RUNNER_MISSING_TEMPLATE = "Runner not found: {path}"
++
++# Fetch inventory is an input register, not a generated conversion review.
++FETCH_INVENTORY_FILENAME = "IDMS_Program_Inventory.xlsx"
+--- a/mainframe/zowe_workspace.py
++++ b/mainframe/zowe_workspace.py
+@@ -13,6 +13,7 @@
+ 
+ from mainframe.zowe_env import raw_setting
+ from mainframe.zowe_rules import (
++    FETCH_INVENTORY_FILENAME,
+     WORKSPACE_DIR_NAME,
+     WORKSPACE_ROOT_KEY,
+     WORKSPACE_SUBFOLDERS,
+@@ -59,6 +60,11 @@
+     return workspace_root() / "Review"
+ 
+ 
++def inventory_path() -> Path:
++    """Stable program/dependency inventory, retained across conversion cleanup."""
++    return review_dir() / FETCH_INVENTORY_FILENAME
++
++
+ def logs_dir() -> Path:
+     return workspace_root() / "Logs"
+ 
+@@ -79,11 +85,29 @@
+ 
+ 
+ def clean_generated() -> list[Path]:
+-    """Remove Output and Review. Never touches inputs."""
++    """Remove generated outputs/reviews, retaining only the fetch inventory.
++
++    The inventory describes input dependencies and must survive fetch -> convert.
++    Everything else in Review is removed, including stale release approvals.
++    Symlinks are unlinked, never followed or retained as the inventory.
++    """
+     removed: list[Path] = []
+     for folder in (output_dir(), review_dir()):
+-        if folder.exists():
+-            shutil.rmtree(folder)
++        if folder.is_symlink():
++            folder.unlink()
++            removed.append(folder)
++        elif folder.exists():
++            if folder == review_dir():
++                for child in folder.iterdir():
++                    if (child.name == FETCH_INVENTORY_FILENAME
++                            and child.is_file() and not child.is_symlink()):
++                        continue
++                    if child.is_dir() and not child.is_symlink():
++                        shutil.rmtree(child)
++                    else:
++                        child.unlink()
++            else:
++                shutil.rmtree(folder)
+             removed.append(folder)
+         folder.mkdir(parents=True, exist_ok=True)
+     return removed
+--- /dev/null
++++ b/tests/test_zowe_fetch_inventory.py
+@@ -0,0 +1,311 @@
++"""Generic fetch inventory tests: no mainframe credentials or network required."""
++from pathlib import Path
++from unittest.mock import Mock
++
++import pytest
++from openpyxl import load_workbook
++
++from mainframe.zowe_fetcher import ZoweFetcher
++from mainframe.zowe_manifest import (
++    HEADERS, InventoryRow, build_inventory_rows, classify_mode, write_inventory,
++    build_manifest_rows, write_execution_manifest,
++)
++from mainframe.zowe_resolver import resolve_dependencies
++from mainframe.zowe_workspace import clean_generated, ensure_workspace, inventory_path
++from mainframe.zowe_rules import ARTIFACT_EXTENSIONS, FETCH_INVENTORY_FILENAME
++
++
++def fixed(body, indicator=" ", number=100):
++    return f"{number:06d}{indicator}{body:<65}{number:08d}"
++
++
++def read_rows(path):
++    book = load_workbook(path)
++    try:
++        return {r[0].value: [c.value for c in r] for r in book.active.iter_rows(min_row=5, max_col=5)
++                if r[0].value}
++    finally:
++        book.close()
++
++
++@pytest.fixture
++def workspace(tmp_path, monkeypatch):
++    monkeypatch.setenv("ZOWE_WORKSPACE_ROOT", str(tmp_path))
++    ensure_workspace()
++    return tmp_path
++
++
++@pytest.fixture
++def fake_libraries(monkeypatch):
++    registry = {}
++    calls = []
++
++    class Library:
++        def __init__(self, artifact):
++            self.artifact = artifact
++            self.label = artifact
++            self.libraries = [f"TEST.{artifact}"]
++
++        def download(self, member):
++            calls.append((self.artifact, member))
++            content = registry.get((self.artifact, member))
++            return (self.libraries[0], content.encode()) if content is not None else ("", b"")
++
++    monkeypatch.setattr("mainframe.zowe_fetcher.LibrarySearch", Library)
++    monkeypatch.setattr("mainframe.zowe_fetcher.application_code", lambda: "ZZ")
++    return registry, calls
++
++
++@pytest.mark.parametrize("source,expected", [
++    ("READY AREA-A USAGE-MODE IS RETRIEVAL.\nWRITE FILE-ROW.", "Retrieval"),
++    ("READY USAGE-MODE IS UPDATE.", "Update"),
++    ("IF FLAG = 1 THEN MODIFY ABCD ELSE CONTINUE END-IF.", "Update"),
++    ("STORE ABCD WHERE INSERT-ROW.", "Update"),
++    ("ERASE ABCD.", "Update"),
++    ("CONNECT ABCD TO SOME-SET.", "Update"),
++    ("DISCONNECT ABCD FROM SOME-SET.", "Update"),
++    ("OBTAIN NEXT ABCD.\nWRITE OUTPUT-RECORD.", "Retrieval"),
++    ("EXEC SQL UPDATE TAB SET COL=1 END-EXEC.", "Update"),
++    ("EXEC SQL SELECT COL INTO :HV FROM TAB END-EXEC.", "Retrieval"),
++    ("* STORE ABCD.\nOBTAIN FIRST ABCD.", "Retrieval"),
++    (fixed("MODIFY ABCD.", "*") + "\n" + fixed("OBTAIN NEXT ABCD."), "Retrieval"),
++    (fixed("STORE ABCD.", "/") + "\n" + fixed("OBTAIN NEXT ABCD."), "Retrieval"),
++    ("DISPLAY 'MODIFY ABCD'.\nOBTAIN NEXT ABCD. *> STORE ABCD.", "Retrieval"),
++    ("DISPLAY \"STORE ABCD\".\nOBTAIN NEXT ABCD.", "Retrieval"),
++    ("DISPLAY 'DON''T MODIFY ABCD'.\nOBTAIN NEXT ABCD.", "Retrieval"),
++    ("MOVE 'USAGE-MODE IS UPDATE' TO MSG.\nOBTAIN NEXT ABCD.", "Retrieval"),
++    ("INITIALIZE RECORD-A REPLACING ALPHANUMERIC BY SPACES.\nOBTAIN NEXT ABCD.", "Retrieval"),
++    ("COPY CP1 REPLACING ==:TAG:== BY ==NEW==.\nOBTAIN NEXT ABCD.", "Retrieval"),
++    ("COPY CP1 REPLACING ==OBTAIN== BY ==MODIFY==.\nOBTAIN NEXT ABCD.", "Unknown"),
++    ("", "Unknown"),
++    ("WRITE RECORD-A.", "Unknown"),
++    ("IDENTIFICATION DIVISION.\nAUTHOR. D'ANGELO.\nPROCEDURE DIVISION.\nMODIFY ABCD.", "Update"),
++])
++def test_mode(source, expected):
++    assert classify_mode([("ANYNAME", source)])[0] == expected
++
++
++def test_missing_copy_never_certifies_retrieval():
++    assert classify_mode([("P", "OBTAIN NEXT ABCD.")], complete=False)[0] == "Unknown"
++    assert classify_mode([("P", "MODIFY ABCD.")], complete=False)[0] == "Update"
++
++
++def test_literal_and_comment_dependency_noise():
++    source = '\n'.join([
++        fixed("COPY OMIT.", "*"), fixed("COPY PAGE.", "/"),
++        fixed('    DISPLAY "OBTAIN FAKE COPY BAD DB BAD WITHIN BAD".'),
++        fixed("    COPY 'ACTUAL'. *> COPY NOPE."),
++        fixed("    COPY IDMS LR TESTLR."),
++        fixed("    EXEC SQL INCLUDE EXPLICIT END-EXEC."),
++        fixed("    EXEC SQL INCLUDE SQLCA END-EXEC."),
++        fixed("DB TESTSUB WITHIN SCHEMA1."),
++    ])
++    deps = resolve_dependencies("P1", source)
++    assert deps.copybooks == ["ACTUAL"]
++    assert deps.records == ["TESTLR"]
++    assert deps.explicit_dclgens == ["EXPLICIT"]
++    assert deps.subschema == "TESTSUB"
++
++
++def test_numbered_and_unsequenced_fixed_comments():
++    deps = resolve_dependencies("X", "      *COPY BAD.\n       COPY GOOD.\n      /COPY BAD2.")
++    assert deps.copybooks == ["GOOD"]
++
++
++def test_writer_one_sheet_idempotent_upsert(workspace):
++    first = InventoryRow("P1", ["C2", "C1", "C1"], ["DG1"], "SUB1", "Retrieval",
++                         {HEADERS[0]: "source retained"})
++    path, count = write_inventory([first, InventoryRow("P2", mode="Update")])
++    assert count == 2
++    write_inventory([InventoryRow("p2", ["C3"], mode="Update")])
++    write_inventory([InventoryRow("p2", ["C3"], mode="Update")])
++    assert read_rows(path) == {"P1": ["P1", "C1\nC2", "DG1", "SUB1", "Retrieval"],
++                               "P2": ["P2", "C3", None, None, "Update"]}
++    book = load_workbook(path)
++    assert book.sheetnames == ["Program Inventory"]
++    assert tuple(c.value for c in book.active[4]) == HEADERS
++    assert book.active["A5"].comment.text == "source retained"
++    assert book.active.freeze_panes == "B5"
++    assert not book.active.auto_filter.ref  # Table owns the filter.
++    book.close()
++
++
++def test_failure_does_not_overwrite_previous_file(workspace, monkeypatch):
++    path, _ = write_inventory([InventoryRow("P1")])
++    before = path.read_bytes()
++    monkeypatch.setattr("mainframe.zowe_manifest.os.replace", Mock(side_effect=PermissionError("locked")))
++    with pytest.raises(PermissionError):
++        write_inventory([InventoryRow("P2")])
++    assert path.read_bytes() == before
++    assert not list(path.parent.glob(".inventory_*.xlsx"))
++    assert not path.with_suffix(".xlsx.lock").exists()
++
++
++def test_corrupt_inventory_is_not_silently_replaced(workspace):
++    path = inventory_path()
++    path.write_bytes(b"not an Excel file")
++    with pytest.raises(ValueError, match="original file retained"):
++        write_inventory([InventoryRow("P1")])
++    assert path.read_bytes() == b"not an Excel file"
++
++
++def test_concurrent_writer_refused(workspace):
++    inventory_path().with_suffix(".xlsx.lock").touch()
++    with pytest.raises(RuntimeError, match="parallel"):
++        write_inventory([InventoryRow("P1")])
++
++
++def test_duplicate_rows_rejected(workspace):
++    with pytest.raises(ValueError, match="unique"):
++        write_inventory([InventoryRow("P1"), InventoryRow("p1")])
++
++
++def test_excel_formula_text_is_not_executed(workspace):
++    path, _ = write_inventory([InventoryRow("=EVIL", ["=1+1"])])
++    book = load_workbook(path)
++    assert book.active["A5"].data_type == "s"
++    assert book.active["B5"].data_type == "s"
++    book.close()
++
++
++def test_cleanup_preserves_only_inventory_and_inputs(workspace):
++    path, _ = write_inventory([InventoryRow("P1")])
++    before = path.read_bytes()
++    for name in ("Output/stale.cbl", "Review/approved.txt", "Program/original.cbl"):
++        (workspace / name).write_text("unchanged")
++    (workspace / "Review/old").mkdir()
++    (workspace / "Review/old/report.txt").touch()
++    clean_generated()
++    assert path.read_bytes() == before
++    assert list((workspace / "Output").iterdir()) == []
++    assert list((workspace / "Review").iterdir()) == [path]
++    assert (workspace / "Program/original.cbl").read_text() == "unchanged"
++
++
++def test_fetch_uses_lr_elements_and_records_missing_members(workspace, fake_libraries):
++    registry, calls = fake_libraries
++    registry.update({
++        ("PROGRAM", "APP0001"): "COPY CP1.\nDB SUB1 WITHIN SCHEMA1.\nOBTAIN NEXT LOGREC.\nREADY USAGE-MODE IS RETRIEVAL.",
++        ("COPYBOOK", "CP1"): "COPY CP2.",
++        ("COPYBOOK", "CP2"): "COPY CP1.\n01 FIELD-A PIC X.",
++        ("SUBSCHEMA", "SUB1"): "ADD LOGICAL RECORD LOGREC\nELEMENTS ARE XXABCD XXEFGH\n.",
++        ("DCLGEN", "DZABCDTV"): "01 DCL-A PIC X.",
++    })
++    result = ZoweFetcher(["APP0001"]).fetch_all()
++    assert result["inventory_programs"] == 1
++    assert read_rows(result["inventory_path"])["APP0001"] == [
++        "APP0001", "CP1\nCP2", "DZABCDTV\nDZEFGHTV", "SUB1", "Retrieval"]
++    assert calls.count(("COPYBOOK", "CP1")) == 1  # Cycle terminates.
++    assert ("DCLGEN", "DZGRECTV") not in calls  # Not a logical-record name guess.
++    book = load_workbook(result["inventory_path"])
++    assert "WARNING:" in book.active["C5"].comment.text
++    assert "DZEFGHTV" in book.active["C5"].comment.text
++    book.close()
++
++
++def test_missing_copy_and_stale_disk_file_are_not_success(workspace, fake_libraries):
++    registry, _ = fake_libraries
++    registry[("PROGRAM", "P1")] = "COPY MISSING.\nOBTAIN FIRST XXABCD."
++    (workspace / "Copybook/MISSING.cpy").write_text("MODIFY XXABCD.")
++    result = ZoweFetcher(["P1"]).fetch_all()
++    assert read_rows(result["inventory_path"])["P1"][4] == "Unknown"
++    book = load_workbook(result["inventory_path"])
++    assert "WARNING:" in book.active["B5"].comment.text
++    book.close()
++
++
++def test_failed_program_and_unattempted_selected_rows_replace_stale_success(workspace, fake_libraries):
++    registry, _ = fake_libraries
++    write_inventory([InventoryRow("P2", mode="Retrieval"), InventoryRow("P3", mode="Retrieval"),
++                     InventoryRow("OLD", mode="Update")])
++    registry[("PROGRAM", "P1")] = "OBTAIN NEXT XXABCD."
++    with pytest.raises(ValueError):
++        ZoweFetcher(["P1", "P2", "P3"]).fetch_all()
++    rows = read_rows(inventory_path())
++    assert rows["P1"][4] == "Retrieval"
++    assert rows["P2"][4] == rows["P3"][4] == "Unknown"
++    assert rows["OLD"][4] == "Update"
++
++
++def test_write_inside_copy_is_update(workspace, fake_libraries):
++    registry, _ = fake_libraries
++    registry[("PROGRAM", "P1")] = "COPY CP1.\nREADY USAGE-MODE IS RETRIEVAL."
++    registry[("COPYBOOK", "CP1")] = "MODIFY XXABCD."
++    result = ZoweFetcher(["P1"]).fetch_all()
++    assert read_rows(result["inventory_path"])["P1"][4] == "Update"
++
++
++def test_partial_fetch_keeps_other_rows_and_deduplicates_selection(workspace, fake_libraries):
++    registry, _ = fake_libraries
++    registry[("PROGRAM", "P1")] = "OBTAIN NEXT XXABCD."
++    registry[("PROGRAM", "P2")] = "MODIFY XXABCD."
++    ZoweFetcher(["P1"]).fetch_all()
++    ZoweFetcher(["p2", "P2"]).fetch_all()
++    assert set(read_rows(inventory_path())) == {"P1", "P2"}
++
++
++def test_75_programs_one_inventory_shared_downloads_once(workspace, fake_libraries):
++    registry, calls = fake_libraries
++    members = [f"ZZ{i:06d}" for i in range(75)]
++    for member in members:
++        registry[("PROGRAM", member)] = "COPY COMMON.\nDB SUB1 WITHIN SCHEMA1.\nOBTAIN NEXT XXABCD."
++    registry[("COPYBOOK", "COMMON")] = "01 FIELD-A PIC X."
++    registry[("SUBSCHEMA", "SUB1")] = "NO LOGICAL RECORDS"
++    registry[("DCLGEN", "DZABCDTV")] = "01 DCL-A PIC X."
++    result = ZoweFetcher(members).fetch_all()
++    assert result["inventory_programs"] == 75
++    assert len(read_rows(inventory_path())) == 75
++    assert calls.count(("COPYBOOK", "COMMON")) == 1
++    assert calls.count(("DCLGEN", "DZABCDTV")) == 1
++    assert len(list((workspace / "Review").glob("*.xlsx"))) == 1
++
++
++def test_six_source_assets_offline_match_fetch_resolution(workspace, fake_libraries):
++    source_root = Path(__file__).resolve().parents[1] / "mainframe/workspace"
++    registry, _ = fake_libraries
++    for folder, artifact in (("Program", "PROGRAM"), ("Copybook", "COPYBOOK"),
++                             ("Subschema", "SUBSCHEMA"), ("DCLGen", "DCLGEN")):
++        for path in (source_root / folder).iterdir():
++            if path.is_file():
++                registry[(artifact, path.stem.upper())] = path.read_text(encoding="utf-8")
++    members = sorted(key[1] for key in registry if key[0] == "PROGRAM")
++    result = ZoweFetcher(members).fetch_all()
++    live_rows = read_rows(result["inventory_path"])
++    local = build_inventory_rows(workspace)
++    assert len(local) == len(live_rows) == 6
++    assert {r.program: list(r.values()) for r in local} == live_rows
++    assert sum(r.mode == "Update" for r in local) == 2
++    assert sum(r.mode == "Retrieval" for r in local) == 4
++    assert len(build_manifest_rows()) == 6
++    assert write_execution_manifest()[1] == 6
++
++
++def test_fetch_to_convert_workbook_survives(workspace, fake_libraries, monkeypatch):
++    from mainframe.zowe_pipeline_steps import step_fetch, step_convert
++    registry, _ = fake_libraries
++    registry[("PROGRAM", "P1")] = "OBTAIN NEXT XXABCD."
++    monkeypatch.setattr("mainframe.zowe_programs.selected_programs", lambda: ["P1"])
++    assert step_fetch(quiet=True).status == "OK"
++    saved = inventory_path().read_bytes()
++    (workspace / "Mapping Sheet/mapping.csv").write_text("A,B\n")
++    monkeypatch.setattr("mainframe.zowe_pipeline_steps.run_convert", lambda: (0, 0.1))
++    assert step_convert(quiet=True).status == "OK"
++    assert inventory_path().read_bytes() == saved
++
++
++def test_empty_program_list_is_not_default_selection(workspace):
++    with pytest.raises(ValueError, match="No programs"):
++        ZoweFetcher([])
++
++
++
++def test_continued_literal_is_not_dependency_or_mode_evidence():
++    source = "\n".join([
++        fixed("    DISPLAY 'NOT A STATEMENT "),
++        fixed("    'MODIFY FAKE COPY NOPE.'", "-"),
++        fixed("    OBTAIN NEXT REALREC."),
++    ])
++    assert classify_mode([("ANY", source)])[0] == "Retrieval"
++    deps = resolve_dependencies("ANY", source)
++    assert deps.copybooks == []
++    assert deps.records == ["REALREC"]

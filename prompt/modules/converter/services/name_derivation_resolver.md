@@ -21,7 +21,7 @@ from rules.name_derivation_rules import NAME_DERIVATION_TARGET_MARKER, VM_BD_NAM
 
 - [rules/name_derivation_rules.py](../../rules/name_derivation_rules.md)
 
-## Importers (17)
+## Importers (16)
 
 Static imports only; dependency injection, string imports and runtime dispatch can add edges.
 
@@ -33,12 +33,12 @@ Static imports only; dependency injection, string imports and runtime dispatch c
 - [converter/services/program_name_sync_service.py](program_name_sync_service.md)
 - [converter/ui/conversion_actions.py](../ui/conversion_actions.md)
 - [mainframe/verification/copybook_provenance.py](../../mainframe/verification/copybook_provenance.md)
-- [mainframe/zowe_manifest.py](../../mainframe/zowe_manifest.md)
 - [mainframe/zowe_semantic_release_gate.py](../../mainframe/zowe_semantic_release_gate.md)
 - [review/runner/workspace_inputs.py](../../review/runner/workspace_inputs.md)
 - [runners/batch/update_postprocess_pipeline.py](../../runners/batch/update_postprocess_pipeline.md)
+- [runners/batch_program_runner.py](../../runners/batch_program_runner.md)
 - [tests/test_name_derivation.py](../../tests/test_name_derivation.md)
-- 4 further importers are recorded in [the source manifest](../../../source_manifest.json).
+- 3 further importers are recorded in [the source manifest](../../../source_manifest.json).
 
 ## Symbol contracts and control points
 

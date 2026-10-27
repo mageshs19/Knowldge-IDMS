@@ -2,7 +2,7 @@
 
 Source: [mainframe/zowe_libraries.py](../../../mainframe/zowe_libraries.py) | 121 lines.
 Owning logic guide: [prompt/02_MAINFRAME_PIPELINE.md](../../02_MAINFRAME_PIPELINE.md).
-Source SHA-256: `ca724ff50737d49664f4253cd605269f5dc05b0228a9f7325eaedfb3093154e7`.
+Source SHA-256: `26601f4b86a1d7cef1aa0d0e75eb5264510afbe09b6bcf1b44431577d3af44f5`.
 
 Generated source map. Read this file to locate the relevant symbols, then inspect the touched source before changing behavior. Lexical calls/branches are not a proof of runtime wiring or semantic equivalence.
 
@@ -14,7 +14,7 @@ Source-declared description (not an independently verified runtime claim):
 
 ## Module-level bindings
 
-`logger` (L29), `__all__` (L31)
+`logger` (L30), `__all__` (L32)
 
 ## Import declarations
 
@@ -25,6 +25,7 @@ from dataclasses import dataclass, field
 import requests
 from mainframe.zowe_client import ZoweClient
 from mainframe.zowe_rules import ARTIFACT_LABELS
+from mainframe.zowe_search_history import SearchAttempt, http_attempt, exception_attempt
 from mainframe.zowe_settings import ZoweConnection, application_code, artifact_connection, expand, require_libraries
 ```
 
@@ -32,19 +33,21 @@ from mainframe.zowe_settings import ZoweConnection, application_code, artifact_c
 
 - [mainframe/zowe_client.py](zowe_client.md)
 - [mainframe/zowe_rules.py](zowe_rules.md)
+- [mainframe/zowe_search_history.py](zowe_search_history.md)
 - [mainframe/zowe_settings.py](zowe_settings.md)
 
-## Importers (3)
+## Importers (4)
 
 Static imports only; dependency injection, string imports and runtime dispatch can add edges.
 
 - [mainframe/__init__.py](__init__.md)
 - [mainframe/zowe_commands.py](zowe_commands.md)
 - [mainframe/zowe_fetcher.py](zowe_fetcher.md)
+- [tests/test_zowe_reports_history.py](../tests/test_zowe_reports_history.md)
 
 ## Symbol contracts and control points
 
-### `libraries_for` - L39-L40
+### `libraries_for` - L40-L41
 
 ```python
 libraries_for(artifact: str) -> list[str]
@@ -52,7 +55,7 @@ libraries_for(artifact: str) -> list[str]
 
 Observed calls (lexical order): `list`, `require_libraries`.
 
-### `LibrarySearch` - L44-L121
+### `LibrarySearch` - L45-L121
 
 ```python
 class LibrarySearch()
@@ -68,9 +71,10 @@ label: str = ''
 libraries: list[str] = field(default_factory=list)
 _client: ZoweClient | None = None
 attempts: dict[str, dict[str, int]] = field(default_factory=dict)
+search_history: dict[str, list[SearchAttempt]] = field(default_factory=dict)
 ```
 
-### `LibrarySearch.__post_init__` - L54-L57
+### `LibrarySearch.__post_init__` - L56-L59
 
 ```python
 __post_init__(self) -> None
@@ -80,9 +84,9 @@ Observed calls (lexical order): `libraries_for`.
 
 Control points:
 
-- L56: `if not self.libraries`
+- L58: `if not self.libraries`
 
-### `LibrarySearch.client` - L60-L64
+### `LibrarySearch.client` - L62-L66
 
 ```python
 client(self) -> ZoweClient
@@ -92,9 +96,29 @@ Observed calls (lexical order): `artifact_connection`, `ZoweClient`.
 
 Control points:
 
-- L61: `if self._client is None`
+- L63: `if self._client is None`
 
-### `LibrarySearch.locate` - L66-L86
+### `LibrarySearch._lookup` - L68-L100
+
+```python
+_lookup(self, member: str, *, probe: bool=False) -> tuple[str, bytes]
+```
+
+Keep every tried library, even when a later library succeeds.
+
+Observed calls (lexical order): `str`, `str(member or '').strip`, `str(member or '').strip().upper`, `self.client.member_exists`, `self.client.fetch_member`, `exception_attempt`, `trace.append`, `logger.warning`, `type`, `isinstance`, `http_attempt`.
+
+Control points:
+
+- L75: `if not wanted`
+- L81: `for dataset in self.libraries`
+- L83: `if probe`
+- L93: `if isinstance(exc, (requests.RequestException, ValueError))`
+- L98: `if found`
+
+Explicit raises: `re-raise`.
+
+### `LibrarySearch.locate` - L102-L104
 
 ```python
 locate(self, member: str) -> str
@@ -102,29 +126,17 @@ locate(self, member: str) -> str
 
 First library holding the member, or an empty string.
 
-Observed calls (lexical order): `str`, `str(member or '').strip`, `str(member or '').strip().upper`, `self.client.member_exists`, `logger.warning`.
+Observed calls (lexical order): `self._lookup`.
 
-Control points:
-
-- L69: `if not wanted`
-- L73: `for dataset in self.libraries`
-- L82: `if found`
-
-### `LibrarySearch.download` - L88-L108
+### `LibrarySearch.download` - L106-L108
 
 ```python
 download(self, member: str) -> tuple[str, bytes]
 ```
 
-(dataset, content). Dataset is empty when not found anywhere.
+(dataset, content); complete attempt evidence is in search_history.
 
-Observed calls (lexical order): `str`, `str(member or '').strip`, `str(member or '').strip().upper`, `self.client.fetch_member`, `logger.warning`.
-
-Control points:
-
-- L91: `if not wanted`
-- L95: `for dataset in self.libraries`
-- L104: `if status == 200`
+Observed calls (lexical order): `self._lookup`.
 
 ### `LibrarySearch.why_not_found` - L110-L117
 
@@ -132,7 +144,7 @@ Control points:
 why_not_found(self, member: str) -> str
 ```
 
-Per-library HTTP status for the last failed lookup.
+Per-library HTTP status for the most recent lookup.
 
 Observed calls (lexical order): `self.attempts.get`, `str`, `str(member or '').strip`, `str(member or '').strip().upper`, `', '.join`, `statuses.items`.
 

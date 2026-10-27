@@ -22,13 +22,14 @@ Source-declared description (not an independently verified runtime claim):
 from __future__ import annotations
 ```
 
-## Importers (3)
+## Importers (4)
 
 Static imports only; dependency injection, string imports and runtime dispatch can add edges.
 
 - [converter/composers/update_sql_cleanup/obtain_calc_remover.py](../converter/composers/update_sql_cleanup/obtain_calc_remover.md)
 - [converter/pipeline/conversion/conversion_pipeline_steps.py](../converter/pipeline/conversion/conversion_pipeline_steps.md)
 - [converter/resolvers/program_kind_resolver.py](../converter/resolvers/program_kind_resolver.md)
+- [mainframe/zowe_manifest.py](../mainframe/zowe_manifest.md)
 
 ## Change responsibility
 

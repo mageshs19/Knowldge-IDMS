@@ -69,3 +69,40 @@ restart/error-path runs remain required for release.
 - [Archive predicate model](modules/mainframe/verification/archive_date_predicate.md)
 - [Review engine](modules/review/engine/reviewer.md)
 - [Current evidence](13_CURRENT_BASELINE_AND_OPEN_ISSUES.md)
+
+
+## Fetch inventory regression coverage (V126)
+
+Run `python -m pytest -p no:cacheprovider -o addopts= -q
+ tests/test_zowe_fetch_inventory.py tests/test_dzecabtv_fix.py` on one command line.
+The inventory tests mock every library download and use isolated workspaces.
+They cover six real source inputs, a synthetic 75-member population, upserts,
+partial failure, actual LR-element dependencies, source-mode evidence, lexical
+noise, persistence through conversion cleanup and atomic report publication.
+The included workbook is a local-input snapshot, not evidence of live fetching.
+
+The uploaded archive lacks three historical fixtures required by other tests:
+`_expanded/VMDZ4310_expanded.cbl`, `_expanded/VMDZ1526_expanded.cbl`, and
+`_baseline/VMDZ7200.cbl`. The same three tests fail on the untouched upload and
+this feature branch; their assertions have not been weakened or fixtures invented.
+See the iteration evidence in `prompt/temp/V126/` for exact commands/results.
+
+## Offline fetch-report logic checks (V127)
+
+`tests/test_zowe_reports_history.py` explicitly prohibits fetch entrypoints,
+member lookup/download methods and network requests. It tests pure status/error
+classification, per-program shared-dependency traces, append-only run history,
+Excel text safety, lock/atomic failure handling, row/cell limits, legacy inventory
+migration and cleanup preservation. An AST check inspects attempt recording before
+a successful library return without executing that lookup.
+
+```bash
+python -m pytest -p no:cacheprovider -o addopts= -q tests/test_zowe_reports_history.py
+```
+
+The selected offline subset of the older inventory tests exercises mode detection,
+lexing, inventory upserts and publication without invoking fetch. The older mocked
+fetch integration tests remain in the repository, but are not run for this
+iteration because the user prohibited running fetch. No live fetch, transport or
+end-to-end fetch integration result is implied by the offline report tests.
+See `prompt/temp/V127/` for the exact executed checks and retained evidence.

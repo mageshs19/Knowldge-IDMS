@@ -1,6 +1,6 @@
 # `tests` module map
 
-122 Python files. [All packages](../MODULE_INDEX.md).
+124 Python files. [All packages](../MODULE_INDEX.md).
 
 | Python source | Logic note | Owning guide |
 |---|---|---|
@@ -125,4 +125,6 @@
 | `tests/test_validators.py` | [Module](../modules/tests/test_validators.md) | [10_TESTING_AND_VALIDATION](../10_TESTING_AND_VALIDATION.md) |
 | `tests/test_vmdz1526_lrf_update_integration.py` | [Module](../modules/tests/test_vmdz1526_lrf_update_integration.md) | [10_TESTING_AND_VALIDATION](../10_TESTING_AND_VALIDATION.md) |
 | `tests/test_vmdz4310_manual_reference_parity.py` | [Module](../modules/tests/test_vmdz4310_manual_reference_parity.md) | [10_TESTING_AND_VALIDATION](../10_TESTING_AND_VALIDATION.md) |
+| `tests/test_zowe_fetch_inventory.py` | [Module](../modules/tests/test_zowe_fetch_inventory.md) | [10_TESTING_AND_VALIDATION](../10_TESTING_AND_VALIDATION.md) |
+| `tests/test_zowe_reports_history.py` | [Module](../modules/tests/test_zowe_reports_history.md) | [10_TESTING_AND_VALIDATION](../10_TESTING_AND_VALIDATION.md) |
 | `tests/test_zowe_semantic_release_gate.py` | [Module](../modules/tests/test_zowe_semantic_release_gate.md) | [10_TESTING_AND_VALIDATION](../10_TESTING_AND_VALIDATION.md) |
