@@ -1,0 +1,139 @@
+Code Review Report
+--------------------------------------------------------------------------
+Program            : VMDZ4310_27-10-2026_003338
+Program Kind       : RETRIEVAL
+Reviewed File      : VMDZ4310_27-10-2026_003338.cbl
+Reviewed           : 27-10-2026 00:33:46
+Checks             : 19 passed, 3 failed, 14 skipped, 0 blocked
+Criteria           : 107 passed, 5 failed, 30 skipped, 0 blocked
+Result             : REJECTED
+Blocking           : CHK-11, CHK-24, CHK-35
+
+Detail
+--------------------------------------------------------------------------
+PASS  CHK-01 Critical Fixed format 80-column layout
+        CHK-01.09 Sequence start value
+            note : Not enforced by the site standard.
+PASS  CHK-06 Minor    Area A and Area B alignment
+        CHK-06.08 Continuation lines sit in Area B
+            note : No continuation line found.
+PASS  CHK-07 Major    Sequence numbering continuity
+        CHK-07.06 Left sequence start value
+            note : Not enforced by the site standard.
+        CHK-07.07 Right sequence start value
+            note : Not enforced by the site standard.
+PASS  CHK-02 Critical DB2 infrastructure declarations
+        CHK-02.03 SQL-LOCATION is declared
+            note : SQL-LOCATION is supplied by SQLERRWS, not declared in the program.
+PASS  CHK-05 Critical SQL error paragraph and routing
+        CHK-05.02 Exactly one SQLERROR paragraph is declared
+            note : SQLERROR is supplied by INCLUDE SQLERROR, not declared in the program.
+PASS  CHK-08 Critical DCLGEN include and copybook integrity
+        CHK-08.09 Every COPY member resolves to a copybook record
+            note : Copybook member names are not part of the supplied metadata (decision open).
+PASS  CHK-03 Critical No residual IDMS statements
+PASS  CHK-04 Critical Compiler option and PROGRAM-ID
+        CHK-04.05 END PROGRAM matches PROGRAM-ID
+            note : END PROGRAM is not part of the site standard.
+PASS  CHK-09 Major    Record retrieval conversion
+FAIL  CHK-11 Major    SQLCODE and COMMIT conversion
+        CHK-11.07 End of cursor uses SQLCODE = 100
+            note : Program contains no cursor FETCH.
+        CHK-11.08 FINISH converted to COMMIT
+            note : Source has FINISH but no generated COMMIT block was found.
+SKIP  CHK-12 Critical Cursor declaration standard
+        CHK-12.00 Cursor declaration standard
+            note : Program declares no DB2 cursor.
+SKIP  CHK-13 Major    Cursor paragraph structure
+        CHK-13.00 Cursor paragraph structure
+            note : Program contains no generated cursor paragraph.
+SKIP  CHK-14 Major    End-of-cursor handling
+        CHK-14.00 End-of-cursor handling
+            note : Program contains no generated cursor paragraph.
+SKIP  CHK-15 Major    Nested cursor processing
+        CHK-15.00 Nested cursor processing
+            note : Program uses fewer than two cursors.
+PASS  CHK-10 Critical Record modification conversion
+        CHK-10.02 Update program issues at least one business write
+            note : No business INSERT, UPDATE or DELETE found. Only restart writes were generated.
+        CHK-10.03 Every INSERT names a target table
+            note : Program contains no business INSERT.
+        CHK-10.04 Every UPDATE has SET and WHERE
+            note : Program contains no business UPDATE.
+        CHK-10.05 Every DELETE is key qualified
+            note : Program contains no business DELETE.
+        CHK-10.06 Every business write carries QUERYNO 442
+            note : Program contains no business write statement.
+        CHK-10.07 SQL-LOCATION is set before each business write
+            note : Program contains no business write statement.
+SKIP  CHK-16 Critical UPDATE statement validation - columns, WHERE, audit fields
+        CHK-16.00 UPDATE statement validation - columns, WHERE, audit fields
+            note : Program issues no business UPDATE or DELETE statement.
+SKIP  CHK-17 Critical Restart table logic - structure, SQL, safe skip
+        CHK-17.00 Restart table logic - structure, SQL, safe skip
+            note : Program has no restart table logic (UPDATE program without restart).
+PASS  CHK-18 Critical SQL statements & host variable binding
+        CHK-18.03 Host variables are prefixed with a colon in SQL context
+            note : Not implemented: no host-variable rule is asserted yet.
+PASS  CHK-19 Critical SELECT operations - column names match DCLGEN
+PASS  CHK-20 Critical INTO clause - host variables bind SELECT results
+SKIP  CHK-21 Critical WHERE clause - child cursor join predicates
+        CHK-21.00 WHERE clause - child cursor join predicates
+            note : No cursor declarations with WHERE clause.
+PASS  CHK-22 Critical DB2 table and column naming authority
+PASS  CHK-23 Critical DCLGEN host variable name exactness
+FAIL  CHK-24 Major    Picture clause and length validation
+        CHK-24.04 Character column lengths agree between Sheet Mapping and DCLGEN
+            note : missing: DZEVEFTV.NR_IDGOOD_479EVEF: Sheet Mapping 20, DCLGEN 28
+            DZEVEFTV.NR_IDGOOD_479EVEF: Sheet Mapping 20, DCLGEN 28
+        CHK-24.05 Source picture length agrees with the DCLGEN picture
+            note : missing: DZEVEFTV.NR_IDGOOD_479EVEF: source PIC X(20) (20) vs DCLGEN (28)
+            DZEVEFTV.NR_IDGOOD_479EVEF: source PIC X(20) (20) vs DCLGEN (28)
+PASS  CHK-25 Major    Copybook and record usage validation
+SKIP  CHK-26 Minor    ORDER BY logic - CursorOrderByResolver validation
+        CHK-26.00 ORDER BY logic - CursorOrderByResolver validation
+            note : No cursor declarations.
+SKIP  CHK-27 Critical Cursor lifecycle validation
+        CHK-27.00 Cursor lifecycle validation
+            note : No cursor DECLARE blocks found.
+SKIP  CHK-28 Critical OBTAIN FIRST/NEXT conversion - classic IDMS to DB2 cursor
+        CHK-28.00 OBTAIN FIRST/NEXT conversion - classic IDMS to DB2 cursor
+            note : No OBTAIN statements or LRF conversions present.
+SKIP  CHK-29 Critical LR-STATUS field - replaced with cursor end-of-cursor logic
+        CHK-29.00 LR-STATUS field - replaced with cursor end-of-cursor logic
+            note : Program shows no sign of logical record usage.
+SKIP  CHK-30 Critical LRF subschema path expansion - WHERE clause generation
+        CHK-30.00 LRF subschema path expansion - WHERE clause generation
+            note : No LRF path expansion detected.
+SKIP  CHK-31 Critical STORE/MODIFY/ERASE removal - IDMS update operations
+        CHK-31.00 STORE/MODIFY/ERASE removal - IDMS update operations
+            note : No STORE/MODIFY/ERASE statements detected.
+PASS  CHK-32 Critical Scope terminator balance (IF / EVALUATE)
+SKIP  CHK-33 Critical Business paragraph has exactly one driving edge
+        CHK-33.00 Business paragraph has exactly one driving edge
+            note : Program contains no generated cursor FETCH paragraph.
+PASS  CHK-34 Critical Generated COBOL release structure and semantic safety
+FAIL  CHK-35 Critical Character-host group representation and mapping agreement
+        CHK-35.01 Character hosts are not raw-copied into packed/binary groups
+            note : 1 occurrence(s)
+            UNCONVERTED-CHARACTER-GROUP line 344: NR-IDGOOD-479EVEF OF DCLDZEVEFTV -> WS-NR-ID-GOOD: CHAR(28) copied to a 20-byte group containing packed/binary fields; group MOVE copies bytes without numeric conversion; an explicit encoding contract is required
+        CHK-35.02 Used target character widths agree between mapping and DCLGEN
+            note : 1 occurrence(s)
+            MAPPING-DCLGEN-CHAR-CONFLICT: DCLDZEVEFTV.NR-IDGOOD-479EVEF: mapping target CHAR(20) conflicts with DCLGEN CHAR(28); do not infer serialization or truncate to resolve this conflict
+PASS  CHK-36 Critical Per-program production review evidence
+
+Failures
+--------------------------------------------------------------------------
+CHK-11  Major     SQLCODE and COMMIT conversion
+    CHK-11.08  FINISH converted to COMMIT
+        Source has FINISH but no generated COMMIT block was found.
+CHK-24  Major     Picture clause and length validation
+    CHK-24.04  Character column lengths agree between Sheet Mapping and DCLGEN
+        missing: DZEVEFTV.NR_IDGOOD_479EVEF: Sheet Mapping 20, DCLGEN 28
+    CHK-24.05  Source picture length agrees with the DCLGEN picture
+        missing: DZEVEFTV.NR_IDGOOD_479EVEF: source PIC X(20) (20) vs DCLGEN (28)
+CHK-35  Critical  Character-host group representation and mapping agreement
+    CHK-35.01  Character hosts are not raw-copied into packed/binary groups
+        1 occurrence(s)
+    CHK-35.02  Used target character widths agree between mapping and DCLGEN
+        1 occurrence(s)

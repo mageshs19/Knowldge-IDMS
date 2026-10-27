@@ -1,0 +1,677 @@
+{
+  "report_type": "AI standardized COBOL reference comparison",
+  "reference_version": "IDMS_DB2_STANDARDIZED_V6",
+  "principle": "Advisory benchmark only; do not assume V6 is 100% correct and do not remove helpers without representation, initialization, and path proof.",
+  "programs": {
+    "VMDZ1526": {
+      "python_output": {
+        "file": "mainframe/workspace/Output/VMDZ1526_26-10-2026_052547.cbl",
+        "exists": true,
+        "line_count": 667,
+        "fixed_80_columns": true,
+        "max_line_length": 80,
+        "duplicate_numbered_labels": [],
+        "lifecycle": {
+          "main": 0,
+          "initialize": 0,
+          "process": 0,
+          "finalize": 0,
+          "treat_program": 0
+        },
+        "conventions": {
+          "cs_program_references": 4,
+          "timestamp_paragraph": 1,
+          "sqlerrws_include": 1,
+          "sqlerror_include_or_call": 11,
+          "sql_location_moves": 9,
+          "exec_sql_blocks": 15,
+          "exec_sql_with_recent_sql_location": 9
+        },
+        "cursors": {}
+      },
+      "ai_standardized_v6": {
+        "file": "references/AI_STANDARDIZED_V6/VMDZ1526.cbl",
+        "exists": true,
+        "line_count": 629,
+        "fixed_80_columns": true,
+        "max_line_length": 80,
+        "duplicate_numbered_labels": [],
+        "lifecycle": {
+          "main": 1,
+          "initialize": 1,
+          "process": 1,
+          "finalize": 1,
+          "treat_program": 0
+        },
+        "conventions": {
+          "cs_program_references": 5,
+          "timestamp_paragraph": 1,
+          "sqlerrws_include": 1,
+          "sqlerror_include_or_call": 11,
+          "sql_location_moves": 8,
+          "exec_sql_blocks": 14,
+          "exec_sql_with_recent_sql_location": 8
+        },
+        "cursors": {}
+      },
+      "manual_output": {
+        "file": "mainframe/workspace/Manual Output/VMDZ1526.txt",
+        "exists": true,
+        "line_count": 627,
+        "fixed_80_columns": true,
+        "max_line_length": 80,
+        "duplicate_numbered_labels": [],
+        "lifecycle": {
+          "main": 0,
+          "initialize": 0,
+          "process": 0,
+          "finalize": 0,
+          "treat_program": 0
+        },
+        "conventions": {
+          "cs_program_references": 4,
+          "timestamp_paragraph": 1,
+          "sqlerrws_include": 1,
+          "sqlerror_include_or_call": 11,
+          "sql_location_moves": 0,
+          "exec_sql_blocks": 14,
+          "exec_sql_with_recent_sql_location": 0
+        },
+        "cursors": {}
+      },
+      "python_vs_v6_diff": {
+        "reference_nonblank_lines": 580,
+        "candidate_nonblank_lines": 595,
+        "changed_lines_added": 394,
+        "changed_lines_removed": 379
+      },
+      "v6_vs_manual_diff": {
+        "reference_nonblank_lines": 578,
+        "candidate_nonblank_lines": 580,
+        "changed_lines_added": 23,
+        "changed_lines_removed": 21
+      }
+    },
+    "VMDZ1567": {
+      "python_output": {
+        "file": "mainframe/workspace/Output/VMDZ1567_26-10-2026_052548.cbl",
+        "exists": true,
+        "line_count": 434,
+        "fixed_80_columns": true,
+        "max_line_length": 80,
+        "duplicate_numbered_labels": [],
+        "lifecycle": {
+          "main": 0,
+          "initialize": 0,
+          "process": 0,
+          "finalize": 0,
+          "treat_program": 0
+        },
+        "conventions": {
+          "cs_program_references": 4,
+          "timestamp_paragraph": 1,
+          "sqlerrws_include": 1,
+          "sqlerror_include_or_call": 7,
+          "sql_location_moves": 6,
+          "exec_sql_blocks": 10,
+          "exec_sql_with_recent_sql_location": 5
+        },
+        "cursors": {}
+      },
+      "ai_standardized_v6": {
+        "file": "references/AI_STANDARDIZED_V6/VMDZ1567.cbl",
+        "exists": true,
+        "line_count": 465,
+        "fixed_80_columns": true,
+        "max_line_length": 80,
+        "duplicate_numbered_labels": [],
+        "lifecycle": {
+          "main": 1,
+          "initialize": 1,
+          "process": 1,
+          "finalize": 1,
+          "treat_program": 0
+        },
+        "conventions": {
+          "cs_program_references": 4,
+          "timestamp_paragraph": 1,
+          "sqlerrws_include": 1,
+          "sqlerror_include_or_call": 7,
+          "sql_location_moves": 5,
+          "exec_sql_blocks": 10,
+          "exec_sql_with_recent_sql_location": 5
+        },
+        "cursors": {}
+      },
+      "manual_output": {
+        "file": "mainframe/workspace/Manual Output/VMDZ1567.cbl",
+        "exists": true,
+        "line_count": 457,
+        "fixed_80_columns": true,
+        "max_line_length": 80,
+        "duplicate_numbered_labels": [],
+        "lifecycle": {
+          "main": 0,
+          "initialize": 0,
+          "process": 0,
+          "finalize": 0,
+          "treat_program": 0
+        },
+        "conventions": {
+          "cs_program_references": 3,
+          "timestamp_paragraph": 1,
+          "sqlerrws_include": 1,
+          "sqlerror_include_or_call": 7,
+          "sql_location_moves": 1,
+          "exec_sql_blocks": 10,
+          "exec_sql_with_recent_sql_location": 1
+        },
+        "cursors": {}
+      },
+      "python_vs_v6_diff": {
+        "reference_nonblank_lines": 395,
+        "candidate_nonblank_lines": 374,
+        "changed_lines_added": 163,
+        "changed_lines_removed": 184
+      },
+      "v6_vs_manual_diff": {
+        "reference_nonblank_lines": 384,
+        "candidate_nonblank_lines": 395,
+        "changed_lines_added": 15,
+        "changed_lines_removed": 4
+      }
+    },
+    "VMDZ4302": {
+      "python_output": {
+        "file": "mainframe/workspace/Output/VMDZ4302_26-10-2026_052550.cbl",
+        "exists": true,
+        "line_count": 554,
+        "fixed_80_columns": true,
+        "max_line_length": 80,
+        "duplicate_numbered_labels": [],
+        "lifecycle": {
+          "main": 0,
+          "initialize": 0,
+          "process": 0,
+          "finalize": 0,
+          "treat_program": 0
+        },
+        "conventions": {
+          "cs_program_references": 2,
+          "timestamp_paragraph": 1,
+          "sqlerrws_include": 1,
+          "sqlerror_include_or_call": 7,
+          "sql_location_moves": 7,
+          "exec_sql_blocks": 15,
+          "exec_sql_with_recent_sql_location": 7
+        },
+        "cursors": {
+          "DZBEFFC1": {
+            "open": 1,
+            "fetch": 1,
+            "close": 1
+          },
+          "DZEVEFC1": {
+            "open": 1,
+            "fetch": 1,
+            "close": 1
+          }
+        }
+      },
+      "ai_standardized_v6": {
+        "file": "references/AI_STANDARDIZED_V6/VMDZ4302.cbl",
+        "exists": true,
+        "line_count": 673,
+        "fixed_80_columns": true,
+        "max_line_length": 80,
+        "duplicate_numbered_labels": [],
+        "lifecycle": {
+          "main": 1,
+          "initialize": 1,
+          "process": 1,
+          "finalize": 1,
+          "treat_program": 0
+        },
+        "conventions": {
+          "cs_program_references": 3,
+          "timestamp_paragraph": 1,
+          "sqlerrws_include": 1,
+          "sqlerror_include_or_call": 8,
+          "sql_location_moves": 7,
+          "exec_sql_blocks": 15,
+          "exec_sql_with_recent_sql_location": 7
+        },
+        "cursors": {
+          "DZBEFFC1": {
+            "open": 1,
+            "fetch": 1,
+            "close": 1
+          },
+          "DZEVEFC2": {
+            "open": 1,
+            "fetch": 1,
+            "close": 1
+          }
+        }
+      },
+      "manual_output": {
+        "file": "mainframe/workspace/Manual Output/VMDZ4302.txt",
+        "exists": true,
+        "line_count": 671,
+        "fixed_80_columns": true,
+        "max_line_length": 80,
+        "duplicate_numbered_labels": [],
+        "lifecycle": {
+          "main": 0,
+          "initialize": 0,
+          "process": 0,
+          "finalize": 0,
+          "treat_program": 0
+        },
+        "conventions": {
+          "cs_program_references": 3,
+          "timestamp_paragraph": 1,
+          "sqlerrws_include": 1,
+          "sqlerror_include_or_call": 8,
+          "sql_location_moves": 7,
+          "exec_sql_blocks": 15,
+          "exec_sql_with_recent_sql_location": 7
+        },
+        "cursors": {
+          "DZBEFFC1": {
+            "open": 1,
+            "fetch": 1,
+            "close": 1
+          },
+          "DZEVEFC1": {
+            "open": 1,
+            "fetch": 1,
+            "close": 1
+          }
+        }
+      },
+      "python_vs_v6_diff": {
+        "reference_nonblank_lines": 627,
+        "candidate_nonblank_lines": 519,
+        "changed_lines_added": 223,
+        "changed_lines_removed": 331
+      },
+      "v6_vs_manual_diff": {
+        "reference_nonblank_lines": 624,
+        "candidate_nonblank_lines": 627,
+        "changed_lines_added": 49,
+        "changed_lines_removed": 46
+      }
+    },
+    "VMDZ4310": {
+      "python_output": {
+        "file": "mainframe/workspace/Output/VMDZ4310_26-10-2026_052551.cbl",
+        "exists": true,
+        "line_count": 524,
+        "fixed_80_columns": true,
+        "max_line_length": 80,
+        "duplicate_numbered_labels": [],
+        "lifecycle": {
+          "main": 0,
+          "initialize": 0,
+          "process": 0,
+          "finalize": 0,
+          "treat_program": 0
+        },
+        "conventions": {
+          "cs_program_references": 1,
+          "timestamp_paragraph": 1,
+          "sqlerrws_include": 1,
+          "sqlerror_include_or_call": 5,
+          "sql_location_moves": 2,
+          "exec_sql_blocks": 7,
+          "exec_sql_with_recent_sql_location": 2
+        },
+        "cursors": {}
+      },
+      "ai_standardized_v6": {
+        "file": "references/AI_STANDARDIZED_V6/VMDZ4310.cbl",
+        "exists": true,
+        "line_count": 511,
+        "fixed_80_columns": true,
+        "max_line_length": 80,
+        "duplicate_numbered_labels": [],
+        "lifecycle": {
+          "main": 1,
+          "initialize": 1,
+          "process": 1,
+          "finalize": 1,
+          "treat_program": 0
+        },
+        "conventions": {
+          "cs_program_references": 2,
+          "timestamp_paragraph": 1,
+          "sqlerrws_include": 1,
+          "sqlerror_include_or_call": 5,
+          "sql_location_moves": 2,
+          "exec_sql_blocks": 7,
+          "exec_sql_with_recent_sql_location": 1
+        },
+        "cursors": {}
+      },
+      "manual_output": {
+        "file": "mainframe/workspace/Manual Output/VMDZ4310.txt",
+        "exists": true,
+        "line_count": 512,
+        "fixed_80_columns": true,
+        "max_line_length": 80,
+        "duplicate_numbered_labels": [],
+        "lifecycle": {
+          "main": 0,
+          "initialize": 0,
+          "process": 0,
+          "finalize": 0,
+          "treat_program": 0
+        },
+        "conventions": {
+          "cs_program_references": 0,
+          "timestamp_paragraph": 1,
+          "sqlerrws_include": 1,
+          "sqlerror_include_or_call": 5,
+          "sql_location_moves": 2,
+          "exec_sql_blocks": 7,
+          "exec_sql_with_recent_sql_location": 1
+        },
+        "cursors": {}
+      },
+      "python_vs_v6_diff": {
+        "reference_nonblank_lines": 473,
+        "candidate_nonblank_lines": 463,
+        "changed_lines_added": 159,
+        "changed_lines_removed": 169
+      },
+      "v6_vs_manual_diff": {
+        "reference_nonblank_lines": 474,
+        "candidate_nonblank_lines": 473,
+        "changed_lines_added": 19,
+        "changed_lines_removed": 20
+      }
+    },
+    "VMDZ4420": {
+      "python_output": {
+        "file": "mainframe/workspace/Output/VMDZ4420_26-10-2026_052553.cbl",
+        "exists": true,
+        "line_count": 498,
+        "fixed_80_columns": true,
+        "max_line_length": 80,
+        "duplicate_numbered_labels": [],
+        "lifecycle": {
+          "main": 0,
+          "initialize": 0,
+          "process": 0,
+          "finalize": 0,
+          "treat_program": 0
+        },
+        "conventions": {
+          "cs_program_references": 2,
+          "timestamp_paragraph": 1,
+          "sqlerrws_include": 1,
+          "sqlerror_include_or_call": 7,
+          "sql_location_moves": 6,
+          "exec_sql_blocks": 13,
+          "exec_sql_with_recent_sql_location": 6
+        },
+        "cursors": {
+          "DZBEFFC1": {
+            "open": 1,
+            "fetch": 1,
+            "close": 1
+          },
+          "DZEVEFC1": {
+            "open": 1,
+            "fetch": 1,
+            "close": 1
+          }
+        }
+      },
+      "ai_standardized_v6": {
+        "file": "references/AI_STANDARDIZED_V6/VMDZ4420.cbl",
+        "exists": true,
+        "line_count": 501,
+        "fixed_80_columns": true,
+        "max_line_length": 80,
+        "duplicate_numbered_labels": [],
+        "lifecycle": {
+          "main": 1,
+          "initialize": 1,
+          "process": 1,
+          "finalize": 1,
+          "treat_program": 0
+        },
+        "conventions": {
+          "cs_program_references": 2,
+          "timestamp_paragraph": 1,
+          "sqlerrws_include": 1,
+          "sqlerror_include_or_call": 7,
+          "sql_location_moves": 6,
+          "exec_sql_blocks": 13,
+          "exec_sql_with_recent_sql_location": 6
+        },
+        "cursors": {
+          "DZBEFFC1": {
+            "open": 1,
+            "fetch": 1,
+            "close": 1
+          },
+          "DZEVEFC2": {
+            "open": 1,
+            "fetch": 1,
+            "close": 1
+          }
+        }
+      },
+      "manual_output": {
+        "file": "mainframe/workspace/Manual Output/VMDZ4420.cbl",
+        "exists": true,
+        "line_count": 499,
+        "fixed_80_columns": true,
+        "max_line_length": 80,
+        "duplicate_numbered_labels": [],
+        "lifecycle": {
+          "main": 0,
+          "initialize": 0,
+          "process": 0,
+          "finalize": 0,
+          "treat_program": 0
+        },
+        "conventions": {
+          "cs_program_references": 2,
+          "timestamp_paragraph": 1,
+          "sqlerrws_include": 1,
+          "sqlerror_include_or_call": 7,
+          "sql_location_moves": 6,
+          "exec_sql_blocks": 13,
+          "exec_sql_with_recent_sql_location": 6
+        },
+        "cursors": {
+          "DZBEFFC1": {
+            "open": 1,
+            "fetch": 1,
+            "close": 1
+          },
+          "DZEVEFC1": {
+            "open": 1,
+            "fetch": 1,
+            "close": 1
+          }
+        }
+      },
+      "python_vs_v6_diff": {
+        "reference_nonblank_lines": 470,
+        "candidate_nonblank_lines": 461,
+        "changed_lines_added": 213,
+        "changed_lines_removed": 222
+      },
+      "v6_vs_manual_diff": {
+        "reference_nonblank_lines": 467,
+        "candidate_nonblank_lines": 470,
+        "changed_lines_added": 46,
+        "changed_lines_removed": 43
+      }
+    },
+    "VMDZ7200": {
+      "python_output": {
+        "file": "mainframe/workspace/Output/VMDZ7200_26-10-2026_052554.cbl",
+        "exists": true,
+        "line_count": 921,
+        "fixed_80_columns": true,
+        "max_line_length": 80,
+        "duplicate_numbered_labels": [],
+        "lifecycle": {
+          "main": 0,
+          "initialize": 0,
+          "process": 0,
+          "finalize": 0,
+          "treat_program": 0
+        },
+        "conventions": {
+          "cs_program_references": 2,
+          "timestamp_paragraph": 1,
+          "sqlerrws_include": 1,
+          "sqlerror_include_or_call": 4,
+          "sql_location_moves": 3,
+          "exec_sql_blocks": 8,
+          "exec_sql_with_recent_sql_location": 3
+        },
+        "cursors": {
+          "DZBFASC1": {
+            "open": 1,
+            "fetch": 1,
+            "close": 1
+          }
+        }
+      },
+      "ai_standardized_v6": {
+        "file": "references/AI_STANDARDIZED_V6/VMDZ7200.cbl",
+        "exists": true,
+        "line_count": 895,
+        "fixed_80_columns": true,
+        "max_line_length": 80,
+        "duplicate_numbered_labels": [],
+        "lifecycle": {
+          "main": 1,
+          "initialize": 1,
+          "process": 1,
+          "finalize": 1,
+          "treat_program": 1
+        },
+        "conventions": {
+          "cs_program_references": 2,
+          "timestamp_paragraph": 1,
+          "sqlerrws_include": 1,
+          "sqlerror_include_or_call": 4,
+          "sql_location_moves": 3,
+          "exec_sql_blocks": 8,
+          "exec_sql_with_recent_sql_location": 3
+        },
+        "cursors": {
+          "DZBFASC1": {
+            "open": 1,
+            "fetch": 1,
+            "close": 1
+          }
+        }
+      },
+      "manual_output": {
+        "file": "mainframe/workspace/Manual Output/VMDZ7200.cbl",
+        "exists": true,
+        "line_count": 893,
+        "fixed_80_columns": true,
+        "max_line_length": 80,
+        "duplicate_numbered_labels": [],
+        "lifecycle": {
+          "main": 0,
+          "initialize": 0,
+          "process": 0,
+          "finalize": 0,
+          "treat_program": 1
+        },
+        "conventions": {
+          "cs_program_references": 0,
+          "timestamp_paragraph": 0,
+          "sqlerrws_include": 1,
+          "sqlerror_include_or_call": 4,
+          "sql_location_moves": 2,
+          "exec_sql_blocks": 8,
+          "exec_sql_with_recent_sql_location": 0
+        },
+        "cursors": {
+          "DZBFASC1": {
+            "open": 1,
+            "fetch": 1,
+            "close": 1
+          }
+        }
+      },
+      "python_vs_v6_diff": {
+        "reference_nonblank_lines": 885,
+        "candidate_nonblank_lines": 893,
+        "changed_lines_added": 341,
+        "changed_lines_removed": 333
+      },
+      "v6_vs_manual_diff": {
+        "reference_nonblank_lines": 885,
+        "candidate_nonblank_lines": 885,
+        "changed_lines_added": 45,
+        "changed_lines_removed": 45
+      }
+    }
+  },
+  "policy_conflicts": [
+    {
+      "topic": "Cursor numbering",
+      "V6_reference": "C1 2100/2200/2300; C2 2400/2500/2600; C3 2700/2800/2900",
+      "current_project_contract": "C1 2100/2200/2300; C2 2400/2500/2600; C3 2700/2800/2900; each subsequent cursor advances by +300",
+      "decision": "Do not renumber automatically. Current numbering is centralized and covered by project tests; change only after explicit convention approval and full PERFORM-reference audit."
+    },
+    {
+      "topic": "Lifecycle paragraph restructuring",
+      "V6_reference": "Uses 0000/1000/2000/3000 lifecycle wrappers and removes detail-forwarding paragraphs.",
+      "current_project_contract": "ProcedureDivisionOrganizer is conservative because moving paragraph bodies can alter fall-through, PERFORM THRU ranges, and business execution order.",
+      "decision": "Use as a target style, but require CFG/reference/order parity before automatic restructuring."
+    },
+    {
+      "topic": "Helper-variable removal",
+      "V6_reference": "Removes several staging helpers and uses direct fields/normalized dates.",
+      "current_project_contract": "Helper removal can alter data representation, truncation, numeric/alphanumeric comparison, or initialization behavior.",
+      "decision": "Treat each removal as a candidate; require PIC/REDEFINES compatibility, all-path assignment, and read/write-use checks before adoption."
+    }
+  ],
+  "helper_removal_audit_from_v6": {
+    "package": "IDMS_DB2_STANDARDIZED_V4",
+    "changes": [
+      "VMDZ1526: replaced three stock-number staging-helper sequences with existing copybook redefines NR-ST-FORM-AS-R2 and NR-ST-FORM-AS-P4; removed helper declaration.",
+      "VMDZ4310: removed two date-only staging fields and replaced their copy-through moves with direct moves.",
+      "VMDZ4302: removed HELP-DA-CREVTPD-479EVEF staging field and used normalized DA-CCYYMMDD-R directly in comparisons.",
+      "VMDZ4420: removed HELP-DA-CREVTPD-479EVEF staging field and used normalized DA-CCYYMMDD-R directly in comparison.",
+      "VMDZ7200: removed eight date-only staging fields and their initialization; replaced two-step copies with direct moves."
+    ],
+    "validation": {
+      "fixed_format_lines_80_columns": "PASS",
+      "left_sequence_increment": 10,
+      "right_sequence_increment": 10000,
+      "active_references_to_removed_helpers": "PASS",
+      "zip_integrity": "PASS",
+      "compiler_run": false,
+      "lifecycle_detail_paragraphs_removed": "PASS"
+    },
+    "caveat": "Static source-level edits only; target COBOL compiler and DB2 precompiler were not available.",
+    "lifecycle_rework": [
+      "Removed redundant 1050-INITIALIZE-DETAILS, 2050-PROCESS-DETAILS, and 3050-FINALIZE-DETAILS paragraphs from all six programs.",
+      "Moved each detail paragraph body into its matching 1000/2000/3000 lifecycle paragraph without changing the statements in those bodies.",
+      "Retained the main controller sequence and regenerated fixed-format sequence fields."
+    ],
+    "package_version": "V6",
+    "note_v6": "Cursor identity/numbering standard updated in CURSOR_SQL_ERROR_AUDIT.json; target compile/precompile not run."
+  },
+  "limitations": [
+    "Static source comparison only; no COBOL compiler or DB2 precompiler/runtime equivalence proof.",
+    "SQL-LOCATION proximity and SQLCODE branch counts are heuristics, not control-flow proofs.",
+    "Line-difference counts are diagnostic and must not be interpreted as semantic error counts."
+  ]
+}

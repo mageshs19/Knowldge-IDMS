@@ -1,0 +1,7 @@
+id,idms,manual,generated,encoding,format,pairing_confirmed,idms_encoding,manual_encoding,generated_encoding
+VMDZ1526,mainframe/workspace/Program/VM1BD526.cbl,mainframe/workspace/Manual Output/VMDZ1526.txt,mainframe/workspace/Output/VMDZ1526_26-10-2026_233958.cbl,utf-8-sig,fixed,yes,utf-8-sig,latin-1,utf-8-sig
+VMDZ1567,mainframe/workspace/Program/VM1BD567.cbl,mainframe/workspace/Manual Output/VMDZ1567.cbl,mainframe/workspace/Output/VMDZ1567_26-10-2026_233959.cbl,utf-8-sig,fixed,yes,utf-8-sig,utf-8-sig,utf-8-sig
+VMDZ4302,mainframe/workspace/Program/VM4BD302.cbl,mainframe/workspace/Manual Output/VMDZ4302.txt,mainframe/workspace/Output/VMDZ4302_26-10-2026_234001.cbl,utf-8-sig,fixed,yes,utf-8-sig,utf-8-sig,utf-8-sig
+VMDZ4310,mainframe/workspace/Program/VM4BD310.cbl,mainframe/workspace/Manual Output/VMDZ4310.txt,mainframe/workspace/Output/VMDZ4310_26-10-2026_234002.cbl,utf-8-sig,fixed,yes,utf-8-sig,utf-8-sig,utf-8-sig
+VMDZ4420,mainframe/workspace/Program/VM4BD420.cbl,mainframe/workspace/Manual Output/VMDZ4420.cbl,mainframe/workspace/Output/VMDZ4420_26-10-2026_234004.cbl,utf-8-sig,fixed,yes,utf-8-sig,utf-8-sig,utf-8-sig
+VMDZ7200,mainframe/workspace/Program/VM7BD200.cbl,mainframe/workspace/Manual Output/VMDZ7200.cbl,mainframe/workspace/Output/VMDZ7200_26-10-2026_234005.cbl,utf-8-sig,fixed,yes,utf-8-sig,utf-8-sig,utf-8-sig

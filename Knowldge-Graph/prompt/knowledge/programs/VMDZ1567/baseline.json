@@ -1,0 +1,3672 @@
+{
+  "artifacts": [
+    {
+      "artifact_id": "Afb8fb15527bc0e034b",
+      "bytes": 14580,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 180,
+      "path": "mainframe/workspace/Program/VM1BD567.cbl",
+      "profile": {
+        "calls": [
+          {
+            "caller": "<mainline>",
+            "end_line": 120,
+            "start_line": 118,
+            "target": "READ-FLAT-FILE",
+            "through": null
+          },
+          {
+            "caller": "<mainline>",
+            "end_line": 133,
+            "start_line": 133,
+            "target": "READ-FLAT-FILE",
+            "through": null
+          },
+          {
+            "caller": "<mainline>",
+            "end_line": 136,
+            "start_line": 136,
+            "target": "VERWERKING",
+            "through": null
+          },
+          {
+            "caller": "VERWERKING",
+            "end_line": 170,
+            "start_line": 170,
+            "target": "READ-FLAT-FILE",
+            "through": null
+          }
+        ],
+        "data": [
+          {
+            "end_line": 50,
+            "level": 1,
+            "name": "OPERATIES-REC",
+            "start_line": 50,
+            "text": "01   OPERATIES-REC             PIC X(1200)."
+          },
+          {
+            "end_line": 56,
+            "level": 77,
+            "name": "USERABEN",
+            "start_line": 56,
+            "text": "77  USERABEN                   PIC X(8) VALUE 'USERABEN'."
+          },
+          {
+            "end_line": 57,
+            "level": 77,
+            "name": "CTR-REC",
+            "start_line": 57,
+            "text": "77  CTR-REC                    PIC 9(9) COMP-3 VALUE 0."
+          },
+          {
+            "end_line": 59,
+            "level": 77,
+            "name": "STOP01",
+            "start_line": 58,
+            "text": "77  STOP01                     PIC X(50) VALUE '##&&VM1BD567-STOP01 ACCES DB FORMULAIRE'."
+          },
+          {
+            "end_line": 60,
+            "level": 77,
+            "name": "SW-EOF",
+            "start_line": 60,
+            "text": "77  SW-EOF                     PIC X       VALUE 'N'."
+          },
+          {
+            "end_line": 61,
+            "level": 77,
+            "name": "SW-RECAB",
+            "start_line": 61,
+            "text": "77  SW-RECAB                   PIC X       VALUE 'Y'."
+          },
+          {
+            "end_line": 63,
+            "level": 1,
+            "name": "STOP-DATONLY",
+            "start_line": 63,
+            "text": "01  STOP-DATONLY."
+          },
+          {
+            "end_line": 64,
+            "level": 2,
+            "name": "DATE-YMD",
+            "start_line": 64,
+            "text": "02  DATE-YMD."
+          },
+          {
+            "end_line": 65,
+            "level": 3,
+            "name": "D-YEAR",
+            "start_line": 65,
+            "text": "03  D-YEAR             PIC 99."
+          },
+          {
+            "end_line": 66,
+            "level": 3,
+            "name": "D-MONTH",
+            "start_line": 66,
+            "text": "03  D-MONTH            PIC 99."
+          },
+          {
+            "end_line": 67,
+            "level": 3,
+            "name": "D-DAY",
+            "start_line": 67,
+            "text": "03  D-DAY              PIC 99."
+          },
+          {
+            "end_line": 68,
+            "level": 2,
+            "name": "DATE-DMY",
+            "start_line": 68,
+            "text": "02  DATE-DMY."
+          },
+          {
+            "end_line": 69,
+            "level": 3,
+            "name": "D-DAY",
+            "start_line": 69,
+            "text": "03  D-DAY              PIC 99."
+          },
+          {
+            "end_line": 70,
+            "level": 3,
+            "name": "D-MONTH",
+            "start_line": 70,
+            "text": "03  D-MONTH            PIC 99."
+          },
+          {
+            "end_line": 71,
+            "level": 3,
+            "name": "D-YEAR",
+            "start_line": 71,
+            "text": "03  D-YEAR             PIC 99."
+          },
+          {
+            "end_line": 72,
+            "level": 2,
+            "name": "DATE-YMD8",
+            "start_line": 72,
+            "text": "02  DATE-YMD8."
+          },
+          {
+            "end_line": 73,
+            "level": 3,
+            "name": "D-CENT",
+            "start_line": 73,
+            "text": "03  D-CENT             PIC 99."
+          },
+          {
+            "end_line": 74,
+            "level": 3,
+            "name": "D-YEAR",
+            "start_line": 74,
+            "text": "03  D-YEAR             PIC 99."
+          },
+          {
+            "end_line": 75,
+            "level": 3,
+            "name": "D-MONTH",
+            "start_line": 75,
+            "text": "03  D-MONTH            PIC 99."
+          },
+          {
+            "end_line": 76,
+            "level": 3,
+            "name": "D-DAY",
+            "start_line": 76,
+            "text": "03  D-DAY              PIC 99."
+          },
+          {
+            "end_line": 77,
+            "level": 2,
+            "name": "DATE-DMY8",
+            "start_line": 77,
+            "text": "02  DATE-DMY8."
+          },
+          {
+            "end_line": 78,
+            "level": 3,
+            "name": "D-DAY",
+            "start_line": 78,
+            "text": "03  D-DAY              PIC 99."
+          },
+          {
+            "end_line": 79,
+            "level": 3,
+            "name": "D-MONTH",
+            "start_line": 79,
+            "text": "03  D-MONTH            PIC 99."
+          },
+          {
+            "end_line": 80,
+            "level": 3,
+            "name": "D-CENT",
+            "start_line": 80,
+            "text": "03  D-CENT             PIC 99."
+          },
+          {
+            "end_line": 81,
+            "level": 3,
+            "name": "D-YEAR",
+            "start_line": 81,
+            "text": "03  D-YEAR             PIC 99."
+          },
+          {
+            "end_line": 86,
+            "level": 1,
+            "name": "PARAM-DATONLY",
+            "start_line": 86,
+            "text": "01  PARAM-DATONLY."
+          },
+          {
+            "end_line": 87,
+            "level": 3,
+            "name": "L-PARAM",
+            "start_line": 87,
+            "text": "03  L-PARAM                PIC S9(4) COMP."
+          },
+          {
+            "end_line": 88,
+            "level": 3,
+            "name": "DATUMLS",
+            "start_line": 88,
+            "text": "03  DATUMLS."
+          },
+          {
+            "end_line": 89,
+            "level": 5,
+            "name": "DATE-IND",
+            "start_line": 89,
+            "text": "05  DATE-IND           PIC X."
+          },
+          {
+            "end_line": 90,
+            "level": 5,
+            "name": "DATE8-LS",
+            "start_line": 90,
+            "text": "05  DATE8-LS           PIC X(8)."
+          }
+        ],
+        "dependencies": [
+          {
+            "kind": "COPY",
+            "line": 83,
+            "name": "VMBD205I"
+          },
+          {
+            "kind": "COPY",
+            "line": 104,
+            "name": "IDMS"
+          },
+          {
+            "kind": "COPY",
+            "line": 180,
+            "name": "IDMS"
+          }
+        ],
+        "duplicate_labels": [],
+        "format": "fixed",
+        "limitations": [
+          "Lexical inventory only; no COPY expansion, full CFG, byte-layout proof, compiler, or runtime execution.",
+          "Unclassified procedure text at line 180; inspect original source."
+        ],
+        "lines": 180,
+        "paragraphs": [
+          {
+            "kind": "paragraph",
+            "line": 147,
+            "name": "VERWERKING"
+          },
+          {
+            "kind": "paragraph",
+            "line": 173,
+            "name": "READ-FLAT-FILE"
+          },
+          {
+            "kind": "paragraph",
+            "line": 179,
+            "name": "IDMS-ABORT"
+          }
+        ],
+        "program_id": "VM1BD567",
+        "sql": [],
+        "sql_counts": {},
+        "statements": [
+          {
+            "end_line": 97,
+            "normalized": "MOVE DATE8-LS TO DATE-DMY8.",
+            "paragraph": "<mainline>",
+            "start_line": 97,
+            "text": "MOVE DATE8-LS       TO DATE-DMY8.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 98,
+            "normalized": "MOVE CORR DATE-DMY8 TO DATE-YMD.",
+            "paragraph": "<mainline>",
+            "start_line": 98,
+            "text": "MOVE CORR DATE-DMY8 TO DATE-YMD.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 99,
+            "normalized": "MOVE CORR DATE-DMY8 TO DATE-DMY.",
+            "paragraph": "<mainline>",
+            "start_line": 99,
+            "text": "MOVE CORR DATE-DMY8 TO DATE-DMY.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 100,
+            "normalized": "MOVE CORR DATE-DMY8 TO DATE-YMD8.",
+            "paragraph": "<mainline>",
+            "start_line": 100,
+            "text": "MOVE CORR DATE-DMY8 TO DATE-YMD8.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 102,
+            "normalized": "MOVE 'VM1BD567' TO PROGRAM-NAME.",
+            "paragraph": "<mainline>",
+            "start_line": 102,
+            "text": "MOVE 'VM1BD567' TO PROGRAM-NAME.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 104,
+            "normalized": "OPEN INPUT OPERATIES. COPY IDMS SUBSCHEMA-BINDS",
+            "paragraph": "<mainline>",
+            "start_line": 103,
+            "text": "OPEN INPUT OPERATIES. COPY IDMS SUBSCHEMA-BINDS",
+            "verb": "OPEN"
+          },
+          {
+            "end_line": 105,
+            "normalized": "READY USAGE-MODE IS UPDATE.",
+            "paragraph": "<mainline>",
+            "start_line": 105,
+            "text": "READY USAGE-MODE IS UPDATE.",
+            "verb": "READY"
+          },
+          {
+            "end_line": 111,
+            "normalized": "MOVE 'VM1BDF567-A' TO NM-ID-FF OF FFRECAB.",
+            "paragraph": "<mainline>",
+            "start_line": 111,
+            "text": "MOVE 'VM1BDF567-A'       TO NM-ID-FF OF FFRECAB.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 112,
+            "normalized": "MOVE DATE-YMD8 TO DA-CR-FF OF FFRECAB.",
+            "paragraph": "<mainline>",
+            "start_line": 112,
+            "text": "MOVE DATE-YMD8           TO DA-CR-FF OF FFRECAB.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 113,
+            "normalized": "MOVE 0 TO NS-SET-FF.",
+            "paragraph": "<mainline>",
+            "start_line": 113,
+            "text": "MOVE 0                   TO NS-SET-FF.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 115,
+            "normalized": "OBTAIN CALC FFRECAB ON DB-REC-NOT-FOUND MOVE 'N' TO SW-RECAB.",
+            "paragraph": "<mainline>",
+            "start_line": 114,
+            "text": "OBTAIN  CALC FFRECAB ON DB-REC-NOT-FOUND  MOVE 'N' TO SW-RECAB.",
+            "verb": "OBTAIN"
+          },
+          {
+            "end_line": 117,
+            "normalized": "IF SW-RECAB = 'Y'",
+            "paragraph": "<mainline>",
+            "start_line": 117,
+            "text": "IF SW-RECAB = 'Y'",
+            "verb": "IF"
+          },
+          {
+            "end_line": 120,
+            "normalized": "PERFORM READ-FLAT-FILE VARYING CTR-REC FROM 1 BY 1 UNTIL SW-EOF = 'Y' OR CTR-REC > NS-REC-FF-IN",
+            "paragraph": "<mainline>",
+            "start_line": 118,
+            "text": "PERFORM READ-FLAT-FILE VARYING CTR-REC FROM 1 BY 1 UNTIL SW-EOF = 'Y' OR CTR-REC > NS-REC-FF-IN",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 121,
+            "normalized": "ELSE",
+            "paragraph": "<mainline>",
+            "start_line": 121,
+            "text": "ELSE",
+            "verb": "ELSE"
+          },
+          {
+            "end_line": 122,
+            "normalized": "MOVE '1' TO CT-SET-FF OF FFRECAB",
+            "paragraph": "<mainline>",
+            "start_line": 122,
+            "text": "MOVE '1'            TO CT-SET-FF OF FFRECAB",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 123,
+            "normalized": "MOVE 'A' TO CT-REC-FF OF FFRECAB",
+            "paragraph": "<mainline>",
+            "start_line": 123,
+            "text": "MOVE 'A'            TO CT-REC-FF OF FFRECAB",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 124,
+            "normalized": "MOVE SPACES TO GR-REC-FF OF FFRECAB",
+            "paragraph": "<mainline>",
+            "start_line": 124,
+            "text": "MOVE SPACES         TO GR-REC-FF OF FFRECAB",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 125,
+            "normalized": "MOVE 0 TO NR-KY-FF",
+            "paragraph": "<mainline>",
+            "start_line": 125,
+            "text": "MOVE 0              TO NR-KY-FF",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 126,
+            "normalized": "MOVE 0 TO NS-REC-FF-A",
+            "paragraph": "<mainline>",
+            "start_line": 126,
+            "text": "MOVE 0              TO NS-REC-FF-A",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 127,
+            "normalized": "MOVE 0 TO NS-REC-FF-IN",
+            "paragraph": "<mainline>",
+            "start_line": 127,
+            "text": "MOVE 0              TO NS-REC-FF-IN",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 128,
+            "normalized": "MOVE 7 TO NB-DAY-FF OF FFRECAB",
+            "paragraph": "<mainline>",
+            "start_line": 128,
+            "text": "MOVE 7              TO NB-DAY-FF OF FFRECAB",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 129,
+            "normalized": "STORE FFRECAB",
+            "paragraph": "<mainline>",
+            "start_line": 129,
+            "text": "STORE FFRECAB",
+            "verb": "STORE"
+          },
+          {
+            "end_line": 130,
+            "normalized": "END-IF.",
+            "paragraph": "<mainline>",
+            "start_line": 130,
+            "text": "END-IF.",
+            "verb": "END-IF"
+          },
+          {
+            "end_line": 132,
+            "normalized": "IF NOT SW-EOF = 'Y'",
+            "paragraph": "<mainline>",
+            "start_line": 132,
+            "text": "IF NOT SW-EOF = 'Y'",
+            "verb": "IF"
+          },
+          {
+            "end_line": 133,
+            "normalized": "PERFORM READ-FLAT-FILE",
+            "paragraph": "<mainline>",
+            "start_line": 133,
+            "text": "PERFORM READ-FLAT-FILE",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 134,
+            "normalized": "END-IF.",
+            "paragraph": "<mainline>",
+            "start_line": 134,
+            "text": "END-IF.",
+            "verb": "END-IF"
+          },
+          {
+            "end_line": 136,
+            "normalized": "PERFORM VERWERKING UNTIL SW-EOF = 'Y'.",
+            "paragraph": "<mainline>",
+            "start_line": 136,
+            "text": "PERFORM VERWERKING UNTIL SW-EOF = 'Y'.",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 138,
+            "normalized": "FIND CURRENT FFRECAB",
+            "paragraph": "<mainline>",
+            "start_line": 138,
+            "text": "FIND CURRENT FFRECAB",
+            "verb": "FIND"
+          },
+          {
+            "end_line": 139,
+            "normalized": "ADD CTR-REC TO NS-REC-FF-IN",
+            "paragraph": "<mainline>",
+            "start_line": 139,
+            "text": "ADD CTR-REC TO NS-REC-FF-IN",
+            "verb": "ADD"
+          },
+          {
+            "end_line": 140,
+            "normalized": "MODIFY FFRECAB",
+            "paragraph": "<mainline>",
+            "start_line": 140,
+            "text": "MODIFY FFRECAB",
+            "verb": "MODIFY"
+          },
+          {
+            "end_line": 141,
+            "normalized": "MOVE 0 TO CTR-REC.",
+            "paragraph": "<mainline>",
+            "start_line": 141,
+            "text": "MOVE 0 TO CTR-REC.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 142,
+            "normalized": "CLOSE OPERATIES.",
+            "paragraph": "<mainline>",
+            "start_line": 142,
+            "text": "CLOSE OPERATIES.",
+            "verb": "CLOSE"
+          },
+          {
+            "end_line": 143,
+            "normalized": "FINISH.",
+            "paragraph": "<mainline>",
+            "start_line": 143,
+            "text": "FINISH.",
+            "verb": "FINISH"
+          },
+          {
+            "end_line": 144,
+            "normalized": "STOP RUN.",
+            "paragraph": "<mainline>",
+            "start_line": 144,
+            "text": "STOP RUN.",
+            "verb": "STOP"
+          },
+          {
+            "end_line": 149,
+            "normalized": "MOVE SPACES TO VMBFAR",
+            "paragraph": "VERWERKING",
+            "start_line": 149,
+            "text": "MOVE SPACES                    TO VMBFAR",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 150,
+            "normalized": "MOVE 1815 TO CT-RK-TGOOD OF VMBFAR",
+            "paragraph": "VERWERKING",
+            "start_line": 150,
+            "text": "MOVE 1815                      TO CT-RK-TGOOD    OF VMBFAR",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 151,
+            "normalized": "MOVE NR-CIO-FORM-AS-R TO NR-CIO-FORM-AS OF VMBFAR",
+            "paragraph": "VERWERKING",
+            "start_line": 151,
+            "text": "MOVE NR-CIO-FORM-AS-R          TO NR-CIO-FORM-AS OF VMBFAR",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 152,
+            "normalized": "MOVE DA-CREA-FORM-AS-R TO DA-CR-FORM-AS OF VMBFAR",
+            "paragraph": "VERWERKING",
+            "start_line": 152,
+            "text": "MOVE DA-CREA-FORM-AS-R         TO DA-CR-FORM-AS  OF VMBFAR",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 153,
+            "normalized": "MOVE NR-ID-FORM-AS OF VMBD205I TO NR-ID-FORM-AS OF VMBFAR",
+            "paragraph": "VERWERKING",
+            "start_line": 153,
+            "text": "MOVE NR-ID-FORM-AS OF VMBD205I TO NR-ID-FORM-AS  OF VMBFAR",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 154,
+            "normalized": "MOVE CT-OPG-FORM-AS-R TO CT-OPG-FORM-AS OF VMBFAR",
+            "paragraph": "VERWERKING",
+            "start_line": 154,
+            "text": "MOVE CT-OPG-FORM-AS-R          TO CT-OPG-FORM-AS OF VMBFAR",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 155,
+            "normalized": "MOVE CT-OPD-FORM-AS-R TO CT-OPD-FORM-AS OF VMBFAR",
+            "paragraph": "VERWERKING",
+            "start_line": 155,
+            "text": "MOVE CT-OPD-FORM-AS-R          TO CT-OPD-FORM-AS OF VMBFAR",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 156,
+            "normalized": "OBTAIN CALC VMBFAR",
+            "paragraph": "VERWERKING",
+            "start_line": 156,
+            "text": "OBTAIN CALC VMBFAR",
+            "verb": "OBTAIN"
+          },
+          {
+            "end_line": 157,
+            "normalized": "MOVE DATE-YMD8 TO DA-INFSD-GDIFAR",
+            "paragraph": "VERWERKING",
+            "start_line": 157,
+            "text": "MOVE DATE-YMD8 TO DA-INFSD-GDIFAR",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 158,
+            "normalized": "MODIFY VMBFAR.",
+            "paragraph": "VERWERKING",
+            "start_line": 158,
+            "text": "MODIFY VMBFAR.",
+            "verb": "MODIFY"
+          },
+          {
+            "end_line": 161,
+            "normalized": "IF CTR-REC > 99",
+            "paragraph": "VERWERKING",
+            "start_line": 161,
+            "text": "IF CTR-REC > 99",
+            "verb": "IF"
+          },
+          {
+            "end_line": 162,
+            "normalized": "FIND CURRENT FFRECAB",
+            "paragraph": "VERWERKING",
+            "start_line": 162,
+            "text": "FIND CURRENT FFRECAB",
+            "verb": "FIND"
+          },
+          {
+            "end_line": 163,
+            "normalized": "ADD CTR-REC TO NS-REC-FF-IN",
+            "paragraph": "VERWERKING",
+            "start_line": 163,
+            "text": "ADD CTR-REC TO NS-REC-FF-IN",
+            "verb": "ADD"
+          },
+          {
+            "end_line": 164,
+            "normalized": "MODIFY FFRECAB",
+            "paragraph": "VERWERKING",
+            "start_line": 164,
+            "text": "MODIFY FFRECAB",
+            "verb": "MODIFY"
+          },
+          {
+            "end_line": 165,
+            "normalized": "MOVE 0 TO CTR-REC",
+            "paragraph": "VERWERKING",
+            "start_line": 165,
+            "text": "MOVE 0 TO CTR-REC",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 166,
+            "normalized": "COMMIT",
+            "paragraph": "VERWERKING",
+            "start_line": 166,
+            "text": "COMMIT",
+            "verb": "COMMIT"
+          },
+          {
+            "end_line": 167,
+            "normalized": "END-IF.",
+            "paragraph": "VERWERKING",
+            "start_line": 167,
+            "text": "END-IF.",
+            "verb": "END-IF"
+          },
+          {
+            "end_line": 170,
+            "normalized": "PERFORM READ-FLAT-FILE.",
+            "paragraph": "VERWERKING",
+            "start_line": 170,
+            "text": "PERFORM READ-FLAT-FILE.",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 176,
+            "normalized": "READ OPERATIES INTO VMBD205I AT END MOVE 'Y' TO SW-EOF.",
+            "paragraph": "READ-FLAT-FILE",
+            "start_line": 175,
+            "text": "READ OPERATIES INTO VMBD205I AT END MOVE 'Y' TO SW-EOF.",
+            "verb": "READ"
+          }
+        ],
+        "unresolved_calls": [],
+        "verb_counts": {
+          "ADD": 2,
+          "CLOSE": 1,
+          "COMMIT": 1,
+          "ELSE": 1,
+          "END-IF": 3,
+          "FIND": 2,
+          "FINISH": 1,
+          "IF": 3,
+          "MODIFY": 3,
+          "MOVE": 25,
+          "OBTAIN": 2,
+          "OPEN": 1,
+          "PERFORM": 4,
+          "READ": 1,
+          "READY": 1,
+          "STOP": 1,
+          "STORE": 1
+        }
+      },
+      "role": "idms",
+      "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+      "snapshot": "prompt/knowledge/evidence/63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb.source"
+    },
+    {
+      "artifact_id": "Ac607d64e8dddb115a9",
+      "bytes": 37474,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 457,
+      "path": "mainframe/workspace/Manual Output/VMDZ1567.cbl",
+      "profile": {
+        "calls": [
+          {
+            "caller": "<mainline>",
+            "end_line": 162,
+            "start_line": 162,
+            "target": "820000-GET-TIMESTAMP",
+            "through": null
+          },
+          {
+            "caller": "<mainline>",
+            "end_line": 178,
+            "start_line": 178,
+            "target": "700-RESTART-CONTROL",
+            "through": null
+          },
+          {
+            "caller": "<mainline>",
+            "end_line": 180,
+            "start_line": 180,
+            "target": "READ-FLAT-FILE",
+            "through": null
+          },
+          {
+            "caller": "<mainline>",
+            "end_line": 182,
+            "start_line": 182,
+            "target": "1000-VERWERKING",
+            "through": null
+          },
+          {
+            "caller": "<mainline>",
+            "end_line": 184,
+            "start_line": 184,
+            "target": "800-PROCESS-COMMIT",
+            "through": null
+          },
+          {
+            "caller": "1000-VERWERKING",
+            "end_line": 228,
+            "start_line": 228,
+            "target": "1100-UPDATE-VMBFAR",
+            "through": null
+          },
+          {
+            "caller": "1000-VERWERKING",
+            "end_line": 231,
+            "start_line": 231,
+            "target": "800-PROCESS-COMMIT",
+            "through": null
+          },
+          {
+            "caller": "1000-VERWERKING",
+            "end_line": 234,
+            "start_line": 234,
+            "target": "READ-FLAT-FILE",
+            "through": null
+          },
+          {
+            "caller": "700-RESTART-CONTROL",
+            "end_line": 274,
+            "start_line": 274,
+            "target": "700-SELECT-DZ01RSTV",
+            "through": null
+          },
+          {
+            "caller": "710-JOB-IS-RESTART",
+            "end_line": 295,
+            "start_line": 295,
+            "target": "810000-CALL-USERABEN",
+            "through": null
+          },
+          {
+            "caller": "710-JOB-IS-RESTART",
+            "end_line": 298,
+            "start_line": 298,
+            "target": "READ-FLAT-FILE",
+            "through": null
+          },
+          {
+            "caller": "720-WRITE-RESTART-REC",
+            "end_line": 318,
+            "start_line": 317,
+            "target": "700-INSERT-DZ01RSTV",
+            "through": null
+          },
+          {
+            "caller": "800-PROCESS-COMMIT",
+            "end_line": 338,
+            "start_line": 338,
+            "target": "700-UPDATE-DZ01RSTV",
+            "through": null
+          },
+          {
+            "caller": "800-PROCESS-COMMIT",
+            "end_line": 348,
+            "start_line": 348,
+            "target": "SQLERROR",
+            "through": null
+          },
+          {
+            "caller": "700-SELECT-DZ01RSTV",
+            "end_line": 385,
+            "start_line": 385,
+            "target": "SQLERROR",
+            "through": null
+          },
+          {
+            "caller": "700-UPDATE-DZ01RSTV",
+            "end_line": 406,
+            "start_line": 406,
+            "target": "SQLERROR",
+            "through": null
+          },
+          {
+            "caller": "700-INSERT-DZ01RSTV",
+            "end_line": 422,
+            "start_line": 422,
+            "target": "SQLERROR",
+            "through": null
+          },
+          {
+            "caller": "1100-UPDATE-VMBFAR",
+            "end_line": 449,
+            "start_line": 449,
+            "target": "SQLERROR",
+            "through": null
+          }
+        ],
+        "data": [
+          {
+            "end_line": 42,
+            "level": 1,
+            "name": "OPERATIES-REC",
+            "start_line": 42,
+            "text": "01   OPERATIES-REC             PIC X(1200)."
+          },
+          {
+            "end_line": 45,
+            "level": 77,
+            "name": "USERABEN",
+            "start_line": 45,
+            "text": "77  USERABEN                   PIC X(8) VALUE 'USERABEN'."
+          },
+          {
+            "end_line": 46,
+            "level": 77,
+            "name": "CS-PROGRAM",
+            "start_line": 46,
+            "text": "77  CS-PROGRAM                 PIC X(8) VALUE 'VMDZ1567'."
+          },
+          {
+            "end_line": 48,
+            "level": 1,
+            "name": "WS-SWITCHES",
+            "start_line": 48,
+            "text": "01 WS-SWITCHES."
+          },
+          {
+            "end_line": 49,
+            "level": 2,
+            "name": "SW-VMDZ205I",
+            "start_line": 49,
+            "text": "02  SW-VMDZ205I            PIC X."
+          },
+          {
+            "end_line": 50,
+            "level": 88,
+            "name": "VMDZ205I-NOT-EOF",
+            "start_line": 50,
+            "text": "88  VMDZ205I-NOT-EOF   VALUE 'N'."
+          },
+          {
+            "end_line": 51,
+            "level": 88,
+            "name": "VMDZ205I-EOF",
+            "start_line": 51,
+            "text": "88  VMDZ205I-EOF       VALUE 'Y'."
+          },
+          {
+            "end_line": 53,
+            "level": 1,
+            "name": "HELP-VARIABLE",
+            "start_line": 53,
+            "text": "01  HELP-VARIABLE."
+          },
+          {
+            "end_line": 54,
+            "level": 2,
+            "name": "WS-RESTART-REC",
+            "start_line": 54,
+            "text": "02  WS-RESTART-REC."
+          },
+          {
+            "end_line": 55,
+            "level": 3,
+            "name": "NB-READ",
+            "start_line": 55,
+            "text": "03  NB-READ            PIC 9(15)."
+          },
+          {
+            "end_line": 56,
+            "level": 3,
+            "name": "KY-RESTART",
+            "start_line": 56,
+            "text": "03  KY-RESTART         PIC X(1200)."
+          },
+          {
+            "end_line": 58,
+            "level": 2,
+            "name": "WS-INPUT-KASBONS",
+            "start_line": 58,
+            "text": "02  WS-INPUT-KASBONS       PIC X(1200)."
+          },
+          {
+            "end_line": 59,
+            "level": 2,
+            "name": "WS-TELLER",
+            "start_line": 59,
+            "text": "02  WS-TELLER              PIC 9(9)   COMP-3 VALUE ZERO."
+          },
+          {
+            "end_line": 60,
+            "level": 2,
+            "name": "WS-NB-INPUT-UPD-I",
+            "start_line": 60,
+            "text": "02  WS-NB-INPUT-UPD-I      PIC 9(7)   COMP-3 VALUE ZERO."
+          },
+          {
+            "end_line": 61,
+            "level": 2,
+            "name": "WS-NB-BFAR-UPD-I",
+            "start_line": 61,
+            "text": "02  WS-NB-BFAR-UPD-I       PIC S9(11) COMP-3 VALUE +0."
+          },
+          {
+            "end_line": 63,
+            "level": 1,
+            "name": "STOP-DATONLY",
+            "start_line": 63,
+            "text": "01  STOP-DATONLY."
+          },
+          {
+            "end_line": 64,
+            "level": 2,
+            "name": "DATE-YMD",
+            "start_line": 64,
+            "text": "02  DATE-YMD."
+          },
+          {
+            "end_line": 65,
+            "level": 3,
+            "name": "D-YEAR",
+            "start_line": 65,
+            "text": "03  D-YEAR             PIC 99."
+          },
+          {
+            "end_line": 66,
+            "level": 3,
+            "name": "D-MONTH",
+            "start_line": 66,
+            "text": "03  D-MONTH            PIC 99."
+          },
+          {
+            "end_line": 67,
+            "level": 3,
+            "name": "D-DAY",
+            "start_line": 67,
+            "text": "03  D-DAY              PIC 99."
+          },
+          {
+            "end_line": 68,
+            "level": 2,
+            "name": "DATE-DMY",
+            "start_line": 68,
+            "text": "02  DATE-DMY."
+          },
+          {
+            "end_line": 69,
+            "level": 3,
+            "name": "D-DAY",
+            "start_line": 69,
+            "text": "03  D-DAY              PIC 99."
+          },
+          {
+            "end_line": 70,
+            "level": 3,
+            "name": "D-MONTH",
+            "start_line": 70,
+            "text": "03  D-MONTH            PIC 99."
+          },
+          {
+            "end_line": 71,
+            "level": 3,
+            "name": "D-YEAR",
+            "start_line": 71,
+            "text": "03  D-YEAR             PIC 99."
+          },
+          {
+            "end_line": 72,
+            "level": 2,
+            "name": "DATE-YMD8",
+            "start_line": 72,
+            "text": "02  DATE-YMD8."
+          },
+          {
+            "end_line": 73,
+            "level": 3,
+            "name": "D-CENT",
+            "start_line": 73,
+            "text": "03  D-CENT             PIC 99."
+          },
+          {
+            "end_line": 74,
+            "level": 3,
+            "name": "D-YEAR",
+            "start_line": 74,
+            "text": "03  D-YEAR             PIC 99."
+          },
+          {
+            "end_line": 75,
+            "level": 3,
+            "name": "D-MONTH",
+            "start_line": 75,
+            "text": "03  D-MONTH            PIC 99."
+          },
+          {
+            "end_line": 76,
+            "level": 3,
+            "name": "D-DAY",
+            "start_line": 76,
+            "text": "03  D-DAY              PIC 99."
+          },
+          {
+            "end_line": 77,
+            "level": 2,
+            "name": "DATE-DMY8",
+            "start_line": 77,
+            "text": "02  DATE-DMY8."
+          },
+          {
+            "end_line": 78,
+            "level": 3,
+            "name": "D-DAY",
+            "start_line": 78,
+            "text": "03  D-DAY              PIC 99."
+          },
+          {
+            "end_line": 79,
+            "level": 3,
+            "name": "D-MONTH",
+            "start_line": 79,
+            "text": "03  D-MONTH            PIC 99."
+          },
+          {
+            "end_line": 80,
+            "level": 3,
+            "name": "D-CENT",
+            "start_line": 80,
+            "text": "03  D-CENT             PIC 99."
+          },
+          {
+            "end_line": 81,
+            "level": 3,
+            "name": "D-YEAR",
+            "start_line": 81,
+            "text": "03  D-YEAR             PIC 99."
+          },
+          {
+            "end_line": 84,
+            "level": 1,
+            "name": "WS-DATUMVELDEN",
+            "start_line": 84,
+            "text": "01  WS-DATUMVELDEN."
+          },
+          {
+            "end_line": 85,
+            "level": 3,
+            "name": "DA-YYMMDD",
+            "start_line": 85,
+            "text": "03  DA-YYMMDD."
+          },
+          {
+            "end_line": 86,
+            "level": 5,
+            "name": "YY",
+            "start_line": 86,
+            "text": "05  YY                 PIC 99            VALUE ZERO."
+          },
+          {
+            "end_line": 87,
+            "level": 5,
+            "name": "MM",
+            "start_line": 87,
+            "text": "05  MM                 PIC 99            VALUE ZERO."
+          },
+          {
+            "end_line": 88,
+            "level": 5,
+            "name": "DD",
+            "start_line": 88,
+            "text": "05  DD                 PIC 99            VALUE ZERO."
+          },
+          {
+            "end_line": 89,
+            "level": 3,
+            "name": "DA-DDMMCCYY",
+            "start_line": 89,
+            "text": "03  DA-DDMMCCYY."
+          },
+          {
+            "end_line": 90,
+            "level": 5,
+            "name": "DD",
+            "start_line": 90,
+            "text": "05  DD                 PIC 99            VALUE ZERO."
+          },
+          {
+            "end_line": 91,
+            "level": 5,
+            "name": "MM",
+            "start_line": 91,
+            "text": "05  MM                 PIC 99            VALUE ZERO."
+          },
+          {
+            "end_line": 92,
+            "level": 5,
+            "name": "CC",
+            "start_line": 92,
+            "text": "05  CC                 PIC 99            VALUE ZERO."
+          },
+          {
+            "end_line": 93,
+            "level": 5,
+            "name": "YY",
+            "start_line": 93,
+            "text": "05  YY                 PIC 99            VALUE ZERO."
+          },
+          {
+            "end_line": 94,
+            "level": 3,
+            "name": "DA-CCYYMMDD",
+            "start_line": 94,
+            "text": "03  DA-CCYYMMDD."
+          },
+          {
+            "end_line": 95,
+            "level": 5,
+            "name": "CC",
+            "start_line": 95,
+            "text": "05  CC                 PIC 99            VALUE ZERO."
+          },
+          {
+            "end_line": 96,
+            "level": 5,
+            "name": "YY",
+            "start_line": 96,
+            "text": "05  YY                 PIC 99            VALUE ZERO."
+          },
+          {
+            "end_line": 97,
+            "level": 5,
+            "name": "MM",
+            "start_line": 97,
+            "text": "05  MM                 PIC 99            VALUE ZERO."
+          },
+          {
+            "end_line": 98,
+            "level": 5,
+            "name": "DD",
+            "start_line": 98,
+            "text": "05  DD                 PIC 99            VALUE ZERO."
+          },
+          {
+            "end_line": 99,
+            "level": 3,
+            "name": "DA-CCYYMMDD-R",
+            "start_line": 99,
+            "text": "03  DA-CCYYMMDD-R REDEFINES DA-CCYYMMDD."
+          },
+          {
+            "end_line": 100,
+            "level": 5,
+            "name": "CCYY",
+            "start_line": 100,
+            "text": "05  CCYY               PIC 9999."
+          },
+          {
+            "end_line": 101,
+            "level": 5,
+            "name": "MM",
+            "start_line": 101,
+            "text": "05  MM                 PIC 99."
+          },
+          {
+            "end_line": 102,
+            "level": 5,
+            "name": "DD",
+            "start_line": 102,
+            "text": "05  DD                 PIC 99."
+          },
+          {
+            "end_line": 103,
+            "level": 2,
+            "name": "DA-DD-MM-CCYY",
+            "start_line": 103,
+            "text": "02  DA-DD-MM-CCYY."
+          },
+          {
+            "end_line": 104,
+            "level": 3,
+            "name": "DD",
+            "start_line": 104,
+            "text": "03  DD                 PIC 9(02)."
+          },
+          {
+            "end_line": 105,
+            "level": 3,
+            "name": "TE-MARKER5",
+            "start_line": 105,
+            "text": "03  TE-MARKER5         PIC X             VALUE '.'."
+          },
+          {
+            "end_line": 106,
+            "level": 3,
+            "name": "MM",
+            "start_line": 106,
+            "text": "03  MM                 PIC 9(02)."
+          },
+          {
+            "end_line": 107,
+            "level": 3,
+            "name": "TE-MARKER6",
+            "start_line": 107,
+            "text": "03  TE-MARKER6         PIC X             VALUE '.'."
+          },
+          {
+            "end_line": 108,
+            "level": 3,
+            "name": "CCYY",
+            "start_line": 108,
+            "text": "03  CCYY               PIC 9(04)."
+          },
+          {
+            "end_line": 111,
+            "level": 1,
+            "name": "WS-TIMESTAMP-FIELDS",
+            "start_line": 111,
+            "text": "01  WS-TIMESTAMP-FIELDS."
+          },
+          {
+            "end_line": 112,
+            "level": 5,
+            "name": "TS-SYSTEM",
+            "start_line": 112,
+            "text": "05 TS-SYSTEM."
+          },
+          {
+            "end_line": 113,
+            "level": 10,
+            "name": "DA-SYS",
+            "start_line": 113,
+            "text": "10  DA-SYS."
+          },
+          {
+            "end_line": 114,
+            "level": 15,
+            "name": "DA-SYS-CCYY",
+            "start_line": 114,
+            "text": "15  DA-SYS-CCYY."
+          },
+          {
+            "end_line": 115,
+            "level": 20,
+            "name": "CC",
+            "start_line": 115,
+            "text": "20  CC          PIC X(2)."
+          },
+          {
+            "end_line": 116,
+            "level": 20,
+            "name": "YY",
+            "start_line": 116,
+            "text": "20  YY          PIC X(2)."
+          },
+          {
+            "end_line": 117,
+            "level": 15,
+            "name": "MM",
+            "start_line": 117,
+            "text": "15  MM              PIC X(2)."
+          },
+          {
+            "end_line": 118,
+            "level": 15,
+            "name": "DD",
+            "start_line": 118,
+            "text": "15  DD              PIC X(2)."
+          },
+          {
+            "end_line": 119,
+            "level": 10,
+            "name": "HR-SYS",
+            "start_line": 119,
+            "text": "10  HR-SYS."
+          },
+          {
+            "end_line": 120,
+            "level": 15,
+            "name": "HH",
+            "start_line": 120,
+            "text": "15  HH              PIC X(2)."
+          },
+          {
+            "end_line": 121,
+            "level": 15,
+            "name": "MI",
+            "start_line": 121,
+            "text": "15  MI              PIC X(2)."
+          },
+          {
+            "end_line": 122,
+            "level": 15,
+            "name": "SS",
+            "start_line": 122,
+            "text": "15  SS              PIC X(2)."
+          },
+          {
+            "end_line": 123,
+            "level": 15,
+            "name": "TT",
+            "start_line": 123,
+            "text": "15  TT              PIC X(2)."
+          },
+          {
+            "end_line": 124,
+            "level": 5,
+            "name": "TS-TIMESTAMP",
+            "start_line": 124,
+            "text": "05 TS-TIMESTAMP."
+          },
+          {
+            "end_line": 125,
+            "level": 10,
+            "name": "CC",
+            "start_line": 125,
+            "text": "10  CC                  PIC X(2)."
+          },
+          {
+            "end_line": 126,
+            "level": 10,
+            "name": "YY",
+            "start_line": 126,
+            "text": "10  YY                  PIC X(2)."
+          },
+          {
+            "end_line": 127,
+            "level": 10,
+            "name": "TE-MARKER1",
+            "start_line": 127,
+            "text": "10  TE-MARKER1          PIC X             VALUE '-'."
+          },
+          {
+            "end_line": 128,
+            "level": 10,
+            "name": "MM",
+            "start_line": 128,
+            "text": "10  MM                  PIC X(2)."
+          },
+          {
+            "end_line": 129,
+            "level": 10,
+            "name": "TE-MARKER2",
+            "start_line": 129,
+            "text": "10  TE-MARKER2          PIC X             VALUE '-'."
+          },
+          {
+            "end_line": 130,
+            "level": 10,
+            "name": "DD",
+            "start_line": 130,
+            "text": "10  DD                  PIC X(2)."
+          },
+          {
+            "end_line": 131,
+            "level": 10,
+            "name": "TE-MARKER3",
+            "start_line": 131,
+            "text": "10  TE-MARKER3          PIC X             VALUE '-'."
+          },
+          {
+            "end_line": 132,
+            "level": 10,
+            "name": "HH",
+            "start_line": 132,
+            "text": "10  HH                  PIC X(2)."
+          },
+          {
+            "end_line": 133,
+            "level": 10,
+            "name": "TE-MARKER4",
+            "start_line": 133,
+            "text": "10  TE-MARKER4          PIC X             VALUE '.'."
+          },
+          {
+            "end_line": 134,
+            "level": 10,
+            "name": "MI",
+            "start_line": 134,
+            "text": "10  MI                  PIC X(2)."
+          },
+          {
+            "end_line": 135,
+            "level": 10,
+            "name": "TE-MARKER5",
+            "start_line": 135,
+            "text": "10  TE-MARKER5          PIC X             VALUE '.'."
+          },
+          {
+            "end_line": 136,
+            "level": 10,
+            "name": "SS",
+            "start_line": 136,
+            "text": "10  SS                  PIC X(2)."
+          },
+          {
+            "end_line": 137,
+            "level": 10,
+            "name": "TE-MARKER6",
+            "start_line": 137,
+            "text": "10  TE-MARKER6          PIC X             VALUE '.'."
+          },
+          {
+            "end_line": 138,
+            "level": 10,
+            "name": "TT",
+            "start_line": 138,
+            "text": "10  TT                  PIC X(2)."
+          },
+          {
+            "end_line": 139,
+            "level": 10,
+            "name": "NNNN",
+            "start_line": 139,
+            "text": "10  NNNN                PIC 9(04)         VALUE 0."
+          },
+          {
+            "end_line": 153,
+            "level": 1,
+            "name": "PARAM-DATONLY",
+            "start_line": 153,
+            "text": "01  PARAM-DATONLY."
+          },
+          {
+            "end_line": 154,
+            "level": 3,
+            "name": "L-PARAM",
+            "start_line": 154,
+            "text": "03  L-PARAM                PIC S9(4) COMP."
+          },
+          {
+            "end_line": 155,
+            "level": 3,
+            "name": "DATUMLS",
+            "start_line": 155,
+            "text": "03  DATUMLS."
+          },
+          {
+            "end_line": 156,
+            "level": 5,
+            "name": "DATE-IND",
+            "start_line": 156,
+            "text": "05  DATE-IND           PIC X."
+          },
+          {
+            "end_line": 157,
+            "level": 5,
+            "name": "DATE8-LS",
+            "start_line": 157,
+            "text": "05  DATE8-LS           PIC X(8)."
+          }
+        ],
+        "dependencies": [
+          {
+            "kind": "SQL_INCLUDE",
+            "line": 143,
+            "name": "SQLERRWS"
+          },
+          {
+            "kind": "SQL_INCLUDE",
+            "line": 144,
+            "name": "SQLCA"
+          },
+          {
+            "kind": "SQL_INCLUDE",
+            "line": 147,
+            "name": "DZBFARTV"
+          },
+          {
+            "kind": "SQL_INCLUDE",
+            "line": 148,
+            "name": "DZ01RSTV"
+          },
+          {
+            "kind": "COPY",
+            "line": 150,
+            "name": "VMDZ205I"
+          },
+          {
+            "kind": "SQL_INCLUDE",
+            "line": 454,
+            "name": "SQLERROR"
+          }
+        ],
+        "duplicate_labels": [],
+        "format": "fixed",
+        "limitations": [
+          "Lexical inventory only; no COPY expansion, full CFG, byte-layout proof, compiler, or runtime execution.",
+          "Debug indicator lines exist; compiler debug mode is not established."
+        ],
+        "lines": 457,
+        "paragraphs": [
+          {
+            "kind": "paragraph",
+            "line": 192,
+            "name": "1000-VERWERKING"
+          },
+          {
+            "kind": "paragraph",
+            "line": 238,
+            "name": "READ-FLAT-FILE"
+          },
+          {
+            "kind": "paragraph",
+            "line": 254,
+            "name": "820000-GET-TIMESTAMP"
+          },
+          {
+            "kind": "paragraph",
+            "line": 269,
+            "name": "700-RESTART-CONTROL"
+          },
+          {
+            "kind": "paragraph",
+            "line": 287,
+            "name": "710-JOB-IS-RESTART"
+          },
+          {
+            "kind": "paragraph",
+            "line": 306,
+            "name": "720-WRITE-RESTART-REC"
+          },
+          {
+            "kind": "paragraph",
+            "line": 320,
+            "name": "810000-CALL-USERABEN"
+          },
+          {
+            "kind": "paragraph",
+            "line": 325,
+            "name": "800-PROCESS-COMMIT"
+          },
+          {
+            "kind": "paragraph",
+            "line": 356,
+            "name": "700-SELECT-DZ01RSTV"
+          },
+          {
+            "kind": "paragraph",
+            "line": 389,
+            "name": "700-UPDATE-DZ01RSTV"
+          },
+          {
+            "kind": "paragraph",
+            "line": 410,
+            "name": "700-INSERT-DZ01RSTV"
+          },
+          {
+            "kind": "paragraph",
+            "line": 426,
+            "name": "1100-UPDATE-VMBFAR"
+          }
+        ],
+        "program_id": "VMDZ1567",
+        "sql": [
+          {
+            "end_line": 143,
+            "hosts": [],
+            "kind": "INCLUDE",
+            "normalized": "EXEC SQL INCLUDE SQLERRWS END-EXEC.",
+            "ordering": "",
+            "paragraph": "<mainline>",
+            "predicates": "",
+            "projection": [],
+            "start_line": 143,
+            "tables": [],
+            "text": "EXEC SQL INCLUDE SQLERRWS END-EXEC."
+          },
+          {
+            "end_line": 144,
+            "hosts": [],
+            "kind": "INCLUDE",
+            "normalized": "EXEC SQL INCLUDE SQLCA END-EXEC.",
+            "ordering": "",
+            "paragraph": "<mainline>",
+            "predicates": "",
+            "projection": [],
+            "start_line": 144,
+            "tables": [],
+            "text": "EXEC SQL INCLUDE SQLCA    END-EXEC."
+          },
+          {
+            "end_line": 147,
+            "hosts": [],
+            "kind": "INCLUDE",
+            "normalized": "EXEC SQL INCLUDE DZBFARTV END-EXEC.",
+            "ordering": "",
+            "paragraph": "<mainline>",
+            "predicates": "",
+            "projection": [],
+            "start_line": 147,
+            "tables": [],
+            "text": "EXEC SQL INCLUDE DZBFARTV END-EXEC."
+          },
+          {
+            "end_line": 148,
+            "hosts": [],
+            "kind": "INCLUDE",
+            "normalized": "EXEC SQL INCLUDE DZ01RSTV END-EXEC.",
+            "ordering": "",
+            "paragraph": "<mainline>",
+            "predicates": "",
+            "projection": [],
+            "start_line": 148,
+            "tables": [],
+            "text": "EXEC SQL INCLUDE DZ01RSTV END-EXEC."
+          },
+          {
+            "end_line": 342,
+            "hosts": [],
+            "kind": "COMMIT",
+            "normalized": "EXEC SQL COMMIT END-EXEC.",
+            "ordering": "",
+            "paragraph": "800-PROCESS-COMMIT",
+            "predicates": "",
+            "projection": [],
+            "start_line": 340,
+            "tables": [],
+            "text": "EXEC SQL COMMIT END-EXEC."
+          },
+          {
+            "end_line": 377,
+            "hosts": [
+              ":DCLDZ01RSTV.NM-ID-RS-PROGRAM",
+              ":DCLDZ01RSTV.NB-ID-RS-PHASE",
+              ":DCLDZ01RSTV.DA-CR-RS",
+              ":DCLDZ01RSTV.CO-ID-RS",
+              ":DCLDZ01RSTV.NB-DAY-RS",
+              ":DCLDZ01RSTV.TE-CH-RS-DATA"
+            ],
+            "kind": "SELECT",
+            "normalized": "EXEC SQL SELECT NM_ID_RS_PROGRAM , NB_ID_RS_PHASE , DA_CR_RS , CO_ID_RS , NB_DAY_RS , TE_CH_RS_DATA INTO :DCLDZ01RSTV.NM-ID-RS-PROGRAM , :DCLDZ01RSTV.NB-ID-RS-PHASE , :DCLDZ01RSTV.DA-CR-RS , :DCLDZ01RSTV.CO-ID-RS , :DCLDZ01RSTV.NB-DAY-RS , :DCLDZ01RSTV.TE-CH-RS-DATA FROM DZ01RSTV WHERE NM_ID_RS_PROGRAM = :DCLDZ01RSTV.NM-ID-RS-PROGRAM AND NB_ID_RS_PHASE = :DCLDZ01RSTV.NB-ID-RS-PHASE AND DA_CR_RS = :DCLDZ01RSTV.DA-CR-RS QUERYNO 376 END-EXEC",
+            "ordering": "",
+            "paragraph": "700-SELECT-DZ01RSTV",
+            "predicates": "NM_ID_RS_PROGRAM = :DCLDZ01RSTV.NM-ID-RS-PROGRAM AND NB_ID_RS_PHASE = :DCLDZ01RSTV.NB-ID-RS-PHASE AND DA_CR_RS = :DCLDZ01RSTV.DA-CR-RS",
+            "projection": [
+              "NM_ID_RS_PROGRAM",
+              "NB_ID_RS_PHASE",
+              "DA_CR_RS",
+              "CO_ID_RS",
+              "NB_DAY_RS",
+              "TE_CH_RS_DATA"
+            ],
+            "start_line": 359,
+            "tables": [
+              "DZ01RSTV"
+            ],
+            "text": "EXEC SQL SELECT NM_ID_RS_PROGRAM , NB_ID_RS_PHASE , DA_CR_RS , CO_ID_RS , NB_DAY_RS , TE_CH_RS_DATA INTO :DCLDZ01RSTV.NM-ID-RS-PROGRAM , :DCLDZ01RSTV.NB-ID-RS-PHASE , :DCLDZ01RSTV.DA-CR-RS , :DCLDZ01RSTV.CO-ID-RS , :DCLDZ01RSTV.NB-DAY-RS , :DCLDZ01RSTV.TE-CH-RS-DATA FROM DZ01RSTV WHERE NM_ID_RS_PROGRAM = :DCLDZ01RSTV.NM-ID-RS-PROGRAM AND NB_ID_RS_PHASE   = :DCLDZ01RSTV.NB-ID-RS-PHASE AND DA_CR_RS         = :DCLDZ01RSTV.DA-CR-RS QUERYNO 376 END-EXEC"
+          },
+          {
+            "end_line": 399,
+            "hosts": [],
+            "kind": "UPDATE",
+            "normalized": "EXEC SQL UPDATE DZ01RSTV SET TE_CH_RS_DATA = :DCLDZ01RSTV.TE-CH-RS-DATA , CO_ID_RS = :DCLDZ01RSTV.CO-ID-RS WHERE NM_ID_RS_PROGRAM = :DCLDZ01RSTV.NM-ID-RS-PROGRAM AND NB_ID_RS_PHASE = :DCLDZ01RSTV.NB-ID-RS-PHASE AND DA_CR_RS = :DCLDZ01RSTV.DA-CR-RS QUERYNO 398 END-EXEC",
+            "ordering": "",
+            "paragraph": "700-UPDATE-DZ01RSTV",
+            "predicates": "NM_ID_RS_PROGRAM = :DCLDZ01RSTV.NM-ID-RS-PROGRAM AND NB_ID_RS_PHASE = :DCLDZ01RSTV.NB-ID-RS-PHASE AND DA_CR_RS = :DCLDZ01RSTV.DA-CR-RS",
+            "projection": [],
+            "start_line": 391,
+            "tables": [
+              "DZ01RSTV"
+            ],
+            "text": "EXEC SQL UPDATE DZ01RSTV SET TE_CH_RS_DATA    = :DCLDZ01RSTV.TE-CH-RS-DATA , CO_ID_RS         = :DCLDZ01RSTV.CO-ID-RS WHERE NM_ID_RS_PROGRAM = :DCLDZ01RSTV.NM-ID-RS-PROGRAM AND NB_ID_RS_PHASE   = :DCLDZ01RSTV.NB-ID-RS-PHASE AND DA_CR_RS         = :DCLDZ01RSTV.DA-CR-RS QUERYNO 398 END-EXEC"
+          },
+          {
+            "end_line": 415,
+            "hosts": [],
+            "kind": "INSERT",
+            "normalized": "EXEC SQL INSERT INTO DZ01RSTV VALUES (:DCLDZ01RSTV) END-EXEC",
+            "ordering": "",
+            "paragraph": "700-INSERT-DZ01RSTV",
+            "predicates": "",
+            "projection": [],
+            "start_line": 412,
+            "tables": [
+              "DZ01RSTV"
+            ],
+            "text": "EXEC SQL INSERT INTO DZ01RSTV VALUES (:DCLDZ01RSTV) END-EXEC"
+          },
+          {
+            "end_line": 442,
+            "hosts": [],
+            "kind": "UPDATE",
+            "normalized": "EXEC SQL UPDATE DZBFARTV SET DA_INFSDGD_479BFAR = :DCLDZBFARTV.DA-INFSDGD-479BFAR , TS_UPDATE_479BFAR = :DCLDZBFARTV.TS-UPDATE-479BFAR , ID_USERID_479BFAR = :DCLDZBFARTV.ID-USERID-479BFAR WHERE CT_TGDSERV_479BFAR = :DCLDZBFARTV.CT-TGDSERV-479BFAR AND NR_CIOFMAS_479BFAR = :DCLDZBFARTV.NR-CIOFMAS-479BFAR AND DA_CRFMAS_479BFAR = :DCLDZBFARTV.DA-CRFMAS-479BFAR AND NR_IDFMAS_479BFAR = :DCLDZBFARTV.NR-IDFMAS-479BFAR AND CT_OPDFMAS_479BFAR = :DCLDZBFARTV.CT-OPDFMAS-479BFAR AND CT_OPGFMAS_479BFAR = :DCLDZBFARTV.CT-OPGFMAS-479BFAR QUERYNO 442 END-EXEC",
+            "ordering": "",
+            "paragraph": "1100-UPDATE-VMBFAR",
+            "predicates": "CT_TGDSERV_479BFAR = :DCLDZBFARTV.CT-TGDSERV-479BFAR AND NR_CIOFMAS_479BFAR = :DCLDZBFARTV.NR-CIOFMAS-479BFAR AND DA_CRFMAS_479BFAR = :DCLDZBFARTV.DA-CRFMAS-479BFAR AND NR_IDFMAS_479BFAR = :DCLDZBFARTV.NR-IDFMAS-479BFAR AND CT_OPDFMAS_479BFAR = :DCLDZBFARTV.CT-OPDFMAS-479BFAR AND CT_OPGFMAS_479BFAR = :DCLDZBFARTV.CT-OPGFMAS-479BFAR",
+            "projection": [],
+            "start_line": 430,
+            "tables": [
+              "DZBFARTV"
+            ],
+            "text": "EXEC SQL UPDATE DZBFARTV SET DA_INFSDGD_479BFAR = :DCLDZBFARTV.DA-INFSDGD-479BFAR , TS_UPDATE_479BFAR  = :DCLDZBFARTV.TS-UPDATE-479BFAR , ID_USERID_479BFAR  = :DCLDZBFARTV.ID-USERID-479BFAR WHERE CT_TGDSERV_479BFAR = :DCLDZBFARTV.CT-TGDSERV-479BFAR AND NR_CIOFMAS_479BFAR = :DCLDZBFARTV.NR-CIOFMAS-479BFAR AND DA_CRFMAS_479BFAR  = :DCLDZBFARTV.DA-CRFMAS-479BFAR AND NR_IDFMAS_479BFAR  = :DCLDZBFARTV.NR-IDFMAS-479BFAR AND CT_OPDFMAS_479BFAR = :DCLDZBFARTV.CT-OPDFMAS-479BFAR AND CT_OPGFMAS_479BFAR = :DCLDZBFARTV.CT-OPGFMAS-479BFAR QUERYNO 442 END-EXEC"
+          },
+          {
+            "end_line": 456,
+            "hosts": [],
+            "kind": "INCLUDE",
+            "normalized": "EXEC SQL INCLUDE SQLERROR END-EXEC.",
+            "ordering": "",
+            "paragraph": "1100-UPDATE-VMBFAR",
+            "predicates": "",
+            "projection": [],
+            "start_line": 454,
+            "tables": [],
+            "text": "EXEC SQL INCLUDE SQLERROR END-EXEC."
+          }
+        ],
+        "sql_counts": {
+          "COMMIT": 1,
+          "INCLUDE": 5,
+          "INSERT": 1,
+          "SELECT": 1,
+          "UPDATE": 2
+        },
+        "statements": [
+          {
+            "end_line": 162,
+            "normalized": "PERFORM 820000-GET-TIMESTAMP.",
+            "paragraph": "<mainline>",
+            "start_line": 162,
+            "text": "PERFORM     820000-GET-TIMESTAMP.",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 163,
+            "normalized": "SET VMDZ205I-NOT-EOF TO TRUE.",
+            "paragraph": "<mainline>",
+            "start_line": 163,
+            "text": "SET         VMDZ205I-NOT-EOF          TO TRUE.",
+            "verb": "SET"
+          },
+          {
+            "end_line": 164,
+            "normalized": "INITIALIZE HELP-VARIABLE.",
+            "paragraph": "<mainline>",
+            "start_line": 164,
+            "text": "INITIALIZE  HELP-VARIABLE.",
+            "verb": "INITIALIZE"
+          },
+          {
+            "end_line": 166,
+            "normalized": "MOVE DATE8-LS TO DATE-DMY8.",
+            "paragraph": "<mainline>",
+            "start_line": 166,
+            "text": "MOVE DATE8-LS                         TO DATE-DMY8.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 167,
+            "normalized": "MOVE CORR DATE-DMY8 TO DATE-YMD.",
+            "paragraph": "<mainline>",
+            "start_line": 167,
+            "text": "MOVE CORR DATE-DMY8                   TO DATE-YMD.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 168,
+            "normalized": "MOVE CORR DATE-DMY8 TO DATE-DMY.",
+            "paragraph": "<mainline>",
+            "start_line": 168,
+            "text": "MOVE CORR DATE-DMY8                   TO DATE-DMY.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 169,
+            "normalized": "MOVE CORR DATE-DMY8 TO DATE-YMD8.",
+            "paragraph": "<mainline>",
+            "start_line": 169,
+            "text": "MOVE CORR DATE-DMY8                   TO DATE-YMD8.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 171,
+            "normalized": "MOVE ZEROES TO DA-CCYYMMDD.",
+            "paragraph": "<mainline>",
+            "start_line": 171,
+            "text": "MOVE ZEROES                           TO DA-CCYYMMDD.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 172,
+            "normalized": "MOVE DATE-YMD8 TO DA-CCYYMMDD.",
+            "paragraph": "<mainline>",
+            "start_line": 172,
+            "text": "MOVE DATE-YMD8                        TO DA-CCYYMMDD.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 173,
+            "normalized": "MOVE CORR DA-CCYYMMDD-R TO DA-DD-MM-CCYY.",
+            "paragraph": "<mainline>",
+            "start_line": 173,
+            "text": "MOVE CORR DA-CCYYMMDD-R               TO DA-DD-MM-CCYY.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 175,
+            "normalized": "MOVE 'VMDZ1567' TO PROGRAM-NAME.",
+            "paragraph": "<mainline>",
+            "start_line": 175,
+            "text": "MOVE 'VMDZ1567' TO PROGRAM-NAME.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 176,
+            "normalized": "OPEN INPUT OPERATIES.",
+            "paragraph": "<mainline>",
+            "start_line": 176,
+            "text": "OPEN INPUT OPERATIES.",
+            "verb": "OPEN"
+          },
+          {
+            "end_line": 178,
+            "normalized": "PERFORM 700-RESTART-CONTROL.",
+            "paragraph": "<mainline>",
+            "start_line": 178,
+            "text": "PERFORM 700-RESTART-CONTROL.",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 180,
+            "normalized": "PERFORM READ-FLAT-FILE.",
+            "paragraph": "<mainline>",
+            "start_line": 180,
+            "text": "PERFORM READ-FLAT-FILE.",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 182,
+            "normalized": "PERFORM 1000-VERWERKING UNTIL VMDZ205I-EOF.",
+            "paragraph": "<mainline>",
+            "start_line": 182,
+            "text": "PERFORM 1000-VERWERKING UNTIL VMDZ205I-EOF.",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 184,
+            "normalized": "PERFORM 800-PROCESS-COMMIT.",
+            "paragraph": "<mainline>",
+            "start_line": 184,
+            "text": "PERFORM 800-PROCESS-COMMIT.",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 186,
+            "normalized": "DISPLAY 'NUMBER OF RECORDS PROCESSED: ' WS-NB-INPUT-UPD-I.",
+            "paragraph": "<mainline>",
+            "start_line": 186,
+            "text": "DISPLAY 'NUMBER OF RECORDS PROCESSED: ' WS-NB-INPUT-UPD-I.",
+            "verb": "DISPLAY"
+          },
+          {
+            "end_line": 187,
+            "normalized": "DISPLAY 'NUMBER OF UPDATE BFAR      : ' WS-NB-BFAR-UPD-I.",
+            "paragraph": "<mainline>",
+            "start_line": 187,
+            "text": "DISPLAY 'NUMBER OF UPDATE BFAR      : ' WS-NB-BFAR-UPD-I.",
+            "verb": "DISPLAY"
+          },
+          {
+            "end_line": 188,
+            "normalized": "CLOSE OPERATIES.",
+            "paragraph": "<mainline>",
+            "start_line": 188,
+            "text": "CLOSE OPERATIES.",
+            "verb": "CLOSE"
+          },
+          {
+            "end_line": 189,
+            "normalized": "STOP RUN.",
+            "paragraph": "<mainline>",
+            "start_line": 189,
+            "text": "STOP RUN.",
+            "verb": "STOP"
+          },
+          {
+            "end_line": 194,
+            "normalized": "INITIALIZE DCLDZBFARTV.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 194,
+            "text": "INITIALIZE DCLDZBFARTV.",
+            "verb": "INITIALIZE"
+          },
+          {
+            "end_line": 197,
+            "normalized": "MOVE '1815' TO CT-TGDSERV-479BFAR OF DCLDZBFARTV.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 196,
+            "text": "MOVE '1815'                           TO CT-TGDSERV-479BFAR OF DCLDZBFARTV.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 199,
+            "normalized": "MOVE NR-CIO-FORM-AS-R TO NR-CIOFMAS-479BFAR OF DCLDZBFARTV.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 198,
+            "text": "MOVE NR-CIO-FORM-AS-R                 TO NR-CIOFMAS-479BFAR OF DCLDZBFARTV.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 201,
+            "normalized": "MOVE ZEROES TO DA-CCYYMMDD.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 201,
+            "text": "MOVE ZEROES                           TO DA-CCYYMMDD.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 202,
+            "normalized": "MOVE DA-CREA-FORM-AS-R TO DA-CCYYMMDD.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 202,
+            "text": "MOVE DA-CREA-FORM-AS-R                TO DA-CCYYMMDD.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 203,
+            "normalized": "IF DA-CCYYMMDD = ZERO OR DA-CCYYMMDD = SPACES",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 203,
+            "text": "IF   DA-CCYYMMDD = ZERO OR DA-CCYYMMDD = SPACES",
+            "verb": "IF"
+          },
+          {
+            "end_line": 204,
+            "normalized": "MOVE 00010101 TO DA-CCYYMMDD.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 204,
+            "text": "MOVE 00010101                    TO DA-CCYYMMDD.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 205,
+            "normalized": "MOVE CORR DA-CCYYMMDD-R TO DA-DD-MM-CCYY.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 205,
+            "text": "MOVE CORR DA-CCYYMMDD-R               TO DA-DD-MM-CCYY.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 207,
+            "normalized": "MOVE DA-DD-MM-CCYY TO DA-CRFMAS-479BFAR OF DCLDZBFARTV.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 206,
+            "text": "MOVE DA-DD-MM-CCYY                    TO DA-CRFMAS-479BFAR OF DCLDZBFARTV.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 210,
+            "normalized": "MOVE NR-ID-FORM-AS OF VMDZ205I TO NR-IDFMAS-479BFAR OF DCLDZBFARTV.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 209,
+            "text": "MOVE NR-ID-FORM-AS OF VMDZ205I        TO NR-IDFMAS-479BFAR OF DCLDZBFARTV.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 212,
+            "normalized": "MOVE CT-OPG-FORM-AS-R TO CT-OPGFMAS-479BFAR OF DCLDZBFARTV.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 211,
+            "text": "MOVE CT-OPG-FORM-AS-R                 TO CT-OPGFMAS-479BFAR OF DCLDZBFARTV.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 214,
+            "normalized": "MOVE CT-OPD-FORM-AS-R TO CT-OPDFMAS-479BFAR OF DCLDZBFARTV.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 213,
+            "text": "MOVE CT-OPD-FORM-AS-R                 TO CT-OPDFMAS-479BFAR OF DCLDZBFARTV.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 216,
+            "normalized": "MOVE ZEROES TO DA-CCYYMMDD.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 216,
+            "text": "MOVE ZEROES                           TO DA-CCYYMMDD.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 217,
+            "normalized": "MOVE DATE-YMD8 TO DA-CCYYMMDD.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 217,
+            "text": "MOVE DATE-YMD8                        TO DA-CCYYMMDD.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 218,
+            "normalized": "MOVE CORR DA-CCYYMMDD-R TO DA-DD-MM-CCYY.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 218,
+            "text": "MOVE CORR DA-CCYYMMDD-R               TO DA-DD-MM-CCYY.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 220,
+            "normalized": "MOVE DA-DD-MM-CCYY TO DA-INFSDGD-479BFAR OF DCLDZBFARTV.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 219,
+            "text": "MOVE DA-DD-MM-CCYY                    TO DA-INFSDGD-479BFAR OF DCLDZBFARTV.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 223,
+            "normalized": "MOVE TS-TIMESTAMP TO TS-UPDATE-479BFAR OF DCLDZBFARTV.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 222,
+            "text": "MOVE TS-TIMESTAMP                     TO TS-UPDATE-479BFAR OF DCLDZBFARTV.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 226,
+            "normalized": "MOVE CS-PROGRAM TO ID-USERID-479BFAR OF DCLDZBFARTV.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 225,
+            "text": "MOVE CS-PROGRAM                       TO ID-USERID-479BFAR OF DCLDZBFARTV.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 228,
+            "normalized": "PERFORM 1100-UPDATE-VMBFAR.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 228,
+            "text": "PERFORM 1100-UPDATE-VMBFAR.",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 230,
+            "normalized": "IF WS-TELLER > 99",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 230,
+            "text": "IF WS-TELLER > 99",
+            "verb": "IF"
+          },
+          {
+            "end_line": 231,
+            "normalized": "PERFORM 800-PROCESS-COMMIT",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 231,
+            "text": "PERFORM 800-PROCESS-COMMIT",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 232,
+            "normalized": "END-IF.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 232,
+            "text": "END-IF.",
+            "verb": "END-IF"
+          },
+          {
+            "end_line": 234,
+            "normalized": "PERFORM READ-FLAT-FILE.",
+            "paragraph": "1000-VERWERKING",
+            "start_line": 234,
+            "text": "PERFORM READ-FLAT-FILE.",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 240,
+            "normalized": "INITIALIZE VMDZ205I.",
+            "paragraph": "READ-FLAT-FILE",
+            "start_line": 240,
+            "text": "INITIALIZE VMDZ205I.",
+            "verb": "INITIALIZE"
+          },
+          {
+            "end_line": 243,
+            "normalized": "READ OPERATIES INTO VMDZ205I AT END SET VMDZ205I-EOF TO TRUE.",
+            "paragraph": "READ-FLAT-FILE",
+            "start_line": 242,
+            "text": "READ OPERATIES INTO VMDZ205I AT END SET VMDZ205I-EOF          TO TRUE.",
+            "verb": "READ"
+          },
+          {
+            "end_line": 246,
+            "normalized": "IF VMDZ205I-NOT-EOF THEN",
+            "paragraph": "READ-FLAT-FILE",
+            "start_line": 245,
+            "text": "IF VMDZ205I-NOT-EOF THEN",
+            "verb": "IF"
+          },
+          {
+            "end_line": 247,
+            "normalized": "ADD +1 TO WS-TELLER",
+            "paragraph": "READ-FLAT-FILE",
+            "start_line": 247,
+            "text": "ADD +1 TO WS-TELLER",
+            "verb": "ADD"
+          },
+          {
+            "end_line": 248,
+            "normalized": "ADD +1 TO WS-NB-INPUT-UPD-I",
+            "paragraph": "READ-FLAT-FILE",
+            "start_line": 248,
+            "text": "ADD +1 TO WS-NB-INPUT-UPD-I",
+            "verb": "ADD"
+          },
+          {
+            "end_line": 249,
+            "normalized": "MOVE VMDZ205I TO WS-INPUT-KASBONS",
+            "paragraph": "READ-FLAT-FILE",
+            "start_line": 249,
+            "text": "MOVE VMDZ205I TO WS-INPUT-KASBONS",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 250,
+            "normalized": "END-IF.",
+            "paragraph": "READ-FLAT-FILE",
+            "start_line": 250,
+            "text": "END-IF.",
+            "verb": "END-IF"
+          },
+          {
+            "end_line": 255,
+            "normalized": "DISPLAY '820000-GET-TIMESTAMP'.",
+            "paragraph": "820000-GET-TIMESTAMP",
+            "start_line": 255,
+            "text": "DISPLAY '820000-GET-TIMESTAMP'.",
+            "verb": "DISPLAY"
+          },
+          {
+            "end_line": 256,
+            "normalized": "MOVE FUNCTION CURRENT-DATE TO TS-SYSTEM.",
+            "paragraph": "820000-GET-TIMESTAMP",
+            "start_line": 256,
+            "text": "MOVE FUNCTION CURRENT-DATE            TO TS-SYSTEM.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 257,
+            "normalized": "MOVE CC OF TS-SYSTEM TO CC OF TS-TIMESTAMP",
+            "paragraph": "820000-GET-TIMESTAMP",
+            "start_line": 257,
+            "text": "MOVE CC OF TS-SYSTEM                  TO CC OF TS-TIMESTAMP",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 258,
+            "normalized": "MOVE YY OF TS-SYSTEM TO YY OF TS-TIMESTAMP",
+            "paragraph": "820000-GET-TIMESTAMP",
+            "start_line": 258,
+            "text": "MOVE YY OF TS-SYSTEM                  TO YY OF TS-TIMESTAMP",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 259,
+            "normalized": "MOVE MM OF TS-SYSTEM TO MM OF TS-TIMESTAMP",
+            "paragraph": "820000-GET-TIMESTAMP",
+            "start_line": 259,
+            "text": "MOVE MM OF TS-SYSTEM                  TO MM OF TS-TIMESTAMP",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 260,
+            "normalized": "MOVE DD OF TS-SYSTEM TO DD OF TS-TIMESTAMP",
+            "paragraph": "820000-GET-TIMESTAMP",
+            "start_line": 260,
+            "text": "MOVE DD OF TS-SYSTEM                  TO DD OF TS-TIMESTAMP",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 261,
+            "normalized": "MOVE HH OF TS-SYSTEM TO HH OF TS-TIMESTAMP",
+            "paragraph": "820000-GET-TIMESTAMP",
+            "start_line": 261,
+            "text": "MOVE HH OF TS-SYSTEM                  TO HH OF TS-TIMESTAMP",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 262,
+            "normalized": "MOVE MI OF TS-SYSTEM TO MI OF TS-TIMESTAMP",
+            "paragraph": "820000-GET-TIMESTAMP",
+            "start_line": 262,
+            "text": "MOVE MI OF TS-SYSTEM                  TO MI OF TS-TIMESTAMP",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 263,
+            "normalized": "MOVE SS OF TS-SYSTEM TO SS OF TS-TIMESTAMP",
+            "paragraph": "820000-GET-TIMESTAMP",
+            "start_line": 263,
+            "text": "MOVE SS OF TS-SYSTEM                  TO SS OF TS-TIMESTAMP",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 264,
+            "normalized": "MOVE TT OF TS-SYSTEM TO TT OF TS-TIMESTAMP",
+            "paragraph": "820000-GET-TIMESTAMP",
+            "start_line": 264,
+            "text": "MOVE TT OF TS-SYSTEM                  TO TT OF TS-TIMESTAMP",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 266,
+            "normalized": "DISPLAY 'TIMESTAMP: ' TS-TIMESTAMP .",
+            "paragraph": "820000-GET-TIMESTAMP",
+            "start_line": 265,
+            "text": "DISPLAY 'TIMESTAMP: ' TS-TIMESTAMP .",
+            "verb": "DISPLAY"
+          },
+          {
+            "end_line": 270,
+            "normalized": "MOVE CS-PROGRAM TO NM-ID-RS-PROGRAM OF DCLDZ01RSTV.",
+            "paragraph": "700-RESTART-CONTROL",
+            "start_line": 270,
+            "text": "MOVE CS-PROGRAM    TO NM-ID-RS-PROGRAM OF DCLDZ01RSTV.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 271,
+            "normalized": "MOVE DA-DD-MM-CCYY TO DA-CR-RS OF DCLDZ01RSTV.",
+            "paragraph": "700-RESTART-CONTROL",
+            "start_line": 271,
+            "text": "MOVE DA-DD-MM-CCYY TO DA-CR-RS         OF DCLDZ01RSTV.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 272,
+            "normalized": "MOVE 1 TO NB-ID-RS-PHASE OF DCLDZ01RSTV.",
+            "paragraph": "700-RESTART-CONTROL",
+            "start_line": 272,
+            "text": "MOVE 1             TO NB-ID-RS-PHASE   OF DCLDZ01RSTV.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 274,
+            "normalized": "PERFORM 700-SELECT-DZ01RSTV.",
+            "paragraph": "700-RESTART-CONTROL",
+            "start_line": 274,
+            "text": "PERFORM 700-SELECT-DZ01RSTV.",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 276,
+            "normalized": "EVALUATE SQLCODE",
+            "paragraph": "700-RESTART-CONTROL",
+            "start_line": 276,
+            "text": "EVALUATE SQLCODE",
+            "verb": "EVALUATE"
+          },
+          {
+            "end_line": 277,
+            "normalized": "WHEN 0 PERFORM 710-JOB-IS-RESTART",
+            "paragraph": "700-RESTART-CONTROL",
+            "start_line": 277,
+            "text": "WHEN 0     PERFORM 710-JOB-IS-RESTART",
+            "verb": "WHEN"
+          },
+          {
+            "end_line": 278,
+            "normalized": "WHEN 100 PERFORM 720-WRITE-RESTART-REC",
+            "paragraph": "700-RESTART-CONTROL",
+            "start_line": 278,
+            "text": "WHEN 100   PERFORM 720-WRITE-RESTART-REC",
+            "verb": "WHEN"
+          },
+          {
+            "end_line": 279,
+            "normalized": "WHEN OTHER PERFORM SQLERROR",
+            "paragraph": "700-RESTART-CONTROL",
+            "start_line": 279,
+            "text": "WHEN OTHER PERFORM SQLERROR",
+            "verb": "WHEN"
+          },
+          {
+            "end_line": 281,
+            "normalized": "END-EVALUATE .",
+            "paragraph": "700-RESTART-CONTROL",
+            "start_line": 280,
+            "text": "END-EVALUATE .",
+            "verb": "END-EVALUATE"
+          },
+          {
+            "end_line": 283,
+            "normalized": "MOVE 0 TO WS-TELLER.",
+            "paragraph": "700-RESTART-CONTROL",
+            "start_line": 283,
+            "text": "MOVE 0 TO WS-TELLER.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 289,
+            "normalized": "DISPLAY '810-JOB-IS-RESTART'",
+            "paragraph": "710-JOB-IS-RESTART",
+            "start_line": 289,
+            "text": "DISPLAY '810-JOB-IS-RESTART'",
+            "verb": "DISPLAY"
+          },
+          {
+            "end_line": 290,
+            "normalized": "MOVE TE-CH-RS-DATA-TEXT TO WS-RESTART-REC",
+            "paragraph": "710-JOB-IS-RESTART",
+            "start_line": 290,
+            "text": "MOVE TE-CH-RS-DATA-TEXT  TO WS-RESTART-REC",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 294,
+            "normalized": "IF CO-ID-RS IN DCLDZ01RSTV = '1' THEN DISPLAY ' PREVIOUS RUN COMPLETE '",
+            "paragraph": "710-JOB-IS-RESTART",
+            "start_line": 293,
+            "text": "IF CO-ID-RS IN DCLDZ01RSTV = '1' THEN DISPLAY ' PREVIOUS RUN COMPLETE '",
+            "verb": "IF"
+          },
+          {
+            "end_line": 295,
+            "normalized": "PERFORM 810000-CALL-USERABEN",
+            "paragraph": "710-JOB-IS-RESTART",
+            "start_line": 295,
+            "text": "PERFORM 810000-CALL-USERABEN",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 297,
+            "normalized": "ELSE PERFORM NB-READ OF WS-RESTART-REC TIMES",
+            "paragraph": "710-JOB-IS-RESTART",
+            "start_line": 297,
+            "text": "ELSE PERFORM NB-READ OF WS-RESTART-REC TIMES",
+            "verb": "ELSE"
+          },
+          {
+            "end_line": 298,
+            "normalized": "PERFORM READ-FLAT-FILE",
+            "paragraph": "710-JOB-IS-RESTART",
+            "start_line": 298,
+            "text": "PERFORM READ-FLAT-FILE",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 299,
+            "normalized": "MOVE NB-READ OF WS-RESTART-REC TO WS-NB-INPUT-UPD-I",
+            "paragraph": "710-JOB-IS-RESTART",
+            "start_line": 299,
+            "text": "MOVE NB-READ OF WS-RESTART-REC TO WS-NB-INPUT-UPD-I",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 300,
+            "normalized": "END-PERFORM",
+            "paragraph": "710-JOB-IS-RESTART",
+            "start_line": 300,
+            "text": "END-PERFORM",
+            "verb": "END-PERFORM"
+          },
+          {
+            "end_line": 303,
+            "normalized": "END-IF .",
+            "paragraph": "710-JOB-IS-RESTART",
+            "start_line": 302,
+            "text": "END-IF .",
+            "verb": "END-IF"
+          },
+          {
+            "end_line": 308,
+            "normalized": "DISPLAY '  820-WRITE-RESTART-REC'",
+            "paragraph": "720-WRITE-RESTART-REC",
+            "start_line": 308,
+            "text": "DISPLAY '  820-WRITE-RESTART-REC'",
+            "verb": "DISPLAY"
+          },
+          {
+            "end_line": 309,
+            "normalized": "MOVE '0' TO CO-ID-RS IN DCLDZ01RSTV",
+            "paragraph": "720-WRITE-RESTART-REC",
+            "start_line": 309,
+            "text": "MOVE '0'                TO CO-ID-RS           IN DCLDZ01RSTV",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 310,
+            "normalized": "MOVE 7 TO NB-DAY-RS IN DCLDZ01RSTV",
+            "paragraph": "720-WRITE-RESTART-REC",
+            "start_line": 310,
+            "text": "MOVE 7                  TO NB-DAY-RS          IN DCLDZ01RSTV",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 311,
+            "normalized": "MOVE 1215 TO TE-CH-RS-DATA-LEN IN DCLDZ01RSTV",
+            "paragraph": "720-WRITE-RESTART-REC",
+            "start_line": 311,
+            "text": "MOVE 1215               TO TE-CH-RS-DATA-LEN  IN DCLDZ01RSTV",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 312,
+            "normalized": "MOVE 0 TO WS-NB-INPUT-UPD-I",
+            "paragraph": "720-WRITE-RESTART-REC",
+            "start_line": 312,
+            "text": "MOVE 0                  TO WS-NB-INPUT-UPD-I",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 313,
+            "normalized": "MOVE WS-NB-INPUT-UPD-I TO NB-READ OF WS-RESTART-REC",
+            "paragraph": "720-WRITE-RESTART-REC",
+            "start_line": 313,
+            "text": "MOVE WS-NB-INPUT-UPD-I  TO NB-READ OF WS-RESTART-REC",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 314,
+            "normalized": "INITIALIZE KY-RESTART",
+            "paragraph": "720-WRITE-RESTART-REC",
+            "start_line": 314,
+            "text": "INITIALIZE  KY-RESTART",
+            "verb": "INITIALIZE"
+          },
+          {
+            "end_line": 315,
+            "normalized": "MOVE WS-RESTART-REC TO TE-CH-RS-DATA-TEXT IN DCLDZ01RSTV",
+            "paragraph": "720-WRITE-RESTART-REC",
+            "start_line": 315,
+            "text": "MOVE WS-RESTART-REC     TO TE-CH-RS-DATA-TEXT IN DCLDZ01RSTV",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 318,
+            "normalized": "PERFORM 700-INSERT-DZ01RSTV .",
+            "paragraph": "720-WRITE-RESTART-REC",
+            "start_line": 317,
+            "text": "PERFORM 700-INSERT-DZ01RSTV .",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 321,
+            "normalized": "DISPLAY '810000-CALL-USERABEN'.",
+            "paragraph": "810000-CALL-USERABEN",
+            "start_line": 321,
+            "text": "DISPLAY '810000-CALL-USERABEN'.",
+            "verb": "DISPLAY"
+          },
+          {
+            "end_line": 322,
+            "normalized": "CALL USERABEN.",
+            "paragraph": "810000-CALL-USERABEN",
+            "start_line": 322,
+            "text": "CALL USERABEN.",
+            "verb": "CALL"
+          },
+          {
+            "end_line": 326,
+            "normalized": "DISPLAY '800-PROCESS-COMMIT'.",
+            "paragraph": "800-PROCESS-COMMIT",
+            "start_line": 326,
+            "text": "DISPLAY '800-PROCESS-COMMIT'.",
+            "verb": "DISPLAY"
+          },
+          {
+            "end_line": 328,
+            "normalized": "MOVE 0 TO WS-TELLER.",
+            "paragraph": "800-PROCESS-COMMIT",
+            "start_line": 328,
+            "text": "MOVE 0                  TO WS-TELLER.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 329,
+            "normalized": "MOVE WS-NB-INPUT-UPD-I TO NB-READ.",
+            "paragraph": "800-PROCESS-COMMIT",
+            "start_line": 329,
+            "text": "MOVE WS-NB-INPUT-UPD-I  TO NB-READ.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 330,
+            "normalized": "MOVE WS-INPUT-KASBONS TO KY-RESTART.",
+            "paragraph": "800-PROCESS-COMMIT",
+            "start_line": 330,
+            "text": "MOVE WS-INPUT-KASBONS   TO KY-RESTART.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 332,
+            "normalized": "IF VMDZ205I-EOF THEN MOVE '1' TO CO-ID-RS OF DCLDZ01RSTV",
+            "paragraph": "800-PROCESS-COMMIT",
+            "start_line": 331,
+            "text": "IF   VMDZ205I-EOF THEN MOVE '1'           TO CO-ID-RS  OF DCLDZ01RSTV",
+            "verb": "IF"
+          },
+          {
+            "end_line": 333,
+            "normalized": "ELSE MOVE '0' TO CO-ID-RS OF DCLDZ01RSTV",
+            "paragraph": "800-PROCESS-COMMIT",
+            "start_line": 333,
+            "text": "ELSE MOVE '0'           TO CO-ID-RS  OF DCLDZ01RSTV",
+            "verb": "ELSE"
+          },
+          {
+            "end_line": 334,
+            "normalized": "END-IF.",
+            "paragraph": "800-PROCESS-COMMIT",
+            "start_line": 334,
+            "text": "END-IF.",
+            "verb": "END-IF"
+          },
+          {
+            "end_line": 335,
+            "normalized": "MOVE 15 TO TE-CH-RS-DATA-LEN.",
+            "paragraph": "800-PROCESS-COMMIT",
+            "start_line": 335,
+            "text": "MOVE 15                 TO TE-CH-RS-DATA-LEN.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 336,
+            "normalized": "MOVE WS-RESTART-REC TO TE-CH-RS-DATA-TEXT.",
+            "paragraph": "800-PROCESS-COMMIT",
+            "start_line": 336,
+            "text": "MOVE WS-RESTART-REC     TO TE-CH-RS-DATA-TEXT.",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 338,
+            "normalized": "PERFORM 700-UPDATE-DZ01RSTV.",
+            "paragraph": "800-PROCESS-COMMIT",
+            "start_line": 338,
+            "text": "PERFORM 700-UPDATE-DZ01RSTV.",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 343,
+            "normalized": "EVALUATE SQLCODE",
+            "paragraph": "800-PROCESS-COMMIT",
+            "start_line": 343,
+            "text": "EVALUATE SQLCODE",
+            "verb": "EVALUATE"
+          },
+          {
+            "end_line": 344,
+            "normalized": "WHEN 0",
+            "paragraph": "800-PROCESS-COMMIT",
+            "start_line": 344,
+            "text": "WHEN 0",
+            "verb": "WHEN"
+          },
+          {
+            "end_line": 345,
+            "normalized": "CONTINUE",
+            "paragraph": "800-PROCESS-COMMIT",
+            "start_line": 345,
+            "text": "CONTINUE",
+            "verb": "CONTINUE"
+          },
+          {
+            "end_line": 346,
+            "normalized": "WHEN OTHER",
+            "paragraph": "800-PROCESS-COMMIT",
+            "start_line": 346,
+            "text": "WHEN OTHER",
+            "verb": "WHEN"
+          },
+          {
+            "end_line": 347,
+            "normalized": "DISPLAY 'ERROR REC NUMBER : ' WS-NB-INPUT-UPD-I",
+            "paragraph": "800-PROCESS-COMMIT",
+            "start_line": 347,
+            "text": "DISPLAY 'ERROR REC NUMBER : ' WS-NB-INPUT-UPD-I",
+            "verb": "DISPLAY"
+          },
+          {
+            "end_line": 348,
+            "normalized": "PERFORM SQLERROR",
+            "paragraph": "800-PROCESS-COMMIT",
+            "start_line": 348,
+            "text": "PERFORM SQLERROR",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 350,
+            "normalized": "END-EVALUATE .",
+            "paragraph": "800-PROCESS-COMMIT",
+            "start_line": 349,
+            "text": "END-EVALUATE .",
+            "verb": "END-EVALUATE"
+          },
+          {
+            "end_line": 358,
+            "normalized": "DISPLAY '700-SELECT-DZ01RSTV'",
+            "paragraph": "700-SELECT-DZ01RSTV",
+            "start_line": 358,
+            "text": "DISPLAY '700-SELECT-DZ01RSTV'",
+            "verb": "DISPLAY"
+          },
+          {
+            "end_line": 379,
+            "normalized": "EVALUATE SQLCODE",
+            "paragraph": "700-SELECT-DZ01RSTV",
+            "start_line": 379,
+            "text": "EVALUATE SQLCODE",
+            "verb": "EVALUATE"
+          },
+          {
+            "end_line": 380,
+            "normalized": "WHEN 0",
+            "paragraph": "700-SELECT-DZ01RSTV",
+            "start_line": 380,
+            "text": "WHEN 0",
+            "verb": "WHEN"
+          },
+          {
+            "end_line": 381,
+            "normalized": "WHEN 100",
+            "paragraph": "700-SELECT-DZ01RSTV",
+            "start_line": 381,
+            "text": "WHEN 100",
+            "verb": "WHEN"
+          },
+          {
+            "end_line": 382,
+            "normalized": "CONTINUE",
+            "paragraph": "700-SELECT-DZ01RSTV",
+            "start_line": 382,
+            "text": "CONTINUE",
+            "verb": "CONTINUE"
+          },
+          {
+            "end_line": 383,
+            "normalized": "WHEN OTHER",
+            "paragraph": "700-SELECT-DZ01RSTV",
+            "start_line": 383,
+            "text": "WHEN OTHER",
+            "verb": "WHEN"
+          },
+          {
+            "end_line": 384,
+            "normalized": "DISPLAY 'ERROR REC NUMBER : ' WS-NB-INPUT-UPD-I",
+            "paragraph": "700-SELECT-DZ01RSTV",
+            "start_line": 384,
+            "text": "DISPLAY 'ERROR REC NUMBER : ' WS-NB-INPUT-UPD-I",
+            "verb": "DISPLAY"
+          },
+          {
+            "end_line": 385,
+            "normalized": "PERFORM SQLERROR",
+            "paragraph": "700-SELECT-DZ01RSTV",
+            "start_line": 385,
+            "text": "PERFORM SQLERROR",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 387,
+            "normalized": "END-EVALUATE .",
+            "paragraph": "700-SELECT-DZ01RSTV",
+            "start_line": 386,
+            "text": "END-EVALUATE .",
+            "verb": "END-EVALUATE"
+          },
+          {
+            "end_line": 390,
+            "normalized": "DISPLAY '700-UPDATE-DZ01RSTV.'",
+            "paragraph": "700-UPDATE-DZ01RSTV",
+            "start_line": 390,
+            "text": "DISPLAY '700-UPDATE-DZ01RSTV.'",
+            "verb": "DISPLAY"
+          },
+          {
+            "end_line": 401,
+            "normalized": "EVALUATE SQLCODE",
+            "paragraph": "700-UPDATE-DZ01RSTV",
+            "start_line": 401,
+            "text": "EVALUATE SQLCODE",
+            "verb": "EVALUATE"
+          },
+          {
+            "end_line": 402,
+            "normalized": "WHEN 0",
+            "paragraph": "700-UPDATE-DZ01RSTV",
+            "start_line": 402,
+            "text": "WHEN 0",
+            "verb": "WHEN"
+          },
+          {
+            "end_line": 403,
+            "normalized": "CONTINUE",
+            "paragraph": "700-UPDATE-DZ01RSTV",
+            "start_line": 403,
+            "text": "CONTINUE",
+            "verb": "CONTINUE"
+          },
+          {
+            "end_line": 404,
+            "normalized": "WHEN OTHER",
+            "paragraph": "700-UPDATE-DZ01RSTV",
+            "start_line": 404,
+            "text": "WHEN OTHER",
+            "verb": "WHEN"
+          },
+          {
+            "end_line": 405,
+            "normalized": "DISPLAY 'ERROR REC NUMBER : ' WS-NB-INPUT-UPD-I",
+            "paragraph": "700-UPDATE-DZ01RSTV",
+            "start_line": 405,
+            "text": "DISPLAY 'ERROR REC NUMBER : ' WS-NB-INPUT-UPD-I",
+            "verb": "DISPLAY"
+          },
+          {
+            "end_line": 406,
+            "normalized": "PERFORM SQLERROR",
+            "paragraph": "700-UPDATE-DZ01RSTV",
+            "start_line": 406,
+            "text": "PERFORM SQLERROR",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 408,
+            "normalized": "END-EVALUATE .",
+            "paragraph": "700-UPDATE-DZ01RSTV",
+            "start_line": 407,
+            "text": "END-EVALUATE .",
+            "verb": "END-EVALUATE"
+          },
+          {
+            "end_line": 411,
+            "normalized": "DISPLAY '700-INSERT-DZ01RSTV.'",
+            "paragraph": "700-INSERT-DZ01RSTV",
+            "start_line": 411,
+            "text": "DISPLAY '700-INSERT-DZ01RSTV.'",
+            "verb": "DISPLAY"
+          },
+          {
+            "end_line": 417,
+            "normalized": "EVALUATE SQLCODE",
+            "paragraph": "700-INSERT-DZ01RSTV",
+            "start_line": 417,
+            "text": "EVALUATE SQLCODE",
+            "verb": "EVALUATE"
+          },
+          {
+            "end_line": 418,
+            "normalized": "WHEN 0",
+            "paragraph": "700-INSERT-DZ01RSTV",
+            "start_line": 418,
+            "text": "WHEN 0",
+            "verb": "WHEN"
+          },
+          {
+            "end_line": 419,
+            "normalized": "CONTINUE",
+            "paragraph": "700-INSERT-DZ01RSTV",
+            "start_line": 419,
+            "text": "CONTINUE",
+            "verb": "CONTINUE"
+          },
+          {
+            "end_line": 420,
+            "normalized": "WHEN OTHER",
+            "paragraph": "700-INSERT-DZ01RSTV",
+            "start_line": 420,
+            "text": "WHEN OTHER",
+            "verb": "WHEN"
+          },
+          {
+            "end_line": 421,
+            "normalized": "DISPLAY 'ERROR REC NUMBER : ' WS-NB-INPUT-UPD-I",
+            "paragraph": "700-INSERT-DZ01RSTV",
+            "start_line": 421,
+            "text": "DISPLAY 'ERROR REC NUMBER : ' WS-NB-INPUT-UPD-I",
+            "verb": "DISPLAY"
+          },
+          {
+            "end_line": 422,
+            "normalized": "PERFORM SQLERROR",
+            "paragraph": "700-INSERT-DZ01RSTV",
+            "start_line": 422,
+            "text": "PERFORM SQLERROR",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 424,
+            "normalized": "END-EVALUATE .",
+            "paragraph": "700-INSERT-DZ01RSTV",
+            "start_line": 423,
+            "text": "END-EVALUATE .",
+            "verb": "END-EVALUATE"
+          },
+          {
+            "end_line": 427,
+            "normalized": "DISPLAY '1100-UPDATE-VMBFAR.'",
+            "paragraph": "1100-UPDATE-VMBFAR",
+            "start_line": 427,
+            "text": "DISPLAY '1100-UPDATE-VMBFAR.'",
+            "verb": "DISPLAY"
+          },
+          {
+            "end_line": 428,
+            "normalized": "MOVE 1100 TO SQL-LOCATION",
+            "paragraph": "1100-UPDATE-VMBFAR",
+            "start_line": 428,
+            "text": "MOVE 1100 TO SQL-LOCATION",
+            "verb": "MOVE"
+          },
+          {
+            "end_line": 444,
+            "normalized": "EVALUATE SQLCODE",
+            "paragraph": "1100-UPDATE-VMBFAR",
+            "start_line": 444,
+            "text": "EVALUATE SQLCODE",
+            "verb": "EVALUATE"
+          },
+          {
+            "end_line": 445,
+            "normalized": "WHEN 0",
+            "paragraph": "1100-UPDATE-VMBFAR",
+            "start_line": 445,
+            "text": "WHEN 0",
+            "verb": "WHEN"
+          },
+          {
+            "end_line": 446,
+            "normalized": "ADD 1 TO WS-NB-BFAR-UPD-I",
+            "paragraph": "1100-UPDATE-VMBFAR",
+            "start_line": 446,
+            "text": "ADD 1 TO WS-NB-BFAR-UPD-I",
+            "verb": "ADD"
+          },
+          {
+            "end_line": 447,
+            "normalized": "WHEN OTHER",
+            "paragraph": "1100-UPDATE-VMBFAR",
+            "start_line": 447,
+            "text": "WHEN OTHER",
+            "verb": "WHEN"
+          },
+          {
+            "end_line": 448,
+            "normalized": "DISPLAY 'ERROR REC NUMBER : ' WS-NB-INPUT-UPD-I",
+            "paragraph": "1100-UPDATE-VMBFAR",
+            "start_line": 448,
+            "text": "DISPLAY 'ERROR REC NUMBER : ' WS-NB-INPUT-UPD-I",
+            "verb": "DISPLAY"
+          },
+          {
+            "end_line": 449,
+            "normalized": "PERFORM SQLERROR",
+            "paragraph": "1100-UPDATE-VMBFAR",
+            "start_line": 449,
+            "text": "PERFORM SQLERROR",
+            "verb": "PERFORM"
+          },
+          {
+            "end_line": 451,
+            "normalized": "END-EVALUATE .",
+            "paragraph": "1100-UPDATE-VMBFAR",
+            "start_line": 450,
+            "text": "END-EVALUATE .",
+            "verb": "END-EVALUATE"
+          }
+        ],
+        "unresolved_calls": [
+          {
+            "caller": "800-PROCESS-COMMIT",
+            "end_line": 348,
+            "start_line": 348,
+            "target": "SQLERROR",
+            "through": null
+          },
+          {
+            "caller": "700-SELECT-DZ01RSTV",
+            "end_line": 385,
+            "start_line": 385,
+            "target": "SQLERROR",
+            "through": null
+          },
+          {
+            "caller": "700-UPDATE-DZ01RSTV",
+            "end_line": 406,
+            "start_line": 406,
+            "target": "SQLERROR",
+            "through": null
+          },
+          {
+            "caller": "700-INSERT-DZ01RSTV",
+            "end_line": 422,
+            "start_line": 422,
+            "target": "SQLERROR",
+            "through": null
+          },
+          {
+            "caller": "1100-UPDATE-VMBFAR",
+            "end_line": 449,
+            "start_line": 449,
+            "target": "SQLERROR",
+            "through": null
+          }
+        ],
+        "verb_counts": {
+          "ADD": 3,
+          "CALL": 1,
+          "CLOSE": 1,
+          "CONTINUE": 4,
+          "DISPLAY": 17,
+          "ELSE": 2,
+          "END-EVALUATE": 6,
+          "END-IF": 4,
+          "END-PERFORM": 1,
+          "EVALUATE": 6,
+          "IF": 5,
+          "INITIALIZE": 4,
+          "MOVE": 52,
+          "OPEN": 1,
+          "PERFORM": 18,
+          "READ": 1,
+          "SET": 1,
+          "STOP": 1,
+          "WHEN": 14
+        }
+      },
+      "role": "manual",
+      "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+      "snapshot": "prompt/knowledge/evidence/82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11.source"
+    },
+    {
+      "artifact_id": "Aee7269101b766f94a8",
+      "bytes": 3039,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 39,
+      "path": "mainframe/workspace/Copybook/ESDATMAS.cpy",
+      "role": "copybook",
+      "sha256": "185019c004727a2754201ae1e8f6a272b0fe71de6b8141939118b4c01c752d06",
+      "snapshot": "prompt/knowledge/evidence/185019c004727a2754201ae1e8f6a272b0fe71de6b8141939118b4c01c752d06.source"
+    },
+    {
+      "artifact_id": "A9bf3e34733f4c1762d",
+      "bytes": 5265,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 65,
+      "path": "mainframe/workspace/Copybook/VM9BC50I.cpy",
+      "role": "copybook",
+      "sha256": "20efbe9463f2a9eb361f946a0bac4bb629ec30f93ab7dae7487f2dfd65897deb",
+      "snapshot": "prompt/knowledge/evidence/20efbe9463f2a9eb361f946a0bac4bb629ec30f93ab7dae7487f2dfd65897deb.source"
+    },
+    {
+      "artifact_id": "A4e144ed681596c7494",
+      "bytes": 31915,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 394,
+      "path": "mainframe/workspace/Copybook/VM9BC50O.cpy",
+      "role": "copybook",
+      "sha256": "7d451f980d1a26c782b19aa96c70842e8a9d87603e0706616a08fed905780da5",
+      "snapshot": "prompt/knowledge/evidence/7d451f980d1a26c782b19aa96c70842e8a9d87603e0706616a08fed905780da5.source"
+    },
+    {
+      "artifact_id": "Afb62b48577a95a6c00",
+      "bytes": 26114,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 322,
+      "path": "mainframe/workspace/Copybook/VMBD05.cpy",
+      "role": "copybook",
+      "sha256": "530ffd3397f3c6fb680cf21d0dd60fa12bc34fb66d105ea816dc03646ae0e27c",
+      "snapshot": "prompt/knowledge/evidence/530ffd3397f3c6fb680cf21d0dd60fa12bc34fb66d105ea816dc03646ae0e27c.source"
+    },
+    {
+      "artifact_id": "A8b7c7fec77894f4281",
+      "bytes": 114570,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 1414,
+      "path": "mainframe/workspace/Copybook/VMBD205I.cpy",
+      "role": "copybook",
+      "sha256": "80e1aa6b784c0fa192ebe27b3b03af9240cd0a0605574ed2179e77c265bd4dfb",
+      "snapshot": "prompt/knowledge/evidence/80e1aa6b784c0fa192ebe27b3b03af9240cd0a0605574ed2179e77c265bd4dfb.source"
+    },
+    {
+      "artifact_id": "A591c0b596eed5ed137",
+      "bytes": 132232,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 1632,
+      "path": "mainframe/workspace/Copybook/VMBD510I.cpy",
+      "role": "copybook",
+      "sha256": "9c86827c5a2a49f2c69b11ad987645beb641a6dce53c7c41fd3006746075c03a",
+      "snapshot": "prompt/knowledge/evidence/9c86827c5a2a49f2c69b11ad987645beb641a6dce53c7c41fd3006746075c03a.source"
+    },
+    {
+      "artifact_id": "A37499ad9d2074aab79",
+      "bytes": 1407,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 23,
+      "path": "mainframe/workspace/Copybook/VMBZ270I.cpy",
+      "role": "copybook",
+      "sha256": "db441dd9e51644d5e7edbcf1829916da454881d535cce510ed207c2bcdb1f193",
+      "snapshot": "prompt/knowledge/evidence/db441dd9e51644d5e7edbcf1829916da454881d535cce510ed207c2bcdb1f193.source"
+    },
+    {
+      "artifact_id": "Aae68f9bcd0a8c75ebf",
+      "bytes": 1714,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 36,
+      "path": "mainframe/workspace/DCLGen/DZ01RSTV.txt",
+      "role": "dclgen",
+      "sha256": "60ae42a6c7a29185e8230972a5527a232a428f1686d2b90c6a4ec1092abfe342",
+      "snapshot": "prompt/knowledge/evidence/60ae42a6c7a29185e8230972a5527a232a428f1686d2b90c6a4ec1092abfe342.source"
+    },
+    {
+      "artifact_id": "A7bcdfb5076b69061ea",
+      "bytes": 3812,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 62,
+      "path": "mainframe/workspace/DCLGen/DZBEFFTV.txt",
+      "role": "dclgen",
+      "sha256": "1398746545f2fb02970f3d6838cd1e420b0ae56adec1bdd4bd49d25d1d22e6f8",
+      "snapshot": "prompt/knowledge/evidence/1398746545f2fb02970f3d6838cd1e420b0ae56adec1bdd4bd49d25d1d22e6f8.source"
+    },
+    {
+      "artifact_id": "Aa1d63d6e22f0776f37",
+      "bytes": 7222,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 120,
+      "path": "mainframe/workspace/DCLGen/DZBFARTV.txt",
+      "role": "dclgen",
+      "sha256": "5cacab9f737c4972f5a6b7aa18212d2322dc5be3b007215a76b630888d7fcb8a",
+      "snapshot": "prompt/knowledge/evidence/5cacab9f737c4972f5a6b7aa18212d2322dc5be3b007215a76b630888d7fcb8a.source"
+    },
+    {
+      "artifact_id": "A345ac7493191302cf0",
+      "bytes": 12132,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 196,
+      "path": "mainframe/workspace/DCLGen/DZBFASTV.txt",
+      "role": "dclgen",
+      "sha256": "00d7e8a369335eaf59644707b4a7f606d8aff550fea8902d1ad17437532f7e3d",
+      "snapshot": "prompt/knowledge/evidence/00d7e8a369335eaf59644707b4a7f606d8aff550fea8902d1ad17437532f7e3d.source"
+    },
+    {
+      "artifact_id": "A3fb850fe2f132b24cc",
+      "bytes": 2983,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 50,
+      "path": "mainframe/workspace/DCLGen/DZEVEFTV.txt",
+      "role": "dclgen",
+      "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da",
+      "snapshot": "prompt/knowledge/evidence/acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da.source"
+    },
+    {
+      "artifact_id": "A2a1e6cca29a8be9224",
+      "bytes": 1657,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 26,
+      "path": "mainframe/workspace/DCLGen/DZSIASTV.txt",
+      "role": "dclgen",
+      "sha256": "3ca4890e7d2612e213cdd0cc509a5391f9b698b7815e7b29b2451decae791439",
+      "snapshot": "prompt/knowledge/evidence/3ca4890e7d2612e213cdd0cc509a5391f9b698b7815e7b29b2451decae791439.source"
+    },
+    {
+      "artifact_id": "Adaa9eb56d05354b198",
+      "bytes": 1741,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 28,
+      "path": "mainframe/workspace/DCLGen/DZWCEFTV.txt",
+      "role": "dclgen",
+      "sha256": "93336302528ec4d2459101f71f7504f0f717e4a7443a833179287ce1538654e7",
+      "snapshot": "prompt/knowledge/evidence/93336302528ec4d2459101f71f7504f0f717e4a7443a833179287ce1538654e7.source"
+    },
+    {
+      "artifact_id": "Ae0874065152e122967",
+      "bytes": 79547,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 877,
+      "path": "mainframe/workspace/Mapping Sheet/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+      "role": "mapping",
+      "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf",
+      "snapshot": "prompt/knowledge/evidence/1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf.source"
+    },
+    {
+      "artifact_id": "Aa5e0d70d1549880345",
+      "bytes": 3634,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 112,
+      "path": "mainframe/workspace/Subschema/VMBTS03.txt",
+      "role": "subschema",
+      "sha256": "a1578229fa9086afc8b074cbd526c256099c1ddecfacf30acf5aaa64bdef6fdd",
+      "snapshot": "prompt/knowledge/evidence/a1578229fa9086afc8b074cbd526c256099c1ddecfacf30acf5aaa64bdef6fdd.source"
+    },
+    {
+      "artifact_id": "A509acc9250c69a6c60",
+      "bytes": 29283,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 815,
+      "path": "mainframe/workspace/Subschema/VMBTS06.txt",
+      "role": "subschema",
+      "sha256": "40b9b0048afa4e15b939f8a643e04496783084becffb4af42ea4f398b13cd3a0",
+      "snapshot": "prompt/knowledge/evidence/40b9b0048afa4e15b939f8a643e04496783084becffb4af42ea4f398b13cd3a0.source"
+    },
+    {
+      "artifact_id": "A9eda7fc3cd5e4c2f67",
+      "bytes": 6325,
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "lines": 191,
+      "path": "mainframe/workspace/Subschema/VMBTS07.txt",
+      "role": "subschema",
+      "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4",
+      "snapshot": "prompt/knowledge/evidence/afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4.source"
+    }
+  ],
+  "chunks": [
+    {
+      "artifact_id": "Afb8fb15527bc0e034b",
+      "chunk_id": "Afb8fb15527bc0e034b:L1-80",
+      "end_line": 80,
+      "start_line": 1
+    },
+    {
+      "artifact_id": "Afb8fb15527bc0e034b",
+      "chunk_id": "Afb8fb15527bc0e034b:L81-160",
+      "end_line": 160,
+      "start_line": 81
+    },
+    {
+      "artifact_id": "Afb8fb15527bc0e034b",
+      "chunk_id": "Afb8fb15527bc0e034b:L161-180",
+      "end_line": 180,
+      "start_line": 161
+    },
+    {
+      "artifact_id": "Ac607d64e8dddb115a9",
+      "chunk_id": "Ac607d64e8dddb115a9:L1-80",
+      "end_line": 80,
+      "start_line": 1
+    },
+    {
+      "artifact_id": "Ac607d64e8dddb115a9",
+      "chunk_id": "Ac607d64e8dddb115a9:L81-160",
+      "end_line": 160,
+      "start_line": 81
+    },
+    {
+      "artifact_id": "Ac607d64e8dddb115a9",
+      "chunk_id": "Ac607d64e8dddb115a9:L161-240",
+      "end_line": 240,
+      "start_line": 161
+    },
+    {
+      "artifact_id": "Ac607d64e8dddb115a9",
+      "chunk_id": "Ac607d64e8dddb115a9:L241-320",
+      "end_line": 320,
+      "start_line": 241
+    },
+    {
+      "artifact_id": "Ac607d64e8dddb115a9",
+      "chunk_id": "Ac607d64e8dddb115a9:L321-400",
+      "end_line": 400,
+      "start_line": 321
+    },
+    {
+      "artifact_id": "Ac607d64e8dddb115a9",
+      "chunk_id": "Ac607d64e8dddb115a9:L401-457",
+      "end_line": 457,
+      "start_line": 401
+    }
+  ],
+  "compile_status": "NOT_VERIFIED",
+  "engine_identity": null,
+  "fingerprint": "484c213fdd6a5dd88647c2b0804919544e00194934a29a5d766c9b8f6b30ab12",
+  "generation_provenance": {
+    "status": "NOT_APPLICABLE"
+  },
+  "input_identity": {
+    "artifacts": [
+      {
+        "artifact_id": "Afb8fb15527bc0e034b",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/Program/VM1BD567.cbl",
+        "role": "idms",
+        "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+      },
+      {
+        "artifact_id": "Ac607d64e8dddb115a9",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/Manual Output/VMDZ1567.cbl",
+        "role": "manual",
+        "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+      },
+      {
+        "artifact_id": "Aee7269101b766f94a8",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/Copybook/ESDATMAS.cpy",
+        "role": "copybook",
+        "sha256": "185019c004727a2754201ae1e8f6a272b0fe71de6b8141939118b4c01c752d06"
+      },
+      {
+        "artifact_id": "A9bf3e34733f4c1762d",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/Copybook/VM9BC50I.cpy",
+        "role": "copybook",
+        "sha256": "20efbe9463f2a9eb361f946a0bac4bb629ec30f93ab7dae7487f2dfd65897deb"
+      },
+      {
+        "artifact_id": "A4e144ed681596c7494",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/Copybook/VM9BC50O.cpy",
+        "role": "copybook",
+        "sha256": "7d451f980d1a26c782b19aa96c70842e8a9d87603e0706616a08fed905780da5"
+      },
+      {
+        "artifact_id": "Afb62b48577a95a6c00",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/Copybook/VMBD05.cpy",
+        "role": "copybook",
+        "sha256": "530ffd3397f3c6fb680cf21d0dd60fa12bc34fb66d105ea816dc03646ae0e27c"
+      },
+      {
+        "artifact_id": "A8b7c7fec77894f4281",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/Copybook/VMBD205I.cpy",
+        "role": "copybook",
+        "sha256": "80e1aa6b784c0fa192ebe27b3b03af9240cd0a0605574ed2179e77c265bd4dfb"
+      },
+      {
+        "artifact_id": "A591c0b596eed5ed137",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/Copybook/VMBD510I.cpy",
+        "role": "copybook",
+        "sha256": "9c86827c5a2a49f2c69b11ad987645beb641a6dce53c7c41fd3006746075c03a"
+      },
+      {
+        "artifact_id": "A37499ad9d2074aab79",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/Copybook/VMBZ270I.cpy",
+        "role": "copybook",
+        "sha256": "db441dd9e51644d5e7edbcf1829916da454881d535cce510ed207c2bcdb1f193"
+      },
+      {
+        "artifact_id": "Aae68f9bcd0a8c75ebf",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/DCLGen/DZ01RSTV.txt",
+        "role": "dclgen",
+        "sha256": "60ae42a6c7a29185e8230972a5527a232a428f1686d2b90c6a4ec1092abfe342"
+      },
+      {
+        "artifact_id": "A7bcdfb5076b69061ea",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/DCLGen/DZBEFFTV.txt",
+        "role": "dclgen",
+        "sha256": "1398746545f2fb02970f3d6838cd1e420b0ae56adec1bdd4bd49d25d1d22e6f8"
+      },
+      {
+        "artifact_id": "Aa1d63d6e22f0776f37",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/DCLGen/DZBFARTV.txt",
+        "role": "dclgen",
+        "sha256": "5cacab9f737c4972f5a6b7aa18212d2322dc5be3b007215a76b630888d7fcb8a"
+      },
+      {
+        "artifact_id": "A345ac7493191302cf0",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/DCLGen/DZBFASTV.txt",
+        "role": "dclgen",
+        "sha256": "00d7e8a369335eaf59644707b4a7f606d8aff550fea8902d1ad17437532f7e3d"
+      },
+      {
+        "artifact_id": "A3fb850fe2f132b24cc",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/DCLGen/DZEVEFTV.txt",
+        "role": "dclgen",
+        "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da"
+      },
+      {
+        "artifact_id": "A2a1e6cca29a8be9224",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/DCLGen/DZSIASTV.txt",
+        "role": "dclgen",
+        "sha256": "3ca4890e7d2612e213cdd0cc509a5391f9b698b7815e7b29b2451decae791439"
+      },
+      {
+        "artifact_id": "Adaa9eb56d05354b198",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/DCLGen/DZWCEFTV.txt",
+        "role": "dclgen",
+        "sha256": "93336302528ec4d2459101f71f7504f0f717e4a7443a833179287ce1538654e7"
+      },
+      {
+        "artifact_id": "Ae0874065152e122967",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/Mapping Sheet/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+        "role": "mapping",
+        "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf"
+      },
+      {
+        "artifact_id": "Aa5e0d70d1549880345",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/Subschema/VMBTS03.txt",
+        "role": "subschema",
+        "sha256": "a1578229fa9086afc8b074cbd526c256099c1ddecfacf30acf5aaa64bdef6fdd"
+      },
+      {
+        "artifact_id": "A509acc9250c69a6c60",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/Subschema/VMBTS06.txt",
+        "role": "subschema",
+        "sha256": "40b9b0048afa4e15b939f8a643e04496783084becffb4af42ea4f398b13cd3a0"
+      },
+      {
+        "artifact_id": "A9eda7fc3cd5e4c2f67",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "mainframe/workspace/Subschema/VMBTS07.txt",
+        "role": "subschema",
+        "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+      }
+    ],
+    "program_id": "VMDZ1567",
+    "tool_fingerprint": "3f8c535e724f07c408c3a7cae746c1af6c13a795e3dfa49f50139bf585843e47",
+    "track": "baseline"
+  },
+  "leads": [
+    {
+      "candidate_owner_guide": "prompt/06_RECORD_COPYBOOK_AND_DATE_CONTRACTS.md",
+      "details": {
+        "qualification": "No implicit renamed-copybook equivalence. Collect authoritative definition or explicit provenance."
+      },
+      "evidence": [
+        {
+          "artifact_id": "Afb8fb15527bc0e034b",
+          "end_line": 104,
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "start_line": 104
+        }
+      ],
+      "lead_id": "LEAD-0894f7e81ebf05",
+      "root_cause_status": "NOT_ESTABLISHED",
+      "status": "REVIEW_REQUIRED",
+      "title": "idms: dependency not available by exact member name: IDMS",
+      "topic": "fields_layout"
+    },
+    {
+      "candidate_owner_guide": "prompt/06_RECORD_COPYBOOK_AND_DATE_CONTRACTS.md",
+      "details": {
+        "qualification": "No implicit renamed-copybook equivalence. Collect authoritative definition or explicit provenance."
+      },
+      "evidence": [
+        {
+          "artifact_id": "Afb8fb15527bc0e034b",
+          "end_line": 180,
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "start_line": 180
+        }
+      ],
+      "lead_id": "LEAD-126035603c35b7",
+      "root_cause_status": "NOT_ESTABLISHED",
+      "status": "REVIEW_REQUIRED",
+      "title": "idms: dependency not available by exact member name: IDMS",
+      "topic": "fields_layout"
+    },
+    {
+      "candidate_owner_guide": "prompt/08_POSTPROCESS_FORMATTING_NUMBERING.md",
+      "details": {
+        "qualification": "May be defined in an external COPY/SQL INCLUDE; not automatically a broken call."
+      },
+      "evidence": [
+        {
+          "artifact_id": "Ac607d64e8dddb115a9",
+          "end_line": 348,
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "start_line": 348
+        }
+      ],
+      "lead_id": "LEAD-18dcebc1ddce48",
+      "root_cause_status": "NOT_ESTABLISHED",
+      "status": "REVIEW_REQUIRED",
+      "title": "manual: PERFORM target not resolved in this member: SQLERROR",
+      "topic": "paragraph_wiring"
+    },
+    {
+      "candidate_owner_guide": "prompt/08_POSTPROCESS_FORMATTING_NUMBERING.md",
+      "details": {
+        "qualification": "May be defined in an external COPY/SQL INCLUDE; not automatically a broken call."
+      },
+      "evidence": [
+        {
+          "artifact_id": "Ac607d64e8dddb115a9",
+          "end_line": 385,
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "start_line": 385
+        }
+      ],
+      "lead_id": "LEAD-2d3443fba70ff6",
+      "root_cause_status": "NOT_ESTABLISHED",
+      "status": "REVIEW_REQUIRED",
+      "title": "manual: PERFORM target not resolved in this member: SQLERROR",
+      "topic": "paragraph_wiring"
+    },
+    {
+      "candidate_owner_guide": "prompt/08_POSTPROCESS_FORMATTING_NUMBERING.md",
+      "details": {
+        "qualification": "May be defined in an external COPY/SQL INCLUDE; not automatically a broken call."
+      },
+      "evidence": [
+        {
+          "artifact_id": "Ac607d64e8dddb115a9",
+          "end_line": 406,
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "start_line": 406
+        }
+      ],
+      "lead_id": "LEAD-f23556e1c444f8",
+      "root_cause_status": "NOT_ESTABLISHED",
+      "status": "REVIEW_REQUIRED",
+      "title": "manual: PERFORM target not resolved in this member: SQLERROR",
+      "topic": "paragraph_wiring"
+    },
+    {
+      "candidate_owner_guide": "prompt/08_POSTPROCESS_FORMATTING_NUMBERING.md",
+      "details": {
+        "qualification": "May be defined in an external COPY/SQL INCLUDE; not automatically a broken call."
+      },
+      "evidence": [
+        {
+          "artifact_id": "Ac607d64e8dddb115a9",
+          "end_line": 422,
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "start_line": 422
+        }
+      ],
+      "lead_id": "LEAD-53ed8d4e1753f8",
+      "root_cause_status": "NOT_ESTABLISHED",
+      "status": "REVIEW_REQUIRED",
+      "title": "manual: PERFORM target not resolved in this member: SQLERROR",
+      "topic": "paragraph_wiring"
+    },
+    {
+      "candidate_owner_guide": "prompt/08_POSTPROCESS_FORMATTING_NUMBERING.md",
+      "details": {
+        "qualification": "May be defined in an external COPY/SQL INCLUDE; not automatically a broken call."
+      },
+      "evidence": [
+        {
+          "artifact_id": "Ac607d64e8dddb115a9",
+          "end_line": 449,
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "start_line": 449
+        }
+      ],
+      "lead_id": "LEAD-946e8183744a1e",
+      "root_cause_status": "NOT_ESTABLISHED",
+      "status": "REVIEW_REQUIRED",
+      "title": "manual: PERFORM target not resolved in this member: SQLERROR",
+      "topic": "paragraph_wiring"
+    },
+    {
+      "candidate_owner_guide": "prompt/06_RECORD_COPYBOOK_AND_DATE_CONTRACTS.md",
+      "details": {
+        "qualification": "No implicit renamed-copybook equivalence. Collect authoritative definition or explicit provenance."
+      },
+      "evidence": [
+        {
+          "artifact_id": "Ac607d64e8dddb115a9",
+          "end_line": 143,
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "start_line": 143
+        }
+      ],
+      "lead_id": "LEAD-c9633b72a88fb2",
+      "root_cause_status": "NOT_ESTABLISHED",
+      "status": "REVIEW_REQUIRED",
+      "title": "manual: dependency not available by exact member name: SQLERRWS",
+      "topic": "fields_layout"
+    },
+    {
+      "candidate_owner_guide": "prompt/06_RECORD_COPYBOOK_AND_DATE_CONTRACTS.md",
+      "details": {
+        "qualification": "No implicit renamed-copybook equivalence. Collect authoritative definition or explicit provenance."
+      },
+      "evidence": [
+        {
+          "artifact_id": "Ac607d64e8dddb115a9",
+          "end_line": 144,
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "start_line": 144
+        }
+      ],
+      "lead_id": "LEAD-b3f86864bda377",
+      "root_cause_status": "NOT_ESTABLISHED",
+      "status": "REVIEW_REQUIRED",
+      "title": "manual: dependency not available by exact member name: SQLCA",
+      "topic": "fields_layout"
+    },
+    {
+      "candidate_owner_guide": "prompt/06_RECORD_COPYBOOK_AND_DATE_CONTRACTS.md",
+      "details": {
+        "qualification": "No implicit renamed-copybook equivalence. Collect authoritative definition or explicit provenance."
+      },
+      "evidence": [
+        {
+          "artifact_id": "Ac607d64e8dddb115a9",
+          "end_line": 150,
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "start_line": 150
+        }
+      ],
+      "lead_id": "LEAD-94d5e82a17fcc4",
+      "root_cause_status": "NOT_ESTABLISHED",
+      "status": "REVIEW_REQUIRED",
+      "title": "manual: dependency not available by exact member name: VMDZ205I",
+      "topic": "fields_layout"
+    },
+    {
+      "candidate_owner_guide": "prompt/06_RECORD_COPYBOOK_AND_DATE_CONTRACTS.md",
+      "details": {
+        "qualification": "No implicit renamed-copybook equivalence. Collect authoritative definition or explicit provenance."
+      },
+      "evidence": [
+        {
+          "artifact_id": "Ac607d64e8dddb115a9",
+          "end_line": 454,
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "start_line": 454
+        }
+      ],
+      "lead_id": "LEAD-96abe7b91c5e0f",
+      "root_cause_status": "NOT_ESTABLISHED",
+      "status": "REVIEW_REQUIRED",
+      "title": "manual: dependency not available by exact member name: SQLERROR",
+      "topic": "fields_layout"
+    },
+    {
+      "candidate_owner_guide": "prompt/05_SQL_CURSOR_AND_BUSINESS_FLOW.md",
+      "details": {
+        "manual_sql_block_count": 10,
+        "qualification": "Counts do not imply a one-to-one mapping or equivalence.",
+        "source_operation_count": 11
+      },
+      "evidence": [
+        {
+          "artifact_id": "Afb8fb15527bc0e034b",
+          "end_line": 105,
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "start_line": 105
+        },
+        {
+          "artifact_id": "Ac607d64e8dddb115a9",
+          "end_line": 342,
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "start_line": 340
+        }
+      ],
+      "lead_id": "LEAD-0414f9e9e28927",
+      "root_cause_status": "NOT_ESTABLISHED",
+      "status": "REVIEW_REQUIRED",
+      "title": "Map source IDMS operations to manual DB2 operations individually",
+      "topic": "access_sql"
+    }
+  ],
+  "program_id": "VMDZ1567",
+  "runtime_status": "NOT_VERIFIED",
+  "schema_version": 1,
+  "semantic_status": "NOT_REVIEWED",
+  "track": "baseline"
+}

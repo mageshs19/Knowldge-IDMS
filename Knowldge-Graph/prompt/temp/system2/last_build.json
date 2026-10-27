@@ -1,0 +1,20 @@
+{
+  "built": [
+    "VMDZ1526:gap",
+    "VMDZ1567:gap",
+    "VMDZ4302:gap",
+    "VMDZ4310:gap",
+    "VMDZ4420:gap",
+    "VMDZ7200:gap"
+  ],
+  "errors": [],
+  "meaning": "Report generation only, not semantic acceptance",
+  "reused": [
+    "VMDZ1526:baseline",
+    "VMDZ1567:baseline",
+    "VMDZ4302:baseline",
+    "VMDZ4310:baseline",
+    "VMDZ4420:baseline",
+    "VMDZ7200:baseline"
+  ]
+}

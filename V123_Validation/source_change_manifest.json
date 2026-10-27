@@ -1,0 +1,82 @@
+[
+  {
+    "path": "converter/composers/program_identity_initializer.py",
+    "before_sha256": null,
+    "after_sha256": "00231d1e9347ecb2c7caf3db691f9c8560776accd330700f9390c407706f69e2"
+  },
+  {
+    "path": "converter/services/final_generated_output_service.py",
+    "before_sha256": "2ba10be5e7d43275aff9aa3306d3cc625162e10790b478598d2d92f03d6b80cd",
+    "after_sha256": "fd9336c3dac134fa1245aa95e9355c0098be436501232a758ae18430f6ceef35"
+  },
+  {
+    "path": "docs/COBOL_PROCEDURE_NUMBERING_STANDARD.md",
+    "before_sha256": "20e5d3872038a5c5dd5f5b15d49886d848b29410916bbac1f92371ec487ec121",
+    "after_sha256": "4f85e9b133412fcaa9a52c1ca31ace58ec78a5d86c795d80010edbe32137e951"
+  },
+  {
+    "path": "mainframe/verification/group_representation_contract.py",
+    "before_sha256": null,
+    "after_sha256": "ee3f1e852716c785e4fe3e2c78a6051e10e68bea4ae0f9f4de1414a2d0ca0438"
+  },
+  {
+    "path": "mainframe/zowe_semantic_release_gate.py",
+    "before_sha256": "eb58c1ca0c5fe9012cc6cfd9ea2d78edab8e7670af3d9cbc37ef93b7a8d4210b",
+    "after_sha256": "19fec8245770dd6b72ec2ea2177828401e97bcafd2b9c3450685ecdfdd84b24f"
+  },
+  {
+    "path": "mainframe/zowe_steps.py",
+    "before_sha256": "24db6e37f702e7e878a91539c6306d58f6057c31f096ac7e18cf76e2d8e7f21c",
+    "after_sha256": "107e1fd7d9468b70c9944472f270e8897f72a32987fe1b9538dbfef11f1ae284"
+  },
+  {
+    "path": "review/checks/chk_04_program_header.py",
+    "before_sha256": "71161dbbbba364b6e892d953213ef7adc74cfd024b28d2a9843118803def1087",
+    "after_sha256": "d64a2485180998fe27e16295f96035b49b271ac112655949b421bf47ba8d3e4d"
+  },
+  {
+    "path": "review/checks/chk_24_picture_and_length.py",
+    "before_sha256": "f42453c5ded3140ebf43ee5f1a1beb5130a428bf173c808777867269dcbb0170",
+    "after_sha256": "0136d7e8ed5a70f30e7ae9a229bd2048edac950ed45f13e3f6d71290e38aa564"
+  },
+  {
+    "path": "review/checks/chk_35_group_representation.py",
+    "before_sha256": null,
+    "after_sha256": "daf7eafe3a4cbe0950133cdd8b3c6275f7c06a865ae25abc59e7c7a9c690cc20"
+  },
+  {
+    "path": "review/checks/chk_36_production_evidence.py",
+    "before_sha256": null,
+    "after_sha256": "8c0d67dc9ec14a55a53de1bfdadff6c861bd2c1f561379653a527d43fb2bb653"
+  },
+  {
+    "path": "review/engine/context.py",
+    "before_sha256": "1aea16dc16c846b96faa195d8a513aa6ed59995fc4cfd76683a23981e615cdaf",
+    "after_sha256": "bbb308c4f55ed960f17bbdbe8ebc9cd66af4169045ba0a7d9be008e25bb01d81"
+  },
+  {
+    "path": "review/engine/reviewer.py",
+    "before_sha256": "424ff7c1542e8d6f02cc638b393d660fe999629982fa22681f825e003babc8f9",
+    "after_sha256": "a9b6a98e7492de8a429b9c31bb1946149887e09f4b8bb39a42a95bce80ae02b7"
+  },
+  {
+    "path": "review/runner/review_file.py",
+    "before_sha256": "5161166d25aff8e2d8ee9234da5f1ac05a7db85904ad08758e73d41abfefaa65",
+    "after_sha256": "7a8d500cc2cb5c1177cc4d85c8e9369a0220eb9ac3edaa3e51ade1237c547af3"
+  },
+  {
+    "path": "review/runner/workspace_inputs.py",
+    "before_sha256": null,
+    "after_sha256": "a04cb7c0b2eb76333347ae3a09c2fa561223245947f00a842cda30d71006617f"
+  },
+  {
+    "path": "tests/fixtures/representation_v122/VMDZ4310.cbl",
+    "before_sha256": null,
+    "after_sha256": "baf6849ff9cf513003cd17755de75b0a2ec53360c914889d060d67bffd02f68c"
+  },
+  {
+    "path": "tests/test_full_program_representation_audit.py",
+    "before_sha256": null,
+    "after_sha256": "b5a258ab10e78c5e8fa2f4bbb909fba717d8b583d700706a8c55dad4b98f2fc8"
+  }
+]

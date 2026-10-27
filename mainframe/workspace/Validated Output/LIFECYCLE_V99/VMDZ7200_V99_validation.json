@@ -1,0 +1,11 @@
+{
+  "program": "VMDZ7200",
+  "version": "V99",
+  "paragraphs_found": 17,
+  "paragraphs_missing_active_exact_name_display": 0,
+  "fixed_format_all_80_columns": true,
+  "unresolved_perform_references": 0,
+  "non_entry_display_statement_sequence_identical_to_v98": true,
+  "mainframe_precompile_compile_runtime": "NOT_PERFORMED",
+  "full_python_test_suite": "PASSED"
+}

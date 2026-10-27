@@ -1,0 +1,58 @@
+{
+  "guides": {
+    "prompt/system2/01_ARCHITECTURE_AND_CONTRACTS.md": "b5f6a5c919de66403cebcc0ebe3b048b09b3db5a33a54de2070864e5dcd97fe6",
+    "prompt/system2/02_REVIEW_AND_HANDOFF.md": "a92ffca679148c86e4bbfe269163b2fc06b76936f97223e6f138f0e53152421a",
+    "prompt/system2/06_RUNBOOK.md": "4bdc64ab63905c176fb3a9daa134387ef40992ff0439187b3bebff2d5ebe8f9d"
+  },
+  "schema_version": 1,
+  "sources": {
+    "prompt/tools/knowledge_core.py": {
+      "doc": "prompt/system2/modules/knowledge_core.md",
+      "doc_sha256": "3a411225e9517f9657dfa839c30801b6eb529ecae072f1c7f747083feccfe559",
+      "guide": "prompt/system2/01_ARCHITECTURE_AND_CONTRACTS.md",
+      "sha256": "fc76022ac8f8fa43b43920fa931ebd00f3638fe4a5cc551dee73c6d5e3df486c"
+    },
+    "prompt/tools/knowledge_docs.py": {
+      "doc": "prompt/system2/modules/knowledge_docs.md",
+      "doc_sha256": "b3a21c8772c175dcf4024099a3029f42c09b602e8b42779e0e71a58c4f799970",
+      "guide": "prompt/system2/01_ARCHITECTURE_AND_CONTRACTS.md",
+      "sha256": "9e11b642d26068645714592e54a81ca7474fbc04708ebe199bf80aa080b5b738"
+    },
+    "prompt/tools/knowledge_engine.py": {
+      "doc": "prompt/system2/modules/knowledge_engine.md",
+      "doc_sha256": "0b7680834ff2e9d07201fcd1b0e504710ec83ac1a01c5bc0c4e99301f1232c1b",
+      "guide": "prompt/system2/06_RUNBOOK.md",
+      "sha256": "7f042c981d86275fde43f9b505ac67230f573f0e53ed3712834dfb920d5d4448"
+    },
+    "prompt/tools/knowledge_extract.py": {
+      "doc": "prompt/system2/modules/knowledge_extract.md",
+      "doc_sha256": "1539fb1192bbf74d485c3f7983e5e26ac53408ca195410274f58136a16c45e21",
+      "guide": "prompt/system2/01_ARCHITECTURE_AND_CONTRACTS.md",
+      "sha256": "600b131745b519111d5e9932ea3f9444976a8aefb170b5b07e83e3651bd1f03e"
+    },
+    "prompt/tools/knowledge_pipeline.py": {
+      "doc": "prompt/system2/modules/knowledge_pipeline.md",
+      "doc_sha256": "9a8edba74b7611bf4c985af7127fbeba9333a2745573155243ca220fe98cc1a4",
+      "guide": "prompt/system2/06_RUNBOOK.md",
+      "sha256": "94c0d04c729434f48e50a2e900097365d1c3e96717298447a5923dba027c89c5"
+    },
+    "prompt/tools/knowledge_reports.py": {
+      "doc": "prompt/system2/modules/knowledge_reports.md",
+      "doc_sha256": "419149cb50ca501835669d3bb2ba5e43a1eabe13cba93bf1d1a4eca9f9a24a6b",
+      "guide": "prompt/system2/01_ARCHITECTURE_AND_CONTRACTS.md",
+      "sha256": "724baaa470bc6c33b7ebccf17378c609f5cee8882f351646c7afc8b4e75e6fc0"
+    },
+    "prompt/tools/knowledge_review.py": {
+      "doc": "prompt/system2/modules/knowledge_review.md",
+      "doc_sha256": "e7051946c5d131ec816664da1735521d88f86a879005198e6510bacf88457616",
+      "guide": "prompt/system2/02_REVIEW_AND_HANDOFF.md",
+      "sha256": "66c142d8ebf935fe78cb24b072f52e327a97177ec649a339301127188768371c"
+    },
+    "prompt/tools/test_program_knowledge.py": {
+      "doc": "prompt/system2/modules/test_program_knowledge.md",
+      "doc_sha256": "7b6de8735db5c4d87cae8ac79c00ccfa8941948a896fd522bb34c111e1ca6916",
+      "guide": "prompt/system2/01_ARCHITECTURE_AND_CONTRACTS.md",
+      "sha256": "47b67085ff5fb4ddbe3662d9f77726cd8c73b2d158f51ac2ca88bc0cc39c80bc"
+    }
+  }
+}

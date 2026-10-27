@@ -1,0 +1,39 @@
+
+1. Independent IDMS → manual DB2 analysis
+prompt/knowledge/programs/<program-id>/01_idms_manual.md
+
+
+2. Python-engine gap analysis
+
+prompt/knowledge/programs/<program-id>/02_engine_gaps.md
+
+
+System 2
+  Original IDMS + manual DB2
+      → independent program knowledge
+
+  Program knowledge + pinned engine output
+      → engine gaps and candidate common rules
+
+System 1
+  Evidence-backed rule candidates
+      → root-cause Python changes
+      → positive, negative and renamed-identifier tests
+      → updated prompt documentation
+      → new engine version returned to System 2
+	  
+	  
+python prompt/tools/knowledge_pipeline.py register \
+  --pairs prompt/system2/program_pairs_75.csv \
+  --metadata prompt/system2/metadata_75.json \
+  --expected-programs 75
+
+python prompt/tools/knowledge_pipeline.py build
+python prompt/tools/knowledge_pipeline.py aggregate
+python prompt/tools/knowledge_pipeline.py check
+
+
+
+
+python prompt/tools/maintain_docs.py refresh
+python prompt/tools/maintain_docs.py check

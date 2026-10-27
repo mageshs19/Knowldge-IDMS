@@ -1,0 +1,286 @@
+{
+  "schema_version": 1,
+  "expected_programs": 6,
+  "chunk_lines": 80,
+  "programs": [
+    {
+      "id": "VMDZ1526",
+      "pairing_confirmed": true,
+      "idms": {
+        "path": "mainframe/workspace/Program/VM1BD526.cbl",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "program_id": "VM1BD526"
+      },
+      "manual": {
+        "path": "mainframe/workspace/Manual Output/VMDZ1526.txt",
+        "encoding": "latin-1",
+        "format": "fixed",
+        "encoding_basis": "Byte-preserving legacy text decoding for this supplied sample. Confirm production code page; no automatic runtime fallback.",
+        "program_id": "VMDZ1526"
+      },
+      "generated": {
+        "path": "mainframe/workspace/Output/VMDZ1526_26-10-2026_233958.cbl",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "program_id": "VMDZ1526"
+      }
+    },
+    {
+      "id": "VMDZ1567",
+      "pairing_confirmed": true,
+      "idms": {
+        "path": "mainframe/workspace/Program/VM1BD567.cbl",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "program_id": "VM1BD567"
+      },
+      "manual": {
+        "path": "mainframe/workspace/Manual Output/VMDZ1567.cbl",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "program_id": "VMDZ1567"
+      },
+      "generated": {
+        "path": "mainframe/workspace/Output/VMDZ1567_26-10-2026_233959.cbl",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "program_id": "VMDZ1567"
+      }
+    },
+    {
+      "id": "VMDZ4302",
+      "pairing_confirmed": true,
+      "idms": {
+        "path": "mainframe/workspace/Program/VM4BD302.cbl",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "program_id": "VM4BD302"
+      },
+      "manual": {
+        "path": "mainframe/workspace/Manual Output/VMDZ4302.txt",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "program_id": "VMDZ4302"
+      },
+      "generated": {
+        "path": "mainframe/workspace/Output/VMDZ4302_26-10-2026_234001.cbl",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "program_id": "VMDZ4302"
+      }
+    },
+    {
+      "id": "VMDZ4310",
+      "pairing_confirmed": true,
+      "idms": {
+        "path": "mainframe/workspace/Program/VM4BD310.cbl",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "program_id": "VM4BD310"
+      },
+      "manual": {
+        "path": "mainframe/workspace/Manual Output/VMDZ4310.txt",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "program_id": "VMDZ4310"
+      },
+      "generated": {
+        "path": "mainframe/workspace/Output/VMDZ4310_26-10-2026_234002.cbl",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "program_id": "VMDZ4310"
+      }
+    },
+    {
+      "id": "VMDZ4420",
+      "pairing_confirmed": true,
+      "idms": {
+        "path": "mainframe/workspace/Program/VM4BD420.cbl",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "program_id": "VM4BD420"
+      },
+      "manual": {
+        "path": "mainframe/workspace/Manual Output/VMDZ4420.cbl",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "program_id": "VMDZ4420"
+      },
+      "generated": {
+        "path": "mainframe/workspace/Output/VMDZ4420_26-10-2026_234004.cbl",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "program_id": "VMDZ4420"
+      }
+    },
+    {
+      "id": "VMDZ7200",
+      "pairing_confirmed": true,
+      "idms": {
+        "path": "mainframe/workspace/Program/VM7BD200.cbl",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "program_id": "VM7BD200"
+      },
+      "manual": {
+        "path": "mainframe/workspace/Manual Output/VMDZ7200.cbl",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "program_id": "VMDZ7200"
+      },
+      "generated": {
+        "path": "mainframe/workspace/Output/VMDZ7200_26-10-2026_234005.cbl",
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "program_id": "VMDZ7200"
+      }
+    }
+  ],
+  "metadata": [
+    {
+      "path": "mainframe/workspace/Copybook/ESDATMAS.cpy",
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "role": "copybook"
+    },
+    {
+      "path": "mainframe/workspace/Copybook/VM9BC50I.cpy",
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "role": "copybook"
+    },
+    {
+      "path": "mainframe/workspace/Copybook/VM9BC50O.cpy",
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "role": "copybook"
+    },
+    {
+      "path": "mainframe/workspace/Copybook/VMBD05.cpy",
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "role": "copybook"
+    },
+    {
+      "path": "mainframe/workspace/Copybook/VMBD205I.cpy",
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "role": "copybook"
+    },
+    {
+      "path": "mainframe/workspace/Copybook/VMBD510I.cpy",
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "role": "copybook"
+    },
+    {
+      "path": "mainframe/workspace/Copybook/VMBZ270I.cpy",
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "role": "copybook"
+    },
+    {
+      "path": "mainframe/workspace/DCLGen/DZ01RSTV.txt",
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "role": "dclgen"
+    },
+    {
+      "path": "mainframe/workspace/DCLGen/DZBEFFTV.txt",
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "role": "dclgen"
+    },
+    {
+      "path": "mainframe/workspace/DCLGen/DZBFARTV.txt",
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "role": "dclgen"
+    },
+    {
+      "path": "mainframe/workspace/DCLGen/DZBFASTV.txt",
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "role": "dclgen"
+    },
+    {
+      "path": "mainframe/workspace/DCLGen/DZEVEFTV.txt",
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "role": "dclgen"
+    },
+    {
+      "path": "mainframe/workspace/DCLGen/DZSIASTV.txt",
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "role": "dclgen"
+    },
+    {
+      "path": "mainframe/workspace/DCLGen/DZWCEFTV.txt",
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "role": "dclgen"
+    },
+    {
+      "path": "mainframe/workspace/Mapping Sheet/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "role": "mapping"
+    },
+    {
+      "path": "mainframe/workspace/Subschema/VMBTS03.txt",
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "role": "subschema"
+    },
+    {
+      "path": "mainframe/workspace/Subschema/VMBTS06.txt",
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "role": "subschema"
+    },
+    {
+      "path": "mainframe/workspace/Subschema/VMBTS07.txt",
+      "encoding": "utf-8-sig",
+      "format": "fixed",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "role": "subschema"
+    }
+  ],
+  "description": "Six explicit sample pairs only. Replace with actual approved 75-pair registration on System 2."
+}

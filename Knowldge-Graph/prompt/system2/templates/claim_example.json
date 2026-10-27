@@ -1,0 +1,33 @@
+{
+  "claim_id": "OBS-001",
+  "topic": "fields_layout",
+  "conclusion": "unknown",
+  "confidence": "low",
+  "summary": "REPLACE with the observed data contract and explicit uncertainty.",
+  "root_cause_hypothesis": "REPLACE with evidence-supported owner hypothesis; do not guess from module names.",
+  "evidence": [
+    {
+      "artifact_id": "REPLACE_WITH_REAL_ARTIFACT_ID",
+      "sha256": "REPLACE_WITH_FULL_SOURCE_SHA256",
+      "start_line": 1,
+      "end_line": 1
+    }
+  ],
+  "general_rule": {
+    "key": "CHARACTER_GROUP_REPRESENTATION_CONTRACT",
+    "preconditions": [
+      "Target host and destination representation are established from authoritative metadata."
+    ],
+    "action": "Validate representation compatibility before emitting a group transfer; do not assume a byte copy performs numeric conversion.",
+    "refusal_conditions": [
+      "Target encoding/width or group field representation is contradictory or unresolved."
+    ],
+    "positive_tests": [
+      "Compatible layout under renamed program, group and field identifiers."
+    ],
+    "negative_tests": [
+      "Character data into a group containing packed fields without an explicit encoding contract."
+    ],
+    "owner_guide": "prompt/06_RECORD_COPYBOOK_AND_DATE_CONTRACTS.md"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/opt/pyvenv/bin/python",
+    "-m",
+    "pytest",
+    "-o",
+    "addopts=",
+    "-q",
+    "--junitxml=/mnt/data/v123_evidence/pytest.xml"
+  ],
+  "returncode": 0,
+  "seconds": 20.604
+}

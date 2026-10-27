@@ -1,0 +1,94 @@
+........................................................................ [  3%]
+........................................................................ [  6%]
+.........sssssssssssss.................................................. [ 10%]
+........................................................................ [ 13%]
+...........................ss........................................... [ 17%]
+....................s................................................... [ 20%]
+........................................................................ [ 24%]
+........................................................................ [ 27%]
+........................................................................ [ 31%]
+........................................................................ [ 34%]
+........................................................................ [ 38%]
+........................................................................ [ 41%]
+................................................................F....... [ 45%]
+.....................................F.................................. [ 48%]
+........................................................................ [ 52%]
+........................................................................ [ 55%]
+..............F......................................................... [ 59%]
+F....................................................................... [ 62%]
+........................................................................ [ 66%]
+........................................................................ [ 69%]
+...........................................s.s..s............s.s..s..... [ 73%]
+...............................................................s........ [ 76%]
+.....s.....................s............................................ [ 80%]
+........................................................................ [ 83%]
+........................................................................ [ 86%]
+........................................................................ [ 90%]
+........................................................................ [ 93%]
+........................................................................ [ 97%]
+.............................F.......................                    [100%]
+=================================== FAILURES ===================================
+___________________ test_vmdz7200_generated_layout_contract ____________________
+
+    def test_vmdz7200_generated_layout_contract():
+        p = sorted(GENERATED.glob('VMDZ7200_*.cbl'))
+>       assert len(p) == 1
+E       assert 0 == 1
+E        +  where 0 = len([])
+
+tests/test_cobol_storage_layout.py:28: AssertionError
+__________ test_real_source_copybook_matches_documented_output_layout __________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-2/test_real_source_copybook_matc0')
+
+    def test_real_source_copybook_matches_documented_output_layout(tmp_path):
+        workspace = Path(__file__).resolve().parents[1] / 'mainframe' / 'workspace'
+        source = (workspace / 'Program' / 'VM4BD310.cbl').read_text(encoding='latin1')
+>       target = next((workspace / 'Output').glob('VMDZ4310_*.cbl')).read_text(encoding='latin1')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/test_copybook_provenance_and_occurs.py:109: StopIteration
+___________ test_generated_vmdz4310_passes_structural_release_checks ___________
+
+    def test_generated_vmdz4310_passes_structural_release_checks():
+        # Always read the freshly regenerated member; timestamps are run artifacts.
+        candidates = sorted((ROOT / "mainframe/workspace/Output").glob("VMDZ4310_*.cbl"))
+>       assert len(candidates) == 1, "one fresh generated member required"
+E       AssertionError: one fresh generated member required
+E       assert 0 == 1
+E        +  where 0 = len([])
+
+tests/test_generated_cobol_release_validator.py:11: AssertionError
+___________ test_real_source_copybook_is_unused_in_generated_layout ____________
+
+    def test_real_source_copybook_is_unused_in_generated_layout():
+        root = Path(__file__).resolve().parents[1]
+        src = root / "mainframe/workspace/Copybook/VMBD05.cpy"
+>       generated = next((root / "mainframe/workspace/Output").glob("VMDZ4310*.cbl"))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/test_generic_unused_copybook_and_group_move.py:61: StopIteration
+________ test_generic_batch_matches_multiple_inputs_and_records_success ________
+
+workspace = {'DCLGen': PosixPath('/tmp/pytest-of-root/pytest-2/test_generic_batch_matches_mul0/DCLGen'), 'Mapping Sheet': PosixPat...tches_mul0/Output'), 'Program': PosixPath('/tmp/pytest-of-root/pytest-2/test_generic_batch_matches_mul0/Program'), ...}
+
+    def test_generic_batch_matches_multiple_inputs_and_records_success(workspace):
+        add_program(workspace, "VM4BD420")
+        add_program(workspace, "VM7BD200")
+        passed, notes = gate.audit_generated_batch()
+>       assert passed
+E       assert False
+
+tests/test_zowe_semantic_release_gate.py:43: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_cobol_storage_layout.py::test_vmdz7200_generated_layout_contract - assert 0 == 1
+ +  where 0 = len([])
+FAILED tests/test_copybook_provenance_and_occurs.py::test_real_source_copybook_matches_documented_output_layout - StopIteration
+FAILED tests/test_generated_cobol_release_validator.py::test_generated_vmdz4310_passes_structural_release_checks - AssertionError: one fresh generated member required
+assert 0 == 1
+ +  where 0 = len([])
+FAILED tests/test_generic_unused_copybook_and_group_move.py::test_real_source_copybook_is_unused_in_generated_layout - StopIteration
+FAILED tests/test_zowe_semantic_release_gate.py::test_generic_batch_matches_multiple_inputs_and_records_success - assert False
+5 failed, 2039 passed, 25 skipped in 19.46s

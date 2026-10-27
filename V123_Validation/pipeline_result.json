@@ -1,0 +1,14 @@
+{
+  "command": [
+    "/opt/pyvenv/bin/python",
+    "-m",
+    "mainframe.zowe_pipeline",
+    "all",
+    "--from",
+    "convert",
+    "--to",
+    "review"
+  ],
+  "returncode": 2,
+  "seconds": 20.463
+}

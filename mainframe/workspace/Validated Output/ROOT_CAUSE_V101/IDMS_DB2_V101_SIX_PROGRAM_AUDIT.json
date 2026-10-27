@@ -1,0 +1,209 @@
+{
+  "version": "V101",
+  "date": "2026-10-26",
+  "pipeline_run": "python -m mainframe.zowe_pipeline convert --verbose",
+  "pipeline_status": "OK",
+  "programs_converted": 6,
+  "checks": {
+    "all_procedure_paragraphs_have_active_exact_name_display": true,
+    "all_declared_cursors_have_open_fetch_close_paragraphs": true,
+    "all_outputs_idempotent_under_cursor_lifecycle_second_pass": true,
+    "VMDZ4302_external_loops_use_cursor_eoc_and_have_one_business_loop_call_each": true,
+    "VMDZ4420_parent_child_loops_have_one_business_loop_call_each": true,
+    "VMDZ7200_lrf_sweep_cursor_flow_preserved": true,
+    "VMDZ4310_VMDZ1526_VMDZ1567_remain_without_explicit_db2_cursors": true
+  },
+  "program_results": [
+    {
+      "program": "VMDZ4302",
+      "file": "VMDZ4302_root_cause_v101.cbl",
+      "source_output": "VMDZ4302_26-10-2026_114058.cbl",
+      "line_count": 574,
+      "procedure_paragraph_count": 16,
+      "missing_active_paragraph_displays": [],
+      "declared_cursors": [
+        "DZBEFFC1",
+        "DZEVEFC1"
+      ],
+      "cursor_lifecycle": {
+        "DZBEFFC1": {
+          "OPEN": {
+            "paragraph": "2110-OPEN-DZBEFFC1",
+            "perform_references": 1,
+            "paragraph_found": true
+          },
+          "FETCH": {
+            "paragraph": "2120-FETCH-DZBEFFC1",
+            "perform_references": 2,
+            "paragraph_found": true
+          },
+          "CLOSE": {
+            "paragraph": "2130-CLOSE-DZBEFFC1",
+            "perform_references": 1,
+            "paragraph_found": true
+          }
+        },
+        "DZEVEFC1": {
+          "OPEN": {
+            "paragraph": "2210-OPEN-DZEVEFC1",
+            "perform_references": 1,
+            "paragraph_found": true
+          },
+          "FETCH": {
+            "paragraph": "2220-FETCH-DZEVEFC1",
+            "perform_references": 2,
+            "paragraph_found": true
+          },
+          "CLOSE": {
+            "paragraph": "2230-CLOSE-DZEVEFC1",
+            "perform_references": 1,
+            "paragraph_found": true
+          }
+        }
+      },
+      "cursor_lifecycle_second_pass_idempotent": true,
+      "second_pass_diagnostics": [
+        "Cursor close guarantee: business paragraph VERWERK-EFFEKT is already driven by an external SPAN loop on cursor DZBEFFC1; the WHEN ZERO branch was left unchanged.",
+        "Cursor close guarantee: 2130-CLOSE-DZBEFFC1 is already performed; no insertion needed.",
+        "Cursor close guarantee: business paragraph NEXT-VMBEVEF is already driven by an external SPAN loop on cursor DZEVEFC1; the WHEN ZERO branch was left unchanged.",
+        "Cursor close guarantee: 2230-CLOSE-DZEVEFC1 is already performed; no insertion needed."
+      ]
+    },
+    {
+      "program": "VMDZ4310",
+      "file": "VMDZ4310_root_cause_v101.cbl",
+      "source_output": "VMDZ4310_26-10-2026_114100.cbl",
+      "line_count": 542,
+      "procedure_paragraph_count": 13,
+      "missing_active_paragraph_displays": [],
+      "declared_cursors": [],
+      "cursor_lifecycle": {},
+      "cursor_lifecycle_second_pass_idempotent": true,
+      "second_pass_diagnostics": [
+        "Cursor close guarantee: no_cursor_paragraphs {}"
+      ]
+    },
+    {
+      "program": "VMDZ4420",
+      "file": "VMDZ4420_root_cause_v101.cbl",
+      "source_output": "VMDZ4420_26-10-2026_114101.cbl",
+      "line_count": 506,
+      "procedure_paragraph_count": 10,
+      "missing_active_paragraph_displays": [],
+      "declared_cursors": [
+        "DZBEFFC1",
+        "DZEVEFC1"
+      ],
+      "cursor_lifecycle": {
+        "DZBEFFC1": {
+          "OPEN": {
+            "paragraph": "2110-OPEN-DZBEFFC1",
+            "perform_references": 1,
+            "paragraph_found": true
+          },
+          "FETCH": {
+            "paragraph": "2120-FETCH-DZBEFFC1",
+            "perform_references": 2,
+            "paragraph_found": true
+          },
+          "CLOSE": {
+            "paragraph": "2130-CLOSE-DZBEFFC1",
+            "perform_references": 1,
+            "paragraph_found": true
+          }
+        },
+        "DZEVEFC1": {
+          "OPEN": {
+            "paragraph": "2210-OPEN-DZEVEFC1",
+            "perform_references": 1,
+            "paragraph_found": true
+          },
+          "FETCH": {
+            "paragraph": "2220-FETCH-DZEVEFC1",
+            "perform_references": 2,
+            "paragraph_found": true
+          },
+          "CLOSE": {
+            "paragraph": "2230-CLOSE-DZEVEFC1",
+            "perform_references": 1,
+            "paragraph_found": true
+          }
+        }
+      },
+      "cursor_lifecycle_second_pass_idempotent": true,
+      "second_pass_diagnostics": [
+        "Cursor close guarantee: business paragraph HOOFDVERWERKING is already driven by an external SPAN loop on cursor DZBEFFC1; the WHEN ZERO branch was left unchanged.",
+        "Cursor close guarantee: 2130-CLOSE-DZBEFFC1 is already performed; no insertion needed.",
+        "Cursor close guarantee: business paragraph VERWERK-VMBEVEF is already driven by an external SPAN loop on cursor DZEVEFC1; the WHEN ZERO branch was left unchanged.",
+        "Cursor close guarantee: 2230-CLOSE-DZEVEFC1 is already performed; no insertion needed."
+      ]
+    },
+    {
+      "program": "VMDZ7200",
+      "file": "VMDZ7200_root_cause_v101.cbl",
+      "source_output": "VMDZ7200_26-10-2026_114103.cbl",
+      "line_count": 930,
+      "procedure_paragraph_count": 12,
+      "missing_active_paragraph_displays": [],
+      "declared_cursors": [
+        "DZBFASC1"
+      ],
+      "cursor_lifecycle": {
+        "DZBFASC1": {
+          "OPEN": {
+            "paragraph": "2110-OPEN-DZBFASC1",
+            "perform_references": 1,
+            "paragraph_found": true
+          },
+          "FETCH": {
+            "paragraph": "2120-FETCH-DZBFASC1",
+            "perform_references": 2,
+            "paragraph_found": true
+          },
+          "CLOSE": {
+            "paragraph": "2130-CLOSE-DZBFASC1",
+            "perform_references": 1,
+            "paragraph_found": true
+          }
+        }
+      },
+      "cursor_lifecycle_second_pass_idempotent": true,
+      "second_pass_diagnostics": [
+        "Cursor close guarantee: business paragraph BEHANDELING is already driven by an external SPAN loop on cursor DZBFASC1; the WHEN ZERO branch was left unchanged.",
+        "Cursor close guarantee: 2130-CLOSE-DZBFASC1 is already performed; no insertion needed."
+      ]
+    },
+    {
+      "program": "VMDZ1526",
+      "file": "VMDZ1526_root_cause_v101.cbl",
+      "source_output": "VMDZ1526_26-10-2026_114055.cbl",
+      "line_count": 695,
+      "procedure_paragraph_count": 22,
+      "missing_active_paragraph_displays": [],
+      "declared_cursors": [],
+      "cursor_lifecycle": {},
+      "cursor_lifecycle_second_pass_idempotent": true,
+      "second_pass_diagnostics": [
+        "Cursor close guarantee: no_cursor_paragraphs {}"
+      ]
+    },
+    {
+      "program": "VMDZ1567",
+      "file": "VMDZ1567_root_cause_v101.cbl",
+      "source_output": "VMDZ1567_26-10-2026_114057.cbl",
+      "line_count": 451,
+      "procedure_paragraph_count": 16,
+      "missing_active_paragraph_displays": [],
+      "declared_cursors": [],
+      "cursor_lifecycle": {},
+      "cursor_lifecycle_second_pass_idempotent": true,
+      "second_pass_diagnostics": [
+        "Cursor close guarantee: no_cursor_paragraphs {}"
+      ]
+    }
+  ],
+  "mainframe_compile_status": "NOT_PERFORMED",
+  "notes": [
+    "Static conversion, regression tests and source-level control-flow checks only. IBM DB2 precompile, Enterprise COBOL compile/link and mainframe runtime remain unverified."
+  ]
+}

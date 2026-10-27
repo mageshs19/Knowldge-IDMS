@@ -1,0 +1,21 @@
+COPY VMDZ1526_27-10-2026_003334.cbl: derived COPY VMBD205I -> VMDZ205I: 1200 bytes; source sha256=80e1aa6b784c0fa192ebe27b3b03af9240cd0a0605574ed2179e77c265bd4dfb
+BLOCK VMDZ1526_27-10-2026_003334.cbl MAPPING-DCLGEN-CHAR-CONFLICT line 0: DCLDZEVEFTV.NR-IDGOOD-479EVEF -> : mapping target CHAR(20) conflicts with DCLGEN CHAR(28); do not infer serialization or truncate to resolve this conflict
+BLOCK VM1BD526.cbl -> VMDZ1526_27-10-2026_003334.cbl: 1 defect(s), 1 unresolved semantic review(s)
+  ERROR SOURCE_BUSINESS_PARAGRAPH_EMPTIED line 230: original paragraph 800-TEST-FFRECAB performed database/file I/O or called business work; generated same-name paragraph has no executable business work beyond diagnostics. Verify relocation or restore the semantic transformation upstream.
+  REVIEW UPDATE line 234: OBTAIN CALC FFRECAB followed by MODIFY is represented by a direct keyed DB2 UPDATE, but no operation-local affected-row check (SQLERRD(3) or GET DIAGNOSTICS ROW_COUNT) was detected. SQLCODE 0 does not prove that a row matched. Confirm the original IDMS not-found semantics before adding a zero-row branch.
+COPY VMDZ1567_27-10-2026_003335.cbl: derived COPY VMBD205I -> VMDZ205I: 1200 bytes; source sha256=80e1aa6b784c0fa192ebe27b3b03af9240cd0a0605574ed2179e77c265bd4dfb
+MANUAL-PARITY VMDZ1567_27-10-2026_003335.cbl VMBFAR: source CALC/MODIFY matches manual and generated direct keyed UPDATE assignments, predicates, and SQLCODE actions; IDMS implicit not-found and DB2 runtime behavior remain unverified
+PASS VM1BD567.cbl -> VMDZ1567_27-10-2026_003335.cbl: operation and file-write coverage
+BLOCK VMDZ4302_27-10-2026_003337.cbl UNCONVERTED-CHARACTER-GROUP line 363: NR-IDGOOD-479EVEF OF DCLDZEVEFTV -> HULP-NR-ID-GOOD: CHAR(28) copied to a 20-byte group containing packed/binary fields; group MOVE copies bytes without numeric conversion; an explicit encoding contract is required
+BLOCK VMDZ4302_27-10-2026_003337.cbl MAPPING-DCLGEN-CHAR-CONFLICT line 0: DCLDZEVEFTV.NR-IDGOOD-479EVEF -> : mapping target CHAR(20) conflicts with DCLGEN CHAR(28); do not infer serialization or truncate to resolve this conflict
+PASS VM4BD302.cbl -> VMDZ4302_27-10-2026_003337.cbl: operation and file-write coverage
+COPY VMDZ4310_27-10-2026_003338.cbl: derived COPY VMBD510I -> VMDZ510I: 1500 bytes; source sha256=9c86827c5a2a49f2c69b11ad987645beb641a6dce53c7c41fd3006746075c03a
+BLOCK VMDZ4310_27-10-2026_003338.cbl UNCONVERTED-CHARACTER-GROUP line 1975: NR-IDGOOD-479EVEF OF DCLDZEVEFTV -> WS-NR-ID-GOOD: CHAR(28) copied to a 20-byte group containing packed/binary fields; group MOVE copies bytes without numeric conversion; an explicit encoding contract is required
+BLOCK VMDZ4310_27-10-2026_003338.cbl MAPPING-DCLGEN-CHAR-CONFLICT line 0: DCLDZEVEFTV.NR-IDGOOD-479EVEF -> : mapping target CHAR(20) conflicts with DCLGEN CHAR(28); do not infer serialization or truncate to resolve this conflict
+PASS VM4BD310.cbl -> VMDZ4310_27-10-2026_003338.cbl: operation and file-write coverage
+COPY VMDZ4420_27-10-2026_003340.cbl: authoritative target COPY ESDATMAS: ESDATMAS.cpy
+BLOCK VMDZ4420_27-10-2026_003340.cbl UNCONVERTED-CHARACTER-GROUP line 346: NR-IDGOOD-479EVEF OF DCLDZEVEFTV -> WS-NR-ID-GOOD: CHAR(28) copied to a 20-byte group containing packed/binary fields; group MOVE copies bytes without numeric conversion; an explicit encoding contract is required
+BLOCK VMDZ4420_27-10-2026_003340.cbl MAPPING-DCLGEN-CHAR-CONFLICT line 0: DCLDZEVEFTV.NR-IDGOOD-479EVEF -> : mapping target CHAR(20) conflicts with DCLGEN CHAR(28); do not infer serialization or truncate to resolve this conflict
+PASS VM4BD420.cbl -> VMDZ4420_27-10-2026_003340.cbl: operation and file-write coverage
+COPY VMDZ7200_27-10-2026_003341.cbl: derived COPY VMBZ270I -> VMDZ270I: 20 bytes; source sha256=db441dd9e51644d5e7edbcf1829916da454881d535cce510ed207c2bcdb1f193
+PASS VM7BD200.cbl -> VMDZ7200_27-10-2026_003341.cbl: operation and file-write coverage

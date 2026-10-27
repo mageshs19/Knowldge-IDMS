@@ -1,0 +1,128 @@
+[
+  {
+    "path": "mainframe/workspace/Copybook/ESDATMAS.cpy",
+    "encoding": "utf-8-sig",
+    "format": "fixed",
+    "encoding_basis": "Strict UTF-8 decode succeeds.",
+    "role": "copybook"
+  },
+  {
+    "path": "mainframe/workspace/Copybook/VM9BC50I.cpy",
+    "encoding": "utf-8-sig",
+    "format": "fixed",
+    "encoding_basis": "Strict UTF-8 decode succeeds.",
+    "role": "copybook"
+  },
+  {
+    "path": "mainframe/workspace/Copybook/VM9BC50O.cpy",
+    "encoding": "utf-8-sig",
+    "format": "fixed",
+    "encoding_basis": "Strict UTF-8 decode succeeds.",
+    "role": "copybook"
+  },
+  {
+    "path": "mainframe/workspace/Copybook/VMBD05.cpy",
+    "encoding": "utf-8-sig",
+    "format": "fixed",
+    "encoding_basis": "Strict UTF-8 decode succeeds.",
+    "role": "copybook"
+  },
+  {
+    "path": "mainframe/workspace/Copybook/VMBD205I.cpy",
+    "encoding": "utf-8-sig",
+    "format": "fixed",
+    "encoding_basis": "Strict UTF-8 decode succeeds.",
+    "role": "copybook"
+  },
+  {
+    "path": "mainframe/workspace/Copybook/VMBD510I.cpy",
+    "encoding": "utf-8-sig",
+    "format": "fixed",
+    "encoding_basis": "Strict UTF-8 decode succeeds.",
+    "role": "copybook"
+  },
+  {
+    "path": "mainframe/workspace/Copybook/VMBZ270I.cpy",
+    "encoding": "utf-8-sig",
+    "format": "fixed",
+    "encoding_basis": "Strict UTF-8 decode succeeds.",
+    "role": "copybook"
+  },
+  {
+    "path": "mainframe/workspace/DCLGen/DZ01RSTV.txt",
+    "encoding": "utf-8-sig",
+    "format": "fixed",
+    "encoding_basis": "Strict UTF-8 decode succeeds.",
+    "role": "dclgen"
+  },
+  {
+    "path": "mainframe/workspace/DCLGen/DZBEFFTV.txt",
+    "encoding": "utf-8-sig",
+    "format": "fixed",
+    "encoding_basis": "Strict UTF-8 decode succeeds.",
+    "role": "dclgen"
+  },
+  {
+    "path": "mainframe/workspace/DCLGen/DZBFARTV.txt",
+    "encoding": "utf-8-sig",
+    "format": "fixed",
+    "encoding_basis": "Strict UTF-8 decode succeeds.",
+    "role": "dclgen"
+  },
+  {
+    "path": "mainframe/workspace/DCLGen/DZBFASTV.txt",
+    "encoding": "utf-8-sig",
+    "format": "fixed",
+    "encoding_basis": "Strict UTF-8 decode succeeds.",
+    "role": "dclgen"
+  },
+  {
+    "path": "mainframe/workspace/DCLGen/DZEVEFTV.txt",
+    "encoding": "utf-8-sig",
+    "format": "fixed",
+    "encoding_basis": "Strict UTF-8 decode succeeds.",
+    "role": "dclgen"
+  },
+  {
+    "path": "mainframe/workspace/DCLGen/DZSIASTV.txt",
+    "encoding": "utf-8-sig",
+    "format": "fixed",
+    "encoding_basis": "Strict UTF-8 decode succeeds.",
+    "role": "dclgen"
+  },
+  {
+    "path": "mainframe/workspace/DCLGen/DZWCEFTV.txt",
+    "encoding": "utf-8-sig",
+    "format": "fixed",
+    "encoding_basis": "Strict UTF-8 decode succeeds.",
+    "role": "dclgen"
+  },
+  {
+    "path": "mainframe/workspace/Mapping Sheet/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+    "encoding": "utf-8-sig",
+    "format": "fixed",
+    "encoding_basis": "Strict UTF-8 decode succeeds.",
+    "role": "mapping"
+  },
+  {
+    "path": "mainframe/workspace/Subschema/VMBTS03.txt",
+    "encoding": "utf-8-sig",
+    "format": "fixed",
+    "encoding_basis": "Strict UTF-8 decode succeeds.",
+    "role": "subschema"
+  },
+  {
+    "path": "mainframe/workspace/Subschema/VMBTS06.txt",
+    "encoding": "utf-8-sig",
+    "format": "fixed",
+    "encoding_basis": "Strict UTF-8 decode succeeds.",
+    "role": "subschema"
+  },
+  {
+    "path": "mainframe/workspace/Subschema/VMBTS07.txt",
+    "encoding": "utf-8-sig",
+    "format": "fixed",
+    "encoding_basis": "Strict UTF-8 decode succeeds.",
+    "role": "subschema"
+  }
+]

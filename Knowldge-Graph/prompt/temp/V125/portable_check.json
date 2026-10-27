@@ -1,0 +1,6 @@
+{
+  "result": "PASS",
+  "scope": "Evidence freshness/integrity only; not program correctness",
+  "dossiers": 12,
+  "errors": []
+}

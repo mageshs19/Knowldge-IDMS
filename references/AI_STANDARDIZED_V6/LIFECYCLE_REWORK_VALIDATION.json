@@ -1,0 +1,154 @@
+{
+  "files": {
+    "VMDZ1526.cbl": {
+      "status": "PASS",
+      "issues": [],
+      "line_count": 629
+    },
+    "VMDZ1567.cbl": {
+      "status": "PASS",
+      "issues": [],
+      "line_count": 465
+    },
+    "VMDZ4302.cbl": {
+      "status": "PASS",
+      "issues": [],
+      "line_count": 673
+    },
+    "VMDZ4310.cbl": {
+      "status": "PASS",
+      "issues": [],
+      "line_count": 511
+    },
+    "VMDZ4420.cbl": {
+      "status": "PASS",
+      "issues": [],
+      "line_count": 501
+    },
+    "VMDZ7200.cbl": {
+      "status": "PASS",
+      "issues": [],
+      "line_count": 897
+    }
+  },
+  "compiler_run": false,
+  "compiler_note": "No target COBOL compiler/DB2 precompiler was available; this is static validation only.",
+  "lifecycle_rework": {
+    "VMDZ1526.cbl": {
+      "paragraphs_removed": [
+        "1050-INITIALIZE-DETAILS",
+        "2050-PROCESS-DETAILS",
+        "3050-FINALIZE-DETAILS"
+      ],
+      "paragraphs_retained": [
+        "1000-INITIALIZE-PROGRAM",
+        "2000-PROCESS-PROGRAM",
+        "3000-FINALIZE-PROGRAM"
+      ],
+      "lines_before": 635,
+      "lines_after": 629,
+      "detail_label_occurrences_after": {
+        "2050-PROCESS-DETAILS": 0,
+        "3050-FINALIZE-DETAILS": 0,
+        "1050-INITIALIZE-DETAILS": 0
+      }
+    },
+    "VMDZ1567.cbl": {
+      "paragraphs_removed": [
+        "1050-INITIALIZE-DETAILS",
+        "2050-PROCESS-DETAILS",
+        "3050-FINALIZE-DETAILS"
+      ],
+      "paragraphs_retained": [
+        "1000-INITIALIZE-PROGRAM",
+        "2000-PROCESS-PROGRAM",
+        "3000-FINALIZE-PROGRAM"
+      ],
+      "lines_before": 471,
+      "lines_after": 465,
+      "detail_label_occurrences_after": {
+        "2050-PROCESS-DETAILS": 0,
+        "3050-FINALIZE-DETAILS": 0,
+        "1050-INITIALIZE-DETAILS": 0
+      }
+    },
+    "VMDZ4302.cbl": {
+      "paragraphs_removed": [
+        "1050-INITIALIZE-DETAILS",
+        "2050-PROCESS-DETAILS",
+        "3050-FINALIZE-DETAILS"
+      ],
+      "paragraphs_retained": [
+        "1000-INITIALIZE-PROGRAM",
+        "2000-PROCESS-PROGRAM",
+        "3000-FINALIZE-PROGRAM"
+      ],
+      "lines_before": 679,
+      "lines_after": 673,
+      "detail_label_occurrences_after": {
+        "2050-PROCESS-DETAILS": 0,
+        "3050-FINALIZE-DETAILS": 0,
+        "1050-INITIALIZE-DETAILS": 0
+      }
+    },
+    "VMDZ4310.cbl": {
+      "paragraphs_removed": [
+        "1050-INITIALIZE-DETAILS",
+        "2050-PROCESS-DETAILS",
+        "3050-FINALIZE-DETAILS"
+      ],
+      "paragraphs_retained": [
+        "1000-INITIALIZE-PROGRAM",
+        "2000-PROCESS-PROGRAM",
+        "3000-FINALIZE-PROGRAM"
+      ],
+      "lines_before": 517,
+      "lines_after": 511,
+      "detail_label_occurrences_after": {
+        "2050-PROCESS-DETAILS": 0,
+        "3050-FINALIZE-DETAILS": 0,
+        "1050-INITIALIZE-DETAILS": 0
+      }
+    },
+    "VMDZ4420.cbl": {
+      "paragraphs_removed": [
+        "1050-INITIALIZE-DETAILS",
+        "2050-PROCESS-DETAILS",
+        "3050-FINALIZE-DETAILS"
+      ],
+      "paragraphs_retained": [
+        "1000-INITIALIZE-PROGRAM",
+        "2000-PROCESS-PROGRAM",
+        "3000-FINALIZE-PROGRAM"
+      ],
+      "lines_before": 507,
+      "lines_after": 501,
+      "detail_label_occurrences_after": {
+        "2050-PROCESS-DETAILS": 0,
+        "3050-FINALIZE-DETAILS": 0,
+        "1050-INITIALIZE-DETAILS": 0
+      }
+    },
+    "VMDZ7200.cbl": {
+      "paragraphs_removed": [
+        "1050-INITIALIZE-DETAILS",
+        "2050-PROCESS-DETAILS",
+        "3050-FINALIZE-DETAILS"
+      ],
+      "paragraphs_retained": [
+        "1000-INITIALIZE-PROGRAM",
+        "2000-PROCESS-PROGRAM",
+        "3000-FINALIZE-PROGRAM"
+      ],
+      "lines_before": 903,
+      "lines_after": 897,
+      "detail_label_occurrences_after": {
+        "2050-PROCESS-DETAILS": 0,
+        "3050-FINALIZE-DETAILS": 0,
+        "1050-INITIALIZE-DETAILS": 0
+      }
+    }
+  },
+  "package_version": "V6",
+  "note_v6": "Cursor identity/numbering standard updated in CURSOR_SQL_ERROR_AUDIT.json; target compile/precompile not run."
+}

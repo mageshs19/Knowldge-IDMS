@@ -1,0 +1,550 @@
+{
+  "chunk_lines": 80,
+  "description": "Six explicit sample pairs only. Replace with actual approved 75-pair registration on System 2.",
+  "expected_programs": 6,
+  "metadata": [
+    {
+      "encoding": "utf-8-sig",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "format": "fixed",
+      "path": "mainframe/workspace/Copybook/ESDATMAS.cpy",
+      "role": "copybook"
+    },
+    {
+      "encoding": "utf-8-sig",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "format": "fixed",
+      "path": "mainframe/workspace/Copybook/VM9BC50I.cpy",
+      "role": "copybook"
+    },
+    {
+      "encoding": "utf-8-sig",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "format": "fixed",
+      "path": "mainframe/workspace/Copybook/VM9BC50O.cpy",
+      "role": "copybook"
+    },
+    {
+      "encoding": "utf-8-sig",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "format": "fixed",
+      "path": "mainframe/workspace/Copybook/VMBD05.cpy",
+      "role": "copybook"
+    },
+    {
+      "encoding": "utf-8-sig",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "format": "fixed",
+      "path": "mainframe/workspace/Copybook/VMBD205I.cpy",
+      "role": "copybook"
+    },
+    {
+      "encoding": "utf-8-sig",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "format": "fixed",
+      "path": "mainframe/workspace/Copybook/VMBD510I.cpy",
+      "role": "copybook"
+    },
+    {
+      "encoding": "utf-8-sig",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "format": "fixed",
+      "path": "mainframe/workspace/Copybook/VMBZ270I.cpy",
+      "role": "copybook"
+    },
+    {
+      "encoding": "utf-8-sig",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "format": "fixed",
+      "path": "mainframe/workspace/DCLGen/DZ01RSTV.txt",
+      "role": "dclgen"
+    },
+    {
+      "encoding": "utf-8-sig",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "format": "fixed",
+      "path": "mainframe/workspace/DCLGen/DZBEFFTV.txt",
+      "role": "dclgen"
+    },
+    {
+      "encoding": "utf-8-sig",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "format": "fixed",
+      "path": "mainframe/workspace/DCLGen/DZBFARTV.txt",
+      "role": "dclgen"
+    },
+    {
+      "encoding": "utf-8-sig",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "format": "fixed",
+      "path": "mainframe/workspace/DCLGen/DZBFASTV.txt",
+      "role": "dclgen"
+    },
+    {
+      "encoding": "utf-8-sig",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "format": "fixed",
+      "path": "mainframe/workspace/DCLGen/DZEVEFTV.txt",
+      "role": "dclgen"
+    },
+    {
+      "encoding": "utf-8-sig",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "format": "fixed",
+      "path": "mainframe/workspace/DCLGen/DZSIASTV.txt",
+      "role": "dclgen"
+    },
+    {
+      "encoding": "utf-8-sig",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "format": "fixed",
+      "path": "mainframe/workspace/DCLGen/DZWCEFTV.txt",
+      "role": "dclgen"
+    },
+    {
+      "encoding": "utf-8-sig",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "format": "fixed",
+      "path": "mainframe/workspace/Mapping Sheet/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+      "role": "mapping"
+    },
+    {
+      "encoding": "utf-8-sig",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "format": "fixed",
+      "path": "mainframe/workspace/Subschema/VMBTS03.txt",
+      "role": "subschema"
+    },
+    {
+      "encoding": "utf-8-sig",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "format": "fixed",
+      "path": "mainframe/workspace/Subschema/VMBTS06.txt",
+      "role": "subschema"
+    },
+    {
+      "encoding": "utf-8-sig",
+      "encoding_basis": "Strict UTF-8 decode succeeds.",
+      "format": "fixed",
+      "path": "mainframe/workspace/Subschema/VMBTS07.txt",
+      "role": "subschema"
+    }
+  ],
+  "programs": [
+    {
+      "engine_receipt": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/receipt.json",
+      "generated": {
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/VMDZ1526_27-10-2026_003334.cbl",
+        "program_id": "VMDZ1526"
+      },
+      "id": "VMDZ1526",
+      "idms": {
+        "encoding": "utf-8-sig",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "format": "fixed",
+        "path": "mainframe/workspace/Program/VM1BD526.cbl",
+        "program_id": "VM1BD526"
+      },
+      "manual": {
+        "encoding": "latin-1",
+        "encoding_basis": "Byte-preserving legacy text decoding for this supplied sample. Confirm production code page; no automatic runtime fallback.",
+        "format": "fixed",
+        "path": "mainframe/workspace/Manual Output/VMDZ1526.txt",
+        "program_id": "VMDZ1526"
+      },
+      "metadata": [
+        {
+          "encoding": "utf-8",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/engine.log",
+          "role": "engine_log"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Review/VMDZ1526_27-10-2026_003334_27-10-2026_003345.csv",
+          "role": "engine_review"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Review/VMDZ1526_27-10-2026_003334_27-10-2026_003345.txt",
+          "role": "engine_review"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Review/semantic_release_gate.txt",
+          "role": "engine_review"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "fixed",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/Generated Copybooks/VMDZ205I.cpy",
+          "role": "derived_copybook"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "fixed",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/Generated Copybooks/VMDZ270I.cpy",
+          "role": "derived_copybook"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "fixed",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/Generated Copybooks/VMDZ510I.cpy",
+          "role": "derived_copybook"
+        }
+      ],
+      "pairing_confirmed": true
+    },
+    {
+      "engine_receipt": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/receipt.json",
+      "generated": {
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/VMDZ1567_27-10-2026_003335.cbl",
+        "program_id": "VMDZ1567"
+      },
+      "id": "VMDZ1567",
+      "idms": {
+        "encoding": "utf-8-sig",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "format": "fixed",
+        "path": "mainframe/workspace/Program/VM1BD567.cbl",
+        "program_id": "VM1BD567"
+      },
+      "manual": {
+        "encoding": "utf-8-sig",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "format": "fixed",
+        "path": "mainframe/workspace/Manual Output/VMDZ1567.cbl",
+        "program_id": "VMDZ1567"
+      },
+      "metadata": [
+        {
+          "encoding": "utf-8",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/engine.log",
+          "role": "engine_log"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Review/VMDZ1567_27-10-2026_003335_27-10-2026_003345.csv",
+          "role": "engine_review"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Review/VMDZ1567_27-10-2026_003335_27-10-2026_003345.txt",
+          "role": "engine_review"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Review/semantic_release_gate.txt",
+          "role": "engine_review"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "fixed",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/Generated Copybooks/VMDZ205I.cpy",
+          "role": "derived_copybook"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "fixed",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/Generated Copybooks/VMDZ270I.cpy",
+          "role": "derived_copybook"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "fixed",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/Generated Copybooks/VMDZ510I.cpy",
+          "role": "derived_copybook"
+        }
+      ],
+      "pairing_confirmed": true
+    },
+    {
+      "engine_receipt": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/receipt.json",
+      "generated": {
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/VMDZ4302_27-10-2026_003337.cbl",
+        "program_id": "VMDZ4302"
+      },
+      "id": "VMDZ4302",
+      "idms": {
+        "encoding": "utf-8-sig",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "format": "fixed",
+        "path": "mainframe/workspace/Program/VM4BD302.cbl",
+        "program_id": "VM4BD302"
+      },
+      "manual": {
+        "encoding": "utf-8-sig",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "format": "fixed",
+        "path": "mainframe/workspace/Manual Output/VMDZ4302.txt",
+        "program_id": "VMDZ4302"
+      },
+      "metadata": [
+        {
+          "encoding": "utf-8",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/engine.log",
+          "role": "engine_log"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Review/VMDZ4302_27-10-2026_003337_27-10-2026_003345.csv",
+          "role": "engine_review"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Review/VMDZ4302_27-10-2026_003337_27-10-2026_003345.txt",
+          "role": "engine_review"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Review/semantic_release_gate.txt",
+          "role": "engine_review"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "fixed",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/Generated Copybooks/VMDZ205I.cpy",
+          "role": "derived_copybook"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "fixed",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/Generated Copybooks/VMDZ270I.cpy",
+          "role": "derived_copybook"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "fixed",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/Generated Copybooks/VMDZ510I.cpy",
+          "role": "derived_copybook"
+        }
+      ],
+      "pairing_confirmed": true
+    },
+    {
+      "engine_receipt": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/receipt.json",
+      "generated": {
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/VMDZ4310_27-10-2026_003338.cbl",
+        "program_id": "VMDZ4310"
+      },
+      "id": "VMDZ4310",
+      "idms": {
+        "encoding": "utf-8-sig",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "format": "fixed",
+        "path": "mainframe/workspace/Program/VM4BD310.cbl",
+        "program_id": "VM4BD310"
+      },
+      "manual": {
+        "encoding": "utf-8-sig",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "format": "fixed",
+        "path": "mainframe/workspace/Manual Output/VMDZ4310.txt",
+        "program_id": "VMDZ4310"
+      },
+      "metadata": [
+        {
+          "encoding": "utf-8",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/engine.log",
+          "role": "engine_log"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Review/VMDZ4310_27-10-2026_003338_27-10-2026_003345.csv",
+          "role": "engine_review"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Review/VMDZ4310_27-10-2026_003338_27-10-2026_003345.txt",
+          "role": "engine_review"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Review/semantic_release_gate.txt",
+          "role": "engine_review"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "fixed",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/Generated Copybooks/VMDZ205I.cpy",
+          "role": "derived_copybook"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "fixed",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/Generated Copybooks/VMDZ270I.cpy",
+          "role": "derived_copybook"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "fixed",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/Generated Copybooks/VMDZ510I.cpy",
+          "role": "derived_copybook"
+        }
+      ],
+      "pairing_confirmed": true
+    },
+    {
+      "engine_receipt": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/receipt.json",
+      "generated": {
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/VMDZ4420_27-10-2026_003340.cbl",
+        "program_id": "VMDZ4420"
+      },
+      "id": "VMDZ4420",
+      "idms": {
+        "encoding": "utf-8-sig",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "format": "fixed",
+        "path": "mainframe/workspace/Program/VM4BD420.cbl",
+        "program_id": "VM4BD420"
+      },
+      "manual": {
+        "encoding": "utf-8-sig",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "format": "fixed",
+        "path": "mainframe/workspace/Manual Output/VMDZ4420.cbl",
+        "program_id": "VMDZ4420"
+      },
+      "metadata": [
+        {
+          "encoding": "utf-8",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/engine.log",
+          "role": "engine_log"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Review/VMDZ4420_27-10-2026_003340_27-10-2026_003345.csv",
+          "role": "engine_review"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Review/VMDZ4420_27-10-2026_003340_27-10-2026_003345.txt",
+          "role": "engine_review"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Review/semantic_release_gate.txt",
+          "role": "engine_review"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "fixed",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/Generated Copybooks/VMDZ205I.cpy",
+          "role": "derived_copybook"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "fixed",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/Generated Copybooks/VMDZ270I.cpy",
+          "role": "derived_copybook"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "fixed",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/Generated Copybooks/VMDZ510I.cpy",
+          "role": "derived_copybook"
+        }
+      ],
+      "pairing_confirmed": true
+    },
+    {
+      "engine_receipt": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/receipt.json",
+      "generated": {
+        "encoding": "utf-8-sig",
+        "format": "fixed",
+        "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/VMDZ7200_27-10-2026_003341.cbl",
+        "program_id": "VMDZ7200"
+      },
+      "id": "VMDZ7200",
+      "idms": {
+        "encoding": "utf-8-sig",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "format": "fixed",
+        "path": "mainframe/workspace/Program/VM7BD200.cbl",
+        "program_id": "VM7BD200"
+      },
+      "manual": {
+        "encoding": "utf-8-sig",
+        "encoding_basis": "Strict UTF-8 decode succeeds.",
+        "format": "fixed",
+        "path": "mainframe/workspace/Manual Output/VMDZ7200.cbl",
+        "program_id": "VMDZ7200"
+      },
+      "metadata": [
+        {
+          "encoding": "utf-8",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/engine.log",
+          "role": "engine_log"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Review/VMDZ7200_27-10-2026_003341_27-10-2026_003345.csv",
+          "role": "engine_review"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Review/VMDZ7200_27-10-2026_003341_27-10-2026_003345.txt",
+          "role": "engine_review"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "free",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Review/semantic_release_gate.txt",
+          "role": "engine_review"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "fixed",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/Generated Copybooks/VMDZ205I.cpy",
+          "role": "derived_copybook"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "fixed",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/Generated Copybooks/VMDZ270I.cpy",
+          "role": "derived_copybook"
+        },
+        {
+          "encoding": "utf-8-sig",
+          "format": "fixed",
+          "path": "prompt/knowledge/engine_runs/20261027T003329Z-d98d6b77/Output/Generated Copybooks/VMDZ510I.cpy",
+          "role": "derived_copybook"
+        }
+      ],
+      "pairing_confirmed": true
+    }
+  ],
+  "schema_version": 1
+}
