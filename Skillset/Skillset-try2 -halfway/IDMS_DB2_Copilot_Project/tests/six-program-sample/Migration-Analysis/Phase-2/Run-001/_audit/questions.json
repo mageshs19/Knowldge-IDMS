@@ -1,0 +1,2554 @@
+{
+  "schema_version": 2,
+  "questions": [
+    {
+      "question_id": "Q-000001",
+      "question_key": "VM4BD302.month_boundary_policy",
+      "source_file": "Human-in-Loops/Q-000001__VM4BD302__vm4bd302-month-boundary-policy.md",
+      "raw_snapshot": "_audit/questions/Q-000001.md",
+      "file_sha256": "9aaabb6ae2bf54ef4d3dc8866cf9aca64916d2263b54066db28e9fd50b9d0971",
+      "answer_sha256": "fb24fb8354726cad59a054e34efd67e143712c0ea16e6ef006ea168e8f0ec91c",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM4BD302.cbl"
+        ],
+        "business_conditions": "Is the exact retained month-number subtraction with unchanged day the intended cutoff, including March31→February31, or should production use calendar month-end clamping?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD302.cbl",
+          "line_start": 287,
+          "line_end": 296,
+          "sha256": "a51d9730816ce366497308324b517da42e389c055f64ee6b746aca872f0e7c17"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 408,
+          "line_end": 417,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD302-C004",
+        "RULE-027"
+      ],
+      "evidence_fingerprint": "8f2488f6e0f2fd66ab305ad0b23d7c4b6c4be4d47ca4c9a7366def9dd724ec52",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000002",
+      "question_key": "VM4BD302.numeric_output_domains",
+      "source_file": "Human-in-Loops/Q-000002__VM4BD302__vm4bd302-numeric-output-domains.md",
+      "raw_snapshot": "_audit/questions/Q-000002.md",
+      "file_sha256": "b7477a8162150d4b27d0a7bf5873a4b97877c095fc46586ab154249f01473a69",
+      "answer_sha256": "0b8a37c38739ac364c3ea5b24ffeb3d3bbeadef4cb1219730086b50171f03d1d",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM4BD302.cbl"
+        ],
+        "business_conditions": "Are 12-character stock IDs and six-character CIs always decimal digits for this output, and can the13-integer-digit amount exceed the12-integer-digit output capacity?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD302.cbl",
+          "line_start": 115,
+          "line_end": 123,
+          "sha256": "a51d9730816ce366497308324b517da42e389c055f64ee6b746aca872f0e7c17"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 94,
+          "line_end": 110,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 364,
+          "line_end": 375,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "Dclgens/DZBEFFTV.txt",
+          "line_start": 12,
+          "line_end": 19,
+          "sha256": "1398746545f2fb02970f3d6838cd1e420b0ae56adec1bdd4bd49d25d1d22e6f8"
+        },
+        {
+          "path": "Dclgens/DZEVEFTV.txt",
+          "line_start": 20,
+          "line_end": 21,
+          "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD302-C006",
+        "VM4BD302-C007",
+        "RULE-022",
+        "RULE-023"
+      ],
+      "evidence_fingerprint": "3c54e0a6d46c04c75d4ce04e6caddc066395da7ef6ea30ff60c06e8843490a51",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000003",
+      "question_key": "VM4BD302.service_return_and_output",
+      "source_file": "Human-in-Loops/Q-000003__VM4BD302__vm4bd302-service-return-and-output.md",
+      "raw_snapshot": "_audit/questions/Q-000003.md",
+      "file_sha256": "bd73d791019cc103730fbddf5d045730557b4da4c5952943ec738161d927e5b0",
+      "answer_sha256": "a94c028c8f6e1c7977ecd86c9a8980713172ed2fc5e798ef24e1610af6d1714b",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM4BD302.cbl"
+        ],
+        "business_conditions": "For VM9BC50T QUERY001/CO-CLE2, which return-major/minor/actual-length values authorize use of issue key and currency, and must failure skip, reject, or abort the input?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD302.cbl",
+          "line_start": 323,
+          "line_end": 337,
+          "sha256": "a51d9730816ce366497308324b517da42e389c055f64ee6b746aca872f0e7c17"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 453,
+          "line_end": 467,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "Copybook/VM9BC50O.cpy",
+          "line_start": 20,
+          "line_end": 27,
+          "sha256": "7d451f980d1a26c782b19aa96c70842e8a9d87603e0706616a08fed905780da5"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD302-C001",
+        "VM4BD302-C002",
+        "VM4BD302-C008",
+        "VM4BD302-C009",
+        "RULE-006",
+        "RULE-032",
+        "RULE-033",
+        "RULE-017"
+      ],
+      "evidence_fingerprint": "861d892a30c93953d128cf26f6a979199ee96a771d101224882ff822c2f311af",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000004",
+      "question_key": "VM4BD420.creation_ci_domain",
+      "source_file": "Human-in-Loops/Q-000004__VM4BD420__vm4bd420-creation-ci-domain.md",
+      "raw_snapshot": "_audit/questions/Q-000004.md",
+      "file_sha256": "0cd50fbf76408267a2e1b13a1c70a561f517cb7bedac56a71c0f0f5a33fbd281",
+      "answer_sha256": "412b5887ee7880e82aca7615ae82553c335cf71dd8e5293736f92bdd42d807a2",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM4BD420.cbl"
+        ],
+        "business_conditions": "For statusC output, is the last encountered qualifying0060 creation event intended, and are its8-digit embedded creationCI values constrained so the6-digit UIT-NR-CIO-CRE receives the correct identifier?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD420.cbl",
+          "line_start": 78,
+          "line_end": 84,
+          "sha256": "5239aa4d02575a5eae3148aa49803b5cdbd82dc7ebe4b4664f28e02d06d807d9"
+        },
+        {
+          "path": "IDMS Programs/VM4BD420.cbl",
+          "line_start": 192,
+          "line_end": 216,
+          "sha256": "5239aa4d02575a5eae3148aa49803b5cdbd82dc7ebe4b4664f28e02d06d807d9"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 68,
+          "line_end": 73,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 297,
+          "line_end": 321,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD420-C003",
+        "VM4BD420-C004",
+        "RULE-004",
+        "RULE-022"
+      ],
+      "evidence_fingerprint": "d68f1bd59b06f852c4fa4556c3867f49ce0d838c9be0957a37595e494ddf3295",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000005",
+      "question_key": "archive-byte-contract-7200",
+      "source_file": "Human-in-Loops/Q-000005__VM7BD200__archive-byte-contract-7200.md",
+      "raw_snapshot": "_audit/questions/Q-000005.md",
+      "file_sha256": "df410b28579443f449cc924cf7b0c90a8be2a7d9ac1ac769c014dcc944e5df56",
+      "answer_sha256": "b9e640fd93cad8bca2f208dc950260dc1a4ac01294775249b02fead0098fa767",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM7BD200.cbl"
+        ],
+        "business_conditions": "Must the478-byte embedded VMBFAS image preserve every original byte, including the2- and14-byte filler areas noted as containing COMP-3 values, or are blank fillers approved? Supply the generated original record and the downstream layout."
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM7BD200.cbl",
+          "line_start": 87,
+          "line_end": 94,
+          "sha256": "39675b0606a5855c1c4ab353a36160f36a4bd59a77d6ab231926a4f2667f7341"
+        },
+        {
+          "path": "IDMS Programs/VM7BD200.cbl",
+          "line_start": 194,
+          "line_end": 194,
+          "sha256": "39675b0606a5855c1c4ab353a36160f36a4bd59a77d6ab231926a4f2667f7341"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 77,
+          "line_end": 192,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 591,
+          "line_end": 592,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        }
+      ],
+      "affected_ids": [
+        "VM7BD200-C005",
+        "RULE-017"
+      ],
+      "evidence_fingerprint": "d80ac3293aea6ca7bfc275037b79d3dbc38e029660b1a4275bca0645f3b6443a",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000006",
+      "question_key": "archive-cutoff-sentinel-7200",
+      "source_file": "Human-in-Loops/Q-000006__VM7BD200__archive-cutoff-sentinel-7200.md",
+      "raw_snapshot": "_audit/questions/Q-000006.md",
+      "file_sha256": "ebe61645a62c5a67efd3a32e66a1c59d54ad7f99a4a97dae5ee53d484934a824",
+      "answer_sha256": "bf79237d7fab06eda9a7151c7a04c73b77834124e3e53a4ba364e8a56abb752a",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM7BD200.cbl"
+        ],
+        "business_conditions": "Was every accounting date00000000 migrated to Db2 DATE0001-01-01, and must the creation-date fallback and strict less-than cutoff remain exactly as in the original?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM7BD200.cbl",
+          "line_start": 188,
+          "line_end": 191,
+          "sha256": "39675b0606a5855c1c4ab353a36160f36a4bd59a77d6ab231926a4f2667f7341"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 366,
+          "line_end": 370,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        }
+      ],
+      "affected_ids": [
+        "VM7BD200-C004",
+        "RULE-012"
+      ],
+      "evidence_fingerprint": "0840fbad04b86727318af200f175a9a754cdb3bea8e0c05ef94099dd02e452c5",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000007",
+      "question_key": "archive-file-rerun-7200",
+      "source_file": "Human-in-Loops/Q-000007__VM7BD200__archive-file-rerun-7200.md",
+      "raw_snapshot": "_audit/questions/Q-000007.md",
+      "file_sha256": "d0931e5c18cca2fee6b4338a9ad65b35370d3b340e2214c9bcbecaec7acc15df",
+      "answer_sha256": "57226ef04f842a3636f8c39fde791eaf29837f18dadb3038329e2b6b3fcda00b",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM7BD200.cbl"
+        ],
+        "business_conditions": "What job and file policy handles a partially written archive extract: recreate from a frozen row snapshot, append with deduplication, or resume? Supply the operational contract."
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM7BD200.cbl",
+          "line_start": 192,
+          "line_end": 220,
+          "sha256": "39675b0606a5855c1c4ab353a36160f36a4bd59a77d6ab231926a4f2667f7341"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 585,
+          "line_end": 587,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 874,
+          "line_end": 889,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        }
+      ],
+      "affected_ids": [
+        "VM7BD200-C007",
+        "RULE-015"
+      ],
+      "evidence_fingerprint": "ed60c612160d660a9abcacea9a635b23aebdf0d3dc4c5afd8622f467d0b46450",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000008",
+      "question_key": "archive-order-7200",
+      "source_file": "Human-in-Loops/Q-000008__VM7BD200__archive-order-7200.md",
+      "raw_snapshot": "_audit/questions/Q-000008.md",
+      "file_sha256": "c40ba97e1ce597856a1890dd575bd01821ca763e042b05b4dee08c2a2a6528ee",
+      "answer_sha256": "4c58fd9a2d5926f7eac0c68f656825e781ce1842ef4af00c315c021cbd31d272",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM7BD200.cbl"
+        ],
+        "business_conditions": "Is output order, including the F-TELLER number associated with each form, a business contract? May the same form set be ordered by Db2 surrogate NR_ID instead of original area order? State tie and concurrency rules."
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM7BD200.cbl",
+          "line_start": 192,
+          "line_end": 200,
+          "sha256": "39675b0606a5855c1c4ab353a36160f36a4bd59a77d6ab231926a4f2667f7341"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 371,
+          "line_end": 371,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 597,
+          "line_end": 598,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        }
+      ],
+      "affected_ids": [
+        "VM7BD200-C006",
+        "RULE-025"
+      ],
+      "evidence_fingerprint": "a8441a39e562907344a87acec419cfde1bd83d308d48f869e6b6f202112520af",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000009",
+      "question_key": "audit-timestamp-business-policy",
+      "source_file": "Human-in-Loops/Q-000009__shared__audit-timestamp-business-policy.md",
+      "raw_snapshot": "_audit/questions/Q-000009.md",
+      "file_sha256": "6132d2da3c1e0b0b1b6933e9729895a4f46c37d277deff5bd8e8379da7f7b924",
+      "answer_sha256": "ba03401f9f8a06deb79d84dc9631e2202140868d0512a6e9aae0233cbf9d7766",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD526.cbl",
+          "VM1BD567.cbl"
+        ],
+        "business_conditions": "Should audit timestamps identify job start or each individual business change, and is VMDZ1526 insertion TS_UPDATE = 9999-12-31-23.59.59.999999 the approved never-updated marker?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 65,
+          "line_end": 66,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 185,
+          "line_end": 188,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 274,
+          "line_end": 279,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 382,
+          "line_end": 393,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 162,
+          "line_end": 162,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 222,
+          "line_end": 226,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 254,
+          "line_end": 266,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C003",
+        "VM1BD526-C016",
+        "VM1BD567-C003",
+        "RULE-018",
+        "RULE-030"
+      ],
+      "evidence_fingerprint": "e58e361ab7d9b8021cd55d1402c29fbbb9541c2f38aebdf0647b30883cf7c53d",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000010",
+      "question_key": "blank-creation-date-sentinel",
+      "source_file": "Human-in-Loops/Q-000010__VM1BD567__blank-creation-date-sentinel.md",
+      "raw_snapshot": "_audit/questions/Q-000010.md",
+      "file_sha256": "3f696ee0a4909dca2b904abb65cb73af8d8d6ad639195ef9b86640cad0b24bd6",
+      "answer_sha256": "81eab6da2b9fd6c53b0805e0a236a6b37c8f3907f1edc01072a709c0072e7ec1",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD567.cbl"
+        ],
+        "business_conditions": "Must a blank or zero input creation date select the form key dated 0001-01-01, or should such input be rejected or routed to a different outcome?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM1BD567.cbl",
+          "line_start": 149,
+          "line_end": 158,
+          "source_sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 201,
+          "line_end": 219,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "Mapping/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+          "line_start": 83,
+          "line_end": 83,
+          "source_sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf",
+          "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf"
+        },
+        {
+          "path": "Dclgens/DZBFARTV.txt",
+          "line_start": 13,
+          "line_end": 18,
+          "source_sha256": "5cacab9f737c4972f5a6b7aa18212d2322dc5be3b007215a76b630888d7fcb8a",
+          "sha256": "5cacab9f737c4972f5a6b7aa18212d2322dc5be3b007215a76b630888d7fcb8a"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD567-C002",
+        "RULE-013"
+      ],
+      "evidence_fingerprint": "673f770f32c3174a76d981b3a16ea16d9f52a6a04ff54a59680842648ee8004a",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000011",
+      "question_key": "buffer-replacement-identity",
+      "source_file": "Human-in-Loops/Q-000011__shared__buffer-replacement-identity.md",
+      "raw_snapshot": "_audit/questions/Q-000011.md",
+      "file_sha256": "7e7868e0f00d2e52b3b645d78b8f1971f1e635a551c835d004a2b53dc3991d1c",
+      "answer_sha256": "bb2cb5105bdb292d0e1dd003d147a3dcb88be7621346a46fa099eb2a6aa19574",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "DEFERRED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD526.cbl",
+          "VM1BD567.cbl",
+          "VM4BD302.cbl",
+          "VM4BD310.cbl",
+          "VM4BD420.cbl",
+          "VM7BD200.cbl"
+        ],
+        "business_conditions": "Is FFRECAT to DZ01FFTB the intended second buffer replacement, and which actual producer/consumer program paths establish its keys, lifecycle, transaction ownership and recovery obligations?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "Mapping/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+          "line_start": 877,
+          "line_end": 877,
+          "source_sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf",
+          "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf"
+        },
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 38,
+          "line_end": 54,
+          "source_sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4",
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "Schema/VMBTS06.txt",
+          "line_start": 66,
+          "line_end": 101,
+          "source_sha256": "40b9b0048afa4e15b939f8a643e04496783084becffb4af42ea4f398b13cd3a0",
+          "sha256": "40b9b0048afa4e15b939f8a643e04496783084becffb4af42ea4f398b13cd3a0"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 60,
+          "line_end": 63,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 54,
+          "line_end": 58,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        }
+      ],
+      "affected_ids": [
+        "RULE-003"
+      ],
+      "evidence_fingerprint": "9f9aa63fcbc2982748e4b57ad94104b9f6faabb190a616e1390b43345031b567",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000012",
+      "question_key": "build-context-and-generated-members",
+      "source_file": "Human-in-Loops/Q-000012__shared__build-context-and-generated-members.md",
+      "raw_snapshot": "_audit/questions/Q-000012.md",
+      "file_sha256": "bd76ad4d5c87b940dbce4a0269bd9230d18b3f54edf2017bb3eb4471ac52f2a3",
+      "answer_sha256": "51e00e15dd7390a77f08dcf62f3876aa667d349380bb2106c7a718bf0732237b",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "DEFERRED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD526.cbl",
+          "VM1BD567.cbl",
+          "VM4BD302.cbl",
+          "VM4BD310.cbl",
+          "VM4BD420.cbl",
+          "VM7BD200.cbl"
+        ],
+        "business_conditions": "Which exact COBOL/IDMS/Db2 versions, source/debugging options, compilation/bind settings, site coding standards and generated IDMS record/control members produced these six source pairs? Supply the matching build/dependency bundle."
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 1,
+          "line_end": 54,
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        }
+      ],
+      "affected_ids": [],
+      "evidence_fingerprint": "007a762d22568d992cffee5c10e5819ac06cbe79743228311cf788ce192cb04e",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000013",
+      "question_key": "capital-amount-4310",
+      "source_file": "Human-in-Loops/Q-000013__VM4BD310__capital-amount-4310.md",
+      "raw_snapshot": "_audit/questions/Q-000013.md",
+      "file_sha256": "cfe53b12045d78b7e7b15d76d2301fe3bb2fdcae55b4b34855a3558924d3b9d6",
+      "answer_sha256": "dfe460e4157f9191cc517497617fe33063ec10bc71e9633e6427b51dd4201783",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM4BD310.cbl"
+        ],
+        "business_conditions": "For NX-CPCRE=0, must AM-CND-FORM-AS retain the parent AM-CND-STOCK value, including nonzero amounts, or was a zero output deliberately approved?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD310.cbl",
+          "line_start": 247,
+          "line_end": 253,
+          "sha256": "6b7753f96d95c16709c9960601f901bc497acf79d52b2d1eb290ceefcb79bf84"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 219,
+          "line_end": 263,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 393,
+          "line_end": 399,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD310-C004",
+        "RULE-002"
+      ],
+      "evidence_fingerprint": "79c5d498179af868b2211816903a59c85e74b2be6c7ec1b5775c9e1c77cb5be1",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000014",
+      "question_key": "db2-date-output-policy",
+      "source_file": "Human-in-Loops/Q-000014__shared__db2-date-output-policy.md",
+      "raw_snapshot": "_audit/questions/Q-000014.md",
+      "file_sha256": "48b8896d734496b9171dbad3c76ae2df1d4bdc52821244279ff024d15b7be163",
+      "answer_sha256": "5427518e5ff6db124d8b2e2141f889baa56e69d4ba74c79bd451787e3eb1e2c9",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM4BD302.cbl",
+          "VM4BD420.cbl",
+          "VM4BD310.cbl",
+          "VM7BD200.cbl"
+        ],
+        "business_conditions": "Which effective DATE output format and approved legacy zero/high-date conversions apply to the date fields read by these programs? Provide actual package/preparation settings and the load conversion specification."
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 324,
+          "line_end": 330,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 384,
+          "line_end": 402,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 282,
+          "line_end": 295,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 326,
+          "line_end": 338,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "Dclgens/DZEVEFTV.txt",
+          "line_start": 16,
+          "line_end": 19,
+          "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da"
+        },
+        {
+          "path": "Dclgens/DZBEFFTV.txt",
+          "line_start": 29,
+          "line_end": 29,
+          "sha256": "1398746545f2fb02970f3d6838cd1e420b0ae56adec1bdd4bd49d25d1d22e6f8"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 404,
+          "line_end": 433,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 603,
+          "line_end": 616,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 841,
+          "line_end": 856,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD302-C001",
+        "VM4BD302-C004",
+        "VM4BD302-C005",
+        "VM4BD310-C006",
+        "VM4BD420-C001",
+        "VM4BD420-C003",
+        "VM4BD420-C004",
+        "VM4BD420-C006",
+        "VM4BD420-C007",
+        "VM7BD200-C004",
+        "VM7BD200-C008",
+        "RULE-006",
+        "RULE-027",
+        "RULE-025",
+        "RULE-012",
+        "RULE-004",
+        "RULE-022",
+        "RULE-023",
+        "RULE-017"
+      ],
+      "evidence_fingerprint": "fd18a756e8631944c5aab65359a69591076cce98fac96e07830789134783d0ed",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000015",
+      "question_key": "eight-decommission-identities",
+      "source_file": "Human-in-Loops/Q-000015__shared__eight-decommission-identities.md",
+      "raw_snapshot": "_audit/questions/Q-000015.md",
+      "file_sha256": "9e6549117ef0455c6fe637a3619a0c903037e37fcfa25d62ca3480945ce3159b",
+      "answer_sha256": "4e90098a8c4cb093e43908258e8902a0a22e52b7d37157256d843f609c72825b",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "DEFERRED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD526.cbl",
+          "VM1BD567.cbl",
+          "VM4BD302.cbl",
+          "VM4BD310.cbl",
+          "VM4BD420.cbl",
+          "VM7BD200.cbl"
+        ],
+        "business_conditions": "Supply the eight distinct approved decommission identities, using IDMS or Db2 names, with namespace, scope and retained business obligations."
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 28,
+          "line_end": 54,
+          "source_sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4",
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "Schema/VMBTS06.txt",
+          "line_start": 28,
+          "line_end": 101,
+          "source_sha256": "40b9b0048afa4e15b939f8a643e04496783084becffb4af42ea4f398b13cd3a0",
+          "sha256": "40b9b0048afa4e15b939f8a643e04496783084becffb4af42ea4f398b13cd3a0"
+        },
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 28,
+          "line_end": 43,
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "Schema/VMBTS03.txt",
+          "line_start": 22,
+          "line_end": 31,
+          "sha256": "a1578229fa9086afc8b074cbd526c256099c1ddecfacf30acf5aaa64bdef6fdd"
+        }
+      ],
+      "affected_ids": [
+        "RULE-014"
+      ],
+      "evidence_fingerprint": "5285de86c4c269af48cccb84e46770b8d23dc18345dcbaf5fa853c0b2f6e2e2e",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000016",
+      "question_key": "event-first-selection-order",
+      "source_file": "Human-in-Loops/Q-000016__VM1BD526__event-first-selection-order.md",
+      "raw_snapshot": "_audit/questions/Q-000016.md",
+      "file_sha256": "6bd3491e9a2936d9b5214a73330a2d746c18350f133db39b744714e9143f11ea",
+      "answer_sha256": "66b2fd7b2daae388103c02c56d500076a0613a06a9a733379dd0e81b753ca4e9",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD526.cbl"
+        ],
+        "business_conditions": "Supply the VMBEFF-VMBEVEF set-order definition and specify which matching 0168/0219 event must be updated when several exist: the legacy first qualifying member or the greatest generated NR_ID_479EVEF?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM1BD526.cbl",
+          "line_start": 197,
+          "line_end": 227,
+          "source_sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f",
+          "sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f"
+        },
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 47,
+          "line_end": 50,
+          "source_sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4",
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 124,
+          "line_end": 136,
+          "source_sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4",
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 575,
+          "line_end": 622,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C004",
+        "VM1BD526-C005",
+        "RULE-025",
+        "RULE-019"
+      ],
+      "evidence_fingerprint": "8bbb5bffb0b1dbca88bb74b7a0a481beec89ead684530b5d60d9bb314f54abc0",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000017",
+      "question_key": "event-good-key-encoding",
+      "source_file": "Human-in-Loops/Q-000017__shared__event-good-key-encoding.md",
+      "raw_snapshot": "_audit/questions/Q-000017.md",
+      "file_sha256": "363e91f554fa57dfffbb2938fa65c06322f44883b1b8638dc640a4a832c23608",
+      "answer_sha256": "9202cc08b72392627f0e771ef016b7eb0bb79de9771a723630cb35dc8513a0a7",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD526.cbl",
+          "VM4BD302.cbl",
+          "VM4BD420.cbl",
+          "VM4BD310.cbl"
+        ],
+        "business_conditions": "What approved loader and consumer specification maps the legacy 20-byte packed/mixed NR-ID-GOOD to the supplied 28-character NR_IDGOOD_479EVEF, including sign and date conventions, when the mapping sheet still says CHAR(20)?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM1BD526.cbl",
+          "line_start": 66,
+          "line_end": 72,
+          "source_sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f",
+          "sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f"
+        },
+        {
+          "path": "IDMS Programs/VM1BD526.cbl",
+          "line_start": 174,
+          "line_end": 180,
+          "source_sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f",
+          "sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 68,
+          "line_end": 73,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 248,
+          "line_end": 254,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "Mapping/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+          "line_start": 360,
+          "line_end": 360,
+          "source_sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf",
+          "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf"
+        },
+        {
+          "path": "Dclgens/DZEVEFTV.txt",
+          "line_start": 19,
+          "line_end": 40,
+          "source_sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da",
+          "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da"
+        },
+        {
+          "path": "Mapping/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+          "line_start": 360,
+          "line_end": 360,
+          "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf"
+        },
+        {
+          "path": "Dclgens/DZEVEFTV.txt",
+          "line_start": 19,
+          "line_end": 19,
+          "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da"
+        },
+        {
+          "path": "Dclgens/DZEVEFTV.txt",
+          "line_start": 40,
+          "line_end": 40,
+          "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da"
+        },
+        {
+          "path": "IDMS Programs/VM4BD302.cbl",
+          "line_start": 105,
+          "line_end": 111,
+          "sha256": "a51d9730816ce366497308324b517da42e389c055f64ee6b746aca872f0e7c17"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 87,
+          "line_end": 92,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "IDMS Programs/VM4BD420.cbl",
+          "line_start": 78,
+          "line_end": 84,
+          "sha256": "5239aa4d02575a5eae3148aa49803b5cdbd82dc7ebe4b4664f28e02d06d807d9"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 68,
+          "line_end": 73,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "IDMS Programs/VM4BD310.cbl",
+          "line_start": 78,
+          "line_end": 84,
+          "sha256": "6b7753f96d95c16709c9960601f901bc497acf79d52b2d1eb290ceefcb79bf84"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 63,
+          "line_end": 69,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        },
+        {
+          "path": "Dclgens/DZEVEFTV.txt",
+          "line_start": 19,
+          "line_end": 40,
+          "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C003",
+        "VM1BD526-C006",
+        "VM4BD302-C004",
+        "VM4BD302-C005",
+        "VM4BD302-C006",
+        "VM4BD302-C007",
+        "VM4BD310-C005",
+        "VM4BD420-C003",
+        "VM4BD420-C004",
+        "VM4BD420-C007",
+        "RULE-018",
+        "RULE-022",
+        "RULE-027",
+        "RULE-025",
+        "RULE-023",
+        "RULE-004",
+        "RULE-017"
+      ],
+      "evidence_fingerprint": "46637930b04629ada608c91e7693684cf6d8f0eb753c96dacb62104c2dcb7aca",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000018",
+      "question_key": "event-parent-and-id-constraints",
+      "source_file": "Human-in-Loops/Q-000018__VM1BD526__event-parent-and-id-constraints.md",
+      "raw_snapshot": "_audit/questions/Q-000018.md",
+      "file_sha256": "addeac5b7ae1e6379769e79ffe49be923f6ef7f83d097ced6c220d4d4eceef79",
+      "answer_sha256": "6269d5bb5d62531ddefe45e2270c9cd7115e3e417218a58c933d4782fe38ac00",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD526.cbl"
+        ],
+        "business_conditions": "Provide the target parent/event/sequence DDL and legacy CALC/set definitions proving unique parent selection, event foreign-key enforcement, generated event-ID uniqueness and the meaning of new-event NS_IDMSKEY=0."
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 463,
+          "line_end": 574,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 575,
+          "line_end": 622,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 124,
+          "line_end": 136,
+          "source_sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4",
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 182,
+          "line_end": 189,
+          "source_sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4",
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "Mapping/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+          "line_start": 368,
+          "line_end": 375,
+          "source_sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf",
+          "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf"
+        },
+        {
+          "path": "Dclgens/DZEVEFTV.txt",
+          "line_start": 11,
+          "line_end": 26,
+          "source_sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da",
+          "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C002",
+        "VM1BD526-C003",
+        "VM1BD526-C004",
+        "VM1BD526-C005",
+        "RULE-020",
+        "RULE-018",
+        "RULE-025",
+        "RULE-019"
+      ],
+      "evidence_fingerprint": "f4643d082409ea1f4b1cf7a4b87036da2f4c007933cb1d7b46fee34d1e8172af",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000019",
+      "question_key": "file-rerun-contract-4310",
+      "source_file": "Human-in-Loops/Q-000019__VM4BD310__file-rerun-contract-4310.md",
+      "raw_snapshot": "_audit/questions/Q-000019.md",
+      "file_sha256": "afecd3e8e4fd18390c86761811eaf78bc747d370756ed6ac4b6eb9333db78c65",
+      "answer_sha256": "f869f03c4919398b3af058e11be9583e0f1f92c5feb6da59b74f039861d69981",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM4BD310.cbl"
+        ],
+        "business_conditions": "After failure with some mutation records already written, must the job replace the partial output and rerun the same immutable input from the start, or must downstream processing deduplicate or resume it?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD310.cbl",
+          "line_start": 132,
+          "line_end": 134,
+          "sha256": "6b7753f96d95c16709c9960601f901bc497acf79d52b2d1eb290ceefcb79bf84"
+        },
+        {
+          "path": "IDMS Programs/VM4BD310.cbl",
+          "line_start": 315,
+          "line_end": 329,
+          "sha256": "6b7753f96d95c16709c9960601f901bc497acf79d52b2d1eb290ceefcb79bf84"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 189,
+          "line_end": 190,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 478,
+          "line_end": 494,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD310-C007",
+        "RULE-015",
+        "RULE-017"
+      ],
+      "evidence_fingerprint": "58088838f1ca3ea6d91f75abae2fa4f77bf4f1605eaa910b818aab8906bc8b92",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000020",
+      "question_key": "input-copy-vmdz205i-layout",
+      "source_file": "Human-in-Loops/Q-000020__shared__input-copy-vmdz205i-layout.md",
+      "raw_snapshot": "_audit/questions/Q-000020.md",
+      "file_sha256": "bdc75827824867f623a7dbde2c904102b6540138feaa9319ca4c9a6d94e7b65f",
+      "answer_sha256": "635fd2857757b359ca986d7b9edcb5e4187eead589b54f1be785e0c3ead9f049",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD526.cbl",
+          "VM1BD567.cbl"
+        ],
+        "business_conditions": "Supply the exact VMDZ205I member used for these builds and confirm whether its 1200-byte layout and numeric/group aliases are identical to the supplied VMBD205I, apart from the level-01 name."
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 34,
+          "line_end": 41,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 150,
+          "line_end": 150,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "Copybook/VMBD205I.cpy",
+          "line_start": 43,
+          "line_end": 154,
+          "source_sha256": "80e1aa6b784c0fa192ebe27b3b03af9240cd0a0605574ed2179e77c265bd4dfb",
+          "sha256": "80e1aa6b784c0fa192ebe27b3b03af9240cd0a0605574ed2179e77c265bd4dfb"
+        },
+        {
+          "path": "Copybook/VMBD205I.cpy",
+          "line_start": 624,
+          "line_end": 673,
+          "source_sha256": "80e1aa6b784c0fa192ebe27b3b03af9240cd0a0605574ed2179e77c265bd4dfb",
+          "sha256": "80e1aa6b784c0fa192ebe27b3b03af9240cd0a0605574ed2179e77c265bd4dfb"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C001",
+        "VM1BD526-C007",
+        "VM1BD526-C010",
+        "VM1BD567-C001",
+        "RULE-008",
+        "RULE-023",
+        "RULE-026",
+        "RULE-005"
+      ],
+      "evidence_fingerprint": "81ad972c72d4a9cebddfcdceefa636a4707ecbfbafe1127337d7a5d935f2f3cb",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000021",
+      "question_key": "legacy-567-counter-intent",
+      "source_file": "Human-in-Loops/Q-000021__VM1BD567__legacy-567-counter-intent.md",
+      "raw_snapshot": "_audit/questions/Q-000021.md",
+      "file_sha256": "b09ed22c9970aa61a0e5c21939d1f98e7a5344bfe0fb7fc1121a162a8e8bdac3",
+      "answer_sha256": "93288bfb0edb3a53caf67f699314c48f3eb79e9b709699cfdc17f7cc904d6fc4",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD567.cbl"
+        ],
+        "business_conditions": "Is the intended checkpoint the count of successfully processed physical input records, committed every 100 such records, and is the conversion authorized to repair the supplied legacy CTR-REC behavior?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM1BD567.cbl",
+          "line_start": 56,
+          "line_end": 60,
+          "source_sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+        },
+        {
+          "path": "IDMS Programs/VM1BD567.cbl",
+          "line_start": 117,
+          "line_end": 141,
+          "source_sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+        },
+        {
+          "path": "IDMS Programs/VM1BD567.cbl",
+          "line_start": 147,
+          "line_end": 176,
+          "source_sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 230,
+          "line_end": 250,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 283,
+          "line_end": 283,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 328,
+          "line_end": 349,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD567-C007",
+        "VM1BD567-C010",
+        "RULE-010",
+        "RULE-001"
+      ],
+      "evidence_fingerprint": "0b2a808f597aed75d9fa46bc9c89e252b2008ee7372ff113fd3667ca4acd1669",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000022",
+      "question_key": "lrf-child-outcomes-4310",
+      "source_file": "Human-in-Loops/Q-000022__VM4BD310__lrf-child-outcomes-4310.md",
+      "raw_snapshot": "_audit/questions/Q-000022.md",
+      "file_sha256": "5ecd913ecba1e82a30ef44b5b5c9fb0236355120f6dc786a902add9658d14f6e",
+      "answer_sha256": "8a370f537c103f78c66f4e28a27d4f87b8e45971143a085f9d804993f04beee3",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM4BD310.cbl"
+        ],
+        "business_conditions": "Must parent missing, parent with no events, and parent with events but no event0092 retain distinct diagnostics or rejection categories, even if every condition terminates the batch?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD310.cbl",
+          "line_start": 190,
+          "line_end": 208,
+          "sha256": "6b7753f96d95c16709c9960601f901bc497acf79d52b2d1eb290ceefcb79bf84"
+        },
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 126,
+          "line_end": 135,
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 265,
+          "line_end": 347,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD310-C002",
+        "RULE-021"
+      ],
+      "evidence_fingerprint": "18daa4bb25f7fe0387cba31508e8d11cd498f2ef066878cd83a54529ffe978aa",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000023",
+      "question_key": "lrf-event-order-4310",
+      "source_file": "Human-in-Loops/Q-000023__VM4BD310__lrf-event-order-4310.md",
+      "raw_snapshot": "_audit/questions/Q-000023.md",
+      "file_sha256": "88e053c9b0340ce2d90cf1457c9b9b0f404359c456a991041ed706932ea2eda7",
+      "answer_sha256": "b07a03b4bd49aac9f10a583f3df3d3e35ae2acd5722b79ec84f15b06e9e033ad",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM4BD310.cbl"
+        ],
+        "business_conditions": "When a stock has multiple event0092 records, must the program choose the first event in the original VMBEFF-VMBEVEF set order, or the event with the greatest relational NR_ID? Please provide the set ORDER definition and the surrogate-ID load and tie rules."
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD310.cbl",
+          "line_start": 200,
+          "line_end": 208,
+          "sha256": "6b7753f96d95c16709c9960601f901bc497acf79d52b2d1eb290ceefcb79bf84"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 301,
+          "line_end": 321,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        },
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 124,
+          "line_end": 136,
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD310-C003",
+        "RULE-025"
+      ],
+      "evidence_fingerprint": "2443d02c74603bcf16a1d16e862fc74f653d555d648be6c21a97005272d31bcc",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000024",
+      "question_key": "mapping-embedded-space-7200",
+      "source_file": "Human-in-Loops/Q-000024__VM7BD200__mapping-embedded-space-7200.md",
+      "raw_snapshot": "_audit/questions/Q-000024.md",
+      "file_sha256": "f8caf8f6b809df80e634dee791ef6dc2eabbc3d3e3272a9ae25da41d112afa24",
+      "answer_sha256": "2ff78084a1afd9632a15aeffd5576f952cd9fd68c71dc7dea229a05c84492dde",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM7BD200.cbl"
+        ],
+        "business_conditions": "Should mapping logical row193, RA_BASFMAS _479BFAS, be corrected to the exact DCLGEN and SQL identifier RA_BASFMAS_479BFAS?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "Dclgens/DZBFASTV.txt",
+          "line_start": 24,
+          "line_end": 24,
+          "sha256": "00d7e8a369335eaf59644707b4a7f606d8aff550fea8902d1ad17437532f7e3d"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 294,
+          "line_end": 294,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 648,
+          "line_end": 649,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        }
+      ],
+      "affected_ids": [
+        "VM7BD200-C005",
+        "RULE-017"
+      ],
+      "evidence_fingerprint": "bb0c453bff23ef83a4d6cd1ca37899fc83ab79b3e071feee019391fe9cd9b75b",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000025",
+      "question_key": "output-copy-vmdz270i-layout",
+      "source_file": "Human-in-Loops/Q-000025__VM7BD200__output-copy-vmdz270i-layout.md",
+      "raw_snapshot": "_audit/questions/Q-000025.md",
+      "file_sha256": "67cf1411a14f591293c3a0efe34d58ff637afc2cc0bf3169763de8c3e5e0cbc4",
+      "answer_sha256": "d8ee3a88f15953763825e49b87cd65e76f8277026d9034fe94336555ae37d1dd",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM7BD200.cbl"
+        ],
+        "business_conditions": "Supply VMDZ270I and confirm its exact 20-byte archive-parameter input layout, including DA-ARCH-YMD and related parameter fields, against supplied VMBZ270I. This corrects the output-role wording of the original Phase 1 question."
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM7BD200.cbl",
+          "line_start": 96,
+          "line_end": 96,
+          "sha256": "39675b0606a5855c1c4ab353a36160f36a4bd59a77d6ab231926a4f2667f7341"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 200,
+          "line_end": 200,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        },
+        {
+          "path": "Copybook/VMBZ270I.cpy",
+          "line_start": 10,
+          "line_end": 14,
+          "sha256": "db441dd9e51644d5e7edbcf1829916da454881d535cce510ed207c2bcdb1f193"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 410,
+          "line_end": 423,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        }
+      ],
+      "affected_ids": [
+        "VM7BD200-C003",
+        "VM7BD200-C004",
+        "RULE-011",
+        "RULE-012"
+      ],
+      "evidence_fingerprint": "646fa0e10ff92bffa2fd1bed7ad13a2911eb076f6aaab6230863c9afeec6d05e",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000026",
+      "question_key": "output-copy-vmdz510i-layout",
+      "source_file": "Human-in-Loops/Q-000026__VM4BD310__output-copy-vmdz510i-layout.md",
+      "raw_snapshot": "_audit/questions/Q-000026.md",
+      "file_sha256": "04f142416c83e228a615f6d7270c910890932e677e33708e20c4a6985d99e6b2",
+      "answer_sha256": "ce9927b5535de374b86e640e0042dff6b30415c95ff9654fcc6cd2e84b29ce40",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM4BD310.cbl"
+        ],
+        "business_conditions": "Supply VMDZ510I and confirm the exact 1500-byte mutation-output layout, all aliases and OCCURS/REDEFINES against supplied VMBD510I."
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD310.cbl",
+          "line_start": 99,
+          "line_end": 101,
+          "sha256": "6b7753f96d95c16709c9960601f901bc497acf79d52b2d1eb290ceefcb79bf84"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 150,
+          "line_end": 152,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        },
+        {
+          "path": "Copybook/VMBD510I.cpy",
+          "line_start": 1460,
+          "line_end": 1481,
+          "sha256": "9c86827c5a2a49f2c69b11ad987645beb641a6dce53c7c41fd3006746075c03a"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD310-C004",
+        "VM4BD310-C005",
+        "VM4BD310-C007",
+        "VM4BD310-C008",
+        "RULE-002",
+        "RULE-022",
+        "RULE-017",
+        "RULE-023"
+      ],
+      "evidence_fingerprint": "06b88d67b48c7050d44bca5bc402648c52f6fe759911fdee47f2190f1ff3d96a",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000027",
+      "question_key": "restart-completed-run-policy",
+      "source_file": "Human-in-Loops/Q-000027__shared__restart-completed-run-policy.md",
+      "raw_snapshot": "_audit/questions/Q-000027.md",
+      "file_sha256": "68a5451174db58198cf3d9cb8685c7f55577a4c90d9759f2def2b5d80448106e",
+      "answer_sha256": "70cc7265186181e71caf54b342f8683c2b6caa909ea4c90ce9714f212e9a8a13",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD526.cbl",
+          "VM1BD567.cbl"
+        ],
+        "business_conditions": "Is it intended that a checkpoint with CO-ID-RS = 1 makes a same-key rerun abend, including an empty-input completed run, and who may reset or retire that row?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 337,
+          "line_end": 379,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 287,
+          "line_end": 349,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "IDMS Programs/VM1BD526.cbl",
+          "line_start": 120,
+          "line_end": 145,
+          "source_sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f",
+          "sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f"
+        },
+        {
+          "path": "IDMS Programs/VM1BD567.cbl",
+          "line_start": 111,
+          "line_end": 143,
+          "source_sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C013",
+        "VM1BD567-C009",
+        "RULE-009"
+      ],
+      "evidence_fingerprint": "d707e2599bd2f3092c2220a9067831cab50acaa7006b61cefa9054d3d451efda",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000028",
+      "question_key": "restart-concurrent-run-ownership",
+      "source_file": "Human-in-Loops/Q-000028__shared__restart-concurrent-run-ownership.md",
+      "raw_snapshot": "_audit/questions/Q-000028.md",
+      "file_sha256": "f321e0b30f065d7ed9f4f76e02f9cca15784979ef2e17977c105ac45f497f32b",
+      "answer_sha256": "307f13151ea2c2a9072d79583318342298713bd6aea5e8beb32e3e52c282fe59",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD526.cbl",
+          "VM1BD567.cbl"
+        ],
+        "business_conditions": "Are overlapping executions with the same program, phase and business date forbidden by the scheduler, or must the restart implementation acquire and validate an ownership token/lock?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 324,
+          "line_end": 355,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 401,
+          "line_end": 460,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 269,
+          "line_end": 318,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 356,
+          "line_end": 423,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C011",
+        "VM1BD567-C010",
+        "RULE-001"
+      ],
+      "evidence_fingerprint": "21ab238ccfd7a0e507de621e3bf3ab23a96c55f4f896a6b683e41cb08e495b03",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000029",
+      "question_key": "restart-counter-capacity",
+      "source_file": "Human-in-Loops/Q-000029__shared__restart-counter-capacity.md",
+      "raw_snapshot": "_audit/questions/Q-000029.md",
+      "file_sha256": "dfb91889f0a54c213ebff4245ea4595ce63bb65896d659d5d1016dd6ec265634",
+      "answer_sha256": "b48442cb0950b2c6d4468c43bed2fea5fa08df45d7ef03d4d6c93f591c3acc01",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD526.cbl",
+          "VM1BD567.cbl"
+        ],
+        "business_conditions": "What is the maximum cumulative successful input count per keyed run and restart, and must counters preserve all 15 checkpoint digits rather than the current 5-digit (VMDZ1526) or 7-digit (VMDZ1567) range?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 54,
+          "line_end": 64,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 320,
+          "line_end": 365,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 54,
+          "line_end": 61,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 245,
+          "line_end": 250,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 287,
+          "line_end": 336,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C010",
+        "VM1BD526-C015",
+        "VM1BD567-C006",
+        "VM1BD567-C012",
+        "RULE-026",
+        "RULE-007"
+      ],
+      "evidence_fingerprint": "805c3e88ce70dbab8e8d24a904cfbb0d04ba46a1efde7e53a1ab5652098c9c5b",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000030",
+      "question_key": "restart-input-file-identity",
+      "source_file": "Human-in-Loops/Q-000030__shared__restart-input-file-identity.md",
+      "raw_snapshot": "_audit/questions/Q-000030.md",
+      "file_sha256": "f57768a9573db95b248bc6814c07d8aaf8b0b8408e54ae75fe70f8921d32bb37",
+      "answer_sha256": "c6f45c011d6eee7ac19059057254a474ae69de9c9ffc88618ce1dee1f967156f",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD526.cbl",
+          "VM1BD567.cbl"
+        ],
+        "business_conditions": "What guarantees that a resumed job uses the same file generation, exact record sequence and contents as the checkpointed run, and what must happen if that identity cannot be verified?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM1BD526.cbl",
+          "line_start": 126,
+          "line_end": 145,
+          "source_sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f",
+          "sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 337,
+          "line_end": 345,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "IDMS Programs/VM1BD567.cbl",
+          "line_start": 117,
+          "line_end": 134,
+          "source_sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 287,
+          "line_end": 303,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C010",
+        "VM1BD567-C006",
+        "RULE-026"
+      ],
+      "evidence_fingerprint": "d1ca8063c32b80f6fcdcad3029dbed5c1a05e320089f188d8c330cefcfbe1ccc",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000031",
+      "question_key": "restart-key-cutover-policy",
+      "source_file": "Human-in-Loops/Q-000031__shared__restart-key-cutover-policy.md",
+      "raw_snapshot": "_audit/questions/Q-000031.md",
+      "file_sha256": "54facdb475230cb3f11de6c6851e99c1c67c0af28ace2267091ea47a973c3714",
+      "answer_sha256": "8d10600a8b7e32103b6225815811cc48e7a1c220a0578cf63e20504397450493",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD526.cbl",
+          "VM1BD567.cbl"
+        ],
+        "business_conditions": "When moving these jobs from IDMS to Db2, are existing FFRECAB checkpoints converted to the new program/phase/date key, or is a verified fresh input/data boundary required before the first Db2 run?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM1BD526.cbl",
+          "line_start": 120,
+          "line_end": 138,
+          "source_sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f",
+          "sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 324,
+          "line_end": 355,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "IDMS Programs/VM1BD567.cbl",
+          "line_start": 111,
+          "line_end": 129,
+          "source_sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 269,
+          "line_end": 318,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C008",
+        "VM1BD567-C004",
+        "RULE-028"
+      ],
+      "evidence_fingerprint": "8161882880bc580163621cf27a4e5d50858ab55f2553e99f66c8c461c35a3baa",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000032",
+      "question_key": "restart-serialized-payload-policy",
+      "source_file": "Human-in-Loops/Q-000032__shared__restart-serialized-payload-policy.md",
+      "raw_snapshot": "_audit/questions/Q-000032.md",
+      "file_sha256": "55bce05fac99a3d5660a32cd122cc7000a3997ca431561a44dc9aa28fa7545e6",
+      "answer_sha256": "e597418af19bb6c7916aa3ba63f1483828f2e07acdb8ec894eafdfc16432a406",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD526.cbl",
+          "VM1BD567.cbl"
+        ],
+        "business_conditions": "Should each checkpoint persist only the 15-digit processed count, or all 1215 bytes consisting of the count and last input record, and must the saved record be compared during resume?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 60,
+          "line_end": 63,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 347,
+          "line_end": 368,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 54,
+          "line_end": 58,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 306,
+          "line_end": 338,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "Dclgens/DZ01RSTV.txt",
+          "line_start": 16,
+          "line_end": 31,
+          "source_sha256": "60ae42a6c7a29185e8230972a5527a232a428f1686d2b90c6a4ec1092abfe342",
+          "sha256": "60ae42a6c7a29185e8230972a5527a232a428f1686d2b90c6a4ec1092abfe342"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C012",
+        "VM1BD567-C008",
+        "RULE-029"
+      ],
+      "evidence_fingerprint": "c751034b895b060683466bee33889ccf7edcf03566bc92132b5d511b81cc4acc",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000033",
+      "question_key": "restart-short-file-policy-567",
+      "source_file": "Human-in-Loops/Q-000033__VM1BD567__restart-short-file-policy-567.md",
+      "raw_snapshot": "_audit/questions/Q-000033.md",
+      "file_sha256": "39660e28ee18596f0bfbb03630a45e9cb81d3e4e7c94c9a092b839185228344d",
+      "answer_sha256": "47dc78a07ac105da36279835f0c9593f3092b073bdd45658efa85a4c4d85f152",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD567.cbl"
+        ],
+        "business_conditions": "Must a restart whose saved count exceeds the available input records fail before any checkpoint/completion update, and what diagnostic/file-status behavior is required?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM1BD567.cbl",
+          "line_start": 117,
+          "line_end": 134,
+          "source_sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 178,
+          "line_end": 184,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 238,
+          "line_end": 250,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 287,
+          "line_end": 303,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 207,
+          "line_end": 213,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD567-C006",
+        "RULE-026"
+      ],
+      "evidence_fingerprint": "9110c5b3c4c7869a3a0b0fcc11dc69ca3fd578f05957f5a1318a7bbc45f61db5",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000034",
+      "question_key": "restart-target-object-identity",
+      "source_file": "Human-in-Loops/Q-000034__shared__restart-target-object-identity.md",
+      "raw_snapshot": "_audit/questions/Q-000034.md",
+      "file_sha256": "ebb7cd98a5c4808f6d4d8cdade552f3357a7d7b0b8a57a561e9015f6cc25def0",
+      "answer_sha256": "8cfa929c0343c57db8bfa3067cfea29072cdf6bb5c98a0e1c06d89f47a0a6d4c",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD526.cbl",
+          "VM1BD567.cbl"
+        ],
+        "business_conditions": "Provide the DDL/catalog identity and field mapping proving that DZ01RSTV is the intended updatable view of DZ01RSTB for FFRECAB, including uniqueness on program, phase and date, authorization/bind qualifier, triggers and constraints."
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "Mapping/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+          "line_start": 873,
+          "line_end": 873,
+          "source_sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf",
+          "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf"
+        },
+        {
+          "path": "Dclgens/DZ01RSTV.txt",
+          "line_start": 2,
+          "line_end": 31,
+          "source_sha256": "60ae42a6c7a29185e8230972a5527a232a428f1686d2b90c6a4ec1092abfe342",
+          "sha256": "60ae42a6c7a29185e8230972a5527a232a428f1686d2b90c6a4ec1092abfe342"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 401,
+          "line_end": 460,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 356,
+          "line_end": 423,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C008",
+        "VM1BD526-C009",
+        "VM1BD567-C004",
+        "VM1BD567-C005",
+        "RULE-028",
+        "RULE-016"
+      ],
+      "evidence_fingerprint": "d137695df9fa6b97d46961c1305d751ac4b983421d97f736734fef397d09b1a4",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000035",
+      "question_key": "runtime-sqlerror-useraben-contract",
+      "source_file": "Human-in-Loops/Q-000035__shared__runtime-sqlerror-useraben-contract.md",
+      "raw_snapshot": "_audit/questions/Q-000035.md",
+      "file_sha256": "a89bdc9f46fd287c0873fa850725b346770f1d25c10261d837cc93b48a5bd970",
+      "answer_sha256": "5c16a3d26a16b6abf33b13cc2e35196eead61d0130895a637878ec34987e4ebc",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD526.cbl",
+          "VM1BD567.cbl",
+          "VM4BD302.cbl",
+          "VM4BD310.cbl",
+          "VM4BD420.cbl",
+          "VM7BD200.cbl"
+        ],
+        "business_conditions": "What is the exact failure/non-return contract of SQLERROR, SQLERRWS, generated IDMS status/bind members and USERABEN for the six supplied programs, including preservation of the producing diagnostics and rollback of uncommitted work? Supply the implementation members."
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 155,
+          "line_end": 161,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 331,
+          "line_end": 345,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 624,
+          "line_end": 627,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 143,
+          "line_end": 150,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 276,
+          "line_end": 303,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 453,
+          "line_end": 456,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "IDMS Programs/VM1BD526.cbl",
+          "line_start": 247,
+          "line_end": 254,
+          "source_sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f",
+          "sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f"
+        },
+        {
+          "path": "IDMS Programs/VM1BD567.cbl",
+          "line_start": 179,
+          "line_end": 180,
+          "source_sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 502,
+          "line_end": 522,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 531,
+          "line_end": 541,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 559,
+          "line_end": 574,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 631,
+          "line_end": 646,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 668,
+          "line_end": 671,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 365,
+          "line_end": 371,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 458,
+          "line_end": 474,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 496,
+          "line_end": 499,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "IDMS Programs/VM4BD310.cbl",
+          "line_start": 337,
+          "line_end": 337,
+          "sha256": "6b7753f96d95c16709c9960601f901bc497acf79d52b2d1eb290ceefcb79bf84"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 161,
+          "line_end": 162,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 265,
+          "line_end": 347,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 511,
+          "line_end": 511,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 273,
+          "line_end": 274,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 429,
+          "line_end": 440,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 534,
+          "line_end": 572,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 892,
+          "line_end": 892,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C002",
+        "VM1BD526-C004",
+        "VM1BD526-C005",
+        "VM1BD526-C009",
+        "VM1BD526-C011",
+        "VM1BD526-C013",
+        "VM1BD526-C014",
+        "VM1BD567-C001",
+        "VM1BD567-C005",
+        "VM1BD567-C007",
+        "VM1BD567-C009",
+        "VM1BD567-C010",
+        "VM1BD567-C011",
+        "VM4BD302-C002",
+        "VM4BD302-C003",
+        "VM4BD302-C007",
+        "VM4BD302-C008",
+        "VM4BD310-C001",
+        "VM4BD310-C002",
+        "VM4BD310-C008",
+        "VM4BD420-C001",
+        "VM4BD420-C002",
+        "VM4BD420-C005",
+        "VM4BD420-C006",
+        "VM7BD200-C001",
+        "VM7BD200-C003",
+        "VM7BD200-C008",
+        "RULE-020",
+        "RULE-025",
+        "RULE-019",
+        "RULE-016",
+        "RULE-001",
+        "RULE-009",
+        "RULE-033",
+        "RULE-005",
+        "RULE-010",
+        "RULE-032",
+        "RULE-024",
+        "RULE-023",
+        "RULE-031",
+        "RULE-021",
+        "RULE-006",
+        "RULE-011"
+      ],
+      "evidence_fingerprint": "f1e5dd282f07c5d764b30a835621d5316e99a686578fd25f90cadccdadac8b6f",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000036",
+      "question_key": "shared.evef_encounter_order",
+      "source_file": "Human-in-Loops/Q-000036__shared__shared-evef-encounter-order.md",
+      "raw_snapshot": "_audit/questions/Q-000036.md",
+      "file_sha256": "dad20bada5697597f3651cee6aa0ca38b0ad221e71e9eff826227f4d350c43b6",
+      "answer_sha256": "2550df72c8a4f4e75f8f4d82e59bec0d4fd6389fc91bef8205b1019d631854f1",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM4BD302.cbl",
+          "VM4BD420.cbl"
+        ],
+        "business_conditions": "Which exact VMBEFF-VMBEVEF set ordering/member-placement rule and data-load sequence justify using NR_ID_479EVEF DESC as the legacy encounter order, including ties?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 47,
+          "line_end": 50,
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 215,
+          "line_end": 246,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 164,
+          "line_end": 196,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "Mapping/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+          "line_start": 372,
+          "line_end": 372,
+          "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf"
+        },
+        {
+          "path": "IDMS Programs/VM4BD302.cbl",
+          "line_start": 300,
+          "line_end": 315,
+          "sha256": "a51d9730816ce366497308324b517da42e389c055f64ee6b746aca872f0e7c17"
+        },
+        {
+          "path": "IDMS Programs/VM4BD420.cbl",
+          "line_start": 192,
+          "line_end": 221,
+          "sha256": "5239aa4d02575a5eae3148aa49803b5cdbd82dc7ebe4b4664f28e02d06d807d9"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD302-C003",
+        "VM4BD302-C005",
+        "VM4BD420-C002",
+        "VM4BD420-C003",
+        "RULE-024",
+        "RULE-025",
+        "RULE-004"
+      ],
+      "evidence_fingerprint": "1e8ed6af12389358b497e1577a425d0cb3bcc66cbfd2d55451fd0bf6cba870d5",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000037",
+      "question_key": "view-base-ddl",
+      "source_file": "Human-in-Loops/Q-000037__shared__view-base-ddl.md",
+      "raw_snapshot": "_audit/questions/Q-000037.md",
+      "file_sha256": "46f31534cabe950287268b3c3e3bbf8849bbcd3888a031cb15efd99f19af1edf",
+      "answer_sha256": "2a3a00d3598f0f62e41fc94eb4a3980c5ee2aa0b120f9fae841443bdfd230943",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM1BD526.cbl",
+          "VM1BD567.cbl",
+          "VM4BD302.cbl",
+          "VM4BD310.cbl",
+          "VM4BD420.cbl",
+          "VM7BD200.cbl"
+        ],
+        "business_conditions": "Supply the actual CREATE VIEW/base-table/constraint DDL connecting the mapped TB objects to the queried TV objects, including view predicates, duplicate-key rules and nullability for the business tables used by these six programs."
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 47,
+          "line_end": 50,
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 215,
+          "line_end": 246,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 164,
+          "line_end": 196,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "Mapping/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+          "line_start": 372,
+          "line_end": 372,
+          "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf"
+        },
+        {
+          "path": "IDMS Programs/VM4BD302.cbl",
+          "line_start": 300,
+          "line_end": 315,
+          "sha256": "a51d9730816ce366497308324b517da42e389c055f64ee6b746aca872f0e7c17"
+        },
+        {
+          "path": "IDMS Programs/VM4BD420.cbl",
+          "line_start": 192,
+          "line_end": 221,
+          "sha256": "5239aa4d02575a5eae3148aa49803b5cdbd82dc7ebe4b4664f28e02d06d807d9"
+        },
+        {
+          "path": "Dclgens/DZBEFFTV.txt",
+          "line_start": 2,
+          "line_end": 33,
+          "sha256": "1398746545f2fb02970f3d6838cd1e420b0ae56adec1bdd4bd49d25d1d22e6f8"
+        },
+        {
+          "path": "Dclgens/DZEVEFTV.txt",
+          "line_start": 2,
+          "line_end": 27,
+          "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da"
+        },
+        {
+          "path": "Dclgens/DZBFASTV.txt",
+          "line_start": 2,
+          "line_end": 100,
+          "sha256": "00d7e8a369335eaf59644707b4a7f606d8aff550fea8902d1ad17437532f7e3d"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 427,
+          "line_end": 452,
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD567-C001",
+        "VM4BD302-C002",
+        "VM4BD302-C003",
+        "VM4BD302-C006",
+        "VM4BD310-C002",
+        "VM4BD310-C003",
+        "VM4BD420-C002",
+        "VM4BD420-C004",
+        "VM7BD200-C002",
+        "VM7BD200-C005",
+        "RULE-005",
+        "RULE-032",
+        "RULE-024",
+        "RULE-022",
+        "RULE-021",
+        "RULE-025",
+        "RULE-017"
+      ],
+      "evidence_fingerprint": "e37699fbd9628ef7ccf769175ef1c70f975ae568070b3ad24cd44e533d919ad1",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000038",
+      "question_key": "navigation-output-recovery-VM4BD302",
+      "source_file": "Human-in-Loops/Q-000038__VM4BD302__navigation-output-recovery-vm4bd302.md",
+      "raw_snapshot": "_audit/questions/Q-000038.md",
+      "file_sha256": "5526b5093fab30448e09f44a5eaa16be7c593b8aecf405ef0b15dfc76175ea47",
+      "answer_sha256": "982880a1645663b8fe9f7dfc97bc3cd268bc304ac6e9ce02694f6b61873d3fcc",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM4BD302.cbl"
+        ],
+        "business_conditions": "After a failure with some 90-byte output records already written by VMDZ4302.txt, must the job discard and recreate the partial file from a stable input/database snapshot, or use another recovery and downstream publication policy?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD302.cbl",
+          "line_start": 217,
+          "line_end": 230,
+          "sha256": "a51d9730816ce366497308324b517da42e389c055f64ee6b746aca872f0e7c17"
+        },
+        {
+          "path": "IDMS Programs/VM4BD302.cbl",
+          "line_start": 269,
+          "line_end": 275,
+          "sha256": "a51d9730816ce366497308324b517da42e389c055f64ee6b746aca872f0e7c17"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 285,
+          "line_end": 298,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 364,
+          "line_end": 375,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD302-C006",
+        "RULE-022",
+        "RULE-015"
+      ],
+      "evidence_fingerprint": "5af92253966e132ced918877981a05029b8706d68f7e493afd974efc427f6d53",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000039",
+      "question_key": "navigation-output-recovery-VM4BD420",
+      "source_file": "Human-in-Loops/Q-000039__VM4BD420__navigation-output-recovery-vm4bd420.md",
+      "raw_snapshot": "_audit/questions/Q-000039.md",
+      "file_sha256": "7b201cc4520fcc8a340c099e6405049bc8f57e78cef8433dd8a20825b295de54",
+      "answer_sha256": "d0f03e1ae8c2dce4b92d5cf89de68571f0794d6c4b13587daf4951bb58686435",
+      "answer_origin": "SIMULATED_FOR_TEST",
+      "response_state": "PROVIDED",
+      "review_state": "TEST_ASSUMPTION_ONLY",
+      "resolution_state": "RESOLVED_FOR_TEST_ONLY",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [
+          "VM4BD420.cbl"
+        ],
+        "business_conditions": "After a failure with some 50-byte output records already written by VMDZ4420.cbl, must the job discard and recreate the partial file from a stable input/database snapshot, or use another recovery and downstream publication policy?"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD420.cbl",
+          "line_start": 159,
+          "line_end": 172,
+          "sha256": "5239aa4d02575a5eae3148aa49803b5cdbd82dc7ebe4b4664f28e02d06d807d9"
+        },
+        {
+          "path": "IDMS Programs/VM4BD420.cbl",
+          "line_start": 215,
+          "line_end": 224,
+          "sha256": "5239aa4d02575a5eae3148aa49803b5cdbd82dc7ebe4b4664f28e02d06d807d9"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 243,
+          "line_end": 256,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 316,
+          "line_end": 339,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD420-C004",
+        "RULE-022",
+        "RULE-015"
+      ],
+      "evidence_fingerprint": "d0199ae8b0c79579b39e5269014f6d6d7494072550132eb600dd18863432975e",
+      "successor_ids": []
+    }
+  ]
+}

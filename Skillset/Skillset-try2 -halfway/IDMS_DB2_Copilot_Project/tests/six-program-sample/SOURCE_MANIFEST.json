@@ -1,0 +1,246 @@
+{
+  "archive": "source-archive/Input.rar",
+  "archive_sha256": "fea26d17ee1a900973cf1fa51929129f106263d0f0118df926657cc4426c87d8",
+  "files": [
+    {
+      "archive_path": "IDMS Program/VM1BD526.cbl",
+      "workspace_path": "IDMS Programs/VM1BD526.cbl",
+      "sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f",
+      "bytes": 20737,
+      "encoding": "utf-8-sig",
+      "physical_lines": 256
+    },
+    {
+      "archive_path": "IDMS Program/VM1BD567.cbl",
+      "workspace_path": "IDMS Programs/VM1BD567.cbl",
+      "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+      "bytes": 14580,
+      "encoding": "utf-8-sig",
+      "physical_lines": 180
+    },
+    {
+      "archive_path": "IDMS Program/VM4BD302.cbl",
+      "workspace_path": "IDMS Programs/VM4BD302.cbl",
+      "sha256": "a51d9730816ce366497308324b517da42e389c055f64ee6b746aca872f0e7c17",
+      "bytes": 27297,
+      "encoding": "utf-8-sig",
+      "physical_lines": 337
+    },
+    {
+      "archive_path": "IDMS Program/VM4BD310.cbl",
+      "workspace_path": "IDMS Programs/VM4BD310.cbl",
+      "sha256": "6b7753f96d95c16709c9960601f901bc497acf79d52b2d1eb290ceefcb79bf84",
+      "bytes": 27297,
+      "encoding": "utf-8-sig",
+      "physical_lines": 337
+    },
+    {
+      "archive_path": "IDMS Program/VM4BD420.cbl",
+      "workspace_path": "IDMS Programs/VM4BD420.cbl",
+      "sha256": "5239aa4d02575a5eae3148aa49803b5cdbd82dc7ebe4b4664f28e02d06d807d9",
+      "bytes": 18469,
+      "encoding": "utf-8-sig",
+      "physical_lines": 228
+    },
+    {
+      "archive_path": "IDMS Program/VM7BD200.cbl",
+      "workspace_path": "IDMS Programs/VM7BD200.cbl",
+      "sha256": "39675b0606a5855c1c4ab353a36160f36a4bd59a77d6ab231926a4f2667f7341",
+      "bytes": 17983,
+      "encoding": "utf-8-sig",
+      "physical_lines": 222
+    },
+    {
+      "archive_path": "Schema-LR/VMBTS03.txt",
+      "workspace_path": "Schema/VMBTS03.txt",
+      "sha256": "a1578229fa9086afc8b074cbd526c256099c1ddecfacf30acf5aaa64bdef6fdd",
+      "bytes": 3634,
+      "encoding": "utf-8-sig",
+      "physical_lines": 112
+    },
+    {
+      "archive_path": "Schema-LR/VMBTS06.txt",
+      "workspace_path": "Schema/VMBTS06.txt",
+      "sha256": "40b9b0048afa4e15b939f8a643e04496783084becffb4af42ea4f398b13cd3a0",
+      "bytes": 29283,
+      "encoding": "utf-8-sig",
+      "physical_lines": 815
+    },
+    {
+      "archive_path": "Schema-LR/VMBTS07.txt",
+      "workspace_path": "Schema/VMBTS07.txt",
+      "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4",
+      "bytes": 6325,
+      "encoding": "utf-8-sig",
+      "physical_lines": 191
+    },
+    {
+      "archive_path": "Copybook/ESDATMAS.cpy",
+      "workspace_path": "Copybook/ESDATMAS.cpy",
+      "sha256": "185019c004727a2754201ae1e8f6a272b0fe71de6b8141939118b4c01c752d06",
+      "bytes": 3039,
+      "encoding": "utf-8-sig",
+      "physical_lines": 39
+    },
+    {
+      "archive_path": "Copybook/VM9BC50I.cpy",
+      "workspace_path": "Copybook/VM9BC50I.cpy",
+      "sha256": "20efbe9463f2a9eb361f946a0bac4bb629ec30f93ab7dae7487f2dfd65897deb",
+      "bytes": 5265,
+      "encoding": "utf-8-sig",
+      "physical_lines": 65
+    },
+    {
+      "archive_path": "Copybook/VM9BC50O.cpy",
+      "workspace_path": "Copybook/VM9BC50O.cpy",
+      "sha256": "7d451f980d1a26c782b19aa96c70842e8a9d87603e0706616a08fed905780da5",
+      "bytes": 31915,
+      "encoding": "utf-8-sig",
+      "physical_lines": 394
+    },
+    {
+      "archive_path": "Copybook/VMBD05.cpy",
+      "workspace_path": "Copybook/VMBD05.cpy",
+      "sha256": "530ffd3397f3c6fb680cf21d0dd60fa12bc34fb66d105ea816dc03646ae0e27c",
+      "bytes": 26114,
+      "encoding": "utf-8-sig",
+      "physical_lines": 322
+    },
+    {
+      "archive_path": "Copybook/VMBD205I.cpy",
+      "workspace_path": "Copybook/VMBD205I.cpy",
+      "sha256": "80e1aa6b784c0fa192ebe27b3b03af9240cd0a0605574ed2179e77c265bd4dfb",
+      "bytes": 114570,
+      "encoding": "utf-8-sig",
+      "physical_lines": 1414
+    },
+    {
+      "archive_path": "Copybook/VMBD510I.cpy",
+      "workspace_path": "Copybook/VMBD510I.cpy",
+      "sha256": "9c86827c5a2a49f2c69b11ad987645beb641a6dce53c7c41fd3006746075c03a",
+      "bytes": 132232,
+      "encoding": "utf-8-sig",
+      "physical_lines": 1632
+    },
+    {
+      "archive_path": "Copybook/VMBZ270I.cpy",
+      "workspace_path": "Copybook/VMBZ270I.cpy",
+      "sha256": "db441dd9e51644d5e7edbcf1829916da454881d535cce510ed207c2bcdb1f193",
+      "bytes": 1407,
+      "encoding": "utf-8-sig",
+      "physical_lines": 23
+    },
+    {
+      "archive_path": "DCLGen/DZ01RSTV.txt",
+      "workspace_path": "Dclgens/DZ01RSTV.txt",
+      "sha256": "60ae42a6c7a29185e8230972a5527a232a428f1686d2b90c6a4ec1092abfe342",
+      "bytes": 1714,
+      "encoding": "utf-8-sig",
+      "physical_lines": 36
+    },
+    {
+      "archive_path": "DCLGen/DZBEFFTV.txt",
+      "workspace_path": "Dclgens/DZBEFFTV.txt",
+      "sha256": "1398746545f2fb02970f3d6838cd1e420b0ae56adec1bdd4bd49d25d1d22e6f8",
+      "bytes": 3812,
+      "encoding": "utf-8-sig",
+      "physical_lines": 62
+    },
+    {
+      "archive_path": "DCLGen/DZBFARTV.txt",
+      "workspace_path": "Dclgens/DZBFARTV.txt",
+      "sha256": "5cacab9f737c4972f5a6b7aa18212d2322dc5be3b007215a76b630888d7fcb8a",
+      "bytes": 7222,
+      "encoding": "utf-8-sig",
+      "physical_lines": 120
+    },
+    {
+      "archive_path": "DCLGen/DZBFASTV.txt",
+      "workspace_path": "Dclgens/DZBFASTV.txt",
+      "sha256": "00d7e8a369335eaf59644707b4a7f606d8aff550fea8902d1ad17437532f7e3d",
+      "bytes": 12132,
+      "encoding": "utf-8-sig",
+      "physical_lines": 196
+    },
+    {
+      "archive_path": "DCLGen/DZEVEFTV.txt",
+      "workspace_path": "Dclgens/DZEVEFTV.txt",
+      "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da",
+      "bytes": 2983,
+      "encoding": "utf-8-sig",
+      "physical_lines": 50
+    },
+    {
+      "archive_path": "DCLGen/DZSIASTV.txt",
+      "workspace_path": "Dclgens/DZSIASTV.txt",
+      "sha256": "3ca4890e7d2612e213cdd0cc509a5391f9b698b7815e7b29b2451decae791439",
+      "bytes": 1657,
+      "encoding": "utf-8-sig",
+      "physical_lines": 26
+    },
+    {
+      "archive_path": "DCLGen/DZWCEFTV.txt",
+      "workspace_path": "Dclgens/DZWCEFTV.txt",
+      "sha256": "93336302528ec4d2459101f71f7504f0f717e4a7443a833179287ce1538654e7",
+      "bytes": 1741,
+      "encoding": "utf-8-sig",
+      "physical_lines": 28
+    },
+    {
+      "archive_path": "Manual Convereted DB2 Program/VMDZ1526.txt",
+      "workspace_path": "DB2 Manual converted Programs/VMDZ1526.txt",
+      "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+      "bytes": 50787,
+      "encoding": "cp1252",
+      "physical_lines": 627
+    },
+    {
+      "archive_path": "Manual Convereted DB2 Program/VMDZ1567.cbl",
+      "workspace_path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+      "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+      "bytes": 37474,
+      "encoding": "utf-8-sig",
+      "physical_lines": 457
+    },
+    {
+      "archive_path": "Manual Convereted DB2 Program/VMDZ4302.txt",
+      "workspace_path": "DB2 Manual converted Programs/VMDZ4302.txt",
+      "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c",
+      "bytes": 54351,
+      "encoding": "utf-8-sig",
+      "physical_lines": 671
+    },
+    {
+      "archive_path": "Manual Convereted DB2 Program/VMDZ4310.txt",
+      "workspace_path": "DB2 Manual converted Programs/VMDZ4310.txt",
+      "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d",
+      "bytes": 41472,
+      "encoding": "utf-8-sig",
+      "physical_lines": 512
+    },
+    {
+      "archive_path": "Manual Convereted DB2 Program/VMDZ4420.cbl",
+      "workspace_path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+      "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265",
+      "bytes": 40918,
+      "encoding": "utf-8-sig",
+      "physical_lines": 499
+    },
+    {
+      "archive_path": "Manual Convereted DB2 Program/VMDZ7200.cbl",
+      "workspace_path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+      "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44",
+      "bytes": 73226,
+      "encoding": "utf-8-sig",
+      "physical_lines": 893
+    },
+    {
+      "archive_path": "Mapping Sheet/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+      "workspace_path": "Mapping/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+      "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf",
+      "bytes": 79547,
+      "encoding": "utf-8-sig",
+      "physical_lines": 877
+    }
+  ]
+}

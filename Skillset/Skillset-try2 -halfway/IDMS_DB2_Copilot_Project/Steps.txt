@@ -1,0 +1,17 @@
+How to use it in your real VS Code environment
+The main README contains the complete steps. The basic sequence is:
+1. Extract the ZIP and open the project root in VS Code.
+2. Copy your real files into the top-level Mainframe/workspace/ folders.
+3. Edit Migration-Analysis/MIGRATION_CONFIG.md with your naming pattern, mapping headers, decommission names and restart/buffer replacements.
+4. Invoke the packaged skill in Copilot:
+   /analyze-idms-db2-migration Execute Phase 1.
+   Use Migration-Analysis/MIGRATION_CONFIG.md.
+   Analyze every IDMS input, create all reports and generic guides,
+   and save each uncertainty as a separate question file.
+   Continue without waiting for business answers.
+5. Answer the files under Migration-Analysis/Human-in-Loops/. Then set the configuration to Phase 2 and identify the Phase 1 baseline.
+6. Run:
+   /analyze-idms-db2-migration Execute Phase 2.
+   Use Migration-Analysis/MIGRATION_CONFIG.md.
+   Read the saved answers, preserve Phase 1, and produce the complete
+   revised reports, generic guides, answer-impact report and validation.

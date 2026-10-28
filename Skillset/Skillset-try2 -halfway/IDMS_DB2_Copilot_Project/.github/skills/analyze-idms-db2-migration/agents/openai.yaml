@@ -1,0 +1,15 @@
+interface:
+  display_name: IDMS to DB2 Migration Analyst
+  short_description: Analyze IDMS-to-DB2 code with two-phase business review
+  default_prompt: Use $analyze-idms-db2-migration to run Phase 1 on Mainframe/workspace/,
+    create one report per program and four generic guides, and save unresolved business
+    questions in Human-in-Loops for Phase 2.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

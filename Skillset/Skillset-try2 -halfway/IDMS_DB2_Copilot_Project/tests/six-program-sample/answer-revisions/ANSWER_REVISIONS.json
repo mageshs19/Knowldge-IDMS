@@ -1,0 +1,27 @@
+{
+  "schema_version": 2,
+  "revisions": [
+    {
+      "question_id": "Q-000025",
+      "reason": "Static source recheck corrected archive input/output role before Phase 2 was finalized.",
+      "superseded_snapshot": "Q-000025__superseded-draft-1.md",
+      "superseded_file_sha256": "c0dd9f737185fa54e5189b2d98fe38c91918af5307ca6f0a2ceff2344f62d62e",
+      "superseded_answer_sha256": "199f062329924e46585922ce742798ad77edf306f32a3c553d4b064671230756",
+      "current_snapshot": "../Migration-Analysis/Phase-2/Run-001/_audit/questions/Q-000025.md",
+      "current_file_sha256": "67cf1411a14f591293c3a0efe34d58ff637afc2cc0bf3169763de8c3e5e0cbc4",
+      "current_answer_sha256": "d8ee3a88f15953763825e49b87cd65e76f8277026d9034fe94336555ae37d1dd",
+      "production_resolution": "OPEN"
+    },
+    {
+      "question_id": "Q-000025",
+      "reason": "Made dedicated supersession field consistent with the corrected answer body before final consumption.",
+      "superseded_snapshot": "Q-000025__superseded-draft-2.md",
+      "superseded_file_sha256": "ca8097c181bb33d6e6de63a1e2622aef0c8f8608644f5cdd6981a8668ce58588",
+      "superseded_answer_sha256": "d0d65b0d6cde1245f8b1dd5a8745211ae82215e3d7c8ca4a3fcf6ffdf84272ba",
+      "current_snapshot": "../Migration-Analysis/Phase-2/Run-001/_audit/questions/Q-000025.md",
+      "current_file_sha256": "67cf1411a14f591293c3a0efe34d58ff637afc2cc0bf3169763de8c3e5e0cbc4",
+      "current_answer_sha256": "d8ee3a88f15953763825e49b87cd65e76f8277026d9034fe94336555ae37d1dd",
+      "production_resolution": "OPEN"
+    }
+  ]
+}

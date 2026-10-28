@@ -1,0 +1,2429 @@
+{
+  "schema_version": 2,
+  "questions": [
+    {
+      "question_id": "Q-000001",
+      "question_key": "VM4BD302.month_boundary_policy",
+      "source_file": "Human-in-Loops/Q-000001__VM4BD302__vm4bd302-month-boundary-policy.md",
+      "raw_snapshot": "_audit/questions/Q-000001.md",
+      "file_sha256": "85f218e8a048eaf75aaeacebc91300c9c01e9462f1991c7845f1e6456d93792f",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD302.cbl",
+          "line_start": 287,
+          "line_end": 296,
+          "sha256": "a51d9730816ce366497308324b517da42e389c055f64ee6b746aca872f0e7c17"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 408,
+          "line_end": 417,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD302-C004",
+        "RULE-027"
+      ],
+      "evidence_fingerprint": "8f2488f6e0f2fd66ab305ad0b23d7c4b6c4be4d47ca4c9a7366def9dd724ec52",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000002",
+      "question_key": "VM4BD302.numeric_output_domains",
+      "source_file": "Human-in-Loops/Q-000002__VM4BD302__vm4bd302-numeric-output-domains.md",
+      "raw_snapshot": "_audit/questions/Q-000002.md",
+      "file_sha256": "2b844006fc4eb3211de7dff4ac6d9eb61493807d54031b8c5638f8567a9293b1",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD302.cbl",
+          "line_start": 115,
+          "line_end": 123,
+          "sha256": "a51d9730816ce366497308324b517da42e389c055f64ee6b746aca872f0e7c17"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 94,
+          "line_end": 110,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 364,
+          "line_end": 375,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "Dclgens/DZBEFFTV.txt",
+          "line_start": 12,
+          "line_end": 19,
+          "sha256": "1398746545f2fb02970f3d6838cd1e420b0ae56adec1bdd4bd49d25d1d22e6f8"
+        },
+        {
+          "path": "Dclgens/DZEVEFTV.txt",
+          "line_start": 20,
+          "line_end": 21,
+          "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD302-C006",
+        "VM4BD302-C007",
+        "RULE-022",
+        "RULE-023"
+      ],
+      "evidence_fingerprint": "3c54e0a6d46c04c75d4ce04e6caddc066395da7ef6ea30ff60c06e8843490a51",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000003",
+      "question_key": "VM4BD302.service_return_and_output",
+      "source_file": "Human-in-Loops/Q-000003__VM4BD302__vm4bd302-service-return-and-output.md",
+      "raw_snapshot": "_audit/questions/Q-000003.md",
+      "file_sha256": "04501404890e843b9315b185ae202c28755fdb419061b36a72327fae4f1405a9",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD302.cbl",
+          "line_start": 323,
+          "line_end": 337,
+          "sha256": "a51d9730816ce366497308324b517da42e389c055f64ee6b746aca872f0e7c17"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 453,
+          "line_end": 467,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "Copybook/VM9BC50O.cpy",
+          "line_start": 20,
+          "line_end": 27,
+          "sha256": "7d451f980d1a26c782b19aa96c70842e8a9d87603e0706616a08fed905780da5"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD302-C001",
+        "VM4BD302-C002",
+        "VM4BD302-C008",
+        "VM4BD302-C009",
+        "RULE-006",
+        "RULE-032",
+        "RULE-033",
+        "RULE-017"
+      ],
+      "evidence_fingerprint": "861d892a30c93953d128cf26f6a979199ee96a771d101224882ff822c2f311af",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000004",
+      "question_key": "VM4BD420.creation_ci_domain",
+      "source_file": "Human-in-Loops/Q-000004__VM4BD420__vm4bd420-creation-ci-domain.md",
+      "raw_snapshot": "_audit/questions/Q-000004.md",
+      "file_sha256": "4624695cbd23e19c738dd8170f14ff9ad27fc76a369985a4cf076ba37bc48984",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD420.cbl",
+          "line_start": 78,
+          "line_end": 84,
+          "sha256": "5239aa4d02575a5eae3148aa49803b5cdbd82dc7ebe4b4664f28e02d06d807d9"
+        },
+        {
+          "path": "IDMS Programs/VM4BD420.cbl",
+          "line_start": 192,
+          "line_end": 216,
+          "sha256": "5239aa4d02575a5eae3148aa49803b5cdbd82dc7ebe4b4664f28e02d06d807d9"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 68,
+          "line_end": 73,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 297,
+          "line_end": 321,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD420-C003",
+        "VM4BD420-C004",
+        "RULE-004",
+        "RULE-022"
+      ],
+      "evidence_fingerprint": "d68f1bd59b06f852c4fa4556c3867f49ce0d838c9be0957a37595e494ddf3295",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000005",
+      "question_key": "archive-byte-contract-7200",
+      "source_file": "Human-in-Loops/Q-000005__VM7BD200__archive-byte-contract-7200.md",
+      "raw_snapshot": "_audit/questions/Q-000005.md",
+      "file_sha256": "6966ca57def1f95803cadb3747b6be4ca753c3149fa75cffc24fc1c9ee3b436f",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM7BD200.cbl",
+          "line_start": 87,
+          "line_end": 94,
+          "sha256": "39675b0606a5855c1c4ab353a36160f36a4bd59a77d6ab231926a4f2667f7341"
+        },
+        {
+          "path": "IDMS Programs/VM7BD200.cbl",
+          "line_start": 194,
+          "line_end": 194,
+          "sha256": "39675b0606a5855c1c4ab353a36160f36a4bd59a77d6ab231926a4f2667f7341"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 77,
+          "line_end": 192,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 591,
+          "line_end": 592,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        }
+      ],
+      "affected_ids": [
+        "VM7BD200-C005",
+        "RULE-017"
+      ],
+      "evidence_fingerprint": "d80ac3293aea6ca7bfc275037b79d3dbc38e029660b1a4275bca0645f3b6443a",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000006",
+      "question_key": "archive-cutoff-sentinel-7200",
+      "source_file": "Human-in-Loops/Q-000006__VM7BD200__archive-cutoff-sentinel-7200.md",
+      "raw_snapshot": "_audit/questions/Q-000006.md",
+      "file_sha256": "de572249048bdd8a03f3bc8c0751e866cefb1b4ed02fc4ff8fb29623af701a97",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM7BD200.cbl",
+          "line_start": 188,
+          "line_end": 191,
+          "sha256": "39675b0606a5855c1c4ab353a36160f36a4bd59a77d6ab231926a4f2667f7341"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 366,
+          "line_end": 370,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        }
+      ],
+      "affected_ids": [
+        "VM7BD200-C004",
+        "RULE-012"
+      ],
+      "evidence_fingerprint": "0840fbad04b86727318af200f175a9a754cdb3bea8e0c05ef94099dd02e452c5",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000007",
+      "question_key": "archive-file-rerun-7200",
+      "source_file": "Human-in-Loops/Q-000007__VM7BD200__archive-file-rerun-7200.md",
+      "raw_snapshot": "_audit/questions/Q-000007.md",
+      "file_sha256": "eefeca272851dc77cd8e9188c950b2b2fbc9ee556a4b723769bca38ea09abc61",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM7BD200.cbl",
+          "line_start": 192,
+          "line_end": 220,
+          "sha256": "39675b0606a5855c1c4ab353a36160f36a4bd59a77d6ab231926a4f2667f7341"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 585,
+          "line_end": 587,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 874,
+          "line_end": 889,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        }
+      ],
+      "affected_ids": [
+        "VM7BD200-C007",
+        "RULE-015"
+      ],
+      "evidence_fingerprint": "ed60c612160d660a9abcacea9a635b23aebdf0d3dc4c5afd8622f467d0b46450",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000008",
+      "question_key": "archive-order-7200",
+      "source_file": "Human-in-Loops/Q-000008__VM7BD200__archive-order-7200.md",
+      "raw_snapshot": "_audit/questions/Q-000008.md",
+      "file_sha256": "884a5abbdb4080da8e3c0cf144bde80903bd6641a226a3630be8a74e9f1e3c2f",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM7BD200.cbl",
+          "line_start": 192,
+          "line_end": 200,
+          "sha256": "39675b0606a5855c1c4ab353a36160f36a4bd59a77d6ab231926a4f2667f7341"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 371,
+          "line_end": 371,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 597,
+          "line_end": 598,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        }
+      ],
+      "affected_ids": [
+        "VM7BD200-C006",
+        "RULE-025"
+      ],
+      "evidence_fingerprint": "a8441a39e562907344a87acec419cfde1bd83d308d48f869e6b6f202112520af",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000009",
+      "question_key": "audit-timestamp-business-policy",
+      "source_file": "Human-in-Loops/Q-000009__shared__audit-timestamp-business-policy.md",
+      "raw_snapshot": "_audit/questions/Q-000009.md",
+      "file_sha256": "47de37f2e1faf5a62e836fe196e1505921131cdf925ba123dce304780155ff84",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 65,
+          "line_end": 66,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 185,
+          "line_end": 188,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 274,
+          "line_end": 279,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 382,
+          "line_end": 393,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 162,
+          "line_end": 162,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 222,
+          "line_end": 226,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 254,
+          "line_end": 266,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C003",
+        "VM1BD526-C016",
+        "VM1BD567-C003",
+        "RULE-018",
+        "RULE-030"
+      ],
+      "evidence_fingerprint": "e58e361ab7d9b8021cd55d1402c29fbbb9541c2f38aebdf0647b30883cf7c53d",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000010",
+      "question_key": "blank-creation-date-sentinel",
+      "source_file": "Human-in-Loops/Q-000010__VM1BD567__blank-creation-date-sentinel.md",
+      "raw_snapshot": "_audit/questions/Q-000010.md",
+      "file_sha256": "d4122e3da45e13c04447be4bbb41da2e64b160394367b9758a3c8748b1927fac",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM1BD567.cbl",
+          "line_start": 149,
+          "line_end": 158,
+          "source_sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 201,
+          "line_end": 219,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "Mapping/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+          "line_start": 83,
+          "line_end": 83,
+          "source_sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf",
+          "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf"
+        },
+        {
+          "path": "Dclgens/DZBFARTV.txt",
+          "line_start": 13,
+          "line_end": 18,
+          "source_sha256": "5cacab9f737c4972f5a6b7aa18212d2322dc5be3b007215a76b630888d7fcb8a",
+          "sha256": "5cacab9f737c4972f5a6b7aa18212d2322dc5be3b007215a76b630888d7fcb8a"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD567-C002",
+        "RULE-013"
+      ],
+      "evidence_fingerprint": "673f770f32c3174a76d981b3a16ea16d9f52a6a04ff54a59680842648ee8004a",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000011",
+      "question_key": "buffer-replacement-identity",
+      "source_file": "Human-in-Loops/Q-000011__shared__buffer-replacement-identity.md",
+      "raw_snapshot": "_audit/questions/Q-000011.md",
+      "file_sha256": "d938855dd3a54daaa2d5cbd69dfa6a26c3b8cc3b1235f9d300bf1d96544fd93a",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "Mapping/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+          "line_start": 877,
+          "line_end": 877,
+          "source_sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf",
+          "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf"
+        },
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 38,
+          "line_end": 54,
+          "source_sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4",
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "Schema/VMBTS06.txt",
+          "line_start": 66,
+          "line_end": 101,
+          "source_sha256": "40b9b0048afa4e15b939f8a643e04496783084becffb4af42ea4f398b13cd3a0",
+          "sha256": "40b9b0048afa4e15b939f8a643e04496783084becffb4af42ea4f398b13cd3a0"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 60,
+          "line_end": 63,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 54,
+          "line_end": 58,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        }
+      ],
+      "affected_ids": [
+        "RULE-003"
+      ],
+      "evidence_fingerprint": "9f9aa63fcbc2982748e4b57ad94104b9f6faabb190a616e1390b43345031b567",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000012",
+      "question_key": "build-context-and-generated-members",
+      "source_file": "Human-in-Loops/Q-000012__shared__build-context-and-generated-members.md",
+      "raw_snapshot": "_audit/questions/Q-000012.md",
+      "file_sha256": "c40ced28cfd83486edf4354d59eb8de640dffce2fbf0e3db3b5f8da10cb5d8de",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 1,
+          "line_end": 54,
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        }
+      ],
+      "affected_ids": [],
+      "evidence_fingerprint": "007a762d22568d992cffee5c10e5819ac06cbe79743228311cf788ce192cb04e",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000013",
+      "question_key": "capital-amount-4310",
+      "source_file": "Human-in-Loops/Q-000013__VM4BD310__capital-amount-4310.md",
+      "raw_snapshot": "_audit/questions/Q-000013.md",
+      "file_sha256": "acffe1dd1dece0d1d6de4c40108a46e47b6f0c8dd23c60e9ee8bc61758c6f359",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD310.cbl",
+          "line_start": 247,
+          "line_end": 253,
+          "sha256": "6b7753f96d95c16709c9960601f901bc497acf79d52b2d1eb290ceefcb79bf84"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 219,
+          "line_end": 263,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 393,
+          "line_end": 399,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD310-C004",
+        "RULE-002"
+      ],
+      "evidence_fingerprint": "79c5d498179af868b2211816903a59c85e74b2be6c7ec1b5775c9e1c77cb5be1",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000014",
+      "question_key": "db2-date-output-policy",
+      "source_file": "Human-in-Loops/Q-000014__shared__db2-date-output-policy.md",
+      "raw_snapshot": "_audit/questions/Q-000014.md",
+      "file_sha256": "afa7069a9da4fa61af69d910ae74acf27cf52ee1761e7aebf3ec71b27b20eb29",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 324,
+          "line_end": 330,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 384,
+          "line_end": 402,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 282,
+          "line_end": 295,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 326,
+          "line_end": 338,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "Dclgens/DZEVEFTV.txt",
+          "line_start": 16,
+          "line_end": 19,
+          "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da"
+        },
+        {
+          "path": "Dclgens/DZBEFFTV.txt",
+          "line_start": 29,
+          "line_end": 29,
+          "sha256": "1398746545f2fb02970f3d6838cd1e420b0ae56adec1bdd4bd49d25d1d22e6f8"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 404,
+          "line_end": 433,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 603,
+          "line_end": 616,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 841,
+          "line_end": 856,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD302-C001",
+        "VM4BD302-C004",
+        "VM4BD302-C005",
+        "VM4BD310-C006",
+        "VM4BD420-C001",
+        "VM4BD420-C003",
+        "VM4BD420-C004",
+        "VM4BD420-C006",
+        "VM4BD420-C007",
+        "VM7BD200-C004",
+        "VM7BD200-C008",
+        "RULE-006",
+        "RULE-027",
+        "RULE-025",
+        "RULE-012",
+        "RULE-004",
+        "RULE-022",
+        "RULE-023",
+        "RULE-017"
+      ],
+      "evidence_fingerprint": "fd18a756e8631944c5aab65359a69591076cce98fac96e07830789134783d0ed",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000015",
+      "question_key": "eight-decommission-identities",
+      "source_file": "Human-in-Loops/Q-000015__shared__eight-decommission-identities.md",
+      "raw_snapshot": "_audit/questions/Q-000015.md",
+      "file_sha256": "8df654711e35b39a0728a5c9d6c7c061fae9b869ead25554bdc3ad92c16df962",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 28,
+          "line_end": 54,
+          "source_sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4",
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "Schema/VMBTS06.txt",
+          "line_start": 28,
+          "line_end": 101,
+          "source_sha256": "40b9b0048afa4e15b939f8a643e04496783084becffb4af42ea4f398b13cd3a0",
+          "sha256": "40b9b0048afa4e15b939f8a643e04496783084becffb4af42ea4f398b13cd3a0"
+        },
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 28,
+          "line_end": 43,
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "Schema/VMBTS03.txt",
+          "line_start": 22,
+          "line_end": 31,
+          "sha256": "a1578229fa9086afc8b074cbd526c256099c1ddecfacf30acf5aaa64bdef6fdd"
+        }
+      ],
+      "affected_ids": [
+        "RULE-014"
+      ],
+      "evidence_fingerprint": "5285de86c4c269af48cccb84e46770b8d23dc18345dcbaf5fa853c0b2f6e2e2e",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000016",
+      "question_key": "event-first-selection-order",
+      "source_file": "Human-in-Loops/Q-000016__VM1BD526__event-first-selection-order.md",
+      "raw_snapshot": "_audit/questions/Q-000016.md",
+      "file_sha256": "627766f816c8bbf998ab591e0d696fb7237a0f03911e09a63ee1e99a346eab50",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM1BD526.cbl",
+          "line_start": 197,
+          "line_end": 227,
+          "source_sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f",
+          "sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f"
+        },
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 47,
+          "line_end": 50,
+          "source_sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4",
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 124,
+          "line_end": 136,
+          "source_sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4",
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 575,
+          "line_end": 622,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C004",
+        "VM1BD526-C005",
+        "RULE-025",
+        "RULE-019"
+      ],
+      "evidence_fingerprint": "8bbb5bffb0b1dbca88bb74b7a0a481beec89ead684530b5d60d9bb314f54abc0",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000017",
+      "question_key": "event-good-key-encoding",
+      "source_file": "Human-in-Loops/Q-000017__shared__event-good-key-encoding.md",
+      "raw_snapshot": "_audit/questions/Q-000017.md",
+      "file_sha256": "a35c886e4e4b864b4c6ef924189c8571c775adee9a3fb0dcd81fee109f0bbbe8",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM1BD526.cbl",
+          "line_start": 66,
+          "line_end": 72,
+          "source_sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f",
+          "sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f"
+        },
+        {
+          "path": "IDMS Programs/VM1BD526.cbl",
+          "line_start": 174,
+          "line_end": 180,
+          "source_sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f",
+          "sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 68,
+          "line_end": 73,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 248,
+          "line_end": 254,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "Mapping/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+          "line_start": 360,
+          "line_end": 360,
+          "source_sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf",
+          "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf"
+        },
+        {
+          "path": "Dclgens/DZEVEFTV.txt",
+          "line_start": 19,
+          "line_end": 40,
+          "source_sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da",
+          "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da"
+        },
+        {
+          "path": "Mapping/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+          "line_start": 360,
+          "line_end": 360,
+          "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf"
+        },
+        {
+          "path": "Dclgens/DZEVEFTV.txt",
+          "line_start": 19,
+          "line_end": 19,
+          "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da"
+        },
+        {
+          "path": "Dclgens/DZEVEFTV.txt",
+          "line_start": 40,
+          "line_end": 40,
+          "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da"
+        },
+        {
+          "path": "IDMS Programs/VM4BD302.cbl",
+          "line_start": 105,
+          "line_end": 111,
+          "sha256": "a51d9730816ce366497308324b517da42e389c055f64ee6b746aca872f0e7c17"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 87,
+          "line_end": 92,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "IDMS Programs/VM4BD420.cbl",
+          "line_start": 78,
+          "line_end": 84,
+          "sha256": "5239aa4d02575a5eae3148aa49803b5cdbd82dc7ebe4b4664f28e02d06d807d9"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 68,
+          "line_end": 73,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "IDMS Programs/VM4BD310.cbl",
+          "line_start": 78,
+          "line_end": 84,
+          "sha256": "6b7753f96d95c16709c9960601f901bc497acf79d52b2d1eb290ceefcb79bf84"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 63,
+          "line_end": 69,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        },
+        {
+          "path": "Dclgens/DZEVEFTV.txt",
+          "line_start": 19,
+          "line_end": 40,
+          "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C003",
+        "VM1BD526-C006",
+        "VM4BD302-C004",
+        "VM4BD302-C005",
+        "VM4BD302-C006",
+        "VM4BD302-C007",
+        "VM4BD310-C005",
+        "VM4BD420-C003",
+        "VM4BD420-C004",
+        "VM4BD420-C007",
+        "RULE-018",
+        "RULE-022",
+        "RULE-027",
+        "RULE-025",
+        "RULE-023",
+        "RULE-004",
+        "RULE-017"
+      ],
+      "evidence_fingerprint": "46637930b04629ada608c91e7693684cf6d8f0eb753c96dacb62104c2dcb7aca",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000018",
+      "question_key": "event-parent-and-id-constraints",
+      "source_file": "Human-in-Loops/Q-000018__VM1BD526__event-parent-and-id-constraints.md",
+      "raw_snapshot": "_audit/questions/Q-000018.md",
+      "file_sha256": "be52f2076d673197c99407259a521be59b82da9f91c3d3e5eefc42c65de5a076",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 463,
+          "line_end": 574,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 575,
+          "line_end": 622,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 124,
+          "line_end": 136,
+          "source_sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4",
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 182,
+          "line_end": 189,
+          "source_sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4",
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "Mapping/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+          "line_start": 368,
+          "line_end": 375,
+          "source_sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf",
+          "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf"
+        },
+        {
+          "path": "Dclgens/DZEVEFTV.txt",
+          "line_start": 11,
+          "line_end": 26,
+          "source_sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da",
+          "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C002",
+        "VM1BD526-C003",
+        "VM1BD526-C004",
+        "VM1BD526-C005",
+        "RULE-020",
+        "RULE-018",
+        "RULE-025",
+        "RULE-019"
+      ],
+      "evidence_fingerprint": "f4643d082409ea1f4b1cf7a4b87036da2f4c007933cb1d7b46fee34d1e8172af",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000019",
+      "question_key": "file-rerun-contract-4310",
+      "source_file": "Human-in-Loops/Q-000019__VM4BD310__file-rerun-contract-4310.md",
+      "raw_snapshot": "_audit/questions/Q-000019.md",
+      "file_sha256": "1e9ef09740407a5d1ce5b431083622c43f807c73272029f15c167484187aebee",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD310.cbl",
+          "line_start": 132,
+          "line_end": 134,
+          "sha256": "6b7753f96d95c16709c9960601f901bc497acf79d52b2d1eb290ceefcb79bf84"
+        },
+        {
+          "path": "IDMS Programs/VM4BD310.cbl",
+          "line_start": 315,
+          "line_end": 329,
+          "sha256": "6b7753f96d95c16709c9960601f901bc497acf79d52b2d1eb290ceefcb79bf84"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 189,
+          "line_end": 190,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 478,
+          "line_end": 494,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD310-C007",
+        "RULE-015",
+        "RULE-017"
+      ],
+      "evidence_fingerprint": "58088838f1ca3ea6d91f75abae2fa4f77bf4f1605eaa910b818aab8906bc8b92",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000020",
+      "question_key": "input-copy-vmdz205i-layout",
+      "source_file": "Human-in-Loops/Q-000020__shared__input-copy-vmdz205i-layout.md",
+      "raw_snapshot": "_audit/questions/Q-000020.md",
+      "file_sha256": "49507e39d104f8901a4be0c4b9d148771c2940ffc40e4d3807591758b5a957a6",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 34,
+          "line_end": 41,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 150,
+          "line_end": 150,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "Copybook/VMBD205I.cpy",
+          "line_start": 43,
+          "line_end": 154,
+          "source_sha256": "80e1aa6b784c0fa192ebe27b3b03af9240cd0a0605574ed2179e77c265bd4dfb",
+          "sha256": "80e1aa6b784c0fa192ebe27b3b03af9240cd0a0605574ed2179e77c265bd4dfb"
+        },
+        {
+          "path": "Copybook/VMBD205I.cpy",
+          "line_start": 624,
+          "line_end": 673,
+          "source_sha256": "80e1aa6b784c0fa192ebe27b3b03af9240cd0a0605574ed2179e77c265bd4dfb",
+          "sha256": "80e1aa6b784c0fa192ebe27b3b03af9240cd0a0605574ed2179e77c265bd4dfb"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C001",
+        "VM1BD526-C007",
+        "VM1BD526-C010",
+        "VM1BD567-C001",
+        "RULE-008",
+        "RULE-023",
+        "RULE-026",
+        "RULE-005"
+      ],
+      "evidence_fingerprint": "81ad972c72d4a9cebddfcdceefa636a4707ecbfbafe1127337d7a5d935f2f3cb",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000021",
+      "question_key": "legacy-567-counter-intent",
+      "source_file": "Human-in-Loops/Q-000021__VM1BD567__legacy-567-counter-intent.md",
+      "raw_snapshot": "_audit/questions/Q-000021.md",
+      "file_sha256": "ee28edc582eca1034cc18146d4616c4d24bc7b28683e6d9deedcee52c7b5e84e",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM1BD567.cbl",
+          "line_start": 56,
+          "line_end": 60,
+          "source_sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+        },
+        {
+          "path": "IDMS Programs/VM1BD567.cbl",
+          "line_start": 117,
+          "line_end": 141,
+          "source_sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+        },
+        {
+          "path": "IDMS Programs/VM1BD567.cbl",
+          "line_start": 147,
+          "line_end": 176,
+          "source_sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 230,
+          "line_end": 250,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 283,
+          "line_end": 283,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 328,
+          "line_end": 349,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD567-C007",
+        "VM1BD567-C010",
+        "RULE-010",
+        "RULE-001"
+      ],
+      "evidence_fingerprint": "0b2a808f597aed75d9fa46bc9c89e252b2008ee7372ff113fd3667ca4acd1669",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000022",
+      "question_key": "lrf-child-outcomes-4310",
+      "source_file": "Human-in-Loops/Q-000022__VM4BD310__lrf-child-outcomes-4310.md",
+      "raw_snapshot": "_audit/questions/Q-000022.md",
+      "file_sha256": "d5097356f4a75120d56f3bfe942916d6e194e91a4a1f6bda5c99506f7512e797",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD310.cbl",
+          "line_start": 190,
+          "line_end": 208,
+          "sha256": "6b7753f96d95c16709c9960601f901bc497acf79d52b2d1eb290ceefcb79bf84"
+        },
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 126,
+          "line_end": 135,
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 265,
+          "line_end": 347,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD310-C002",
+        "RULE-021"
+      ],
+      "evidence_fingerprint": "18daa4bb25f7fe0387cba31508e8d11cd498f2ef066878cd83a54529ffe978aa",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000023",
+      "question_key": "lrf-event-order-4310",
+      "source_file": "Human-in-Loops/Q-000023__VM4BD310__lrf-event-order-4310.md",
+      "raw_snapshot": "_audit/questions/Q-000023.md",
+      "file_sha256": "15e6c406df594db349cbe51822d4565c211ab63abe3c1c9e4874f19403814e0f",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD310.cbl",
+          "line_start": 200,
+          "line_end": 208,
+          "sha256": "6b7753f96d95c16709c9960601f901bc497acf79d52b2d1eb290ceefcb79bf84"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 301,
+          "line_end": 321,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        },
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 124,
+          "line_end": 136,
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD310-C003",
+        "RULE-025"
+      ],
+      "evidence_fingerprint": "2443d02c74603bcf16a1d16e862fc74f653d555d648be6c21a97005272d31bcc",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000024",
+      "question_key": "mapping-embedded-space-7200",
+      "source_file": "Human-in-Loops/Q-000024__VM7BD200__mapping-embedded-space-7200.md",
+      "raw_snapshot": "_audit/questions/Q-000024.md",
+      "file_sha256": "8d7dc6d88aafeff3a88cf5ab47336e31be4fbe5c795dc133231e36e2f193985e",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "Dclgens/DZBFASTV.txt",
+          "line_start": 24,
+          "line_end": 24,
+          "sha256": "00d7e8a369335eaf59644707b4a7f606d8aff550fea8902d1ad17437532f7e3d"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 294,
+          "line_end": 294,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 648,
+          "line_end": 649,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        }
+      ],
+      "affected_ids": [
+        "VM7BD200-C005",
+        "RULE-017"
+      ],
+      "evidence_fingerprint": "bb0c453bff23ef83a4d6cd1ca37899fc83ab79b3e071feee019391fe9cd9b75b",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000025",
+      "question_key": "output-copy-vmdz270i-layout",
+      "source_file": "Human-in-Loops/Q-000025__VM7BD200__output-copy-vmdz270i-layout.md",
+      "raw_snapshot": "_audit/questions/Q-000025.md",
+      "file_sha256": "d645ed39891a63b4a6e14bba3e934d272d4dd59cc565a20438cabb5ceb8eb35e",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM7BD200.cbl",
+          "line_start": 96,
+          "line_end": 96,
+          "sha256": "39675b0606a5855c1c4ab353a36160f36a4bd59a77d6ab231926a4f2667f7341"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 200,
+          "line_end": 200,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        },
+        {
+          "path": "Copybook/VMBZ270I.cpy",
+          "line_start": 10,
+          "line_end": 14,
+          "sha256": "db441dd9e51644d5e7edbcf1829916da454881d535cce510ed207c2bcdb1f193"
+        }
+      ],
+      "affected_ids": [
+        "VM7BD200-C003",
+        "VM7BD200-C004",
+        "RULE-011",
+        "RULE-012"
+      ],
+      "evidence_fingerprint": "2d95c20199d7d594a198aa718448a59322e103588b36107d0a96d0042917a11e",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000026",
+      "question_key": "output-copy-vmdz510i-layout",
+      "source_file": "Human-in-Loops/Q-000026__VM4BD310__output-copy-vmdz510i-layout.md",
+      "raw_snapshot": "_audit/questions/Q-000026.md",
+      "file_sha256": "b8c5015c7510ce6cc5185a5a83a72f4586945680804987e76ce714edb14f871f",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD310.cbl",
+          "line_start": 99,
+          "line_end": 101,
+          "sha256": "6b7753f96d95c16709c9960601f901bc497acf79d52b2d1eb290ceefcb79bf84"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 150,
+          "line_end": 152,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        },
+        {
+          "path": "Copybook/VMBD510I.cpy",
+          "line_start": 1460,
+          "line_end": 1481,
+          "sha256": "9c86827c5a2a49f2c69b11ad987645beb641a6dce53c7c41fd3006746075c03a"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD310-C004",
+        "VM4BD310-C005",
+        "VM4BD310-C007",
+        "VM4BD310-C008",
+        "RULE-002",
+        "RULE-022",
+        "RULE-017",
+        "RULE-023"
+      ],
+      "evidence_fingerprint": "06b88d67b48c7050d44bca5bc402648c52f6fe759911fdee47f2190f1ff3d96a",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000027",
+      "question_key": "restart-completed-run-policy",
+      "source_file": "Human-in-Loops/Q-000027__shared__restart-completed-run-policy.md",
+      "raw_snapshot": "_audit/questions/Q-000027.md",
+      "file_sha256": "e78a6177affffc1ce96c4da4b4579b31711ba5627d2853e1046493992e382d71",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 337,
+          "line_end": 379,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 287,
+          "line_end": 349,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "IDMS Programs/VM1BD526.cbl",
+          "line_start": 120,
+          "line_end": 145,
+          "source_sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f",
+          "sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f"
+        },
+        {
+          "path": "IDMS Programs/VM1BD567.cbl",
+          "line_start": 111,
+          "line_end": 143,
+          "source_sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C013",
+        "VM1BD567-C009",
+        "RULE-009"
+      ],
+      "evidence_fingerprint": "d707e2599bd2f3092c2220a9067831cab50acaa7006b61cefa9054d3d451efda",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000028",
+      "question_key": "restart-concurrent-run-ownership",
+      "source_file": "Human-in-Loops/Q-000028__shared__restart-concurrent-run-ownership.md",
+      "raw_snapshot": "_audit/questions/Q-000028.md",
+      "file_sha256": "d9a966d1dd310df881a6daf3df35fcca2a7127bdbcf03cd264f070e7fa0bd2c4",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 324,
+          "line_end": 355,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 401,
+          "line_end": 460,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 269,
+          "line_end": 318,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 356,
+          "line_end": 423,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C011",
+        "VM1BD567-C010",
+        "RULE-001"
+      ],
+      "evidence_fingerprint": "21ab238ccfd7a0e507de621e3bf3ab23a96c55f4f896a6b683e41cb08e495b03",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000029",
+      "question_key": "restart-counter-capacity",
+      "source_file": "Human-in-Loops/Q-000029__shared__restart-counter-capacity.md",
+      "raw_snapshot": "_audit/questions/Q-000029.md",
+      "file_sha256": "91b8c20be29e20742ac189f2c97ad408fa789982eb6d702ecfd35fd6494d1ca7",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 54,
+          "line_end": 64,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 320,
+          "line_end": 365,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 54,
+          "line_end": 61,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 245,
+          "line_end": 250,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 287,
+          "line_end": 336,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C010",
+        "VM1BD526-C015",
+        "VM1BD567-C006",
+        "VM1BD567-C012",
+        "RULE-026",
+        "RULE-007"
+      ],
+      "evidence_fingerprint": "805c3e88ce70dbab8e8d24a904cfbb0d04ba46a1efde7e53a1ab5652098c9c5b",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000030",
+      "question_key": "restart-input-file-identity",
+      "source_file": "Human-in-Loops/Q-000030__shared__restart-input-file-identity.md",
+      "raw_snapshot": "_audit/questions/Q-000030.md",
+      "file_sha256": "25edc8ddca05f836c2c0238785d8dcd05e8d79260fb62ab008759b4a7bcac52d",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM1BD526.cbl",
+          "line_start": 126,
+          "line_end": 145,
+          "source_sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f",
+          "sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 337,
+          "line_end": 345,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "IDMS Programs/VM1BD567.cbl",
+          "line_start": 117,
+          "line_end": 134,
+          "source_sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 287,
+          "line_end": 303,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C010",
+        "VM1BD567-C006",
+        "RULE-026"
+      ],
+      "evidence_fingerprint": "d1ca8063c32b80f6fcdcad3029dbed5c1a05e320089f188d8c330cefcfbe1ccc",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000031",
+      "question_key": "restart-key-cutover-policy",
+      "source_file": "Human-in-Loops/Q-000031__shared__restart-key-cutover-policy.md",
+      "raw_snapshot": "_audit/questions/Q-000031.md",
+      "file_sha256": "0c08424edf390a80d00a2e239f7a34baf685511d03c178588ecc6e005f58659b",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM1BD526.cbl",
+          "line_start": 120,
+          "line_end": 138,
+          "source_sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f",
+          "sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 324,
+          "line_end": 355,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "IDMS Programs/VM1BD567.cbl",
+          "line_start": 111,
+          "line_end": 129,
+          "source_sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 269,
+          "line_end": 318,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C008",
+        "VM1BD567-C004",
+        "RULE-028"
+      ],
+      "evidence_fingerprint": "8161882880bc580163621cf27a4e5d50858ab55f2553e99f66c8c461c35a3baa",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000032",
+      "question_key": "restart-serialized-payload-policy",
+      "source_file": "Human-in-Loops/Q-000032__shared__restart-serialized-payload-policy.md",
+      "raw_snapshot": "_audit/questions/Q-000032.md",
+      "file_sha256": "22e26e6a2ec2f7d23e179318623a6e1d7252f3772c3907108154d29c3dce5122",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 60,
+          "line_end": 63,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 347,
+          "line_end": 368,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 54,
+          "line_end": 58,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 306,
+          "line_end": 338,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "Dclgens/DZ01RSTV.txt",
+          "line_start": 16,
+          "line_end": 31,
+          "source_sha256": "60ae42a6c7a29185e8230972a5527a232a428f1686d2b90c6a4ec1092abfe342",
+          "sha256": "60ae42a6c7a29185e8230972a5527a232a428f1686d2b90c6a4ec1092abfe342"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C012",
+        "VM1BD567-C008",
+        "RULE-029"
+      ],
+      "evidence_fingerprint": "c751034b895b060683466bee33889ccf7edcf03566bc92132b5d511b81cc4acc",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000033",
+      "question_key": "restart-short-file-policy-567",
+      "source_file": "Human-in-Loops/Q-000033__VM1BD567__restart-short-file-policy-567.md",
+      "raw_snapshot": "_audit/questions/Q-000033.md",
+      "file_sha256": "88b0eba99807fa1bd8430b8906d3366719462b118f209c7f22d8a59bb60caff4",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM1BD567.cbl",
+          "line_start": 117,
+          "line_end": 134,
+          "source_sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 178,
+          "line_end": 184,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 238,
+          "line_end": 250,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 287,
+          "line_end": 303,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 207,
+          "line_end": 213,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD567-C006",
+        "RULE-026"
+      ],
+      "evidence_fingerprint": "9110c5b3c4c7869a3a0b0fcc11dc69ca3fd578f05957f5a1318a7bbc45f61db5",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000034",
+      "question_key": "restart-target-object-identity",
+      "source_file": "Human-in-Loops/Q-000034__shared__restart-target-object-identity.md",
+      "raw_snapshot": "_audit/questions/Q-000034.md",
+      "file_sha256": "667434ae33a13f62b2aee30ccb85f73fe6a427268780b87f85ead0d0731fc059",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "Mapping/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+          "line_start": 873,
+          "line_end": 873,
+          "source_sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf",
+          "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf"
+        },
+        {
+          "path": "Dclgens/DZ01RSTV.txt",
+          "line_start": 2,
+          "line_end": 31,
+          "source_sha256": "60ae42a6c7a29185e8230972a5527a232a428f1686d2b90c6a4ec1092abfe342",
+          "sha256": "60ae42a6c7a29185e8230972a5527a232a428f1686d2b90c6a4ec1092abfe342"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 401,
+          "line_end": 460,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 356,
+          "line_end": 423,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C008",
+        "VM1BD526-C009",
+        "VM1BD567-C004",
+        "VM1BD567-C005",
+        "RULE-028",
+        "RULE-016"
+      ],
+      "evidence_fingerprint": "d137695df9fa6b97d46961c1305d751ac4b983421d97f736734fef397d09b1a4",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000035",
+      "question_key": "runtime-sqlerror-useraben-contract",
+      "source_file": "Human-in-Loops/Q-000035__shared__runtime-sqlerror-useraben-contract.md",
+      "raw_snapshot": "_audit/questions/Q-000035.md",
+      "file_sha256": "34e55b7e7d65e60bfbc9ac079eb122944983861c54a24c3ed986344e3d7d78e6",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 155,
+          "line_end": 161,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 331,
+          "line_end": 345,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1526.txt",
+          "line_start": 624,
+          "line_end": 627,
+          "source_sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f",
+          "sha256": "a8ce3fb3704c3c124be9cd3f3f5d2e9500c27a24664d4ce9d69ec5b72122b99f"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 143,
+          "line_end": 150,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 276,
+          "line_end": 303,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 453,
+          "line_end": 456,
+          "source_sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11",
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        },
+        {
+          "path": "IDMS Programs/VM1BD526.cbl",
+          "line_start": 247,
+          "line_end": 254,
+          "source_sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f",
+          "sha256": "07c3a8f83ef7b871346d7de87dc790c8bb7cd5085e9102cd3a3c9bd6eebfd59f"
+        },
+        {
+          "path": "IDMS Programs/VM1BD567.cbl",
+          "line_start": 179,
+          "line_end": 180,
+          "source_sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb",
+          "sha256": "63d962f578de44209b7d30d0c56765f1c7d6e6b765d4d8e3b6553ac2e82f04cb"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 502,
+          "line_end": 522,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 531,
+          "line_end": 541,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 559,
+          "line_end": 574,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 631,
+          "line_end": 646,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 668,
+          "line_end": 671,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 365,
+          "line_end": 371,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 458,
+          "line_end": 474,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 496,
+          "line_end": 499,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "IDMS Programs/VM4BD310.cbl",
+          "line_start": 337,
+          "line_end": 337,
+          "sha256": "6b7753f96d95c16709c9960601f901bc497acf79d52b2d1eb290ceefcb79bf84"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 161,
+          "line_end": 162,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 265,
+          "line_end": 347,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4310.txt",
+          "line_start": 511,
+          "line_end": 511,
+          "sha256": "5bac84467e8ea965aea2ae0d53d1072e0dfe2f8afc6d0d13560ac4bc59f59e8d"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 273,
+          "line_end": 274,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 429,
+          "line_end": 440,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 534,
+          "line_end": 572,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ7200.cbl",
+          "line_start": 892,
+          "line_end": 892,
+          "sha256": "6eb2ef457d1eee332b84081d432b40b06d6a2a34fce3eeb4dd1a9cfeb14c5b44"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD526-C002",
+        "VM1BD526-C004",
+        "VM1BD526-C005",
+        "VM1BD526-C009",
+        "VM1BD526-C011",
+        "VM1BD526-C013",
+        "VM1BD526-C014",
+        "VM1BD567-C001",
+        "VM1BD567-C005",
+        "VM1BD567-C007",
+        "VM1BD567-C009",
+        "VM1BD567-C010",
+        "VM1BD567-C011",
+        "VM4BD302-C002",
+        "VM4BD302-C003",
+        "VM4BD302-C007",
+        "VM4BD302-C008",
+        "VM4BD310-C001",
+        "VM4BD310-C002",
+        "VM4BD310-C008",
+        "VM4BD420-C001",
+        "VM4BD420-C002",
+        "VM4BD420-C005",
+        "VM4BD420-C006",
+        "VM7BD200-C001",
+        "VM7BD200-C003",
+        "VM7BD200-C008",
+        "RULE-020",
+        "RULE-025",
+        "RULE-019",
+        "RULE-016",
+        "RULE-001",
+        "RULE-009",
+        "RULE-033",
+        "RULE-005",
+        "RULE-010",
+        "RULE-032",
+        "RULE-024",
+        "RULE-023",
+        "RULE-031",
+        "RULE-021",
+        "RULE-006",
+        "RULE-011"
+      ],
+      "evidence_fingerprint": "f1e5dd282f07c5d764b30a835621d5316e99a686578fd25f90cadccdadac8b6f",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000036",
+      "question_key": "shared.evef_encounter_order",
+      "source_file": "Human-in-Loops/Q-000036__shared__shared-evef-encounter-order.md",
+      "raw_snapshot": "_audit/questions/Q-000036.md",
+      "file_sha256": "8439603a960f2266bbd690502ae5b4bddb8655342fc06896308cf8c6a2302d94",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 47,
+          "line_end": 50,
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 215,
+          "line_end": 246,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 164,
+          "line_end": 196,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "Mapping/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+          "line_start": 372,
+          "line_end": 372,
+          "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf"
+        },
+        {
+          "path": "IDMS Programs/VM4BD302.cbl",
+          "line_start": 300,
+          "line_end": 315,
+          "sha256": "a51d9730816ce366497308324b517da42e389c055f64ee6b746aca872f0e7c17"
+        },
+        {
+          "path": "IDMS Programs/VM4BD420.cbl",
+          "line_start": 192,
+          "line_end": 221,
+          "sha256": "5239aa4d02575a5eae3148aa49803b5cdbd82dc7ebe4b4664f28e02d06d807d9"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD302-C003",
+        "VM4BD302-C005",
+        "VM4BD420-C002",
+        "VM4BD420-C003",
+        "RULE-024",
+        "RULE-025",
+        "RULE-004"
+      ],
+      "evidence_fingerprint": "1e8ed6af12389358b497e1577a425d0cb3bcc66cbfd2d55451fd0bf6cba870d5",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000037",
+      "question_key": "view-base-ddl",
+      "source_file": "Human-in-Loops/Q-000037__shared__view-base-ddl.md",
+      "raw_snapshot": "_audit/questions/Q-000037.md",
+      "file_sha256": "d4d6189d6548e781ebb1775e71c0b8f930634bfef3e1adebf1b8e961844eb318",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "Schema/VMBTS07.txt",
+          "line_start": 47,
+          "line_end": 50,
+          "sha256": "afb3f285d544a5143adb721cbc15637a6fc485ea4f9abdb8e69aeda9a7085ba4"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 215,
+          "line_end": 246,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 164,
+          "line_end": 196,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "Mapping/Field Mapping for IDMS to DB2_Final V 1.0_Manual.csv",
+          "line_start": 372,
+          "line_end": 372,
+          "sha256": "1b093ae9f5527a7d4f0a7828bf6750ed703508aa38e666e8e209b17c823589cf"
+        },
+        {
+          "path": "IDMS Programs/VM4BD302.cbl",
+          "line_start": 300,
+          "line_end": 315,
+          "sha256": "a51d9730816ce366497308324b517da42e389c055f64ee6b746aca872f0e7c17"
+        },
+        {
+          "path": "IDMS Programs/VM4BD420.cbl",
+          "line_start": 192,
+          "line_end": 221,
+          "sha256": "5239aa4d02575a5eae3148aa49803b5cdbd82dc7ebe4b4664f28e02d06d807d9"
+        },
+        {
+          "path": "Dclgens/DZBEFFTV.txt",
+          "line_start": 2,
+          "line_end": 33,
+          "sha256": "1398746545f2fb02970f3d6838cd1e420b0ae56adec1bdd4bd49d25d1d22e6f8"
+        },
+        {
+          "path": "Dclgens/DZEVEFTV.txt",
+          "line_start": 2,
+          "line_end": 27,
+          "sha256": "acf0d8764ef53ecd00ae763c18bf26d209bb93099666983aaf98c4d2241f70da"
+        },
+        {
+          "path": "Dclgens/DZBFASTV.txt",
+          "line_start": 2,
+          "line_end": 100,
+          "sha256": "00d7e8a369335eaf59644707b4a7f606d8aff550fea8902d1ad17437532f7e3d"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ1567.cbl",
+          "line_start": 427,
+          "line_end": 452,
+          "sha256": "82edfcfed4a1310bffe8add589274f24a9cfd149d4788d5758c1b075f57e1f11"
+        }
+      ],
+      "affected_ids": [
+        "VM1BD567-C001",
+        "VM4BD302-C002",
+        "VM4BD302-C003",
+        "VM4BD302-C006",
+        "VM4BD310-C002",
+        "VM4BD310-C003",
+        "VM4BD420-C002",
+        "VM4BD420-C004",
+        "VM7BD200-C002",
+        "VM7BD200-C005",
+        "RULE-005",
+        "RULE-032",
+        "RULE-024",
+        "RULE-022",
+        "RULE-021",
+        "RULE-025",
+        "RULE-017"
+      ],
+      "evidence_fingerprint": "e37699fbd9628ef7ccf769175ef1c70f975ae568070b3ad24cd44e533d919ad1",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000038",
+      "question_key": "navigation-output-recovery-VM4BD302",
+      "source_file": "Human-in-Loops/Q-000038__VM4BD302__navigation-output-recovery-vm4bd302.md",
+      "raw_snapshot": "_audit/questions/Q-000038.md",
+      "file_sha256": "9e5ede26171f10e7b5c478f6f184c905b45843915908c52937517df97e268fb2",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD302.cbl",
+          "line_start": 217,
+          "line_end": 230,
+          "sha256": "a51d9730816ce366497308324b517da42e389c055f64ee6b746aca872f0e7c17"
+        },
+        {
+          "path": "IDMS Programs/VM4BD302.cbl",
+          "line_start": 269,
+          "line_end": 275,
+          "sha256": "a51d9730816ce366497308324b517da42e389c055f64ee6b746aca872f0e7c17"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 285,
+          "line_end": 298,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4302.txt",
+          "line_start": 364,
+          "line_end": 375,
+          "sha256": "25f5d74ab01f76fc77157cb77d5bd83b36511e58320f8737f1225d8a3ffc2d5c"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD302-C006",
+        "RULE-022",
+        "RULE-015"
+      ],
+      "evidence_fingerprint": "5af92253966e132ced918877981a05029b8706d68f7e493afd974efc427f6d53",
+      "successor_ids": []
+    },
+    {
+      "question_id": "Q-000039",
+      "question_key": "navigation-output-recovery-VM4BD420",
+      "source_file": "Human-in-Loops/Q-000039__VM4BD420__navigation-output-recovery-vm4bd420.md",
+      "raw_snapshot": "_audit/questions/Q-000039.md",
+      "file_sha256": "8de03182009f1635f170ac8cd5fda045813402f99988960d2d8187d66ba554fb",
+      "answer_sha256": "c1aaed355c21872dc58edfa6c9df8be0de927401d2b882aecbc31c7f0c9bc07b",
+      "answer_origin": "HUMAN",
+      "response_state": "UNANSWERED",
+      "review_state": "NOT_REVIEWED",
+      "resolution_state": "OPEN",
+      "production_resolution": "OPEN",
+      "accepted_scope": {
+        "input_ids": [],
+        "business_conditions": "No answer consumed"
+      },
+      "implementation_assessment": "UNRESOLVED",
+      "evidence": [
+        {
+          "path": "IDMS Programs/VM4BD420.cbl",
+          "line_start": 159,
+          "line_end": 172,
+          "sha256": "5239aa4d02575a5eae3148aa49803b5cdbd82dc7ebe4b4664f28e02d06d807d9"
+        },
+        {
+          "path": "IDMS Programs/VM4BD420.cbl",
+          "line_start": 215,
+          "line_end": 224,
+          "sha256": "5239aa4d02575a5eae3148aa49803b5cdbd82dc7ebe4b4664f28e02d06d807d9"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 243,
+          "line_end": 256,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        },
+        {
+          "path": "DB2 Manual converted Programs/VMDZ4420.cbl",
+          "line_start": 316,
+          "line_end": 339,
+          "sha256": "6472953d46f42b11bb9443b0beead6b88871a678fbe90ede4ef7742fb3fa0265"
+        }
+      ],
+      "affected_ids": [
+        "VM4BD420-C004",
+        "RULE-022",
+        "RULE-015"
+      ],
+      "evidence_fingerprint": "d0199ae8b0c79579b39e5269014f6d6d7494072550132eb600dd18863432975e",
+      "successor_ids": []
+    }
+  ]
+}

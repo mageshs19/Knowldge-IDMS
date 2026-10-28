@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "validation_level": "PYTHON_BUSINESS_BRANCH_SIMULATION_ONLY",
+  "assumptions": [
+    "Events are already decoded into approved numeric/date values.",
+    "Rows are supplied in the chosen test order; no SQL/IDMS engine is modeled.",
+    "Successful fetch/service/file paths only; no compiler, SQL error handler or Db2 execution."
+  ],
+  "state_sequences_checked": 2801,
+  "versions_compared": [
+    "legacy420",
+    "converted420",
+    "420_existing_state_only"
+  ],
+  "equivalence_failures": [],
+  "boundary_and_counterexample_checks": [
+    {
+      "name": "302-redemption-date-20260914",
+      "passed": true,
+      "explanation": "Lower bound is inclusive and as-of cutoff is exclusive."
+    },
+    {
+      "name": "302-redemption-date-20260915",
+      "passed": true,
+      "explanation": "Lower bound is inclusive and as-of cutoff is exclusive."
+    },
+    {
+      "name": "302-redemption-date-20261014",
+      "passed": true,
+      "explanation": "Lower bound is inclusive and as-of cutoff is exclusive."
+    },
+    {
+      "name": "302-redemption-date-20261015",
+      "passed": true,
+      "explanation": "Lower bound is inclusive and as-of cutoff is exclusive."
+    },
+    {
+      "name": "302-operation-must-be-91",
+      "passed": true,
+      "explanation": "Event code alone is insufficient: embedded operation91 is required."
+    },
+    {
+      "name": "302-january-rollover",
+      "passed": true,
+      "explanation": "Month subtraction rolls January to prior-year December."
+    },
+    {
+      "name": "302-retained-unclamped-day",
+      "passed": true,
+      "explanation": "The model intentionally exposes retained non-calendar day arithmetic; intent remains open."
+    },
+    {
+      "name": "302-order-counterexample",
+      "passed": true,
+      "explanation": "Two valid creation records select different CIs when encounter order reverses."
+    },
+    {
+      "name": "420-order-counterexample",
+      "passed": true,
+      "explanation": "420 preserves last creation CI; row order still matters although eligibility stays true."
+    },
+    {
+      "name": "302-transfer-tie-is-strict",
+      "passed": true,
+      "explanation": "Equal transfer dates do not replace the existing CI because the comparison is strict."
+    },
+    {
+      "name": "eur-date-parser-control",
+      "passed": true,
+      "explanation": "The source's assumed EUR positions reorder to YYYYMMDD."
+    },
+    {
+      "name": "iso-date-format-counterexample",
+      "passed": true,
+      "explanation": "An ISO output string would not match the same positions; actual DATE options must be supplied."
+    }
+  ],
+  "passed": true
+}

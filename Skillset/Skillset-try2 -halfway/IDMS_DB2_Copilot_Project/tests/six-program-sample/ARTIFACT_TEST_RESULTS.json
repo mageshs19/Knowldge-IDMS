@@ -1,0 +1,124 @@
+{
+  "status": "PASS",
+  "tests": [
+    {
+      "test": "Phase 1 complete artifact validation",
+      "result": "PASS",
+      "checks": 6436,
+      "counts": {
+        "programs": 6,
+        "guides": 4,
+        "cases": 60,
+        "rules": 33,
+        "matrix_rows": 198,
+        "questions": 39
+      }
+    },
+    {
+      "test": "Phase 2 complete artifact validation",
+      "result": "PASS",
+      "checks": 9924,
+      "counts": {
+        "programs": 6,
+        "guides": 4,
+        "cases": 60,
+        "rules": 33,
+        "matrix_rows": 198,
+        "questions": 39
+      }
+    },
+    {
+      "test": "Missing report detected",
+      "result": "PASS",
+      "meaning": "deliberate invalid copy was rejected"
+    },
+    {
+      "test": "Missing rule/program matrix row detected",
+      "result": "PASS",
+      "meaning": "deliberate invalid copy was rejected"
+    },
+    {
+      "test": "Duplicate rule/program matrix row detected",
+      "result": "PASS",
+      "meaning": "deliberate invalid copy was rejected"
+    },
+    {
+      "test": "Changed original source detected",
+      "result": "PASS",
+      "meaning": "deliberate invalid copy was rejected"
+    },
+    {
+      "test": "Unlisted IDMS input detected",
+      "result": "PASS",
+      "meaning": "deliberate invalid copy was rejected"
+    },
+    {
+      "test": "Changed Phase 1 baseline detected",
+      "result": "PASS",
+      "meaning": "deliberate invalid copy was rejected"
+    },
+    {
+      "test": "Changed consumed answer detected",
+      "result": "PASS",
+      "meaning": "deliberate invalid copy was rejected"
+    },
+    {
+      "test": "Synthetic answer promotion rejected",
+      "result": "PASS",
+      "meaning": "deliberate invalid copy was rejected"
+    },
+    {
+      "test": "Synthetic answer in production rejected",
+      "result": "PASS",
+      "meaning": "deliberate invalid copy was rejected"
+    },
+    {
+      "test": "Answer applied outside accepted input scope rejected",
+      "result": "PASS",
+      "meaning": "deliberate invalid copy was rejected"
+    },
+    {
+      "test": "Matrix case from another program rejected",
+      "result": "PASS",
+      "meaning": "deliberate invalid copy was rejected"
+    },
+    {
+      "test": "Rule answer outside case and applicability scope rejected",
+      "result": "PASS",
+      "meaning": "deliberate invalid copy was rejected"
+    },
+    {
+      "test": "Invalid matrix evidence rejected",
+      "result": "PASS",
+      "meaning": "deliberate invalid copy was rejected"
+    },
+    {
+      "test": "Human-confirmed label without real answer rejected",
+      "result": "PASS",
+      "meaning": "deliberate invalid copy was rejected"
+    },
+    {
+      "test": "Question identity mismatch rejected",
+      "result": "PASS",
+      "meaning": "deliberate invalid copy was rejected"
+    },
+    {
+      "test": "Blank answer cannot be accepted as human intent",
+      "result": "PASS",
+      "meaning": "deliberate invalid copy was rejected"
+    },
+    {
+      "test": "All 30 original and normalized files plus RAR match supplied hashes",
+      "result": "PASS"
+    },
+    {
+      "test": "Superseded synthetic drafts and final answer version retain exact hashes",
+      "result": "PASS"
+    },
+    {
+      "test": "Repeated validation preserves all delivered test bytes",
+      "result": "PASS"
+    }
+  ],
+  "scope": "Artifact tests only. COBOL precompile/compile/Db2 execution not performed."
+}

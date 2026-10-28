@@ -1,0 +1,110 @@
+1. Extract and open the project
+Open the project root in VS Code
+
+The folder containing README.md, Migration-Playbook/, Mainframe/, and Migration-Analysis/.
+
+
+1. Extract IDMS_DB2_Migration_Professional.zip.
+2. In VS Code, select File → Open Folder.
+3. Select IDMS_DB2_Migration_Professional.
+4. Open Copilot Chat and switch to Agent mode, if available.
+
+2. Where to put your files
+Keep your real input files under Mainframe/workspace/.
+IDMS_DB2_Migration_Professional/
+│
+├── README.md
+├── Migration-Playbook/
+│   ├── IDMS_DB2_MIGRATION_PLAYBOOK.md
+│   ├── PHASE_1_BASELINE.md
+│   ├── PHASE_2_ANSWER_APPLICATION.md
+│   └── MAINFRAME_QUESTION_STANDARD.md
+│
+├── Mainframe/workspace/
+│   ├── Copybook/                     ← Copybooks
+│   ├── Dclgens/                      ← DB2 DCLGEN files
+│   ├── Schema/                       ← IDMS schema and LRF definitions
+│   ├── Mapping/                      ← Field mapping Excel/CSV files
+│   ├── IDMS Programs/                ← Original IDMS COBOL programs
+│   └── DB2 Manual converted Programs/← Senior developer's DB2 versions
+│
+└── Migration-Analysis/
+    ├── MIGRATION_CONFIG.md           ← YOU EDIT THIS FIRST
+    ├── Human-in-Loops/               ← Copilot creates question files here
+    ├── Phase-1/                      ← Initial analysis output
+    └── Phase-2/                      ← Answered analysis output
+
+
+Important: Keep the original IDMS programs and manually converted DB2 programs in separate folders. The manual conversions are the evidence Copilot uses to learn the senior developer's actual migration approach.
+3. Before running Copilot: edit the configuration
+Open Migration-Analysis/MIGRATION_CONFIG.md.
+
+Fill in these sections first:
+- Section 2: Program naming rules, including your actual IDMS-to-DB2 program mappings.
+- Section 4: Your eight decommissioned record names, specifying whether each name belongs to IDMS or DB2.
+- Section 5: The original and replacement names for the Restart and Buffer records/tables.
+Save the file. Do not ask Copilot to guess these names.
+4. Trigger Phase 1 first
+In Copilot Chat, use Agent mode and add these files as context using the chat's file/context picker:
+- Migration-Playbook/IDMS_DB2_MIGRATION_PLAYBOOK.md
+- Migration-Playbook/PHASE_1_BASELINE.md
+- Migration-Playbook/MAINFRAME_QUESTION_STANDARD.md
+- Migration-Analysis/MIGRATION_CONFIG.md
+
+
+Then paste this prompt:
+Execute Phase 1 — Baseline Analysis for the IDMS-to-DB2 migration project.
+
+Read the master migration playbook, Phase 1 instructions, Mainframe question standard, and migration configuration before beginning.
+
+Use Mainframe/workspace/ as the source root. Analyze every IDMS program against its corresponding manually converted DB2 program, using the Mapping, Schema, Dclgens, and Copybook folders as supporting evidence.
+
+Requirements:
+1. Generate one evidence-backed migration report per IDMS program.
+2. Generate the four conditional generic migration guides specified in the playbook.
+3. Cross-verify each generic rule against every applicable program, recording conditions and exceptions.
+4. Ask only genuine, unresolved, program-specific IDMS-to-DB2 COBOL business-logic questions. Prefer YES/NO questions. Zero questions is valid.
+5. Write individual question files to Migration-Analysis/Human-in-Loops/.
+6. Write all Phase 1 outputs to a new Migration-Analysis/Phase-1/Run-NNN/ folder.
+7. Do not modify the original application source files, overwrite previous runs, or start Phase 2.
+8. If files are missing or program pairs are ambiguous, report the actual limitation instead of inventing evidence.
+First inventory the workspace and confirm the discovered input files. Then perform the analysis and produce the required reports. Do not stop after creating an outline.
+
+
+
+
+What should happen: Copilot reads your actual files, creates the Phase 1 reports, and writes questions only where a meaningful conversion decision remains unresolved.
+
+If the workspace contains 50 IDMS programs, it should account for all 50, even when some manual DB2 counterparts are missing.
+5. Human review between the phases
+Open Migration-Analysis/Human-in-Loops/.
+
+Each generated question should identify the affected source and target programs, relevant COBOL logic, and a closed question for your Mainframe COBOL team.
+
+The team edits the answer block in each question file. Keep the question IDs and evidence intact.
+6. Trigger Phase 2 after the answers are ready
+Add these files as Copilot context:
+- Migration-Playbook/IDMS_DB2_MIGRATION_PLAYBOOK.md
+- Migration-Playbook/PHASE_2_ANSWER_APPLICATION.md
+- Migration-Playbook/MAINFRAME_QUESTION_STANDARD.md
+- Migration-Analysis/MIGRATION_CONFIG.md
+- The completed Phase 1 run's coverage report and relevant generic guides.
+Then paste:
+
+
+Execute **Phase 2 — Human Answer Application and Generic Rule Verification**.
+
+Read the Phase 2 instructions, the current migration configuration, the completed Phase 1 outputs, and every question file in `Migration-Analysis/Human-in-Loops/`.
+
+Apply explicit human answers to the affected program-specific migration reports and generic rules.
+
+Requirements:
+1. Preserve every human answer and all Phase 1 outputs.
+2. Keep unanswered or ambiguous decisions unresolved.
+3. Cross-verify every affected generic rule against all applicable IDMS programs and their manual DB2 counterparts.
+4. Record the answer-to-report and answer-to-rule changes in `ANSWER_IMPACT.md`.
+5. Generate revised program reports, four generic guides, coverage information, and supporting evidence.
+6. Write outputs to a new `Migration-Analysis/Phase-2/Run-NNN/` folder.
+7. Do not modify original COBOL programs or claim compilation or runtime validation unless actually performed.
+
+Report the questions applied, questions remaining open, program coverage, generic-rule exceptions, and checks actually performed.
