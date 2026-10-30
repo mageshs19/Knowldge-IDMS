@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["answers"],
+  "properties": {
+    "answers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["question_id", "question_text", "answer"],
+        "properties": {
+          "question_id": {"type": "string", "pattern": "^Q-[0-9]+$"},
+          "question_text": {"type": "string"},
+          "answer": {"type": "string"},
+          "answered": {"type": "boolean"}
+        }
+      }
+    }
+  }
+}

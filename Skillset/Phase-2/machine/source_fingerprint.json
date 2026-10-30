@@ -1,0 +1,215 @@
+{
+  "source_run": "/mnt/data/idms_production_final/IDMS_DB2_Production_Final/Previous-Project-Snapshot/IDMS_DB2_Copilot_Project/Migration-Analysis/Phase-1/Run-001",
+  "files": [
+    {
+      "path": "programs/IDMS Programs/VM1BD250.cbl__migration.md",
+      "sha256": "bfad7219b0a63fa90f17882ed4a37eb42eea55eb220af4ea24086a520b8c21b9",
+      "size": 38066
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BD252.cbl__migration.md",
+      "sha256": "7efa235251a6cba596ef961846dec47430ae3ca00cff60131f881b5b1fd2abed",
+      "size": 24346
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BD255.cbl__migration.md",
+      "sha256": "fdadd01073a6418a6a3291e2df79cd8906e38e158087b8539313b1e3214a335e",
+      "size": 20003
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BD257.cbl__migration.md",
+      "sha256": "b42bb678915c71357e20ec500514aaf52f807c21a35d6815bc6bff920e30c90e",
+      "size": 12278
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BD510.cbl__migration.md",
+      "sha256": "cd4fad624a3a7dd1c34290a904872cbc40700ce14aa1bb990c23957781e5164e",
+      "size": 26906
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BD515.cbl__migration.md",
+      "sha256": "350162549f3c121fa7a3e37ad164aa1e96363a4c727d60d17888f2b42e19a513",
+      "size": 25304
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BD526.cbl__migration.md",
+      "sha256": "27c1fe6039889104a1ee556d0a639754484b8ac2b2fca12b0b3f6b4d56982514",
+      "size": 18310
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BD535.cbl__migration.md",
+      "sha256": "7d1555e532c60a61c5facc3c34974bd63ad884e167b65a775ca772e3f7d0a2be",
+      "size": 16355
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BD546.cbl__migration.md",
+      "sha256": "ba0f09c1789b962512232479c3b76734d666ef824cdd07b720ef697ea7fd8005",
+      "size": 13111
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BD555.cbl__migration.md",
+      "sha256": "307366011b13ea0a9bac7a216d9ce454cd4211b68b252a270d01affc6772ce42",
+      "size": 10505
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BD565.cbl__migration.md",
+      "sha256": "71376aa2114fc7f41de0fa1dba77d717c84205a19b9f28c246018933443a78ad",
+      "size": 9116
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BD567.cbl__migration.md",
+      "sha256": "bd1ffa8c5e1afc886e69a599bf6fe98cdd8981984362a62376b33744ec2c1843",
+      "size": 20158
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BD575.cbl__migration.md",
+      "sha256": "7f8b3b6048eca722c3b964e05ca9328cbb345f7a5f55e498e208c0c17085b09e",
+      "size": 20728
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BD590.cbl__migration.md",
+      "sha256": "769430dea48499b1ac10d0807bb5a8ec144b97539407bbfb3461a7c654e73ceb",
+      "size": 20312
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BD595.cbl__migration.md",
+      "sha256": "137ceefaecea060da2b40bd494fa586d9a2607c4df1da8c0e3c3bad2ae97eaca",
+      "size": 21739
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BD620.cbl__migration.md",
+      "sha256": "55f811e51070ff5e033caee04d6c14779f137ea3698f6faba86e97c10b97eade",
+      "size": 20857
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BD625.cbl__migration.md",
+      "sha256": "aab63ed59006520dec2c42c9bfeb2d04b06fdf4dceed737cf1c51058b1276473",
+      "size": 27056
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BZ015.cbl__migration.md",
+      "sha256": "81b3beedae7af027d9929c624c529376115049cdfccae3bd14943ff6d9d2d979",
+      "size": 24850
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BZ130.cbl__migration.md",
+      "sha256": "b0b1a4df41051c84505f7833dbafdeed1460aad87b95b0fe0f27ebf1ef811ab3",
+      "size": 25963
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BZ140.cbl__migration.md",
+      "sha256": "e5ab4b69ac24f19178ff7ab012591e545bff2c1600e547d901f8a1e0889dd569",
+      "size": 25408
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BZ170.cbl__migration.md",
+      "sha256": "96d98c9a124907003705ad974a5c6eaa7de967d9ce2ab498febdc015fc88e004",
+      "size": 25659
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BZ190.cbl__migration.md",
+      "sha256": "371eb930fe55355c157acea5fa1a208dd4f4811a6c665955b6f8c8fa88ab4fce",
+      "size": 24609
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BZ250.cbl__migration.md",
+      "sha256": "7fbcf64dce10caad406f6b781e0ce0afb8d057160416e8e582560aec46097dea",
+      "size": 27507
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BZ260.cbl__migration.md",
+      "sha256": "46ad8c78df74f79254bc4a74934ee2f1a42fa80fe7a978733d077a11cb6383f1",
+      "size": 29734
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BZ310.cbl__migration.md",
+      "sha256": "5d1f8b4f6e0487bd4afe3531065437def9b1cd90c9e38ee99e2a86d355e39c3a",
+      "size": 22306
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BZ570.cbl__migration.md",
+      "sha256": "fb9b86e69cdaaa71ab991f1dc00f374aba296c8e91f85dea1cc8dbdc5ab96deb",
+      "size": 30842
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BZ580.cbl__migration.md",
+      "sha256": "5dbf6a9593b8fed89a5c71a0a88199d81fcf146845408f854192b4221cdf178b",
+      "size": 26865
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BZ590.cbl__migration.md",
+      "sha256": "6d5d34fca66745e56c67ecab3d7e34be67037f1fd0468f4c5de4222b0045f576",
+      "size": 25068
+    },
+    {
+      "path": "programs/IDMS Programs/VM1BZ620.cbl__migration.md",
+      "sha256": "79f47e94e349fc3dd30e116977a84aa972df51c2f9b835552fd9a12621c05f5b",
+      "size": 25031
+    },
+    {
+      "path": "programs/IDMS Programs/VM4BD230.cbl__migration.md",
+      "sha256": "501dd870692f56a2a5fdaa7b9507e38540a9aafdbb0a4640569ad8a4cf17d687",
+      "size": 22201
+    },
+    {
+      "path": "programs/IDMS Programs/VM4BD300.cbl__migration.md",
+      "sha256": "3a159321812cd9a6d4f050ceca8ab1c3a56480d6c23f6ce83e33e80663d9a1be",
+      "size": 27967
+    },
+    {
+      "path": "programs/IDMS Programs/VM4BD302.cbl__migration.md",
+      "sha256": "94733a46f7b5579fd7577d9568b68be17890d40bd0b17757f93ebcb77263534d",
+      "size": 30700
+    },
+    {
+      "path": "programs/IDMS Programs/VM4BD305.cbl__migration.md",
+      "sha256": "77d1edaff2d2a10b75e1ae0d356ec9245c56b14e2f9018de336835daf603bb62",
+      "size": 31078
+    },
+    {
+      "path": "programs/IDMS Programs/VM4BD306.cbl__migration.md",
+      "sha256": "b4a3d45fc1e70ab1df6d1ce5e6a9ac427d462dc37fecac5944ad05c8190a4741",
+      "size": 30930
+    },
+    {
+      "path": "programs/IDMS Programs/VM4BD310.cbl__migration.md",
+      "sha256": "e232bcd84d6154bc2da2afecffcd2508f771a0b74475c76baf4cb22df8cbf991",
+      "size": 30034
+    },
+    {
+      "path": "programs/IDMS Programs/VM4BD420.cbl__migration.md",
+      "sha256": "483861f553f50b0d42c9500e6d2380091f7e91660997d3933fb415a769a1fc3d",
+      "size": 30082
+    },
+    {
+      "path": "programs/IDMS Programs/VM4BZ200.cbl__migration.md",
+      "sha256": "f861588a5f6c91a6ecacd6c5fefa7c6ab6c45dc0d5fa2a854d7c0a79b722f4d1",
+      "size": 28633
+    },
+    {
+      "path": "programs/IDMS Programs/VM4BZ250.cbl__migration.md",
+      "sha256": "e247a21c42ca34ab1a82eb99fb6d39c94dc5d17a44860dddbcf66f65516b698f",
+      "size": 22097
+    },
+    {
+      "path": "programs/IDMS Programs/VM4BZ260.cbl__migration.md",
+      "sha256": "036a9d25b2af52920845577336e9c53de40f02cdec55d1fce738d12f0a1d294c",
+      "size": 31256
+    },
+    {
+      "path": "programs/IDMS Programs/VM4BZ420.cbl__migration.md",
+      "sha256": "f116ae2e9693ff34cee37379c89e87cbed61d1e1a13182a5b810975d6030e5c5",
+      "size": 29044
+    },
+    {
+      "path": "programs/IDMS Programs/VM7BD102.cbl__migration.md",
+      "sha256": "9e0cb2d9ad47a82f720024f8107e3ff155275b270b31bdf766f61df1ab8bb272",
+      "size": 31656
+    },
+    {
+      "path": "generic/04_LRF_UPDATE_RESTART.md",
+      "sha256": "d2fb9541b95497bf6b9ceea4a1926024ae655e60c3da1445c9c0ff744cfe1ca3",
+      "size": 20663
+    }
+  ]
+}

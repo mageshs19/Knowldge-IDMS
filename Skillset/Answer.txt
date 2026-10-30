@@ -1,0 +1,275 @@
+IDMS -> DB2 MIGRATION : COBOL TEAM QUESTIONS - ENGINE-IMPORTANT SUPPORT ONLY
+==============================================================================
+
+RULES
+-----
+- Q IDs and question wording are copied unchanged from the earlier review set.
+- Support is intentionally reduced to only what Phase 2 / the analysis engine needs.
+- Long report history, cosmetic issues, unrelated tests, and duplicate evidence are omitted.
+- COBOL team should answer only under COBOL TEAM ANSWER.
+
+Q-04
+Is abending on a rerun of a completed run (CO_ID_RS='1') the approved standard, or should it end RC=0 like legacy?
+PROGRAM PAIR: VM1BD250 -> VMDZ1250
+IMPORTANT REFERENCES: V-01 / RST-06
+ENGINE-IMPORTANT SUPPORT: Legacy completed rerun = no-op/RC0. DB2 completed rerun = USERABEN. Phase 2 needs only the approved rerun policy.
+COBOL TEAM ANSWER:
+
+Q-05
+Should the restart key use the PARM date instead of the system date to avoid a midnight restart creating a fresh run? (shared legacy risk)
+PROGRAM PAIR: VM1BD250 -> VMDZ1250
+IMPORTANT REFERENCES: RST-01
+ENGINE-IMPORTANT SUPPORT: Restart identity can change after midnight when system date is used, causing the same business run to be treated as new.
+COBOL TEAM ANSWER:
+
+Q-15
+C-01: should duplicate coupons be skipped (actual legacy behaviour) or abend (intended)?
+PROGRAM PAIR: VM1BD255 -> VMDZ1255
+IMPORTANT REFERENCES: C-01
+ENGINE-IMPORTANT SUPPORT: Legacy effectively continues on duplicate; DB2 -803 path abends. This directly changes duplicate business handling.
+COBOL TEAM ANSWER:
+
+Q-16
+CT_RKTGDSC_479MBFC is always blank (CSV remark "Need to recheck"). Confirm that it is part of the PK and stays blank.
+PROGRAM PAIR: VM1BD255 -> VMDZ1255
+IMPORTANT REFERENCES: KEY / mapping
+ENGINE-IMPORTANT SUPPORT: Field is always blank in observed data/mapping but participates in the DB2 key definition. Phase 2 needs confirmation whether blank is intentional key content.
+COBOL TEAM ANSWER:
+
+Q-17
+What is the set order of VMBEFF-VMBEVEF (FIRST / LAST / NEXT / SORTED)? Was NR_ID assigned in set order during the data migration? (decides ASC vs DESC in 1210)
+PROGRAM PAIR: VM1BD515 -> VMDZ1515
+IMPORTANT REFERENCES: D-01 / LRO-02
+ENGINE-IMPORTANT SUPPORT: Legacy takes first matching EVEF in IDMS set order. DB2 uses ORDER BY NR_ID DESC FETCH FIRST 1. Equivalence depends entirely on migrated NR_ID preserving set order.
+COBOL TEAM ANSWER:
+
+Q-18
+NR_IDGOOD_479EVEF: CHAR(28) display (DCLGEN) vs CHAR(20) (CSV). How does the data migration convert the legacy packed values? Which other programs read NR-ID-GOOD?
+PROGRAM PAIR: VM1BD515 -> VMDZ1515
+IMPORTANT REFERENCES: C-01 / HLP-07
+ENGINE-IMPORTANT SUPPORT: Legacy NR-ID-GOOD is packed 20-byte structure; DB2 DCLGEN is CHAR(28). Converted writers/readers must use the exact migration representation.
+COBOL TEAM ANSWER:
+
+Q-26
+Should VMDZ905T restore the OPEN-time date validation (D-02)?
+PROGRAM PAIR: VM1BD510 -> VMDZ1510 / VM9BD05T -> VMDZ905T
+IMPORTANT REFERENCES: D-02
+ENGINE-IMPORTANT SUPPORT: Legacy validates the date during OPEN and can reject immediately. VMDZ905T currently returns OK at OPEN and validates later/elsewhere.
+COBOL TEAM ANSWER:
+
+Q-27
+D-02: should DB2 reproduce the legacy "NS-IDCP = 0 → NX-CPAID = 1" (unsigned GIVING) result? The user rule "retain legacy logic" says yes. Confirm that this is not a known data fix.
+PROGRAM PAIR: VM1BD535 -> VMDZ1535
+IMPORTANT REFERENCES: D-02 / ARI-01
+ENGINE-IMPORTANT SUPPORT: Legacy unsigned GIVING can store 1 when subtracting 1 from zero. DB2 currently produces 0. This is a real arithmetic-result difference.
+COBOL TEAM ANSWER:
+
+Q-30
+In production, is VM1BD565 (and VM1BD546) ever run with `DATE-IND = '0'` (system date)? If so, VMDZ1565 D-01 is a live defect. If not, it is latent. (Data question only; JCL changes stay out of scope.)
+PROGRAM PAIR: VM1BD565/546 -> DB2 equivalents
+IMPORTANT REFERENCES: D-01
+ENGINE-IMPORTANT SUPPORT: Need only to know whether DATE-IND='0' is reachable in production; that determines whether the observed DB2 date-path difference is live.
+COBOL TEAM ANSWER:
+
+Q-31
+DZBFARTV has no surrogate NR_ID column [OBS DCLGEN]. Confirm a unique index / PK on (CT_TGDSERV, NR_CIOFMAS, DA_CRFMAS, NR_IDFMAS, CT_OPDFMAS, CT_OPGFMAS) so the searched UPDATE in VMDZ1567 can never touch more than one row (CALC DUP NOT ALLOWED in IDMS).
+PROGRAM PAIR: VM1BD567 -> VMDZ1567
+IMPORTANT REFERENCES: KEY-N567-1
+ENGINE-IMPORTANT SUPPORT: IDMS CALC DUP NOT ALLOWED guarantees one row. DB2 searched UPDATE requires the same uniqueness on the six-column business key.
+COBOL TEAM ANSWER:
+
+Q-32
+Data migration of VMBFAR DA-CR-FORM-AS = 99999999 (and 0): which DB2 DATE value is loaded? VMDZ1250 / VMDZ1567 map 0 → 0001-01-01 but have no effective 99999999 branch (D-03); the key conversion must match the migrated data (DATE-03).
+PROGRAM PAIR: VM1BD567 / VMDZ1567
+IMPORTANT REFERENCES: D-03 / DATE-03
+ENGINE-IMPORTANT SUPPORT: DB2 lookup/update keys must generate exactly the same DATE sentinel values that were loaded during migration.
+COBOL TEAM ANSWER:
+
+Q-35
+VM1BD575 MOD-EVEF rewrites NR-ID-GOOD (which embeds the input CIO) but not DB-NR-CI, unlike VM1BD565/555 which rewrite both. Intended for cancellations, or a legacy omission? DB2 retains legacy (Q-25) either way.
+PROGRAM PAIR: VM1BD575 -> VMDZ1575
+IMPORTANT REFERENCES: business-rule difference
+ENGINE-IMPORTANT SUPPORT: Cancellation path updates NR-ID-GOOD but leaves DB-NR-CI unchanged; sibling programs update both. Need intent only.
+COBOL TEAM ANSWER:
+
+Q-39
+Was disabling `PERFORM CONTR-110` (VM9BC50T issue check, abend 110) in VMDZ1590 intentional? VMDZ1510/1573 still call VM9BC50T. If not, restore it (D-02).
+PROGRAM PAIR: VM1BD590 -> VMDZ1590
+IMPORTANT REFERENCES: D-02
+ENGINE-IMPORTANT SUPPORT: Legacy performs issue validation before continuing; DB2 path disables it. Related converted programs still perform the call.
+COBOL TEAM ANSWER:
+
+Q-40
+VMDZ905T: confirm the fix for `NO-VMBEVEF-FND` ('03' via `WS-COUNT-EVEF = 0`, D-04). It also affects VMDZ1510 and every other VMDZ905T caller.
+PROGRAM PAIR: VMDZ905T and callers
+IMPORTANT REFERENCES: D-04
+ENGINE-IMPORTANT SUPPORT: Parent found + zero child events must map to legacy NO-VMBEVEF-FND business status '03'; shared subprogram affects multiple programs.
+COBOL TEAM ANSWER:
+
+Q-43
+VERWERK-41 new-title creation: legacy fills AM-CND, AM-CN, CT-RK-TPROD-EX and AM-INTER of the new EFF with spaces (STCIRC = '1'), or inherits them from the old EFF (STCIRC ≠ '1', CT-SL = '0'). It also inherits the 0060 event date, CI and state from the old 0168 event. Which values must DB2 write? Can a legacy test run confirm the LRF buffer inheritance (D-03 / L-03)?
+PROGRAM PAIR: VM1BD595 -> VMDZ1595
+IMPORTANT REFERENCES: D-03 / L-03
+ENGINE-IMPORTANT SUPPORT: LRF can implicitly carry old EFF/EVEF values into the new title. DB2 must populate those columns explicitly, so the intended inheritance rule is critical.
+COBOL TEAM ANSWER:
+
+Q-44
+VM1BD595 has an inverted century window (`< 60 → 19`, L114); VMDZ1595 silently uses `> 60`. Retain the legacy operator (Q-25) or accept the fix? Ties to Q-30: if DATE-IND = '0' is never used for VM1BD595, close both.
+PROGRAM PAIR: VM1BD595 -> VMDZ1595
+IMPORTANT REFERENCES: DATE-04
+ENGINE-IMPORTANT SUPPORT: Legacy and DB2 use opposite century-window operators; same two-digit year can map to different centuries.
+COBOL TEAM ANSWER:
+
+Q-47
+Did the VMBFAS → DZBFASTV data migration assign `NR_ID_479BFAS` in IDMS CALC-duplicate order (DUPLICATES LAST = oldest first)? VMDZ1620 (and VMDZ7240/7200/1252) rely on `ORDER BY NR_ID ASC` to pick the same duplicate as legacy.
+PROGRAM PAIR: VM1BD620 -> VMDZ1620 (+ related programs)
+IMPORTANT REFERENCES: ORD / migration-order
+ENGINE-IMPORTANT SUPPORT: Several DB2 programs use NR_ID ordering to emulate which CALC duplicate IDMS returns first. Migration assignment order must be confirmed.
+COBOL TEAM ANSWER:
+
+Q-48
+Does the SQLERROR include abend when SQLCODE = 100 (or 0)? If not, VMDZ1620 D-01 and VMDZ7240 STOP-01 skip "form not found" records silently instead of abending (extends Q-02).
+PROGRAM PAIR: shared SQLERROR routine
+IMPORTANT REFERENCES: ERR-03 / Q-02
+ENGINE-IMPORTANT SUPPORT: Multiple converted programs rely on SQLERROR being fatal even when called with SQLCODE 100 or 0. This affects not-found/error semantics corpus-wide.
+COBOL TEAM ANSWER:
+
+Q-51
+Do DD010 inputs of VM1BD625 still contain CT-OPD 41/43/65/71 in production, and are VMBFRV / VMBFRT / VMBFTE confirmed decommissioned (Q-03)? If not, VMDZ1625 lacks 3 branches and the VMBFTE group skip (D-01).
+PROGRAM PAIR: VM1BD625 -> VMDZ1625
+IMPORTANT REFERENCES: D-01 / Q-03
+ENGINE-IMPORTANT SUPPORT: DB2 omitted legacy branches tied to specific operation codes/records. Only relevant if those operation codes/records still occur.
+COBOL TEAM ANSWER:
+
+Q-52
+Restart-row retention: legacy VM1BD625 stores NB-DAY-FF 10, VMDZ1625 NB_DAY_RS 7. Does a purge job rely on 10 for this program?
+PROGRAM PAIR: VM1BD625 -> VMDZ1625
+IMPORTANT REFERENCES: restart retention
+ENGINE-IMPORTANT SUPPORT: Restart metadata retention changed from 10 to 7 days. Need only whether business/operations cleanup depends on 10.
+COBOL TEAM ANSWER:
+
+Q-54
+Has VM1BD625 ever been restarted in production? With L-01 an odd checkpoint count left the rest of the file unprocessed: is a data check of DA-CPTA needed before migration, and is the corrected DB2 positioning accepted (extends Q-29)?
+PROGRAM PAIR: VM1BD625 -> VMDZ1625
+IMPORTANT REFERENCES: L-01 / restart positioning
+ENGINE-IMPORTANT SUPPORT: Legacy odd checkpoint behaviour can leave file remainder unprocessed. DB2 positioning corrects it; need to know whether correction is approved and whether old checkpoint data needs review.
+COBOL TEAM ANSWER:
+
+Q-55
+Set order of VMBCOUP-VMBEVCP (FIRST/LAST/NEXT) and was NR_ID_479EVCP assigned in that order? Decides DESC vs ASC in DZCOUPC1 (O-FILE order, V-04). Same nature as Q-17/Q-47.
+PROGRAM PAIR: VM1BZ015 -> DB2 equivalent
+IMPORTANT REFERENCES: V-04 / ordering
+ENGINE-IMPORTANT SUPPORT: Output file order depends on IDMS set traversal. DB2 cursor ASC/DESC must reproduce that order.
+COBOL TEAM ANSWER:
+
+Q-57
+Is a VMBCOUP without VMBEVCP members a reachable data state? Legacy abends on it (L-01). Confirm DB2 must abend via USERABEN on every coupon (D-03, D-04).
+PROGRAM PAIR: VM1BZ015 -> DB2 equivalent
+IMPORTANT REFERENCES: L-01 / D-03 / D-04
+ENGINE-IMPORTANT SUPPORT: Parent-with-no-child is fatal in legacy. Need to know whether state can occur and whether DB2 must preserve fatal handling.
+COBOL TEAM ANSWER:
+
+Q-59
+How did the data migration load VMBCOUP `DA-UBSECIS-STOCK` (X(8), not a date type) into DZCOUPTV.DA_UBSECSK DATE: spaces / zeros / invalid → 0001-01-01? Is the input VMBZMEPI `DA-UB-FORM-AS` for such coupons spaces or '00000000'? This decides D-02.
+PROGRAM PAIR: VM1BZ130 -> VMDZ1130
+IMPORTANT REFERENCES: D-02 / DATE-N130-1
+ENGINE-IMPORTANT SUPPORT: Legacy compares raw X(8) date-like text. DB2 reconstructs text from DATE. Sentinel mapping must be symmetric or routing changes.
+COBOL TEAM ANSWER:
+
+Q-60
+Can a MEP record reference a coupon absent from VMBCOUP in production (L-01, V-01)? Is the DZEVCPTV → DZCOUPTV FK enforced in DB2 (V-03)?
+PROGRAM PAIR: VM1BZ130 -> VMDZ1130
+IMPORTANT REFERENCES: L-01 / V-01 / V-03
+ENGINE-IMPORTANT SUPPORT: Missing owner behaves differently because legacy may retain stale fields while DB2 initializes them; orphan child rows also matter if FK is not enforced.
+COBOL TEAM ANSWER:
+
+Q-64
+VMBCOUP DA-UBSECIS-STOCK is X(8) in IDMS but DA_UBSECSK is DATE; DA-UE/DA-AUTP come raw from the MEP file. Which DB2 values did the data migration load for spaces, 00000000, 99999999 or invalid content? The program conversion must match (extends Q-32, DATE-03).
+PROGRAM PAIR: VM1BZ140 -> VMDZ1140
+IMPORTANT REFERENCES: DATE-03 / Q-32
+ENGINE-IMPORTANT SUPPORT: Update/insert key conversion must match migration sentinel DATE values exactly.
+COBOL TEAM ANSWER:
+
+Q-66
+Legacy restarts NS-ID-EVPR at 1 after a restart (L-01). Keep that parity in DB2 (Q-25), or continue numbering from NB-READ + 1?
+PROGRAM PAIR: VM1BZ140 -> VMDZ1140
+IMPORTANT REFERENCES: L-01 / Q-25
+ENGINE-IMPORTANT SUPPORT: Event numbering after restart is business-visible state. Legacy restarts numbering at 1; alternative continuation changes produced data.
+COBOL TEAM ANSWER:
+
+Q-67
+Which PROG-VERSION values does the VM1BZ170 PARM carry in production, and does the program run more than once per run date with different values? If so, VMDZ1170 needs PROG-VERSION (≤ 8 significant chars?) in NM_ID_RS_PROGRAM or a phase number (D-02).
+PROGRAM PAIR: VM1BZ170 -> VMDZ1170
+IMPORTANT REFERENCES: D-02 / RST-N170-1
+ENGINE-IMPORTANT SUPPORT: Legacy restart identity includes PROG-VERSION; DB2 currently uses constant program name. Multiple same-day versions can collide on one restart row.
+COBOL TEAM ANSWER:
+
+Q-70
+Can production MEP input carry a coupon rank ≤ the current NX_CPFDU (manual "cas spéciaux", re-sent coupons, repeated stocks)? This sizes the D-01 impact. If VMDZ1170 has already run, do NX_CPFDUSK values need repair?
+PROGRAM PAIR: VM1BZ170 -> VMDZ1170
+IMPORTANT REFERENCES: D-01
+ENGINE-IMPORTANT SUPPORT: Legacy keeps max(current,input). DB2 can overwrite with lower/equal value because current NX_CPFDUSK is not selected. Need reachability and repair decision.
+COBOL TEAM ANSWER:
+
+Q-71
+Does LRF leave the program's VMBTL07-R01 storage unchanged when a path ends with a user RETURN (NO-VMBEVEF-FND)? Do production MEP stocks exist with VMBEFF but no VMBEVEF? Decides whether V-01 (DB2 gives real nominal) is accepted or the legacy result must be emulated.
+PROGRAM PAIR: VM1BZ190 -> VMDZ1190
+IMPORTANT REFERENCES: V-01 / LRF status semantics
+ENGINE-IMPORTANT SUPPORT: Legacy LRF path status depends on child existence and may leave stale buffer content; DB2 parent SELECT returns the real nominal. Need approved behavior for parent-with-no-child.
+COBOL TEAM ANSWER:
+
+Q-75
+Is a negative balance (TELLER1 < 0: more non-positive events than free positive ones) meant to produce a negative MEP (L-01)? Kept as-is (Q-25); needed for test expectations and for VM1BZ260 (same test).
+PROGRAM PAIR: VM1BZ250 (+ VM1BZ260)
+IMPORTANT REFERENCES: L-01 / business calculation
+ENGINE-IMPORTANT SUPPORT: Legacy allows negative event balance to flow into a negative MEP. Need confirmation this is intended business output.
+COBOL TEAM ANSWER:
+
+Q-79
+Can a VMBCOUP/DZCOUPTV row exist without any VMBEVCP/DZEVCPTV event (path NO-VMBEVCP-FND)? If yes: what does LRF return for `OBTAIN NEXT` after NO-VMBEVCP-FND (L-02), and which amount is expected in the negative MEP (AM-INTGR vs MEP+) for D-01? (FK enforcement for case C stays under Q-60.)
+PROGRAM PAIR: VM1BZ260 -> DB2 equivalent
+IMPORTANT REFERENCES: L-02 / D-01
+ENGINE-IMPORTANT SUPPORT: Empty child set affects both LRF continuation and which amount remains available for negative MEP output.
+COBOL TEAM ANSWER:
+
+Q-80
+UITSCHRIJF copies NR-ID-040SECU / NS-SEQ-040IRMO / DA-UB-FORM-AS from the current DD015 record even when it belongs to another coupon (L-01). VM1BZ250 takes them from DD010. Is 260's source intended (retain per Q-25) or a known production issue?
+PROGRAM PAIR: VM1BZ260 vs VM1BZ250
+IMPORTANT REFERENCES: L-01
+ENGINE-IMPORTANT SUPPORT: Two sibling programs populate the same output fields from different input records. Need to know whether VM1BZ260 behaviour is intentional.
+COBOL TEAM ANSWER:
+
+Q-83
+Does the DD020 consumer read WCT-OP-GDIFC (bytes 127-130) as raw packed CT-OPG/CT-OPD (legacy) or as 4 display digits?
+PROGRAM PAIR: VM1BZ310
+IMPORTANT REFERENCES: interface layout
+ENGINE-IMPORTANT SUPPORT: Physical byte representation of DD020 differs depending on packed vs display interpretation; downstream compatibility depends on this.
+COBOL TEAM ANSWER:
+
+Q-87
+L-01: forms failing 007/008/009 are written to FORM-OK/FORM-OK-TOONDER with the error code kept. Is that intended (downstream reads ERR-CODE-GDIFC) or a legacy defect? Retained per Q-25.
+PROGRAM PAIR: VM1BZ570 -> VMDZ1573
+IMPORTANT REFERENCES: L-01
+ENGINE-IMPORTANT SUPPORT: Legacy routes certain failed validations to the OK output while retaining the error code. Need business confirmation because downstream may rely on that combination.
+COBOL TEAM ANSWER:
+
+Q-88
+Codes 005/006/010 are header-only in legacy (006 "double coupon payment in input", L20). Confirm DB2 must not implement 006, and that the DB2 header list (seq 001900-002400) is documentation only.
+PROGRAM PAIR: VM1BZ570 -> VMDZ1573
+IMPORTANT REFERENCES: L-04
+ENGINE-IMPORTANT SUPPORT: Legacy executable logic never assigns 006; only comments/header mention it. DB2 should not introduce new behavior unless business explicitly requires it.
+COBOL TEAM ANSWER:
+
+Q-109
+DA-UBSECIS-STOCK of VMBEFF (X(8)): which legacy values (spaces/zeros/invalid) exist and how were they loaded into DA_UBSECIS_479BEFF? How does VM9BC50T key '3' react to '00000000'? (cf. Q-59)
+PROGRAM PAIR: VM4BD300 -> VMDZ4300
+IMPORTANT REFERENCES: D-05 / Q-59
+ENGINE-IMPORTANT SUPPORT: DB2 reconstructs legacy-style date text from DATE before VM9BC50T key '3'. Sentinel mapping and subprogram acceptance determine equivalence.
+COBOL TEAM ANSWER:
+
+Q-112
+Which VMBWCEF / DZBEFFTV-FK DA-UBSECIS values (spaces, zeros, invalid) exist in IDMS and how were they loaded into DATE columns? What does VM9BC50T key '2' return in BC50O-DA-UBSEC-ISSU for an unknown issue?
+PROGRAM PAIR: VM4BD302 -> VMDZ4302
+IMPORTANT REFERENCES: D-05
+ENGINE-IMPORTANT SUPPORT: DB2 uses VM9BC50T returned date to build a lookup key. Invalid/unknown issue date behavior can turn a legacy not-found into a DB2 date error or different key.
+COBOL TEAM ANSWER:

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IDMS to DB2 Conversion Rule",
+  "type": "object",
+  "required": ["rule_id", "concept", "title", "source_trigger", "legacy_semantics", "db2_pattern", "confidence", "evidence"],
+  "properties": {
+    "rule_id": {"type": "string", "minLength": 2},
+    "concept": {"type": "string"},
+    "title": {"type": "string"},
+    "source_trigger": {"type": "object"},
+    "preconditions": {"type": "array", "items": {"type": "string"}},
+    "exclusions": {"type": "array", "items": {"type": "string"}},
+    "legacy_semantics": {"type": "array", "items": {"type": "string"}},
+    "db2_pattern": {"type": "array", "items": {"type": "string"}},
+    "sql_status_handling": {"type": "array", "items": {"type": "string"}},
+    "mandatory_helpers": {"type": "array", "items": {"type": "object"}},
+    "no_helper_alternative": {"type": ["string", "null"]},
+    "field_requirements": {"type": "array", "items": {"type": "string"}},
+    "restart_effects": {"type": "array", "items": {"type": "string"}},
+    "variants": {"type": "array", "items": {"type": "object"}},
+    "counterexamples": {"type": "array", "items": {"type": "object"}},
+    "human_question_ids": {"type": "array", "items": {"type": "string"}},
+    "confidence": {"enum": ["SUPPORTED", "CONDITIONAL", "CONFLICT", "UNRESOLVED"]},
+    "evidence": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": true
+}
